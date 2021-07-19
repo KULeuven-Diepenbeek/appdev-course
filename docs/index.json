@@ -1,0 +1,29 @@
+[
+{
+	"uri": "https://kuleuven-diepenbeek.github.io/appdev-course/extra/",
+	"title": "Extra info",
+	"tags": [],
+	"description": "",
+	"content": "Extra info  Links  "
+},
+{
+	"uri": "https://kuleuven-diepenbeek.github.io/appdev-course/",
+	"title": "Course Contents",
+	"tags": [],
+	"description": "",
+	"content": "    App Development See UHasselt ECTS Sheet\nLast changes for academic year 2020 - 2021.\nCourse notes Bla Blie Extra Syllabus  Teachers: Coordinating Responsible: prof. dr. Kris Aerts - kris.aerts@kuleuven.be Assistant: Wouter Groeneveld - wouter.groeneveld@kuleuven.be Office: Technologiecentrum Diepenbeek, Groep ACRO, D.0.35.  Good-to-know What you should know before starting this course:\n Knowledge of object-oriented software development. Knowledge of the Java programming language.  What you should have learned after completing this course:\n The ecosystem and life cycle of a mobile (Android-based) app and how to tackle the development. The role of the different components in app development and being able to choose one over the other depending on the context. Basic knowledge of the Kotlin programming language. Basic knowledge of the technical Android API. Unit testability of mobile applications. Basic knowledge of multi-platform possiblities in the app development world. drawing up a project plan/analysis for mobile development projects.  Course planning See the menu to the left. This course is worth 3.0 ECTS points, hence it will be divided into 12 chunks (weeks) of 1.5h contact moments each. Extra coaching sessions will be planned if required.\nThe course lies in the second semester of the second year and has quite a bit of overlap with other software-related courses happening at the same time, specifically Software Engineering Skills (SES). During the SES lessons, we\u0026rsquo;ll get to know design patterns and unit testing, which will also be applied in this very course.\nEvaluation  No formal exam planned. An android-based project which will have to be defended orally to motivate the taken design and implementation decisions. Open questions will be asked to gauge the knowledge level of the student.  More learning material See the section \u0026ldquo;Extra\u0026rdquo; in the menu or in the links above. Each section will contain a \u0026ldquo;More learning material\u0026rdquo; part at the bottom of each page linking to supplemental bits and pieces for the curious student.\n"
+},
+{
+	"uri": "https://kuleuven-diepenbeek.github.io/appdev-course/extra/links/",
+	"title": "Links",
+	"tags": [],
+	"description": "",
+	"content": "Links Tutorials  Tutorialspoint.com Android Tutorial Vogella.com Android Development Tutorials  "
+},
+{
+	"uri": "https://kuleuven-diepenbeek.github.io/appdev-course/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]
