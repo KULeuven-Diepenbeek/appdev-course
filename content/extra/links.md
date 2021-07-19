@@ -2,8 +2,6 @@
 title: Links
 ---
 
-# Links
-
 ### Tutorials
 
 - [Tutorialspoint.com Android Tutorial](http://www.tutorialspoint.com/android/index.htm)

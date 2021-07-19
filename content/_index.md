@@ -15,13 +15,24 @@ Last changes for academic year _2020 - 2021_.
 
 ## Course notes
 
-### Bla
+### 1. Android Essentials
 
-### Blie
+1. [The Android Life Cycle: **Activities**](/android/activities)
+2. [Messaging between activities and apps: **Intents**](/android/intents)
+3. [Typical (master/detail) layouts and their adapters: **Views**](/android/views)
+4. [Data storage: **File and Network access**](/android/data-storage)
+5. [Complex layouting: **Fragments**](/android/fragments)
 
-### Extra
+### 2. Language & Support Tools
 
+1. [The **Kotlin** Programming language](/lang/kotlin)
+2. [**Test Driven Development** and mobile dev.](/lang/tdd)
+3. [**Multiplatform** mobile dev.](/lang/multiplatform)
 
+### 3. Extras
+
+1. [Advanced **UI Development**](/extra/advancedui)
+2. [Links and external **tutorials**](/extra/links)
 
 ## Syllabus
 
