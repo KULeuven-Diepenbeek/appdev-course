@@ -9,12 +9,93 @@
     <managingEditor>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</managingEditor>
     <webMaster>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</webMaster><atom:link href="https://kuleuven-diepenbeek.github.io/appdev-course/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>1. Life Cycle - Activities</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/android/activities/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/android/activities/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>1. The Kotlin programming lang.</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/lang/kotlin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/lang/kotlin/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>2. Messaging - Intents</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/android/intents/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/android/intents/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>2. Test Driven Development</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/lang/tdd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/lang/tdd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>3. Layouts - Views</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/android/views/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/android/views/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>3. Multiplatform Mobile dev.</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/lang/multiplatform/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/lang/multiplatform/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>4. Data Storage - File/Network</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/android/data-storage/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/android/data-storage/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>5. Complex layouting - Fragments</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/android/fragments/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/android/fragments/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Advaned UI Development</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/extra/advancedui/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/extra/advancedui/</guid>
+      <description> Android Widgets on the home screen Drag-and-drop systems Notifications  </description>
+    </item>
+    
+    <item>
       <title>Links</title>
       <link>https://kuleuven-diepenbeek.github.io/appdev-course/extra/links/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
       <guid>https://kuleuven-diepenbeek.github.io/appdev-course/extra/links/</guid>
-      <description>Links Tutorials  Tutorialspoint.com Android Tutorial Vogella.com Android Development Tutorials  </description>
+      <description>Tutorials  Tutorialspoint.com Android Tutorial Vogella.com Android Development Tutorials  </description>
     </item>
     
   </channel>
