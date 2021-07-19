@@ -1,0 +1,63 @@
+languageCode = "en-uk"
+title = "App Development"
+
+baseurl = "https://kuleuven-diepenbeek.github.io/appdev-course/"
+RelativeURLs=true
+CanonifyURLs=true
+
+theme = "hugo-theme-learn"
+publishDir = "docs"
+enableEmoji = true
+enableRobotsTXT = true
+pygmentsCodefences = true
+enableGitInfo = true
+
+[markup]
+  defaultMarkdownHandler = "goldmark"
+  
+  [markup.goldmark.renderer]
+    unsafe= true
+
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    tabWidth = 4
+
+[privacy]
+  [privacy.youtube]
+    disable = false
+    privacyEnhanced = true
+
+[taxonomies]
+    tag = "tags"
+
+[params]
+    disableComments = true
+    themeVariant = "kul"
+    disableInlineCopyToClipBoard = true
+    ordersectionsby = "weight"
+
+# see https://learn.netlify.com/en/basics/configuration/
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
+
+[Author]
+  name = "Wouter Groeneveld, Kris Aerts"
+  email = "<i>fname</i>.<i>lname</i>A T<i>kuleuven.be</i>"
+
+[[menu.shortcuts]] 
+name = "<i class='fa fa-university'></i> Toledo"
+identifier = "tol"
+url = "https://toledo.kuleuven.be/portal/"
+weight = 10
+
+[[menu.shortcuts]] 
+name = "<i class='fa fa-university'></i> ECTS Sheet"
+identifier = "stud"
+url = "https://www.uhasselt.be/studiegids"
+weight = 1
