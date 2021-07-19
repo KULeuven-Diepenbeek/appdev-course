@@ -22,6 +22,7 @@ Last changes for academic year _2020 - 2021_.
 3. [Typical (master/detail) layouts and their adapters: **Views**](/android/views)
 4. [Data storage: **File and Network access**](/android/data-storage)
 5. [Complex layouting: **Fragments**](/android/fragments)
+6. [Embedded Hardware: **Signals**](/android/signals)
 
 ### 2. Language & Support Tools
 
@@ -33,6 +34,8 @@ Last changes for academic year _2020 - 2021_.
 
 1. [Advanced **UI Development**](/extra/advancedui)
 2. [Links and external **tutorials**](/extra/links)
+3. [Projectinformation](/extra/project)
+4. Need inspiration? [A sample/demo project](/extra/demo)
 
 ## Syllabus
 

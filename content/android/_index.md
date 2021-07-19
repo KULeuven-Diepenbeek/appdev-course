@@ -8,4 +8,4 @@ weight: 1
 3. [Typical (master/detail) layouts and their adapters: **Views**](/android/views)
 4. [Data storage: **File and Network access**](/android/data-storage)
 5. [Complex layouting: **Fragments**](/android/fragments)
-
+6. [Embedded Hardware: **Signals**](/android/signals)
