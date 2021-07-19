@@ -9,7 +9,7 @@
     <managingEditor>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</managingEditor>
     <webMaster>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</webMaster><atom:link href="https://kuleuven-diepenbeek.github.io/appdev-course/extra/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Advaned UI Development</title>
+      <title>1. Advaned UI Development</title>
       <link>https://kuleuven-diepenbeek.github.io/appdev-course/extra/advancedui/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
@@ -18,12 +18,32 @@
     </item>
     
     <item>
-      <title>Links</title>
+      <title>2. Links and Tutorials</title>
       <link>https://kuleuven-diepenbeek.github.io/appdev-course/extra/links/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
       <guid>https://kuleuven-diepenbeek.github.io/appdev-course/extra/links/</guid>
-      <description>Tutorials  Tutorialspoint.com Android Tutorial Vogella.com Android Development Tutorials  </description>
+      <description>Tutorials  Official Android Developer Guide CodePath Android Cliffnotes Tutorialspoint.com Android Tutorial Vogella.com Android Development Tutorials  </description>
+    </item>
+    
+    <item>
+      <title>3. Project Information</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/extra/project/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/extra/project/</guid>
+      <description>Minimum requirements Every App should at minimum contain the following:
+ Three activities: 1 master, 1 detail, 1 config screen One data request + parsing (HTTP GET Request) Use a RecyclerView Use at least one Intent Have a Menu with at least one option Use responsive design (do not hardcode px but use sp or dp) Use Fragments to vary the interface between landscape/portrait mode Use a data signal (GPS, Camera, accelerometer, &amp;hellip;) 9 Contain at least one extra feature you can freely choose.</description>
+    </item>
+    
+    <item>
+      <title>4. Demo Project</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/extra/demo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/extra/demo/</guid>
+      <description>TODO howlongtobeat achtig iets?
+ Een Java-only en een Kotlin-only app? Een multiplatform gebaseerd op Kotlin&amp;rsquo;s platform? Een React-native gelijkaardige?  </description>
     </item>
     
   </channel>

@@ -4,7 +4,7 @@
 	"title": "1. Android Essentials",
 	"tags": [],
 	"description": "",
-	"content": " The Android Life Cycle: Activities Messaging between activities and apps: Intents Typical (master/detail) layouts and their adapters: Views Data storage: File and Network access Complex layouting: Fragments  "
+	"content": " The Android Life Cycle: Activities Messaging between activities and apps: Intents Typical (master/detail) layouts and their adapters: Views Data storage: File and Network access Complex layouting: Fragments Embedded Hardware: Signals  "
 },
 {
 	"uri": "https://kuleuven-diepenbeek.github.io/appdev-course/lang/",
@@ -18,14 +18,21 @@
 	"title": "3. Extra info",
 	"tags": [],
 	"description": "",
-	"content": "Extra info  Advanced UI Development Links and external tutorials  "
+	"content": "Extra info  Advanced UI Development Links and external tutorials Projectinformation Need inspiration? A sample/demo project  "
+},
+{
+	"uri": "https://kuleuven-diepenbeek.github.io/appdev-course/extra/advancedui/",
+	"title": "1. Advaned UI Development",
+	"tags": [],
+	"description": "",
+	"content": " Android Widgets on the home screen Drag-and-drop systems Notifications  "
 },
 {
 	"uri": "https://kuleuven-diepenbeek.github.io/appdev-course/android/activities/",
 	"title": "1. Life Cycle - Activities",
 	"tags": [],
 	"description": "",
-	"content": ""
+	"content": "What\u0026rsquo;s an activity?\n An activity is a single, focused thing that a user can do.\n "
 },
 {
 	"uri": "https://kuleuven-diepenbeek.github.io/appdev-course/lang/kotlin/",
@@ -33,6 +40,13 @@
 	"tags": [],
 	"description": "",
 	"content": ""
+},
+{
+	"uri": "https://kuleuven-diepenbeek.github.io/appdev-course/extra/links/",
+	"title": "2. Links and Tutorials",
+	"tags": [],
+	"description": "",
+	"content": "Tutorials  Official Android Developer Guide CodePath Android Cliffnotes Tutorialspoint.com Android Tutorial Vogella.com Android Development Tutorials  "
 },
 {
 	"uri": "https://kuleuven-diepenbeek.github.io/appdev-course/android/intents/",
@@ -53,7 +67,7 @@
 	"title": "3. Layouts - Views",
 	"tags": [],
 	"description": "",
-	"content": ""
+	"content": "Responsive design TODO geen px maar sd\nRecyclerView "
 },
 {
 	"uri": "https://kuleuven-diepenbeek.github.io/appdev-course/lang/multiplatform/",
@@ -63,6 +77,13 @@
 	"content": ""
 },
 {
+	"uri": "https://kuleuven-diepenbeek.github.io/appdev-course/extra/project/",
+	"title": "3. Project Information",
+	"tags": [],
+	"description": "",
+	"content": "Minimum requirements Every App should at minimum contain the following:\n Three activities: 1 master, 1 detail, 1 config screen One data request + parsing (HTTP GET Request) Use a RecyclerView Use at least one Intent Have a Menu with at least one option Use responsive design (do not hardcode px but use sp or dp) Use Fragments to vary the interface between landscape/portrait mode Use a data signal (GPS, Camera, accelerometer, \u0026hellip;) 9 Contain at least one extra feature you can freely choose. For instance, data storage through SQLite/Firebase/Room, authentication through Google/Firebase/email-pwd, sharing data using a ContentProvider, etc\u0026hellip; See links for more inspiration on what\u0026rsquo;s possible.  Deadlines TODO team formation/checkins/git/\u0026hellip;\n"
+},
+{
 	"uri": "https://kuleuven-diepenbeek.github.io/appdev-course/android/data-storage/",
 	"title": "4. Data Storage - File/Network",
 	"tags": [],
@@ -70,32 +91,32 @@
 	"content": ""
 },
 {
+	"uri": "https://kuleuven-diepenbeek.github.io/appdev-course/extra/demo/",
+	"title": "4. Demo Project",
+	"tags": [],
+	"description": "",
+	"content": "TODO howlongtobeat achtig iets?\n Een Java-only en een Kotlin-only app? Een multiplatform gebaseerd op Kotlin\u0026rsquo;s platform? Een React-native gelijkaardige?  "
+},
+{
 	"uri": "https://kuleuven-diepenbeek.github.io/appdev-course/android/fragments/",
 	"title": "5. Complex layouting - Fragments",
 	"tags": [],
 	"description": "",
-	"content": ""
+	"content": "What\u0026rsquo;s a fragment? Extend from Fragment from package androidx.fragment.app.\nWhy use it? Reusability\n  src: componentdriven.org  "
 },
 {
-	"uri": "https://kuleuven-diepenbeek.github.io/appdev-course/extra/advancedui/",
-	"title": "Advaned UI Development",
+	"uri": "https://kuleuven-diepenbeek.github.io/appdev-course/android/signals/",
+	"title": "6. Embedded Signals",
 	"tags": [],
 	"description": "",
-	"content": " Android Widgets on the home screen Drag-and-drop systems Notifications  "
+	"content": ""
 },
 {
 	"uri": "https://kuleuven-diepenbeek.github.io/appdev-course/",
 	"title": "Course Contents",
 	"tags": [],
 	"description": "",
-	"content": "    App Development See UHasselt ECTS Sheet\nLast changes for academic year 2020 - 2021.\nCourse notes 1. Android Essentials  The Android Life Cycle: Activities Messaging between activities and apps: Intents Typical (master/detail) layouts and their adapters: Views Data storage: File and Network access Complex layouting: Fragments  2. Language \u0026amp; Support Tools  The Kotlin Programming language Test Driven Development and mobile dev. Multiplatform mobile dev.  3. Extras  Advanced UI Development Links and external tutorials  Syllabus  Teachers: Coordinating Responsible: prof. dr. Kris Aerts - kris.aerts@kuleuven.be Assistant: Wouter Groeneveld - wouter.groeneveld@kuleuven.be Office: Technologiecentrum Diepenbeek, Groep ACRO, D.0.35.  Good-to-know What you should know before starting this course:\n Knowledge of object-oriented software development. Knowledge of the Java programming language.  What you should have learned after completing this course:\n The ecosystem and life cycle of a mobile (Android-based) app and how to tackle the development. The role of the different components in app development and being able to choose one over the other depending on the context. Basic knowledge of the Kotlin programming language. Basic knowledge of the technical Android API. Unit testability of mobile applications. Basic knowledge of multi-platform possiblities in the app development world. drawing up a project plan/analysis for mobile development projects.  Course planning See the menu to the left. This course is worth 3.0 ECTS points, hence it will be divided into 12 chunks (weeks) of 1.5h contact moments each. Extra coaching sessions will be planned if required.\nThe course lies in the second semester of the second year and has quite a bit of overlap with other software-related courses happening at the same time, specifically Software Engineering Skills (SES). During the SES lessons, we\u0026rsquo;ll get to know design patterns and unit testing, which will also be applied in this very course.\nEvaluation  No formal exam planned. An android-based project which will have to be defended orally to motivate the taken design and implementation decisions. Open questions will be asked to gauge the knowledge level of the student.  More learning material See the section \u0026ldquo;Extra\u0026rdquo; in the menu or in the links above. Each section will contain a \u0026ldquo;More learning material\u0026rdquo; part at the bottom of each page linking to supplemental bits and pieces for the curious student.\n"
-},
-{
-	"uri": "https://kuleuven-diepenbeek.github.io/appdev-course/extra/links/",
-	"title": "Links",
-	"tags": [],
-	"description": "",
-	"content": "Tutorials  Tutorialspoint.com Android Tutorial Vogella.com Android Development Tutorials  "
+	"content": "    App Development See UHasselt ECTS Sheet\nLast changes for academic year 2020 - 2021.\nCourse notes 1. Android Essentials  The Android Life Cycle: Activities Messaging between activities and apps: Intents Typical (master/detail) layouts and their adapters: Views Data storage: File and Network access Complex layouting: Fragments Embedded Hardware: Signals  2. Language \u0026amp; Support Tools  The Kotlin Programming language Test Driven Development and mobile dev. Multiplatform mobile dev.  3. Extras  Advanced UI Development Links and external tutorials Projectinformation Need inspiration? A sample/demo project  Syllabus  Teachers: Coordinating Responsible: prof. dr. Kris Aerts - kris.aerts@kuleuven.be Assistant: Wouter Groeneveld - wouter.groeneveld@kuleuven.be Office: Technologiecentrum Diepenbeek, Groep ACRO, D.0.35.  Good-to-know What you should know before starting this course:\n Knowledge of object-oriented software development. Knowledge of the Java programming language.  What you should have learned after completing this course:\n The ecosystem and life cycle of a mobile (Android-based) app and how to tackle the development. The role of the different components in app development and being able to choose one over the other depending on the context. Basic knowledge of the Kotlin programming language. Basic knowledge of the technical Android API. Unit testability of mobile applications. Basic knowledge of multi-platform possiblities in the app development world. drawing up a project plan/analysis for mobile development projects.  Course planning See the menu to the left. This course is worth 3.0 ECTS points, hence it will be divided into 12 chunks (weeks) of 1.5h contact moments each. Extra coaching sessions will be planned if required.\nThe course lies in the second semester of the second year and has quite a bit of overlap with other software-related courses happening at the same time, specifically Software Engineering Skills (SES). During the SES lessons, we\u0026rsquo;ll get to know design patterns and unit testing, which will also be applied in this very course.\nEvaluation  No formal exam planned. An android-based project which will have to be defended orally to motivate the taken design and implementation decisions. Open questions will be asked to gauge the knowledge level of the student.  More learning material See the section \u0026ldquo;Extra\u0026rdquo; in the menu or in the links above. Each section will contain a \u0026ldquo;More learning material\u0026rdquo; part at the bottom of each page linking to supplemental bits and pieces for the curious student.\n"
 },
 {
 	"uri": "https://kuleuven-diepenbeek.github.io/appdev-course/tags/",

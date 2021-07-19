@@ -14,7 +14,9 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
       <guid>https://kuleuven-diepenbeek.github.io/appdev-course/android/activities/</guid>
-      <description></description>
+      <description>What&amp;rsquo;s an activity?
+ An activity is a single, focused thing that a user can do.
+ </description>
     </item>
     
     <item>
@@ -32,7 +34,8 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
       <guid>https://kuleuven-diepenbeek.github.io/appdev-course/android/views/</guid>
-      <description></description>
+      <description>Responsive design TODO geen px maar sd
+RecyclerView </description>
     </item>
     
     <item>
@@ -50,6 +53,17 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
       <guid>https://kuleuven-diepenbeek.github.io/appdev-course/android/fragments/</guid>
+      <description>What&amp;rsquo;s a fragment? Extend from Fragment from package androidx.fragment.app.
+Why use it? Reusability
+  src: componentdriven.org  </description>
+    </item>
+    
+    <item>
+      <title>6. Embedded Signals</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/android/signals/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/android/signals/</guid>
       <description></description>
     </item>
     
