@@ -174,3 +174,33 @@ Note that after adding the image, the following code was added in the XML of the
 Redeploy your test app to verify if it works in your emulator.
 
 Yay! Crackling fireworks! You've officially gained the right to proclaim _It Works On My Machine_.
+
+#### Getting to know the IDE
+
+_Android Studio_ is part of JetBrains' IDEA development environment. That is, it behaves and functions exactly like its other products:
+
+- [CLion](https://www.jetbrains.com/clion/) for cross-platform C/C++ development, used in the [Software Design in C/C++ Course](https://kuleuven-diepenbeek.github.io/cpp-course/)
+- [GoLand](https://www.jetbrains.com/go/), the most complete Go-centric IDE
+- [IntelliJ](https://www.jetbrains.com/idea/) IntelliJ, the well-respected Java-centered development environment, used in INF1/[Software Engineering Skills](https://kuleuven-diepenbeek.github.io/ses-course/)
+
+**Shortcuts**
+
+Since Android Studio is built on top of IntelliJ's IDEA, the **shortcut key keymaps** are the same! 
+
+Have a look at [the IDEA Reference keymap card](https://resources.jetbrains.com/storage/products/intellij-idea/docs/IntelliJIDEA_ReferenceCard.pdf)
+
+**More features**
+
+Consult [Meeting Android Studio](https://developer.android.com/studio/intro) at `developer.android.com` for a run-down on the User Interface and project structure guide of the IDE. This should be familiar to you, as you have used other JetBrains products in other courses in your engineering trajectory.
+
+Try to (re-)familiarize yourself with the tool by trying to:
+
+- Quickly access a certain file/method/class
+- Zooming in and out, and switching to presenter mode
+- Auto-completing a code fragment
+- Automatically generating a constructor and getters/setters
+- Navigating to a test method
+- Running unit tests and switching to the tests while navigating the production code
+- Executing specific Gradle tasks
+- Setting breakpoints and walking through these in debug mode
+- ...
