@@ -1,5 +1,5 @@
 ---
-title: 3. Project Information
+title: 4. Project Information
 ---
 
 ### Minimum requirements
