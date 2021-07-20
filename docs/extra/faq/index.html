@@ -9,7 +9,7 @@
 
     <link rel="icon" href="../../images/favicon.png" type="image/png">
 
-    <title>5. Demo Project :: App Development</title>
+    <title>2. Common Errors FAQ :: App Development</title>
 
     
     <link href="../../css/nucleus.css?1626776706" rel="stylesheet">
@@ -61,7 +61,7 @@ window.MathJax = {
 
 <script src=../../js/osc.js></script>
   </head>
-  <body class="" data-url="../../extra/demo/">
+  <body class="" data-url="../../extra/faq/">
     <nav id="sidebar" class="">
 
 
@@ -412,7 +412,7 @@ window.MathJax = {
  
   
     
-      <li data-nav-id="/extra/faq/" title="2. Common Errors FAQ" class="dd-item ">
+      <li data-nav-id="/extra/faq/" title="2. Common Errors FAQ" class="dd-item active">
         <a href="../../extra/faq/">
         2. Common Errors FAQ
         
@@ -475,7 +475,7 @@ window.MathJax = {
  
   
     
-      <li data-nav-id="/extra/demo/" title="5. Demo Project" class="dd-item active">
+      <li data-nav-id="/extra/demo/" title="5. Demo Project" class="dd-item ">
         <a href="../../extra/demo/">
         5. Demo Project
         
@@ -558,7 +558,7 @@ window.MathJax = {
             
           
           
-            <a href='../../'>Course Contents</a> > <a href='../../extra/'>3. Extra info</a> > 5. Demo Project
+            <a href='../../'>Course Contents</a> > <a href='../../extra/'>3. Extra info</a> > 2. Common Errors FAQ
           
         
           
@@ -571,7 +571,18 @@ window.MathJax = {
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-minsdkversion-mismatch">1. minSdkVersion mismatch</a></li>
+        <li><a href="#2-emulator-process-was-killed">2. Emulator process was killed?</a></li>
+        <li><a href="#3-virtualization-haxvm-related-errors">3. Virtualization HAXVM-related errors</a></li>
+        <li><a href="#4-invalid-entry-crc-while-deploying">4. Invalid Entry CRC while deploying</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -587,19 +598,55 @@ window.MathJax = {
           
             <h1>
               
-              5. Demo Project
+              2. Common Errors FAQ
             </h1>
           
 
         
 
 
-<p>TODO howlongtobeat achtig iets?</p>
+<h3 id="1-minsdkversion-mismatch">1. minSdkVersion mismatch</h3>
+<p>Error:</p>
+<blockquote>
+<p>&ldquo;Expected minSdkVersion &gt;= 21 but found 1&rdquo;</p>
+</blockquote>
+<p>Cause: mismatch in <code>build.gradle</code> of android SDK and configured SDK in your emulator.</p>
+<p>Solution: just keep these the same. The error disappeared here after selecting for example 30/30.</p>
+<h3 id="2-emulator-process-was-killed">2. Emulator process was killed?</h3>
+<p>Error:</p>
+<blockquote>
+<p>Emulator: process was killed</p>
+</blockquote>
+<p>Cause: a hundred different things. Consult the Android Studio error log for more details&mdash;these aren&rsquo;t displayed in the IDE. Either pick Help &ndash; show Log (or show Log in Finder if you&rsquo;re on a Mac), or locate it on the HDD (Mac: <code>~/Logs/Google/AndroidStudioPreviewX</code>, Win: <code>C:\Users\&lt;name&gt;\.AndroidStudioX\system\log</code>)</p>
+<p>Find the process was killed message, and you&rsquo;ll likely see another error that caused that one. For instance:</p>
 <ul>
-<li>Een Java-only en een Kotlin-only app?</li>
-<li>Een multiplatform gebaseerd op Kotlin&rsquo;s platform?</li>
-<li>Een React-native gelijkaardige?</li>
+<li>Too little disk space.</li>
+<li>Logged in as root user in Linux. <code>.ini</code> file could not be found.</li>
+<li><code>x86</code> emulator installed on an <code>x64</code>-architecture system</li>
+<li>Apple M1 silicon-related errors if you did not install the latest preview edition.</li>
 </ul>
+<h3 id="3-virtualization-haxvm-related-errors">3. Virtualization HAXVM-related errors</h3>
+<p>Error:</p>
+<blockquote>
+<p>Unable to install Intel® HAXM</p>
+</blockquote>
+<p>Or:</p>
+<blockquote>
+<p>Your CPU does not support VT-x.</p>
+</blockquote>
+<p>Or:</p>
+<blockquote>
+<p>Unfortunately, your computer does not support hardware accelerated virtualization.</p>
+</blockquote>
+<p>Cause 1: Are you on a Mac M1 and did you install the latest release instead of the preview release? You need to download an Android Virtual Device based on an ARM systems image. This is done automatically in the latest preview edition of Android Studio. See <a href="../../extra/install">installation guide</a>.</p>
+<p>Cause 2: Are you on a 64-bit system but did you install 32-bit emulators or components? Pay careful attention to the processor architecture of the installation and your machine&mdash;these should match!</p>
+<h3 id="4-invalid-entry-crc-while-deploying">4. Invalid Entry CRC while deploying</h3>
+<p>Error:</p>
+<blockquote>
+<p>Failed to transform material-1.3.0.aar invalid entry CRC expected 0x9797&hellip; but got 0x48546&hellip;.</p>
+</blockquote>
+<p>Cause: I have no idea, and Google/Stack Overflow doesn&rsquo;t seem to know either. It happens sometimes after building and deploying. The emulator boots, but the app won&rsquo;t load in the emulator.</p>
+<p>Solution: Rebuild. Do not restart the emulator, just leave it open. Simply rebuilding seems to fix this problem.</p>
 
 
 <footer class="footline">
@@ -849,6 +896,26 @@ window.MathJax = {
             
                 
                     
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
                 
                 
 
@@ -880,23 +947,6 @@ window.MathJax = {
             
             
                 
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                     
                 
                 
@@ -921,10 +971,10 @@ window.MathJax = {
 	 
 	 
 		
-			<a class="nav nav-prev" href="../../extra/project/" title="4. Project Information"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="../../extra/install/" title="1. Installation Guide"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="../../extra/install/" title="1. Installation Guide" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="../../extra/links/" title="3. Links and Tutorials" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

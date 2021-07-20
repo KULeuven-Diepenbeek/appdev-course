@@ -9,25 +9,42 @@
     <managingEditor>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</managingEditor>
     <webMaster>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</webMaster><atom:link href="https://kuleuven-diepenbeek.github.io/appdev-course/extra/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>1. Advaned UI Development</title>
-      <link>https://kuleuven-diepenbeek.github.io/appdev-course/extra/advancedui/</link>
+      <title>1. Installation Guide</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/extra/install/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
-      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/extra/advancedui/</guid>
-      <description> Android Widgets on the home screen Drag-and-drop systems Notifications  </description>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/extra/install/</guid>
+      <description>1. Downloading Android Studio Go to developer.android.com/studio and download the latest stable release of the Android Studio IDE (green button). It comes with a JDK version to compile the necessary Java/Kotlin files and automatically downloads the correct Gradle version depending on your project file.
+Bear in mind that the installation will download the required Google Android Development Kit (SDK), chipping away yet another gigabyte form your download limit.
+Required IDE disk space: 1.</description>
     </item>
     
     <item>
-      <title>2. Links and Tutorials</title>
+      <title>2. Common Errors FAQ</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/extra/faq/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/extra/faq/</guid>
+      <description>1. minSdkVersion mismatch Error:
+ &amp;ldquo;Expected minSdkVersion &amp;gt;= 21 but found 1&amp;rdquo;
+ Cause: mismatch in build.gradle of android SDK and configured SDK in your emulator.
+Solution: just keep these the same. The error disappeared here after selecting for example 30/30.
+2. Emulator process was killed? Error:
+ Emulator: process was killed
+ Cause: a hundred different things. Consult the Android Studio error log for more details&amp;mdash;these aren&amp;rsquo;t displayed in the IDE.</description>
+    </item>
+    
+    <item>
+      <title>3. Links and Tutorials</title>
       <link>https://kuleuven-diepenbeek.github.io/appdev-course/extra/links/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
       <guid>https://kuleuven-diepenbeek.github.io/appdev-course/extra/links/</guid>
-      <description>Tutorials  Official Android Developer Guide CodePath Android Cliffnotes Tutorialspoint.com Android Tutorial Vogella.com Android Development Tutorials  </description>
+      <description>Tutorials  Official Android Developer Guide CodePath Android Cliffnotes Tutorialspoint.com Android Tutorial Vogella.com Android Development Tutorials  Advanced Android UI Concepts  Android Widgets on the home screen Drag-and-drop systems Notifications  </description>
     </item>
     
     <item>
-      <title>3. Project Information</title>
+      <title>4. Project Information</title>
       <link>https://kuleuven-diepenbeek.github.io/appdev-course/extra/project/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
@@ -37,7 +54,7 @@
     </item>
     
     <item>
-      <title>4. Demo Project</title>
+      <title>5. Demo Project</title>
       <link>https://kuleuven-diepenbeek.github.io/appdev-course/extra/demo/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
