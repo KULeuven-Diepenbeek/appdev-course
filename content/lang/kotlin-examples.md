@@ -51,3 +51,20 @@ If that doesn't refresh your memory, take a look at the [java solution](https://
 {{% notice info %}}
 Since this is a JavaFX Gradle application, it cannot be started by pressing the play button: the JavaFX module options should be passed along. We rely on the `org.openjfx.javafxplugin` for this: see the `build.gradle` file. To run the application, execute the Gradle task application -- run.
 {{% /notice %}}
+
+When you're done, compare your solution with the one provided. The following constructs were modified from the Java version:
+
+- Setters are usually directly accessed. Instead of `getChilden().add(x);`, you just use `children.add(x)`.
+- An `init {}` block is needed in the view if you want to call a method in the primary constructor.
+- Resource loading is a bit weird, as we need to grab the java class using `MyClass::class.java.getResources()`. See `MainApp.kt`.
+- Note how little code we require (`125` lines in total), compared to the java implementation (`157` lines).
+- Extending JavaFX classes also automatically calls the (default) constructor: `class Main : Application()`. Notice the brackets. Also note `extends` is replaced by a simple semicolon. 
+
+There are a lot of things that can go wrong when calling Java from Kotlin. For example, some Kotlin-specific keywords, such as `when`, can be simply functions in Java. To call these, you need to use backticks. Consult the [Kotlin-Java interop guide](https://developer.android.com/kotlin/interop) if you encounter a weird error while calling a native Java method. 
+
+## More Examples
+
+On `kotlinlang.org`, examples that explore every aspect of the Kotlin language are neatly summarized using their online Playground: https://play.kotlinlang.org/byExample/overview. We **strongly recommend** you to check these out: they are very short, do not require anything to install, and touch upon every basic but important concept you'll need to master.
+
+There are also Koans available https://play.kotlinlang.org/koans/overview that let you get familiar with the Kotlin syntax by training again and again until the syntax has been well-imprinted into your brain. 
+

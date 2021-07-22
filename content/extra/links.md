@@ -4,6 +4,12 @@ title: 3. Links and Tutorials
 
 ### Tutorials
 
+#### Kotlin-Specific
+
+- [The Official Kotlin Koans](https://play.kotlinlang.org/koans/overview) and [examples](https://play.kotlinlang.org/byExample/overview)
+
+#### Android-Specific
+
 - [Official Android Developer Guide](https://developer.android.com/guide)
 - [CodePath Android Cliffnotes](https://guides.codepath.com/android)
 - [Tutorialspoint.com Android Tutorial](http://www.tutorialspoint.com/android/index.htm)

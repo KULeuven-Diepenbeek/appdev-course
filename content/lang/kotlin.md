@@ -35,6 +35,8 @@ The software department of ACRO, the KU Leuven research group at Diepenbeek Camp
 
 Roughly based upon Google's [Introduction to Kotlin crash course](https://developer.android.com/kotlin/learn).
 
+**Play with Kotlin** to get to know the language before focusing on Android specifics. The best way to do this is creating simple Kotlin projects in Intellij (see [Kotlin examples](/lang/kotlin-examples)) or simply by browsing to https://play.kotlinlang.org/
+
 ### 1. Variables
 
 As mentioned before, Kotlin has many functional aspects to it. For variable declaration, you can _pre-set_ a value, declaring it will never change (it's a constant), or just call it a "variable".
@@ -187,9 +189,78 @@ As for **defining functions**, just `fun name() {}` suffices. Functions are _pub
 - Want to call the function? `name(false)`
 - Want to name arguments while calling? `name(arg1: false)`
 
+Single-line functions can be simplified from `fun hi(): String { return "sup!" }` to `fun hi(): String = "sup!"`.
+
 More information about unit-returning functions [can be found here](https://kotlinlang.org/docs/functions.html#unit-returning-functions).
 
-### 4. Arrays, Collections, Looping
+Sometimes, in Java, you need to quickly create a new subclass or an implementation of an interface, to be able to provide an event listener, for example. The typical syntax for that is very convoluted:
+
+```java
+window.addMouseListener(new MouseAdapter() {
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        System.out.println("Good job, right on target!");
+    }
+    @Override
+    public void ...
+    // ALL methods of the interface need to be provided!
+})
+```
+
+In Kotlin, an `object` is used, which is a "temporary class" that fits the bill:
+
+```kt
+window.addMouseListener(object : MouseAdapter() {
+    override fun mouseClicked(e: MouseEvent) { 
+        println("Good job, right on target!")
+    }
+})
+```
+
+Note that the `override` keyword is required here. In Java, it's just an annotation that adds to the documentation. In Kotlin, it's part of the syntax.
+
+For more information, see https://kotlinlang.org/docs/object-declarations.html#inheriting-anonymous-objects-from-supertypes
+
+### 4. Higher order functions
+
+Functions can also be variables. Functions can be created ad-hoc, and be disposed of when no longer needed, as part of the local stack. For instance:
+
+```kt
+fun main() {
+    var age = 30
+    var adder: (Int) -> Int = { x ->
+        x + 1
+    }
+    age = adder(age)
+    println("Hello, world!!! I'm currently $age old")
+}
+```
+
+Functions can be declared within functions within functions within ... Its scope closes the variables around it, meaning you can shield off variables created inside functions from the outside world, but not the other way around. `age` is visible inside `adder`, but `x` is not visible inside `main`.
+
+The above code is easily replicated in JavaScript:
+
+```js
+function main() {
+    var age = 30
+    var adder = function(x) {
+        return x + 1
+    }
+    age = adder(age)
+    console.log(`Hello, world!!! I'm currently ${age} old`)
+}
+```
+
+But not so easily done in Java, although later JDK versions also introduced (clumsy versions of) lambda's. 
+
+A few more things to remember:
+
+- If `return` is missing, the result of the last expression is returned instead. 
+- If a return type is missing, `kotlin.Unit` is returned, [corresponding with void in Java](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/). There's also a [Nothing type](https://play.kotlinlang.org/koans/Introduction/Nothing%20type/Task.kt) to dictate a function will always return an exception, such as an assertion.
+
+Functions can return functions or accept functions as arguments. This is handy when recycling logic that sorts, collects, or filters collections. Speaking of...
+
+### 5. Arrays, Collections, Looping
 
 Kotlin's `Array<>` generic class is the same as a `[]` in Java: it's set in size. Most of the time we'll want to use Java's `ArrayList<>` equivalent. Kotlin also leverages interfaces to hide the collection implementation. You will see `MutableList<>` often:
 
