@@ -9,7 +9,7 @@
 
     <link rel="icon" href="../../images/favicon.png" type="image/png">
 
-    <title>3. Multiplatform Mobile dev. :: App Development</title>
+    <title>2. Kotlin Examples/Exercises :: App Development</title>
 
     
     <link href="../../css/nucleus.css?1626947573" rel="stylesheet">
@@ -61,7 +61,7 @@ window.MathJax = {
 
 <script src=../../js/osc.js></script>
   </head>
-  <body class="" data-url="../../lang/multiplatform/">
+  <body class="" data-url="../../lang/kotlin-examples/">
     <nav id="sidebar" class="">
 
 
@@ -315,7 +315,7 @@ window.MathJax = {
  
   
     
-      <li data-nav-id="/lang/kotlin-examples/" title="2. Kotlin Examples/Exercises" class="dd-item ">
+      <li data-nav-id="/lang/kotlin-examples/" title="2. Kotlin Examples/Exercises" class="dd-item active">
         <a href="../../lang/kotlin-examples/">
         2. Kotlin Examples/Exercises
         
@@ -357,7 +357,7 @@ window.MathJax = {
  
   
     
-      <li data-nav-id="/lang/multiplatform/" title="3. Multiplatform Mobile dev." class="dd-item active">
+      <li data-nav-id="/lang/multiplatform/" title="3. Multiplatform Mobile dev." class="dd-item ">
         <a href="../../lang/multiplatform/">
         3. Multiplatform Mobile dev.
         
@@ -579,7 +579,7 @@ window.MathJax = {
             
           
           
-            <a href='../../'>Course Contents</a> > <a href='../../lang/'>2. Language & Support Tools</a> > 3. Multiplatform Mobile dev.
+            <a href='../../'>Course Contents</a> > <a href='../../lang/'>2. Language & Support Tools</a> > 2. Kotlin Examples/Exercises
           
         
           
@@ -592,7 +592,11 @@ window.MathJax = {
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-taxi-driving">1. Taxi Driving</a></li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -608,13 +612,44 @@ window.MathJax = {
           
             <h1>
               
-              3. Multiplatform Mobile dev.
+              2. Kotlin Examples/Exercises
             </h1>
           
 
         
 
 
+<p>All examples can be found in the GitHub repository of this very course, at <a href="https://github.com/KULeuven-Diepenbeek/appdev-course/tree/main/examples">https://github.com/KULeuven-Diepenbeek/appdev-course/tree/main/examples</a></p>
+<p>We&rsquo;ll be using <strong>IntelliJ</strong> to create simple Kotlin projects, so leave Android Studio closed for the moment. While creating a new project, choose</p>
+<ol>
+<li>A <strong>Gradle</strong> style project,</li>
+<li>Enable the <strong>Kotlin DSL Build Script</strong>, and finally</li>
+<li>Check <strong>Kotlin/JVM</strong> (uncheck Java)</li>
+</ol>
+<p><figure>
+	<a href="../../img/newkotlin.jpg" data-featherlight="image">
+		<img src="../../img/newkotlin.jpg"   title="New Project settings for Kotlin">
+	</a>
+	
+		<figcaption>New Project settings for Kotlin</figcaption>
+	
+</figure>
+</p>
+<p>Wait for the initial Gradle download/build to finish. Create your Kotlin class/source files in <code>src/main/kotlin</code>. Do not forget creating the correct package structure. See the examples in the above GitHub link.</p>
+<h2 id="1-taxi-driving">1. Taxi Driving</h2>
+<p>Remember the taxi exercise from INF1 last year? The one in BlueJ that teaches you about <strong>object composition</strong>?</p>
+<blockquote>
+<p>Model a taxi company. The company can hire drivers, buy cars, and ultimately, drive clients from an address in point A to point B, to hopefully make some money.</p>
+</blockquote>
+<p>This is simple enough in Java and teaches you how to:</p>
+<ol>
+<li>Create classes</li>
+<li>Link classes together (a <code>TaxiFirm</code> holds a reference to one or more <code>Car</code>s and <code>Driver</code>s)</li>
+<li>Create lists of things (extra)</li>
+<li>Define methods to call other methods on member variables</li>
+<li>Think about accessibility, constructors and getters/setters</li>
+</ol>
+<p>First, take a look at the <a href="https://github.com/KULeuven-Diepenbeek/appdev-course/tree/main/examples/java/taxi">java solution</a>. Then, try to do it yourself in the Kotlin JVM. If all else fails, peek at the provided solution.</p>
 
 
 <footer class="footline">
@@ -800,6 +835,26 @@ window.MathJax = {
             
                 
                     
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
                 
                 
 
@@ -827,23 +882,6 @@ window.MathJax = {
             
         
                     
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
             
         
                     
@@ -851,9 +889,6 @@ window.MathJax = {
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -955,10 +990,10 @@ window.MathJax = {
 	 
 	 
 		
-			<a class="nav nav-prev" href="../../lang/tdd/" title="2. Test Driven Development"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="../../lang/kotlin/" title="1. The Kotlin programming lang."> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="../../extra/" title="3. Extra info" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="../../lang/tdd/" title="2. Test Driven Development" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

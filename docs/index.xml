@@ -58,6 +58,17 @@ Solution: just keep these the same. The error disappeared here after selecting f
     </item>
     
     <item>
+      <title>2. Kotlin Examples/Exercises</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/lang/kotlin-examples/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/lang/kotlin-examples/</guid>
+      <description>All examples can be found in the GitHub repository of this very course, at https://github.com/KULeuven-Diepenbeek/appdev-course/tree/main/examples
+We&amp;rsquo;ll be using IntelliJ to create simple Kotlin projects, so leave Android Studio closed for the moment. While creating a new project, choose
+ A Gradle style project, Enable the Kotlin DSL Build Script, and finally Check Kotlin/JVM (uncheck Java)    New Project settings for Kotlin  Wait for the initial Gradle download/build to finish.</description>
+    </item>
+    
+    <item>
       <title>2. Messaging - Intents</title>
       <link>https://kuleuven-diepenbeek.github.io/appdev-course/android/intents/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

@@ -12,21 +12,21 @@
     <title>1. The Kotlin programming lang. :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1626943679" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1626943679" rel="stylesheet">
-    <link href="../../css/hybrid.css?1626943679" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1626943679" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1626943679" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1626943679" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1626943679" rel="stylesheet">
-    <link href="../../css/theme.css?1626943679" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1626943679" rel="stylesheet">
+    <link href="../../css/nucleus.css?1626947573" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1626947573" rel="stylesheet">
+    <link href="../../css/hybrid.css?1626947573" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1626947573" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1626947573" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1626947573" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1626947573" rel="stylesheet">
+    <link href="../../css/theme.css?1626947573" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1626947573" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1626943679" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1626947573" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1626943679"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1626947573"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -82,14 +82,14 @@ window.MathJax = {
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1626943679"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1626943679"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1626947573"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1626947573"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1626943679"></script>
+<script type="text/javascript" src="../../js/search.js?1626947573"></script>
 
     
   </div>
@@ -297,6 +297,27 @@ window.MathJax = {
       <li data-nav-id="/lang/kotlin/" title="1. The Kotlin programming lang." class="dd-item active">
         <a href="../../lang/kotlin/">
         1. The Kotlin programming lang.
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/lang/kotlin-examples/" title="2. Kotlin Examples/Exercises" class="dd-item ">
+        <a href="../../lang/kotlin-examples/">
+        2. Kotlin Examples/Exercises
         
         </a>
     </li>
@@ -584,6 +605,7 @@ window.MathJax = {
         <li><a href="#1-variables">1. Variables</a></li>
         <li><a href="#2-conditionals">2. Conditionals</a></li>
         <li><a href="#3-classes-and-functions">3. Classes and Functions</a></li>
+        <li><a href="#4-arrays-collections-looping">4. Arrays, Collections, Looping</a></li>
       </ul>
     </li>
   </ul>
@@ -753,6 +775,46 @@ println(answerString)
 <li>Want to name arguments while calling? <code>name(arg1: false)</code></li>
 </ul>
 <p>More information about unit-returning functions <a href="https://kotlinlang.org/docs/functions.html#unit-returning-functions">can be found here</a>.</p>
+<h3 id="4-arrays-collections-looping">4. Arrays, Collections, Looping</h3>
+<p>Kotlin&rsquo;s <code>Array&lt;&gt;</code> generic class is the same as a <code>[]</code> in Java: it&rsquo;s set in size. Most of the time we&rsquo;ll want to use Java&rsquo;s <code>ArrayList&lt;&gt;</code> equivalent. Kotlin also leverages interfaces to hide the collection implementation. You will see <code>MutableList&lt;&gt;</code> often:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Stuff</span>(name: String) {
+    <span style="color:#66d9ef">val</span> name = name
+    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">toString</span>(): String {
+        <span style="color:#66d9ef">return</span> name
+    }
+}
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Bag</span> {
+    <span style="color:#66d9ef">val</span> items: MutableList&lt;Stuff&gt; = mutableListOf(Stuff(<span style="color:#e6db74">&#34;pen&#34;</span>), Stuff(<span style="color:#e6db74">&#34;apple&#34;</span>))
+}
+</code></pre></div>
+<div class="notices info" ><p>Remember, as soon as you initialize an object and do not want to change it, use <code>val</code> instead of <code>var</code>. The list will grow and shrink in size as things get added and removed, but the reference to items, the list instance itself, will <em>not</em> change. That is, <code>items = ArrayList&lt;Stuff&gt;()</code>, which creates a new empty list, is something we don&rsquo;t want to see somewhere in the code.</p>
+</div>
+
+<p>Now that we have a bag of items, how do we print out each one? Add the following function to <code>Bag</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">rummageThrough</span>() {
+    <span style="color:#75715e">// option 1
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span>(item <span style="color:#66d9ef">in</span> items) {
+        println(item)
+    }
+    <span style="color:#75715e">// option 2
+</span><span style="color:#75715e"></span>    items.forEach {
+        println(<span style="color:#66d9ef">it</span>)
+    }
+}
+</code></pre></div><p>The second function is the <em>functional</em> option where we pass in a <strong>closure</strong> that prints an item. The only argument is automatically available as <code>it</code>. This is how the <code>forEach</code> function is defined in <code>_Collections.kt</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">inline</span> <span style="color:#66d9ef">fun</span> &lt;<span style="color:#a6e22e">T</span>&gt; <span style="color:#a6e22e">Iterable</span>&lt;T&gt;.forEach(action: (T) <span style="color:#f92672">-&gt;</span> Unit): Unit {
+    <span style="color:#66d9ef">for</span> (element <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">this</span>) action(element)
+}
+</code></pre></div><p>Kotlin provides The Usual Suspects of functional loop tools, such as:</p>
+<ul>
+<li><code>.filter {}</code></li>
+<li><code>.reduce {}</code></li>
+<li><code>.sumOf {}</code></li>
+<li><code>.removeIf {}</code></li>
+<li><code>.replaceAll {}</code></li>
+<li>&hellip;</li>
+</ul>
+<p>To initialize arrays/lists/whatever, Kotlin provides handy utility methods so that we don&rsquo;t need to do silly plumbing as we&rsquo;re used to do in Java. For instance, in Java, creating an ArrayList and adding stuff using <code>new ArrayList&lt;Bag&gt;() { add(new Bag(&quot;apple&quot;); add... }</code> is sometimes shortened using <code>Arrays.asList()</code>. In Kotlin, we simply rely on <code>mutableListOf(Bag(&quot;apple&quot;))</code>, <code>arrayOf(...)</code>, <code>arrayListOf(...)</code>, etc.</p>
 
 
 <footer class="footline">
@@ -966,6 +1028,22 @@ println(answerString)
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -1077,7 +1155,7 @@ println(answerString)
 			<a class="nav nav-prev" href="../../lang/" title="2. Language &amp; Support Tools"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="../../lang/tdd/" title="2. Test Driven Development" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="../../lang/kotlin-examples/" title="2. Kotlin Examples/Exercises" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1087,19 +1165,19 @@ println(answerString)
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1626943679"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1626943679"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1626943679"></script>
-    <script src="../../js/jquery.sticky.js?1626943679"></script>
-    <script src="../../js/featherlight.min.js?1626943679"></script>
-    <script src="../../js/highlight.pack.js?1626943679"></script>
+    <script src="../../js/clipboard.min.js?1626947573"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1626947573"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1626947573"></script>
+    <script src="../../js/jquery.sticky.js?1626947573"></script>
+    <script src="../../js/featherlight.min.js?1626947573"></script>
+    <script src="../../js/highlight.pack.js?1626947573"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1626943679"></script>
-    <script src="../../js/learn.js?1626943679"></script>
-    <script src="../../js/hugo-learn.js?1626943679"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1626947573"></script>
+    <script src="../../js/learn.js?1626947573"></script>
+    <script src="../../js/hugo-learn.js?1626947573"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1626943679"></script>
+            <script src="../../mermaid/mermaid.js?1626947573"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
