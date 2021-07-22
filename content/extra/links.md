@@ -15,3 +15,6 @@ title: 3. Links and Tutorials
 - [Drag-and-drop systems](https://www.vogella.com/tutorials/AndroidDragAndDrop/article.html)
 - [Notifications](https://www.vogella.com/tutorials/AndroidNotifications/article.html)
 
+### Various
+
+- [Awesome Android Kotlin Apps](https://github.com/androiddevnotes/awesome-android-kotlin-apps) --- a curated list on GitHub

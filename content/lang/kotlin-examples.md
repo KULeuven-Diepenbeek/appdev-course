@@ -14,6 +14,8 @@ We'll be using **IntelliJ** to create simple Kotlin projects, so leave Android S
 
 Wait for the initial Gradle download/build to finish. Create your Kotlin class/source files in `src/main/kotlin`. Do not forget creating the correct package structure. See the examples in the above GitHub link.
 
+The Kotlin DSL (_Domain Specific Language_) provides an alternative syntax to the traditional Groovy DSL in Gradle buidlfiles with superious IDE support. This means that every statement in your build script should be valid Kotlin syntax. Read up on the [Gradle Kotlin DSL Primer](https://docs.gradle.org/current/userguide/kotlin_dsl.html) for more information. Kotlin DSL script files use the `.gradle.kts` file name extension. 
+
 ## 1. Taxi Driving: Basic Kotlin syntax
 
 Remember the taxi exercise from INF1 last year? The one in BlueJ that teaches you about **object composition**? 
