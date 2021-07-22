@@ -189,3 +189,56 @@ As for **defining functions**, just `fun name() {}` suffices. Functions are _pub
 
 More information about unit-returning functions [can be found here](https://kotlinlang.org/docs/functions.html#unit-returning-functions).
 
+### 4. Arrays, Collections, Looping
+
+Kotlin's `Array<>` generic class is the same as a `[]` in Java: it's set in size. Most of the time we'll want to use Java's `ArrayList<>` equivalent. Kotlin also leverages interfaces to hide the collection implementation. You will see `MutableList<>` often:
+
+```kt
+class Stuff(name: String) {
+    val name = name
+    override fun toString(): String {
+        return name
+    }
+}
+class Bag {
+    val items: MutableList<Stuff> = mutableListOf(Stuff("pen"), Stuff("apple"))
+}
+```
+
+{{% notice info %}}
+Remember, as soon as you initialize an object and do not want to change it, use `val` instead of `var`. The list will grow and shrink in size as things get added and removed, but the reference to items, the list instance itself, will _not_ change. That is, `items = ArrayList<Stuff>()`, which creates a new empty list, is something we don't want to see somewhere in the code. 
+{{% /notice %}}
+
+Now that we have a bag of items, how do we print out each one? Add the following function to `Bag`:
+
+```kt
+fun rummageThrough() {
+    // option 1
+    for(item in items) {
+        println(item)
+    }
+    // option 2
+    items.forEach {
+        println(it)
+    }
+}
+```
+
+The second function is the _functional_ option where we pass in a **closure** that prints an item. The only argument is automatically available as `it`. This is how the `forEach` function is defined in `_Collections.kt`:
+
+```kt
+public inline fun <T> Iterable<T>.forEach(action: (T) -> Unit): Unit {
+    for (element in this) action(element)
+}
+```
+
+Kotlin provides The Usual Suspects of functional loop tools, such as:
+
+- `.filter {}`
+- `.reduce {}`
+- `.sumOf {}`
+- `.removeIf {}`
+- `.replaceAll {}`
+- ...
+
+To initialize arrays/lists/whatever, Kotlin provides handy utility methods so that we don't need to do silly plumbing as we're used to do in Java. For instance, in Java, creating an ArrayList and adding stuff using `new ArrayList<Bag>() { add(new Bag("apple"); add... }` is sometimes shortened using `Arrays.asList()`. In Kotlin, we simply rely on `mutableListOf(Bag("apple"))`, `arrayOf(...)`, `arrayListOf(...)`, etc.

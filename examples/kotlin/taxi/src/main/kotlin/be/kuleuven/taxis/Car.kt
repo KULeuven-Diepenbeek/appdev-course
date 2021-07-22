@@ -5,6 +5,8 @@ class Car(type: String) {
     var driving: Boolean = false
         private set
 
+    // remember, "void" is not needed if nothing is returned.
+    // also, "public" is the default here!
     fun startEngine() {
         driving = true
     }

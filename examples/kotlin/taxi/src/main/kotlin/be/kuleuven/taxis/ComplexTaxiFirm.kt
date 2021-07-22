@@ -2,8 +2,8 @@ package be.kuleuven.taxis
 
 class ComplexTaxiFirm {
     // this is an interface. mutableListOf() returns the "default implementation", which is likely to be an ArrayList<>.
-    var carpark: MutableList<Car> = mutableListOf()
-    var drivers: MutableList<Driver> = mutableListOf()
+    val carpark: MutableList<Car> = mutableListOf()
+    val drivers: MutableList<Driver> = mutableListOf()
 
     fun buyCar(car: Car) {
         carpark.add(car)
