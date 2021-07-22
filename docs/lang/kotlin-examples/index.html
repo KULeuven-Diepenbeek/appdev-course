@@ -12,21 +12,21 @@
     <title>2. Kotlin Examples/Exercises :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1626947573" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1626947573" rel="stylesheet">
-    <link href="../../css/hybrid.css?1626947573" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1626947573" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1626947573" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1626947573" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1626947573" rel="stylesheet">
-    <link href="../../css/theme.css?1626947573" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1626947573" rel="stylesheet">
+    <link href="../../css/nucleus.css?1626953827" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1626953827" rel="stylesheet">
+    <link href="../../css/hybrid.css?1626953827" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1626953827" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1626953827" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1626953827" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1626953827" rel="stylesheet">
+    <link href="../../css/theme.css?1626953827" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1626953827" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1626947573" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1626953827" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1626947573"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1626953827"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -82,14 +82,14 @@ window.MathJax = {
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1626947573"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1626947573"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1626953827"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1626953827"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1626947573"></script>
+<script type="text/javascript" src="../../js/search.js?1626953827"></script>
 
     
   </div>
@@ -594,7 +594,8 @@ window.MathJax = {
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#1-taxi-driving">1. Taxi Driving</a></li>
+    <li><a href="#1-taxi-driving-basic-kotlin-syntax">1. Taxi Driving: Basic Kotlin syntax</a></li>
+    <li><a href="#2-walking-in-jfx-java-interoperability">2. Walking in JFX: Java interoperability</a></li>
   </ul>
 </nav>
     </div>
@@ -636,7 +637,7 @@ window.MathJax = {
 </figure>
 </p>
 <p>Wait for the initial Gradle download/build to finish. Create your Kotlin class/source files in <code>src/main/kotlin</code>. Do not forget creating the correct package structure. See the examples in the above GitHub link.</p>
-<h2 id="1-taxi-driving">1. Taxi Driving</h2>
+<h2 id="1-taxi-driving-basic-kotlin-syntax">1. Taxi Driving: Basic Kotlin syntax</h2>
 <p>Remember the taxi exercise from INF1 last year? The one in BlueJ that teaches you about <strong>object composition</strong>?</p>
 <blockquote>
 <p>Model a taxi company. The company can hire drivers, buy cars, and ultimately, drive clients from an address in point A to point B, to hopefully make some money.</p>
@@ -650,6 +651,24 @@ window.MathJax = {
 <li>Think about accessibility, constructors and getters/setters</li>
 </ol>
 <p>First, take a look at the <a href="https://github.com/KULeuven-Diepenbeek/appdev-course/tree/main/examples/java/taxi">java solution</a>. Then, try to do it yourself in the Kotlin JVM. If all else fails, peek at the provided solution.</p>
+<h2 id="2-walking-in-jfx-java-interoperability">2. Walking in JFX: Java interoperability</h2>
+<p>Remember the basic JavaFX exercises from INF1, where we created a smiley or person, virtually walking around on the screen? Those labs acted as a first acquaintance with the JavaFX and Movel-View-Controller concepts. The assignment was as follows:</p>
+<blockquote>
+<p>Create a custom <code>Region</code> and render a simple person consisting out of multiple rectangles. Create buttons up/down/left/right and implement the click events such that the person moves around on the screen in the correct direction.</p>
+</blockquote>
+<p>This teaches you how to:</p>
+<ol>
+<li>Adhere to the Model-View-Controller pattern</li>
+<li>Create an <code>AnchorPane</code> and put stuff onto it using SceneBuilder</li>
+<li>Catch and implement events in the controller</li>
+<li>Draw custom things in the view</li>
+<li>Decouple the model from UI logic</li>
+</ol>
+<p>If that doesn&rsquo;t refresh your memory, take a look at the <a href="https://github.com/KULeuven-Diepenbeek/appdev-course/tree/main/examples/java/walkingfx">java solution</a>. Then, try to do it yourself in the Kotlin JVM. If all else fails, peek at the provided solution.</p>
+
+<div class="notices info" ><p>Since this is a JavaFX Gradle application, it cannot be started by pressing the play button: the JavaFX module options should be passed along. We rely on the <code>org.openjfx.javafxplugin</code> for this: see the <code>build.gradle</code> file. To run the application, execute the Gradle task application &ndash; run.</p>
+</div>
+
 
 
 <footer class="footline">
@@ -1003,19 +1022,19 @@ window.MathJax = {
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1626947573"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1626947573"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1626947573"></script>
-    <script src="../../js/jquery.sticky.js?1626947573"></script>
-    <script src="../../js/featherlight.min.js?1626947573"></script>
-    <script src="../../js/highlight.pack.js?1626947573"></script>
+    <script src="../../js/clipboard.min.js?1626953827"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1626953827"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1626953827"></script>
+    <script src="../../js/jquery.sticky.js?1626953827"></script>
+    <script src="../../js/featherlight.min.js?1626953827"></script>
+    <script src="../../js/highlight.pack.js?1626953827"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1626947573"></script>
-    <script src="../../js/learn.js?1626947573"></script>
-    <script src="../../js/hugo-learn.js?1626947573"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1626953827"></script>
+    <script src="../../js/learn.js?1626953827"></script>
+    <script src="../../js/hugo-learn.js?1626953827"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1626947573"></script>
+            <script src="../../mermaid/mermaid.js?1626953827"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
