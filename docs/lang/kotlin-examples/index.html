@@ -12,21 +12,21 @@
     <title>2. Kotlin Examples/Exercises :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1626957764" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1626957764" rel="stylesheet">
-    <link href="../../css/hybrid.css?1626957764" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1626957764" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1626957764" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1626957764" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1626957764" rel="stylesheet">
-    <link href="../../css/theme.css?1626957764" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1626957764" rel="stylesheet">
+    <link href="../../css/nucleus.css?1626967929" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1626967929" rel="stylesheet">
+    <link href="../../css/hybrid.css?1626967929" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1626967929" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1626967929" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1626967929" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1626967929" rel="stylesheet">
+    <link href="../../css/theme.css?1626967929" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1626967929" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1626957764" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1626967929" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1626957764"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1626967929"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -82,14 +82,14 @@ window.MathJax = {
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1626957764"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1626957764"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1626967929"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1626967929"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1626957764"></script>
+<script type="text/javascript" src="../../js/search.js?1626967929"></script>
 
     
   </div>
@@ -596,6 +596,7 @@ window.MathJax = {
   <ul>
     <li><a href="#1-taxi-driving-basic-kotlin-syntax">1. Taxi Driving: Basic Kotlin syntax</a></li>
     <li><a href="#2-walking-in-jfx-java-interoperability">2. Walking in JFX: Java interoperability</a></li>
+    <li><a href="#more-examples">More Examples</a></li>
   </ul>
 </nav>
     </div>
@@ -670,6 +671,18 @@ window.MathJax = {
 <div class="notices info" ><p>Since this is a JavaFX Gradle application, it cannot be started by pressing the play button: the JavaFX module options should be passed along. We rely on the <code>org.openjfx.javafxplugin</code> for this: see the <code>build.gradle</code> file. To run the application, execute the Gradle task application &ndash; run.</p>
 </div>
 
+<p>When you&rsquo;re done, compare your solution with the one provided. The following constructs were modified from the Java version:</p>
+<ul>
+<li>Setters are usually directly accessed. Instead of <code>getChilden().add(x);</code>, you just use <code>children.add(x)</code>.</li>
+<li>An <code>init {}</code> block is needed in the view if you want to call a method in the primary constructor.</li>
+<li>Resource loading is a bit weird, as we need to grab the java class using <code>MyClass::class.java.getResources()</code>. See <code>MainApp.kt</code>.</li>
+<li>Note how little code we require (<code>125</code> lines in total), compared to the java implementation (<code>157</code> lines).</li>
+<li>Extending JavaFX classes also automatically calls the (default) constructor: <code>class Main : Application()</code>. Notice the brackets. Also note <code>extends</code> is replaced by a simple semicolon.</li>
+</ul>
+<p>There are a lot of things that can go wrong when calling Java from Kotlin. For example, some Kotlin-specific keywords, such as <code>when</code>, can be simply functions in Java. To call these, you need to use backticks. Consult the <a href="https://developer.android.com/kotlin/interop">Kotlin-Java interop guide</a> if you encounter a weird error while calling a native Java method.</p>
+<h2 id="more-examples">More Examples</h2>
+<p>On <code>kotlinlang.org</code>, examples that explore every aspect of the Kotlin language are neatly summarized using their online Playground: <a href="https://play.kotlinlang.org/byExample/overview">https://play.kotlinlang.org/byExample/overview</a>. We <strong>strongly recommend</strong> you to check these out: they are very short, do not require anything to install, and touch upon every basic but important concept you&rsquo;ll need to master.</p>
+<p>There are also Koans available <a href="https://play.kotlinlang.org/koans/overview">https://play.kotlinlang.org/koans/overview</a> that let you get familiar with the Kotlin syntax by training again and again until the syntax has been well-imprinted into your brain.</p>
 
 
 <footer class="footline">
@@ -1023,19 +1036,19 @@ window.MathJax = {
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1626957764"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1626957764"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1626957764"></script>
-    <script src="../../js/jquery.sticky.js?1626957764"></script>
-    <script src="../../js/featherlight.min.js?1626957764"></script>
-    <script src="../../js/highlight.pack.js?1626957764"></script>
+    <script src="../../js/clipboard.min.js?1626967929"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1626967929"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1626967929"></script>
+    <script src="../../js/jquery.sticky.js?1626967929"></script>
+    <script src="../../js/featherlight.min.js?1626967929"></script>
+    <script src="../../js/highlight.pack.js?1626967929"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1626957764"></script>
-    <script src="../../js/learn.js?1626957764"></script>
-    <script src="../../js/hugo-learn.js?1626957764"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1626967929"></script>
+    <script src="../../js/learn.js?1626967929"></script>
+    <script src="../../js/hugo-learn.js?1626967929"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1626957764"></script>
+            <script src="../../mermaid/mermaid.js?1626967929"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

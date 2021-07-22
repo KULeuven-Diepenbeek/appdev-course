@@ -12,21 +12,21 @@
     <title>1. The Kotlin programming lang. :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1626957764" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1626957764" rel="stylesheet">
-    <link href="../../css/hybrid.css?1626957764" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1626957764" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1626957764" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1626957764" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1626957764" rel="stylesheet">
-    <link href="../../css/theme.css?1626957764" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1626957764" rel="stylesheet">
+    <link href="../../css/nucleus.css?1626967929" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1626967929" rel="stylesheet">
+    <link href="../../css/hybrid.css?1626967929" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1626967929" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1626967929" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1626967929" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1626967929" rel="stylesheet">
+    <link href="../../css/theme.css?1626967929" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1626967929" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1626957764" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1626967929" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1626957764"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1626967929"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -82,14 +82,14 @@ window.MathJax = {
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1626957764"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1626957764"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1626967929"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1626967929"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1626957764"></script>
+<script type="text/javascript" src="../../js/search.js?1626967929"></script>
 
     
   </div>
@@ -605,7 +605,8 @@ window.MathJax = {
         <li><a href="#1-variables">1. Variables</a></li>
         <li><a href="#2-conditionals">2. Conditionals</a></li>
         <li><a href="#3-classes-and-functions">3. Classes and Functions</a></li>
-        <li><a href="#4-arrays-collections-looping">4. Arrays, Collections, Looping</a></li>
+        <li><a href="#4-higher-order-functions">4. Higher order functions</a></li>
+        <li><a href="#5-arrays-collections-looping">5. Arrays, Collections, Looping</a></li>
       </ul>
     </li>
   </ul>
@@ -654,6 +655,7 @@ window.MathJax = {
 <p>The software department of ACRO, the KU Leuven research group at Diepenbeek Campus, focuses on functional languages, of which Kotlin certainly fits the bill. Kotlin&rsquo;s functional mechanics are nowhere near as complex as Prolog or Scala, and is familiar enough for students who are used to writing programs in Java. Thus, with relative little effort, a new (both for you and for the programming community) language can be learned.</p>
 <h2 id="a-crash-course-in-kotlin">A Crash Course in Kotlin</h2>
 <p>Roughly based upon Google&rsquo;s <a href="https://developer.android.com/kotlin/learn">Introduction to Kotlin crash course</a>.</p>
+<p><strong>Play with Kotlin</strong> to get to know the language before focusing on Android specifics. The best way to do this is creating simple Kotlin projects in Intellij (see <a href="../../lang/kotlin-examples">Kotlin examples</a>) or simply by browsing to <a href="https://play.kotlinlang.org/">https://play.kotlinlang.org/</a></p>
 <h3 id="1-variables">1. Variables</h3>
 <p>As mentioned before, Kotlin has many functional aspects to it. For variable declaration, you can <em>pre-set</em> a value, declaring it will never change (it&rsquo;s a constant), or just call it a &ldquo;variable&rdquo;.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">main</span>(args: Array&lt;String&gt;) {
@@ -774,8 +776,54 @@ println(answerString)
 <li>Want to call the function? <code>name(false)</code></li>
 <li>Want to name arguments while calling? <code>name(arg1: false)</code></li>
 </ul>
+<p>Single-line functions can be simplified from <code>fun hi(): String { return &quot;sup!&quot; }</code> to <code>fun hi(): String = &quot;sup!&quot;</code>.</p>
 <p>More information about unit-returning functions <a href="https://kotlinlang.org/docs/functions.html#unit-returning-functions">can be found here</a>.</p>
-<h3 id="4-arrays-collections-looping">4. Arrays, Collections, Looping</h3>
+<p>Sometimes, in Java, you need to quickly create a new subclass or an implementation of an interface, to be able to provide an event listener, for example. The typical syntax for that is very convoluted:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">window<span style="color:#f92672">.</span><span style="color:#a6e22e">addMouseListener</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> MouseAdapter<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">mouseClicked</span><span style="color:#f92672">(</span>MouseEvent e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Good job, right on target!&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#f92672">...</span>
+    <span style="color:#75715e">// ALL methods of the interface need to be provided!
+</span><span style="color:#75715e"></span><span style="color:#f92672">})</span>
+</code></pre></div><p>In Kotlin, an <code>object</code> is used, which is a &ldquo;temporary class&rdquo; that fits the bill:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt">window.addMouseListener(<span style="color:#66d9ef">object</span> <span style="color:#960050;background-color:#1e0010">: </span><span style="color:#a6e22e">MouseAdapter</span>() {
+    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">mouseClicked</span>(e: MouseEvent) { 
+        println(<span style="color:#e6db74">&#34;Good job, right on target!&#34;</span>)
+    }
+})
+</code></pre></div><p>Note that the <code>override</code> keyword is required here. In Java, it&rsquo;s just an annotation that adds to the documentation. In Kotlin, it&rsquo;s part of the syntax.</p>
+<p>For more information, see <a href="https://kotlinlang.org/docs/object-declarations.html#inheriting-anonymous-objects-from-supertypes">https://kotlinlang.org/docs/object-declarations.html#inheriting-anonymous-objects-from-supertypes</a></p>
+<h3 id="4-higher-order-functions">4. Higher order functions</h3>
+<p>Functions can also be variables. Functions can be created ad-hoc, and be disposed of when no longer needed, as part of the local stack. For instance:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">var</span> age = <span style="color:#ae81ff">30</span>
+    <span style="color:#66d9ef">var</span> adder: (Int) <span style="color:#f92672">-&gt;</span> Int = { x <span style="color:#f92672">-&gt;</span>
+        x + <span style="color:#ae81ff">1</span>
+    }
+    age = adder(age)
+    println(<span style="color:#e6db74">&#34;Hello, world!!! I&#39;m currently </span><span style="color:#e6db74">$age</span><span style="color:#e6db74"> old&#34;</span>)
+}
+</code></pre></div><p>Functions can be declared within functions within functions within &hellip; Its scope closes the variables around it, meaning you can shield off variables created inside functions from the outside world, but not the other way around. <code>age</code> is visible inside <code>adder</code>, but <code>x</code> is not visible inside <code>main</code>.</p>
+<p>The above code is easily replicated in JavaScript:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">main</span>() {
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">adder</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">x</span>) {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">x</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+    }
+    <span style="color:#a6e22e">age</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">adder</span>(<span style="color:#a6e22e">age</span>)
+    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Hello, world!!! I&#39;m currently </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">age</span><span style="color:#e6db74">}</span><span style="color:#e6db74"> old`</span>)
+}
+</code></pre></div><p>But not so easily done in Java, although later JDK versions also introduced (clumsy versions of) lambda&rsquo;s.</p>
+<p>A few more things to remember:</p>
+<ul>
+<li>If <code>return</code> is missing, the result of the last expression is returned instead.</li>
+<li>If a return type is missing, <code>kotlin.Unit</code> is returned, <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/">corresponding with void in Java</a>. There&rsquo;s also a <a href="https://play.kotlinlang.org/koans/Introduction/Nothing%20type/Task.kt">Nothing type</a> to dictate a function will always return an exception, such as an assertion.</li>
+</ul>
+<p>Functions can return functions or accept functions as arguments. This is handy when recycling logic that sorts, collects, or filters collections. Speaking of&hellip;</p>
+<h3 id="5-arrays-collections-looping">5. Arrays, Collections, Looping</h3>
 <p>Kotlin&rsquo;s <code>Array&lt;&gt;</code> generic class is the same as a <code>[]</code> in Java: it&rsquo;s set in size. Most of the time we&rsquo;ll want to use Java&rsquo;s <code>ArrayList&lt;&gt;</code> equivalent. Kotlin also leverages interfaces to hide the collection implementation. You will see <code>MutableList&lt;&gt;</code> often:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Stuff</span>(name: String) {
     <span style="color:#66d9ef">val</span> name = name
@@ -1165,19 +1213,19 @@ println(answerString)
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1626957764"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1626957764"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1626957764"></script>
-    <script src="../../js/jquery.sticky.js?1626957764"></script>
-    <script src="../../js/featherlight.min.js?1626957764"></script>
-    <script src="../../js/highlight.pack.js?1626957764"></script>
+    <script src="../../js/clipboard.min.js?1626967930"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1626967930"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1626967930"></script>
+    <script src="../../js/jquery.sticky.js?1626967930"></script>
+    <script src="../../js/featherlight.min.js?1626967930"></script>
+    <script src="../../js/highlight.pack.js?1626967930"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1626957764"></script>
-    <script src="../../js/learn.js?1626957764"></script>
-    <script src="../../js/hugo-learn.js?1626957764"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1626967930"></script>
+    <script src="../../js/learn.js?1626967930"></script>
+    <script src="../../js/hugo-learn.js?1626967930"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1626957764"></script>
+            <script src="../../mermaid/mermaid.js?1626967930"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
