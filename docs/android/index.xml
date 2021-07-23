@@ -14,9 +14,9 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
       <guid>https://kuleuven-diepenbeek.github.io/appdev-course/android/activities/</guid>
-      <description>What&amp;rsquo;s an activity?
- An activity is a single, focused thing that a user can do.
- </description>
+      <description>What&amp;rsquo;s an activity?  An activity is a single, focused thing that a user can do.
+ To put it simply, an activity is a window in your app. Each window should do one thing, such as:
+ Let the user login Show a welcome screen Let the user pick something out of a list Show the user detail information of the picked item Let the user modify settings &amp;hellip;    Two example activities.</description>
     </item>
     
     <item>

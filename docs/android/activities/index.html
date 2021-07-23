@@ -12,21 +12,21 @@
     <title>1. Life Cycle - Activities :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1626967929" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1626967929" rel="stylesheet">
-    <link href="../../css/hybrid.css?1626967929" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1626967929" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1626967929" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1626967929" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1626967929" rel="stylesheet">
-    <link href="../../css/theme.css?1626967929" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1626967929" rel="stylesheet">
+    <link href="../../css/nucleus.css?1627031041" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1627031041" rel="stylesheet">
+    <link href="../../css/hybrid.css?1627031041" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1627031041" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1627031041" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1627031041" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1627031041" rel="stylesheet">
+    <link href="../../css/theme.css?1627031041" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1627031041" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1626967929" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1627031041" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1626967929"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1627031041"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -82,14 +82,14 @@ window.MathJax = {
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1626967929"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1626967929"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1627031041"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1627031041"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1626967929"></script>
+<script type="text/javascript" src="../../js/search.js?1627031041"></script>
 
     
   </div>
@@ -592,7 +592,13 @@ window.MathJax = {
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#whats-an-activity">What&rsquo;s an activity?</a></li>
+    <li><a href="#creating-activities-in-android-studio">Creating activities in Android Studio</a></li>
+    <li><a href="#adding-actions">Adding actions</a></li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -615,10 +621,131 @@ window.MathJax = {
         
 
 
-<p>What&rsquo;s an activity?</p>
+<h2 id="whats-an-activity">What&rsquo;s an activity?</h2>
 <blockquote>
 <p>An activity is a <strong>single, focused thing</strong> that a user can do.</p>
 </blockquote>
+<p>To put it simply, an activity is a window in your app. Each window should do one thing, such as:</p>
+<ul>
+<li>Let the user login</li>
+<li>Show a welcome screen</li>
+<li>Let the user pick something out of a list</li>
+<li>Show the user detail information of the picked item</li>
+<li>Let the user modify settings</li>
+<li>&hellip;</li>
+</ul>
+<p><figure>
+	<a href="../../img/activities.png" data-featherlight="image">
+		<img src="../../img/activities.png"   title="Two example activities.">
+	</a>
+	
+		<figcaption>Two example activities.</figcaption>
+	
+</figure>
+</p>
+<p>(Images used on this page sourced from <a href="https://franklineduardojimenezgiraldo.gitbooks.io/android-studio/">https://franklineduardojimenezgiraldo.gitbooks.io/android-studio/</a>)</p>
+<p>Since a single &ldquo;activity&rdquo;/action/screen/window/whatever-the-name is not going to cut it, multiple activities have to be developed and <strong>wired together</strong>. This is done using <em>wireframing</em>. A wireframe dictates the flow of the application. The above image represents a welcome screen, and a login screen. It might transition to the login screen after tapping or after three seconds. After pressing &ldquo;Sign Up&rdquo;, it might transition again, to a master/detail screen. The resulting wireframe might look like this:</p>
+<p><figure>
+	<a href="../../img/wireframe.png" data-featherlight="image">
+		<img src="../../img/wireframe.png"   title="An example wireframe that defines relationships between activities.">
+	</a>
+	
+		<figcaption>An example wireframe that defines relationships between activities.</figcaption>
+	
+</figure>
+</p>
+<p>Since in many activities, components reappear, they get <strong>re-used</strong> by splitting an activity into <em>fragments</em>. We&rsquo;ll get to that in the <a href="../../android/fragments">complex layouting - fragments</a> part.</p>
+<h2 id="creating-activities-in-android-studio">Creating activities in Android Studio</h2>
+<p>Let&rsquo;s try to create <strong>our first activity</strong>: login screen. Which components can you identify in the above schematics?</p>
+<ol>
+<li>A &ldquo;Login&rdquo; label or graphic</li>
+<li>A username text field</li>
+<li>A password text field</li>
+<li>A login button</li>
+<li>A &ldquo;or&rdquo; label</li>
+<li>A &ldquo;create account&rdquo; button/anchor link</li>
+</ol>
+<p>Right. These are simple enough. Create a new project, starting with an <em>Empty Activity</em> under template <em>Phone and Tablet</em>. It&rsquo;ll create a single <code>MainActivity.kt</code> class with the following minimalistic code:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MainActivity</span> : AppCompatActivity() {
+    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">onCreate</span>(savedInstanceState: Bundle?) {
+        <span style="color:#66d9ef">super</span>.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+    }
+}
+</code></pre></div><p>The <code>activity_main.xml</code> will have a single <code>TextView</code> element with the label &ldquo;Hello World!&rdquo;. Try to <strong>bootstrap</strong> the project before making any changes to ensure your compiler and emulator are set up correctly.</p>
+<p>The activity layout itself is described in XML. The root is currently <code>&lt;androidx.constraintlayout.widget.ConstraintLayout/&gt;&quot;</code>. Remember JavaFX&rsquo;s <code>AnchorPane</code>, were you could drop components into using SceneBuilder? This is more or less the same, but the &ldquo;Android way&rdquo;. There are of course multiple Layouts available.</p>
+<p>Browse through the <a href="https://developer.android.com/reference/androidx/constraintlayout/widget/ConstraintLayout">ConstraintLayout documentation</a> and watch the <a href="https://www.youtube.com/watch?v=XamMbnzI5vE">short introduction video</a> on how to build interfaces with it. It allows for multiple flexible ways to define constraints that dictate the position of the components: relative positioning, margins, centering, circular positioning, chaining, dimension constraining, and so forth. We&rsquo;ll minimize complexity by resorting to the GUI-editor embedded into Android Studio instead of writing too much UI-specific code.</p>
+
+<div class="notices note" ><p>Fiddle with the layout editor to place the six needed components for the login screen.</p>
+</div>
+
+<p>Inspect and modify desired properties of components if needed in the right-hand pane of the Design Editor (especially the ID on the top-right):</p>
+<p><figure>
+	<a href="../../img/designproperties.jpg" data-featherlight="image">
+		<img src="../../img/designproperties.jpg"   title="Changing the text property of a TextView.">
+	</a>
+	
+		<figcaption>Changing the text property of a TextView.</figcaption>
+	
+</figure>
+</p>
+<p>Without specifying <strong>constraints</strong>, the components will be re-positioned to <code>(0, )</code> after publishing to your device. To add constraints, drag the circles to touching edges of the <code>ConstraintLayout</code>, or to other elements present in the activity. This &ldquo;locks&rdquo; the component, allowing it only to move by adhering to the constraints. After setting all constraints, try moving one of the components: others will move along with it due to the constraints.</p>
+<h2 id="adding-actions">Adding actions</h2>
+<p>Once you&rsquo;ve got a login button up and running, it would be nice if it actually did something when pressing it. The easiest way to do that is to use <a href="https://developer.android.com/topic/libraries/view-binding">Android View Binding</a>:</p>
+<blockquote>
+<p>View binding is a feature that allows you to more easily write code that interacts with views. Once view binding is enabled in a module, it generates a binding class for each XML layout file present in that module. An instance of a binding class contains direct references to all views that have an ID in the corresponding layout.</p>
+</blockquote>
+<p>To enable, simply add the <code>buildFeature</code> in your <code>build.gradle.kts</code> file:</p>
+<pre><code>android {
+    ...
+    buildFeatures {
+        viewBinding = true
+    }
+}
+</code></pre><p>After refreshing, every XML layout file will be accompanied by a secretly <em>generated Java file</em> that contains the items to access and attach events to. The name of the binding class is generated by converting the name of the XML file to Pascal case and adding the word &ldquo;Binding&rdquo; to the end. <code>activity_main.xml</code> will thus have an <code>ActivityMainBinding</code> class.</p>
+<p>In your &ldquo;controller&rdquo; (you do remember the Model-View-Controller pattern, right?) that extends from <code>AppCompatAcitivy</code>, add a <code>lateinit</code> binding field, and refer to it using <code>inflate()</code>. Then, we&rsquo;ll set the content view to that particular binding root. If that is done, we can add events:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MainActivity</span> : AppCompatActivity() {
+
+    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">lateinit</span> <span style="color:#66d9ef">var</span> binding: ActivityMainBinding
+
+    <span style="color:#66d9ef">override</span> <span style="color:#66d9ef">fun</span> <span style="color:#a6e22e">onCreate</span>(savedInstanceState: Bundle?) {
+        <span style="color:#66d9ef">super</span>.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+
+        <span style="color:#75715e">// warning, this is changed, it used to be R.main.id
+</span><span style="color:#75715e"></span>        setContentView(binding.root)
+
+        <span style="color:#75715e">// just to prove things changed
+</span><span style="color:#75715e"></span>        binding.btnLogin.setText(<span style="color:#e6db74">&#34;lol&#34;</span>)        
+    }
+}
+</code></pre></div><p>In JavaFX, this is a bit simpler:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SomeController</span> <span style="color:#f92672">{</span>
+    <span style="color:#a6e22e">@FXML</span>
+    <span style="color:#66d9ef">private</span> BUtton btnLogin<span style="color:#f92672">;</span>
+
+    <span style="color:#a6e22e">@FXML</span>
+    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">initialize</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        btnLogin<span style="color:#f92672">.</span><span style="color:#a6e22e">setOnClick</span><span style="color:#f92672">....</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Here, we can create fields and auto-wire them. In Android, you have to rely on the generated binding class where the fields are: less messy but one more step needed to take.</p>
+<p>We react to events such as the <code>click</code> (&ldquo;tap&rdquo;) event in the same way as you would do in JavaFX:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt">binding.btnLogin.setOnClickListener { view <span style="color:#f92672">-&gt;</span>
+    Snackbar.make(view, <span style="color:#e6db74">&#34;Nice, clicked a button&#34;</span>, Snackbar.LENGTH_LONG).setAction(<span style="color:#e6db74">&#34;Action&#34;</span>, <span style="color:#66d9ef">null</span>).show()
+}
+</code></pre></div><p><code>Snackbar</code> is a fast way to provide periodical feedback that automatically disappears. Ta-daa:</p>
+<p><figure>
+	<a href="../../img/loginbtn.jpg" data-featherlight="image">
+		<img src="../../img/loginbtn.jpg"  >
+	</a>
+	
+</figure>
+</p>
+
+<div class="notices note" ><p>Retrieve the password value and check it with some hard-coded value. If not correct, show a warning message using a <code>Snackbar</code>. If the username is empty, also show a warning message.</p>
+</div>
+
 
 
 <footer class="footline">
@@ -966,19 +1093,19 @@ window.MathJax = {
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1626967929"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1626967929"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1626967929"></script>
-    <script src="../../js/jquery.sticky.js?1626967929"></script>
-    <script src="../../js/featherlight.min.js?1626967929"></script>
-    <script src="../../js/highlight.pack.js?1626967929"></script>
+    <script src="../../js/clipboard.min.js?1627031041"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1627031041"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1627031041"></script>
+    <script src="../../js/jquery.sticky.js?1627031041"></script>
+    <script src="../../js/featherlight.min.js?1627031041"></script>
+    <script src="../../js/highlight.pack.js?1627031041"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1626967929"></script>
-    <script src="../../js/learn.js?1626967929"></script>
-    <script src="../../js/hugo-learn.js?1626967929"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1627031041"></script>
+    <script src="../../js/learn.js?1627031041"></script>
+    <script src="../../js/hugo-learn.js?1627031041"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1626967929"></script>
+            <script src="../../mermaid/mermaid.js?1627031041"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
