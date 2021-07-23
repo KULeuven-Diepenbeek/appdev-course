@@ -2,6 +2,136 @@
 title: 1. Life Cycle - Activities
 ---
 
-What's an activity?
+## What's an activity?
 
 > An activity is a **single, focused thing** that a user can do.
+
+To put it simply, an activity is a window in your app. Each window should do one thing, such as:
+
+- Let the user login
+- Show a welcome screen
+- Let the user pick something out of a list
+- Show the user detail information of the picked item
+- Let the user modify settings
+- ...
+
+![](/img/activities.png "Two example activities.")
+
+
+(Images used on this page sourced from https://franklineduardojimenezgiraldo.gitbooks.io/android-studio/)
+
+Since a single "activity"/action/screen/window/whatever-the-name is not going to cut it, multiple activities have to be developed and **wired together**. This is done using _wireframing_. A wireframe dictates the flow of the application. The above image represents a welcome screen, and a login screen. It might transition to the login screen after tapping or after three seconds. After pressing "Sign Up", it might transition again, to a master/detail screen. The resulting wireframe might look like this:
+
+![](/img/wireframe.png "An example wireframe that defines relationships between activities.")
+
+Since in many activities, components reappear, they get **re-used** by splitting an activity into _fragments_. We'll get to that in the [complex layouting - fragments](/android/fragments) part.
+
+## Creating activities in Android Studio
+
+Let's try to create **our first activity**: login screen. Which components can you identify in the above schematics?
+
+1. A "Login" label or graphic
+2. A username text field
+3. A password text field
+4. A login button
+5. A "or" label
+6. A "create account" button/anchor link
+
+Right. These are simple enough. Create a new project, starting with an _Empty Activity_ under template _Phone and Tablet_. It'll create a single `MainActivity.kt` class with the following minimalistic code:
+
+```kt
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+    }
+}
+```
+
+The `activity_main.xml` will have a single `TextView` element with the label "Hello World!". Try to **bootstrap** the project before making any changes to ensure your compiler and emulator are set up correctly. 
+
+The activity layout itself is described in XML. The root is currently `<androidx.constraintlayout.widget.ConstraintLayout/>"`. Remember JavaFX's `AnchorPane`, were you could drop components into using SceneBuilder? This is more or less the same, but the "Android way". There are of course multiple Layouts available. 
+
+Browse through the [ConstraintLayout documentation](https://developer.android.com/reference/androidx/constraintlayout/widget/ConstraintLayout) and watch the [short introduction video](https://www.youtube.com/watch?v=XamMbnzI5vE) on how to build interfaces with it. It allows for multiple flexible ways to define constraints that dictate the position of the components: relative positioning, margins, centering, circular positioning, chaining, dimension constraining, and so forth. We'll minimize complexity by resorting to the GUI-editor embedded into Android Studio instead of writing too much UI-specific code. 
+
+{{% notice note %}}
+Fiddle with the layout editor to place the six needed components for the login screen.
+{{% /notice %}}
+
+Inspect and modify desired properties of components if needed in the right-hand pane of the Design Editor (especially the ID on the top-right):
+
+![](/img/designproperties.jpg "Changing the text property of a TextView.")
+
+Without specifying **constraints**, the components will be re-positioned to `(0, )` after publishing to your device. To add constraints, drag the circles to touching edges of the `ConstraintLayout`, or to other elements present in the activity. This "locks" the component, allowing it only to move by adhering to the constraints. After setting all constraints, try moving one of the components: others will move along with it due to the constraints. 
+
+## Adding actions 
+
+Once you've got a login button up and running, it would be nice if it actually did something when pressing it. The easiest way to do that is to use [Android View Binding](https://developer.android.com/topic/libraries/view-binding):
+
+> View binding is a feature that allows you to more easily write code that interacts with views. Once view binding is enabled in a module, it generates a binding class for each XML layout file present in that module. An instance of a binding class contains direct references to all views that have an ID in the corresponding layout.
+
+To enable, simply add the `buildFeature` in your `build.gradle.kts` file:
+
+```
+android {
+    ...
+    buildFeatures {
+        viewBinding = true
+    }
+}
+```
+
+After refreshing, every XML layout file will be accompanied by a secretly _generated Java file_ that contains the items to access and attach events to. The name of the binding class is generated by converting the name of the XML file to Pascal case and adding the word "Binding" to the end. `activity_main.xml` will thus have an `ActivityMainBinding` class. 
+
+In your "controller" (you do remember the Model-View-Controller pattern, right?) that extends from `AppCompatAcitivy`, add a `lateinit` binding field, and refer to it using `inflate()`. Then, we'll set the content view to that particular binding root. If that is done, we can add events:
+
+```kt
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+
+        // warning, this is changed, it used to be R.main.id
+        setContentView(binding.root)
+
+        // just to prove things changed
+        binding.btnLogin.setText("lol")        
+    }
+}
+```
+
+In JavaFX, this is a bit simpler:
+
+```java
+public class SomeController {
+    @FXML
+    private BUtton btnLogin;
+
+    @FXML
+    public void initialize() {
+        btnLogin.setOnClick....
+    }
+}
+```
+
+Here, we can create fields and auto-wire them. In Android, you have to rely on the generated binding class where the fields are: less messy but one more step needed to take.
+
+We react to events such as the `click` ("tap") event in the same way as you would do in JavaFX:
+
+```kt
+binding.btnLogin.setOnClickListener { view ->
+    Snackbar.make(view, "Nice, clicked a button", Snackbar.LENGTH_LONG).setAction("Action", null).show()
+}
+```
+
+`Snackbar` is a fast way to provide periodical feedback that automatically disappears. Ta-daa:
+
+![](/img/loginbtn.jpg)
+
+{{% notice note %}}
+Retrieve the password value and check it with some hard-coded value. If not correct, show a warning message using a `Snackbar`. If the username is empty, also show a warning message.
+{{% /notice %}}
+
