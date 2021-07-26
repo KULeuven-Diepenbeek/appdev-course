@@ -74,9 +74,9 @@ We&amp;rsquo;ll be using IntelliJ to create simple Kotlin projects, so leave And
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
       <guid>https://kuleuven-diepenbeek.github.io/appdev-course/android/intents/</guid>
-      <description>What if, instead of showing a generic welcome screen after logging in, we want to personally welcome the user?
+      <description>Using intents to start an internal activity What if, instead of showing a generic welcome screen after logging in, we want to personally welcome the user?
 Instead of &amp;ldquo;Welcome, have a nice day&amp;rdquo;, as pictured in:
-  Two example activities from 1.1.  We&amp;rsquo;d like to say &amp;ldquo;Welcome [username]&amp;rdquo;! That is, we want to pass arguments from one activity to the next. We&amp;rsquo;ve already created an intent to start a second activity using Intent(this, MyNewActivity::class.java). After this piece of code, and before calling startActivity(), we can add stuff to the intent which is passed along the new activity:</description>
+  Two example activities from 1.1.  We&amp;rsquo;d like to say &amp;ldquo;Welcome [username]&amp;rdquo;! That is, we want to pass arguments from one activity to the next. We&amp;rsquo;ve already created an intent to start a second activity using Intent(this, MyNewActivity::class.</description>
     </item>
     
     <item>
@@ -164,6 +164,15 @@ pressing back, rotating, data gone?</description>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
       <guid>https://kuleuven-diepenbeek.github.io/appdev-course/android/signals/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>7. Security By Design</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/android/security/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/android/security/</guid>
+      <description>Android dev and Permissions https://developer.android.com/guide/topics/permissions/overview</description>
     </item>
     
   </channel>

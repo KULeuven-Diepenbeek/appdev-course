@@ -12,20 +12,20 @@
     <title>2. Messaging - Intents :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1627298443" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1627298443" rel="stylesheet">
-    <link href="../../css/hybrid.css?1627298443" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1627298443" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1627298443" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1627298443" rel="stylesheet">
-    <link href="../../css/theme.css?1627298443" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1627298443" rel="stylesheet">
+    <link href="../../css/nucleus.css?1627306196" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1627306196" rel="stylesheet">
+    <link href="../../css/hybrid.css?1627306196" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1627306196" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1627306196" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1627306196" rel="stylesheet">
+    <link href="../../css/theme.css?1627306196" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1627306196" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1627298443" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1627306196" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1627298443"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1627306196"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -60,14 +60,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1627298443"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1627298443"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1627306196"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1627306196"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1627298443"></script>
+<script type="text/javascript" src="../../js/search.js?1627306196"></script>
 
     
   </div>
@@ -220,6 +220,27 @@
       <li data-nav-id="/android/signals/" title="6. Embedded Signals" class="dd-item ">
         <a href="../../android/signals/">
         6. Embedded Signals
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/security/" title="7. Security By Design" class="dd-item ">
+        <a href="../../android/security/">
+        7. Security By Design
         
         </a>
     </li>
@@ -572,7 +593,18 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#passing-objects-through-intents">Passing objects through intents</a></li>
+    <li><a href="#using-intents-to-start-an-internal-activity">Using intents to start an internal activity</a>
+      <ul>
+        <li><a href="#passing-objects-through-intents">Passing objects through intents</a></li>
+      </ul>
+    </li>
+    <li><a href="#using-intents-to-start-an-internal-service">Using intents to start an internal service</a></li>
+    <li><a href="#using-intents-to-interact-with-other-apps">Using intents to interact with other apps</a>
+      <ul>
+        <li><a href="#implicit-intents">Implicit intents</a></li>
+        <li><a href="#deliveringreceiving-a-broadcast">Delivering/receiving a broadcast</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -597,6 +629,7 @@
         
 
 
+<h2 id="using-intents-to-start-an-internal-activity">Using intents to start an internal activity</h2>
 <p>What if, instead of showing a generic welcome screen after logging in, we want to <em>personally</em> welcome the user?</p>
 <p>Instead of &ldquo;Welcome, have a nice day&rdquo;, as pictured in:</p>
 <p><figure>
@@ -615,7 +648,7 @@
 </code></pre></div><p>On the receiving side, simply pull out the data using the appropriate <code>get</code> function in the <code>onCreate()</code> function after setting the content view to the correct root binding:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">val</span> <span style="color:#111">username</span> <span style="color:#111">=</span> <span style="color:#111">intent</span><span style="color:#111">.</span><span style="color:#111">getStringExtra</span><span style="color:#111">(</span><span style="color:#d88200">&#34;username&#34;</span><span style="color:#111">)</span>
 <span style="color:#111">binding</span><span style="color:#111">.</span><span style="color:#111">txtWelcome</span><span style="color:#111">.</span><span style="color:#111">text</span> <span style="color:#111">=</span> <span style="color:#d88200">&#34;Welcome, </span><span style="color:#d88200">$username</span><span style="color:#d88200">&#34;</span>
-</code></pre></div><h2 id="passing-objects-through-intents">Passing objects through intents</h2>
+</code></pre></div><h3 id="passing-objects-through-intents">Passing objects through intents</h3>
 <p>Of course, passing in tens of different input fields can get cumbersome. Instead, let&rsquo;s provide a data class that represents the user:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">data</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">User</span><span style="color:#111">(</span><span style="color:#00a8c8">val</span> <span style="color:#111">name</span><span style="color:#111">:</span> <span style="color:#111">String</span><span style="color:#111">)</span> <span style="color:#111">{</span>
 <span style="color:#111">}</span>
@@ -641,6 +674,106 @@
 
 <p>Can you think of other smart ways to share data between activites?</p>
 <p>The Parcelize alternative is left as an exercise for the reader.</p>
+<h2 id="using-intents-to-start-an-internal-service">Using intents to start an internal service</h2>
+<p>Besides switching activities as screens within a single app, an intent can also pass messages along a background service that performs operations without a user interface. Services can be launched by creating a <code>JobScheduler</code> instance and passing it to <code>startService()</code> (instead of <code>startActivity()</code>) (see <a href="https://developer.android.com/reference/android/app/job/JobScheduler">API reference</a>). Why would you want to do that?</p>
+<ul>
+<li>To download a large file in the background without blocking the UI</li>
+<li>To convert a lot of images in the background</li>
+<li>To upload data to a back-end server using a HTTP POST</li>
+<li>&hellip;</li>
+</ul>
+<p>Services, and the difference between them and typical Java threads, are explained in detail in the <a href="https://developer.android.com/guide/components/services">Services overview dev guide</a>. The use services are not part of this course.</p>
+<h2 id="using-intents-to-interact-with-other-apps">Using intents to interact with other apps</h2>
+<h3 id="implicit-intents">Implicit intents</h3>
+<p>When you create an intent to switch to an activity, your own app knows how to handle that intent: it should go to that new activity that also lives within your own app. These are called <strong>explicit intents</strong>: you specify which application will satisfy the intent by supplying the class name of the activity.</p>
+<p>Next to <em>explicit</em> intents, you can also create <strong>implicit</strong> intents. What&rsquo;s that? According to the docs:</p>
+<blockquote>
+<p><strong>Implicit</strong> intents do not name a specific component, but instead declare a general action to perform, which allows a component from another app to handle it. For example, if you want to show the user a location on a map, you can use an implicit intent to request that another capable app show a specified location on a map.</p>
+</blockquote>
+<p>Some useful uses of implicit intents:</p>
+<ul>
+<li>Ask &ldquo;any app&rdquo; to take a picture and return a reference to us</li>
+<li>Ask &ldquo;any app&rdquo; to browse on a map to a specific location</li>
+<li>Ask &ldquo;any app&rdquo; to print something</li>
+<li>Ask &ldquo;any app&rdquo; to dail a number</li>
+<li>&hellip;</li>
+</ul>
+<p>In short, <strong>messaging between specific apps</strong> requires the creation of implicit intents that you do NOT handle yourself.</p>
+<p>The code for this is really simple:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">val</span> <span style="color:#111">number</span> <span style="color:#111">=</span> <span style="color:#111">Uri</span><span style="color:#111">.</span><span style="color:#111">parse</span><span style="color:#111">(</span><span style="color:#d88200">&#34;tel:011112233&#34;</span><span style="color:#111">)</span>
+<span style="color:#111">startActivity</span><span style="color:#111">(</span><span style="color:#111">Intent</span><span style="color:#111">(</span><span style="color:#111">Intent</span><span style="color:#111">.</span><span style="color:#111">ACTION_CALL</span><span style="color:#111">,</span> <span style="color:#111">number</span><span style="color:#111">))</span>
+</code></pre></div><p>Each system-wide known implicit intent is specified with a pre-defined String that can be auto-completed:</p>
+<p><figure>
+	<a href="../../img/implicitintent.jpg" data-featherlight="image">
+		<img src="../../img/implicitintent.jpg"   title="the Auto-completion lists of possible (implicit) intents.">
+	</a>
+	
+		<figcaption>the Auto-completion lists of possible (implicit) intents.</figcaption>
+	
+</figure>
+</p>
+<p>See the <a href="https://developer.android.com/training/basics/intents/sending">guide to intents</a> for more examples such as opening a map, a webpage, creating an e-mail with attachments, and so forth.</p>
+
+<div class="notices warning" ><p>Applications that are not allowed to make calls will generate a <code>SecurityException</code> while attempting to start the <code>action.CALL</code> intent with the message &ldquo;Permission Denial&rdquo;, stating which specific permission is missing (<code>android.permission.CALL_PHONE</code> in case of calling). Add these in your <a href="https://developer.android.com/training/permissions/declaring">android manifest file</a> if needed. More on that in the <a href="../../android/security">security by design</a> chapter.</p>
+</div>
+
+<p>In case no single application knows how to handle your implicit intent, not even your own, <code>startActivity()</code> will throw an <code>ActivityNotFoundException</code>. It would thus be in your best interest to wrap your activity starts with a try block!</p>
+<p>A much better, secure way of coding would be to <a href="https://www.youtube.com/watch?v=HGElAW224dE">protect implicit intents with runtime checks</a>. Suppose you want to open the camera and afterwards receive the image URI. The app you want might simply not be there on certain devices, or that the user has restricted profile access. The key idea here is to <em>check something before using it</em>, instead of letting it crash afterwards. That&rsquo;s done via <code>resolveActivity()</code>:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">val</span> <span style="color:#111">intent</span> <span style="color:#111">=</span> <span style="color:#111">Intent</span><span style="color:#111">(</span><span style="color:#111">Intent</span><span style="color:#111">.</span><span style="color:#111">ACTION_CALL</span><span style="color:#111">,</span> <span style="color:#111">number</span><span style="color:#111">)</span>
+<span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#111">intent</span><span style="color:#111">.</span><span style="color:#111">resolveActivity</span><span style="color:#111">(</span><span style="color:#111">applicationContext</span><span style="color:#111">.</span><span style="color:#111">packageManager</span><span style="color:#111">)</span> <span style="color:#f92672">!=</span> <span style="color:#00a8c8">null</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+    <span style="color:#111">startActivity</span><span style="color:#111">(</span><span style="color:#111">intent</span><span style="color:#111">)</span>
+<span style="color:#111">}</span> <span style="color:#00a8c8">else</span> <span style="color:#111">{</span>
+    <span style="color:#111">msg</span><span style="color:#111">(</span><span style="color:#d88200">&#34;doesnt work on your device mate&#34;</span><span style="color:#111">)</span>
+<span style="color:#111">}</span>
+</code></pre></div><p>This has <a href="https://stackoverflow.com/questions/62535856/intent-resolveactivity-returns-null-in-api-30">known issues in certain Amdroid API versions</a>. A fallback would be to still catch the exception.</p>
+<h4 id="retrieving-the-result-from-intents">Retrieving the result from intents</h4>
+<p>Let&rsquo;s try to capture a picture. Follow along in the <a href="https://developer.android.com/training/camera/photobasics">taking photos Android Dev guide</a>. Remember advertise that your app depends on having a camera by adding <code>&lt;uses-feature android:name=&quot;android.hardware.camera&quot; android:required=&quot;true&quot; /&gt;</code> in the manifest file. The intent we&rsquo;re going to use is <code>MediaStore.ACTION_IMAGE_CAPTURE</code>.</p>
+<p>First, we need to register an &ldquo;activity result&rdquo; in our <code>onCreate()</code>, because it is only safe to call the method before the activity is in its STARTED state:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">class</span> <span style="color:#75af00">MainActivity</span> <span style="color:#111">:</span> <span style="color:#111">AppCompatActivity</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+    <span style="color:#00a8c8">private</span> <span style="color:#00a8c8">lateinit</span> <span style="color:#00a8c8">var</span> <span style="color:#111">pictureActivityResult</span><span style="color:#111">:</span> <span style="color:#111">ActivityResultLauncher</span><span style="color:#111">&lt;</span><span style="color:#111">Void</span><span style="color:#111">&gt;</span>
+    <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>    <span style="color:#00a8c8">override</span> <span style="color:#00a8c8">fun</span> <span style="color:#75af00">onCreate</span><span style="color:#111">(</span><span style="color:#111">savedInstanceState</span><span style="color:#111">:</span> <span style="color:#111">Bundle</span><span style="color:#111">?)</span> <span style="color:#111">{</span>
+        <span style="color:#00a8c8">super</span><span style="color:#111">.</span><span style="color:#111">onCreate</span><span style="color:#111">(</span><span style="color:#111">savedInstanceState</span><span style="color:#111">)</span>
+        <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>        <span style="color:#111">pictureActivityResult</span> <span style="color:#111">=</span> <span style="color:#111">registerForActivityResult</span><span style="color:#111">(</span><span style="color:#111">ActivityResultContracts</span><span style="color:#111">.</span><span style="color:#111">TakePicturePreview</span><span style="color:#111">())</span> <span style="color:#111">{</span> <span style="color:#111">bm</span><span style="color:#111">:</span> <span style="color:#111">Bitmap</span> <span style="color:#f92672">-&gt;</span>
+            <span style="color:#111">msg</span><span style="color:#111">(</span><span style="color:#d88200">&#34;bitmap is </span><span style="color:#d88200">${bm.height}</span><span style="color:#d88200"> high&#34;</span><span style="color:#111">,</span> <span style="color:#111">binding</span><span style="color:#111">.</span><span style="color:#111">root</span><span style="color:#111">)</span>
+            <span style="color:#75715e">// do something with the captured image
+</span><span style="color:#75715e"></span>        <span style="color:#111">}</span>
+    <span style="color:#111">}</span>
+</code></pre></div><p>Next, in the onclick listener, after asking/checking for the correct permissions, fire off the result using <code>pictureActivityResult.launch(null)</code>.</p>
+<p>Now where exactly do we specify which intent to fire off? That magic is obfuscated inside the <code>TakePicturePreview</code> class we&rsquo;re instantiating. You can provide your own what is called <strong>activity contracts</strong>, but a lot of commons are provided for you in the <code>ActivityResultcontracts</code> class. The picture preview source code looks like this:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">public</span> <span style="color:#111">static</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">TakePicturePreview</span> <span style="color:#111">extends</span> <span style="color:#111">ActivityResultContract</span><span style="color:#111">&lt;</span><span style="color:#111">Void</span><span style="color:#111">,</span> <span style="color:#111">Bitmap</span><span style="color:#111">&gt;</span> <span style="color:#111">{</span>
+
+    <span style="color:#75af00">@CallSuper</span>
+    <span style="color:#75af00">@NonNull</span>
+    <span style="color:#75af00">@Override</span>
+    <span style="color:#00a8c8">public</span> <span style="color:#111">Intent</span> <span style="color:#111">createIntent</span><span style="color:#111">(</span><span style="color:#75af00">@NonNull</span> <span style="color:#111">Context</span> <span style="color:#111">context</span><span style="color:#111">,</span> <span style="color:#75af00">@Nullable</span> <span style="color:#111">Void</span> <span style="color:#111">input</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+        <span style="color:#00a8c8">return</span> <span style="color:#111">new</span> <span style="color:#111">Intent</span><span style="color:#111">(</span><span style="color:#111">MediaStore</span><span style="color:#111">.</span><span style="color:#111">ACTION_IMAGE_CAPTURE</span><span style="color:#111">);</span>
+    <span style="color:#111">}</span>
+
+    <span style="color:#75af00">@Nullable</span>
+    <span style="color:#75af00">@Override</span>
+    <span style="color:#00a8c8">public</span> <span style="color:#00a8c8">final</span> <span style="color:#111">SynchronousResult</span><span style="color:#111">&lt;</span><span style="color:#111">Bitmap</span><span style="color:#111">&gt;</span> <span style="color:#111">getSynchronousResult</span><span style="color:#111">(</span><span style="color:#75af00">@NonNull</span> <span style="color:#111">Context</span> <span style="color:#111">context</span><span style="color:#111">,</span>
+            <span style="color:#75af00">@Nullable</span> <span style="color:#111">Void</span> <span style="color:#111">input</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+        <span style="color:#00a8c8">return</span> <span style="color:#00a8c8">null</span><span style="color:#111">;</span>
+    <span style="color:#111">}</span>
+
+    <span style="color:#75af00">@Nullable</span>
+    <span style="color:#75af00">@Override</span>
+    <span style="color:#00a8c8">public</span> <span style="color:#00a8c8">final</span> <span style="color:#111">Bitmap</span> <span style="color:#111">parseResult</span><span style="color:#111">(</span><span style="color:#111">int</span> <span style="color:#111">resultCode</span><span style="color:#111">,</span> <span style="color:#75af00">@Nullable</span> <span style="color:#111">Intent</span> <span style="color:#111">intent</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+        <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">intent</span> <span style="color:#f92672">==</span> <span style="color:#00a8c8">null</span> <span style="color:#f92672">||</span> <span style="color:#111">resultCode</span> <span style="color:#f92672">!=</span> <span style="color:#111">Activity</span><span style="color:#111">.</span><span style="color:#111">RESULT_OK</span><span style="color:#111">)</span> <span style="color:#00a8c8">return</span> <span style="color:#00a8c8">null</span><span style="color:#111">;</span>
+        <span style="color:#00a8c8">return</span> <span style="color:#111">intent</span><span style="color:#111">.</span><span style="color:#111">getParcelableExtra</span><span style="color:#111">(</span><span style="color:#d88200">&#34;data&#34;</span><span style="color:#111">);</span>
+    <span style="color:#111">}</span>
+<span style="color:#111">}</span>
+</code></pre></div><p>Aha, now we&rsquo;re getting somewhere! Upon further inspection, <code>TakePicture</code> (not the preview one) puts extra data into the intent to capture the whole output. Note the first generic type of the extended class: <code>Void</code>. So that is where that <code>Void</code> comes from in or <code>lateinit var pictureActivityResult</code>: other embedded activity result contracts will likely have other result types (<code>OpenDocument</code> has <code>String[]</code>, for instance).</p>
+<p>These details are provided for you, make use of them.</p>
+
+<div class="notices note" ><p>You&rsquo;ll learn the most while digging through the source code of the API itself while hacking your way through the code&mdash;and <em>not</em> by just reading this page. Do not be afraid to press <code>CTRL+B</code> (Go To Declaration) in Android Studio! If you still have no idea what&rsquo;s going on, then <code>developer.android.com</code> is your best friend.</p>
+</div>
+
+<h3 id="deliveringreceiving-a-broadcast">Delivering/receiving a broadcast</h3>
+<p>Instead of keeping intents as messages within your application, you can also <em>broadcast</em> them so that any app can receive them. The system delivers various broadcasts for system events, such as on bootup or when the device starts charging. Sending broadcasts can be done through <code>sendBroadcast()</code>.</p>
+<p>TODO in or out? what about them?</p>
 
 
 <footer class="footline">
@@ -730,6 +863,22 @@
                     
                         
                         
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
                     
                 
                 
@@ -991,17 +1140,17 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1627298443"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1627298443"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1627298443"></script>
-    <script src="../../js/jquery.sticky.js?1627298443"></script>
-    <script src="../../js/featherlight.min.js?1627298443"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1627298443"></script>
-    <script src="../../js/learn.js?1627298443"></script>
-    <script src="../../js/hugo-learn.js?1627298443"></script>
+    <script src="../../js/clipboard.min.js?1627306196"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1627306196"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1627306196"></script>
+    <script src="../../js/jquery.sticky.js?1627306196"></script>
+    <script src="../../js/featherlight.min.js?1627306196"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1627306196"></script>
+    <script src="../../js/learn.js?1627306196"></script>
+    <script src="../../js/hugo-learn.js?1627306196"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1627298443"></script>
+            <script src="../../mermaid/mermaid.js?1627306196"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
