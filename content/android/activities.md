@@ -68,7 +68,7 @@ Without specifying **constraints**, the components will be re-positioned to `(0,
 
 Once you've got a login button up and running, it would be nice if it actually did something when pressing it. The easiest way to do that is to use [Android View Binding](https://developer.android.com/topic/libraries/view-binding):
 
-> View binding is a feature that allows you to more easily write code that interacts with views. Once view binding is enabled in a module, it generates a binding class for each XML layout file present in that module. An instance of a binding class contains direct references to all views that have an ID in the corresponding layout.
+> **View binding** is a feature that allows you to more easily write code that interacts with views. Once view binding is enabled in a module, it generates a binding class for each XML layout file present in that module. An instance of a binding class contains direct references to all views that have an ID in the corresponding layout.
 
 To enable, simply add the `buildFeature` in your `build.gradle.kts` file:
 
@@ -135,3 +135,36 @@ binding.btnLogin.setOnClickListener { view ->
 Retrieve the password value and check it with some hard-coded value. If not correct, show a warning message using a `Snackbar`. If the username is empty, also show a warning message.
 {{% /notice %}}
 
+## Adding a second Activity
+
+What should happen once we're logged in successfully? Take another look at the first image on this page: a **welcome screen** would be nice. 
+
+Create a second layout XML file by right-clicking on the `res` folder (or layout), select New -- Layout Resource File, and name it `activity_welcome`. You're given the option to change the root element, but another `ConstraintLayout` is fine, since we're now familiar with the basics of element placing in that particular layout. Go to the design editor and pull in a nice welcome text and a sample image that corresponds to the user's avatar. When you're done with that, create the corresponding controller class called `WelcomeActivity`. 
+
+Next, we need a piece of code to change the activity to the new one, provided the password is correct. That's done using an **Intent**, of which we'll see more in the next chapter. An intent is a way to pass messages from one activity to another, but also to tell one activity it should transition to the other:
+
+```kt
+val intent = Intent(this, MyNewActivity::class.java)
+startActivity(intent)
+```
+
+Note that `::class.java` is the Kotlin way to grab hold of the static `.class` instance of a class. Run your app and see if it works. Chances are you'll see it crash with the following message in the console:
+
+```
+E/AndroidRuntime: FATAL EXCEPTION: main
+    Process: be.kuleuven.login, PID: 8457
+    android.content.ActivityNotFoundException: Unable to find explicit activity class {be.kuleuven.login/be.kuleuven.login.WelcomeActivity}; have you declared this activity in your AndroidManifest.xml?
+        at android.app.Instrumentation.checkStartActivityResult(Instrumentation.java:2065)
+        at android.app.Instrumentation.execStartActivity(Instrumentation.java:1727)
+        at android.app.Activity.startActivityForResult(Activity.java:5320)
+```
+
+Whoops. Each activity needs to be defined in the `AndroidManifest.xml` file where you can specify which one is the "main" that needs to be boostrapped as your application launches. Add an `<activity/>` tag there and try to guess the correct properties. Android Studio will auto-complete things for you. Make sure `exported` is set to `true`.
+
+Try again and it should work!
+
+{{% notice note %}}
+A note on (text) sizes: in Common Attributes, changing the text size means selecting a unit in `sp`, not `px`. What's an `sp`? To be able to support **different pixel densities** of different screens, we do not rely on hard-coded pixels but let this be calculated. SP = _Scalable Pixels_ and is used for scaling text. Otherwise, use `dp`. DP = _Density-Independent Pixels_. See the [andorid multiscreen dev guide](https://developer.android.com/training/multiscreen/screendensities) for more information on how pixels are effectively calculated. Watch the video to get a better grasp of Android's _logical pixel densities_. **Never use `px`**! <br/>The same is true for graphic assets, but to avoid automatic scaling which usually ruins your PNGs, provide at least four different versions: one for each `dp` "bucket": MDPI, HDPI, XHDPI and XXHDPI. Again, see the documentation. 
+{{% /notice %}}
+
+To learn more about message passing, see [messaging: intents](/android/intents).

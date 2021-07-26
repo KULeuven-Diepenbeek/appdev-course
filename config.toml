@@ -27,6 +27,7 @@ enableGitInfo = true
     lineNumbersInTable = true
     noClasses = true
     tabWidth = 4
+    style = "monokailight"
 
 [privacy]
   [privacy.youtube]
