@@ -2,6 +2,8 @@
 title: 2. Messaging - Intents
 ---
 
+## Using intents to start an internal activity
+
 What if, instead of showing a generic welcome screen after logging in, we want to _personally_ welcome the user? 
 
 Instead of "Welcome, have a nice day", as pictured in:
@@ -23,7 +25,7 @@ val username = intent.getStringExtra("username")
 binding.txtWelcome.text = "Welcome, $username"
 ```
 
-## Passing objects through intents
+### Passing objects through intents
 
 Of course, passing in tens of different input fields can get cumbersome. Instead, let's provide a data class that represents the user:
 
@@ -64,3 +66,130 @@ Android also supports [(two-way) **data binding**](https://developer.android.com
 Can you think of other smart ways to share data between activites? 
 
 The Parcelize alternative is left as an exercise for the reader. 
+
+## Using intents to start an internal service
+
+Besides switching activities as screens within a single app, an intent can also pass messages along a background service that performs operations without a user interface. Services can be launched by creating a `JobScheduler` instance and passing it to `startService()` (instead of `startActivity()`) (see [API reference](https://developer.android.com/reference/android/app/job/JobScheduler)). Why would you want to do that? 
+
+- To download a large file in the background without blocking the UI
+- To convert a lot of images in the background
+- To upload data to a back-end server using a HTTP POST
+- ...
+
+Services, and the difference between them and typical Java threads, are explained in detail in the [Services overview dev guide](https://developer.android.com/guide/components/services). The use services are not part of this course. 
+
+## Using intents to interact with other apps
+
+### Implicit intents
+
+When you create an intent to switch to an activity, your own app knows how to handle that intent: it should go to that new activity that also lives within your own app. These are called **explicit intents**: you specify which application will satisfy the intent by supplying the class name of the activity. 
+
+Next to _explicit_ intents, you can also create **implicit** intents. What's that? According to the docs:
+
+> **Implicit** intents do not name a specific component, but instead declare a general action to perform, which allows a component from another app to handle it. For example, if you want to show the user a location on a map, you can use an implicit intent to request that another capable app show a specified location on a map.
+
+Some useful uses of implicit intents:
+
+- Ask "any app" to take a picture and return a reference to us
+- Ask "any app" to browse on a map to a specific location
+- Ask "any app" to print something
+- Ask "any app" to dail a number
+- ...
+
+In short, **messaging between specific apps** requires the creation of implicit intents that you do NOT handle yourself. 
+
+The code for this is really simple:
+
+```kt
+val number = Uri.parse("tel:011112233")
+startActivity(Intent(Intent.ACTION_CALL, number))
+```
+
+Each system-wide known implicit intent is specified with a pre-defined String that can be auto-completed:
+
+![](/img/implicitintent.jpg "the Auto-completion lists of possible (implicit) intents.")
+
+See the [guide to intents](https://developer.android.com/training/basics/intents/sending) for more examples such as opening a map, a webpage, creating an e-mail with attachments, and so forth. 
+
+{{% notice warning %}}
+Applications that are not allowed to make calls will generate a `SecurityException` while attempting to start the `action.CALL` intent with the message "Permission Denial", stating which specific permission is missing (`android.permission.CALL_PHONE` in case of calling). Add these in your [android manifest file](https://developer.android.com/training/permissions/declaring) if needed. More on that in the [security by design](/android/security) chapter.
+{{% /notice %}}
+
+In case no single application knows how to handle your implicit intent, not even your own, `startActivity()` will throw an `ActivityNotFoundException`. It would thus be in your best interest to wrap your activity starts with a try block!
+
+A much better, secure way of coding would be to [protect implicit intents with runtime checks](https://www.youtube.com/watch?v=HGElAW224dE). Suppose you want to open the camera and afterwards receive the image URI. The app you want might simply not be there on certain devices, or that the user has restricted profile access. The key idea here is to _check something before using it_, instead of letting it crash afterwards. That's done via `resolveActivity()`:
+
+```kt
+val intent = Intent(Intent.ACTION_CALL, number)
+if(intent.resolveActivity(applicationContext.packageManager) != null) {
+    startActivity(intent)
+} else {
+    msg("doesnt work on your device mate")
+}
+```
+
+This has [known issues in certain Amdroid API versions](https://stackoverflow.com/questions/62535856/intent-resolveactivity-returns-null-in-api-30). A fallback would be to still catch the exception. 
+
+#### Retrieving the result from intents
+
+Let's try to capture a picture. Follow along in the [taking photos Android Dev guide](https://developer.android.com/training/camera/photobasics). Remember advertise that your app depends on having a camera by adding `<uses-feature android:name="android.hardware.camera" android:required="true" />` in the manifest file. The intent we're going to use is `MediaStore.ACTION_IMAGE_CAPTURE`.
+
+First, we need to register an "activity result" in our `onCreate()`, because it is only safe to call the method before the activity is in its STARTED state:
+
+```kt
+class MainActivity : AppCompatActivity() {
+    private lateinit var pictureActivityResult: ActivityResultLauncher<Void>
+    // ...
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        // ...
+        pictureActivityResult = registerForActivityResult(ActivityResultContracts.TakePicturePreview()) { bm: Bitmap ->
+            msg("bitmap is ${bm.height} high", binding.root)
+            // do something with the captured image
+        }
+    }
+```
+
+Next, in the onclick listener, after asking/checking for the correct permissions, fire off the result using `pictureActivityResult.launch(null)`.
+
+Now where exactly do we specify which intent to fire off? That magic is obfuscated inside the `TakePicturePreview` class we're instantiating. You can provide your own what is called **activity contracts**, but a lot of commons are provided for you in the `ActivityResultcontracts` class. The picture preview source code looks like this:
+
+```kt
+public static class TakePicturePreview extends ActivityResultContract<Void, Bitmap> {
+
+    @CallSuper
+    @NonNull
+    @Override
+    public Intent createIntent(@NonNull Context context, @Nullable Void input) {
+        return new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+    }
+
+    @Nullable
+    @Override
+    public final SynchronousResult<Bitmap> getSynchronousResult(@NonNull Context context,
+            @Nullable Void input) {
+        return null;
+    }
+
+    @Nullable
+    @Override
+    public final Bitmap parseResult(int resultCode, @Nullable Intent intent) {
+        if (intent == null || resultCode != Activity.RESULT_OK) return null;
+        return intent.getParcelableExtra("data");
+    }
+}
+```
+
+Aha, now we're getting somewhere! Upon further inspection, `TakePicture` (not the preview one) puts extra data into the intent to capture the whole output. Note the first generic type of the extended class: `Void`. So that is where that `Void` comes from in or `lateinit var pictureActivityResult`: other embedded activity result contracts will likely have other result types (`OpenDocument` has `String[]`, for instance). 
+
+These details are provided for you, make use of them. 
+
+{{% notice note %}}
+You'll learn the most while digging through the source code of the API itself while hacking your way through the code---and _not_ by just reading this page. Do not be afraid to press `CTRL+B` (Go To Declaration) in Android Studio! If you still have no idea what's going on, then `developer.android.com` is your best friend.
+{{% /notice %}}
+
+### Delivering/receiving a broadcast
+
+Instead of keeping intents as messages within your application, you can also _broadcast_ them so that any app can receive them. The system delivers various broadcasts for system events, such as on bootup or when the device starts charging. Sending broadcasts can be done through `sendBroadcast()`. 
+
+TODO in or out? what about them?

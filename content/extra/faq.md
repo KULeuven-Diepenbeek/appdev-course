@@ -54,3 +54,15 @@ Error:
 Cause: I have no idea, and Google/Stack Overflow doesn't seem to know either. It happens sometimes after building and deploying. The emulator boots, but the app won't load in the emulator. 
 
 Solution: Rebuild. Do not restart the emulator, just leave it open. Simply rebuilding seems to fix this problem. 
+
+### 5. LifecycleOwners must call register before they are STARTED.
+
+Error:
+
+> ... is attempting to register while current state is STARTED. LifecycleOwners must call register before they are STARTED.
+
+Cause:
+
+Are you calling `registerForActivityResult` in `onCreate()` using a callback of sorts? If so, your fragment/activity is still in STARTED state and should be in CREATED state for this particular intent to receive the results. Usually if you want to receive a camera image. 
+
+Solution: move your listener outside of create scope (e.g. `onViewCreated()`).
