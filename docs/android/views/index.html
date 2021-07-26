@@ -9,24 +9,24 @@
 
     <link rel="icon" href="../../images/favicon.png" type="image/png">
 
-    <title>3. Layouts - Views :: App Development</title>
+    <title>4. Layouts - Views :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1627031041" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1627031041" rel="stylesheet">
-    <link href="../../css/hybrid.css?1627031041" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1627031041" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1627031041" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1627031041" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1627031041" rel="stylesheet">
-    <link href="../../css/theme.css?1627031041" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1627031041" rel="stylesheet">
+    <link href="../../css/nucleus.css?1627294046" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1627294046" rel="stylesheet">
+    <link href="../../css/hybrid.css?1627294046" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1627294046" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1627294046" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1627294046" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1627294046" rel="stylesheet">
+    <link href="../../css/theme.css?1627294046" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1627294046" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1627031041" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1627294046" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1627031041"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1627294046"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -59,7 +59,7 @@ window.MathJax = {
 };
 </script>
 
-<script src=../../js/osc.js></script>
+
   </head>
   <body class="" data-url="../../android/views/">
     <nav id="sidebar" class="">
@@ -82,14 +82,14 @@ window.MathJax = {
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1627031041"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1627031041"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1627294046"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1627294046"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1627031041"></script>
+<script type="text/javascript" src="../../js/search.js?1627294046"></script>
 
     
   </div>
@@ -176,51 +176,51 @@ window.MathJax = {
  
   
     
-      <li data-nav-id="/android/views/" title="3. Layouts - Views" class="dd-item active">
-        <a href="../../android/views/">
-        3. Layouts - Views
-        
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-      <li data-nav-id="/android/data-storage/" title="4. Data Storage - File/Network" class="dd-item ">
-        <a href="../../android/data-storage/">
-        4. Data Storage - File/Network
-        
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-      <li data-nav-id="/android/fragments/" title="5. Complex layouting - Fragments" class="dd-item ">
+      <li data-nav-id="/android/fragments/" title="3. Complex layouting - Fragments" class="dd-item ">
         <a href="../../android/fragments/">
-        5. Complex layouting - Fragments
+        3. Complex layouting - Fragments
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/views/" title="4. Layouts - Views" class="dd-item active">
+        <a href="../../android/views/">
+        4. Layouts - Views
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/data-storage/" title="5. Data Storage - File/Network" class="dd-item ">
+        <a href="../../android/data-storage/">
+        5. Data Storage - File/Network
         
         </a>
     </li>
@@ -579,7 +579,7 @@ window.MathJax = {
             
           
           
-            <a href='../../'>Course Contents</a> > <a href='../../android/'>1. Android Essentials</a> > 3. Layouts - Views
+            <a href='../../'>Course Contents</a> > <a href='../../android/'>1. Android Essentials</a> > 4. Layouts - Views
           
         
           
@@ -594,12 +594,9 @@ window.MathJax = {
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li>
-      <ul>
-        <li><a href="#responsive-design">Responsive design</a></li>
-        <li><a href="#recyclerview">RecyclerView</a></li>
-      </ul>
-    </li>
+    <li><a href="#responsive-design">Responsive design</a></li>
+    <li><a href="#recyclerview">RecyclerView</a></li>
+    <li><a href="#storing-and-saving-states">Storing and saving states</a></li>
   </ul>
 </nav>
     </div>
@@ -617,16 +614,19 @@ window.MathJax = {
           
             <h1>
               
-              3. Layouts - Views
+              4. Layouts - Views
             </h1>
           
 
         
 
 
-<h3 id="responsive-design">Responsive design</h3>
+<h2 id="responsive-design">Responsive design</h2>
 <p>TODO geen px maar sd</p>
-<h3 id="recyclerview">RecyclerView</h3>
+<h2 id="recyclerview">RecyclerView</h2>
+<h2 id="storing-and-saving-states">Storing and saving states</h2>
+<p>TODO <a href="https://developer.android.com/topic/libraries/architecture/saving-states">https://developer.android.com/topic/libraries/architecture/saving-states</a></p>
+<p>pressing back, rotating, data gone?</p>
 
 
 <footer class="footline">
@@ -713,6 +713,22 @@ window.MathJax = {
             
                 
                     
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
                     
                 
                 
@@ -732,22 +748,6 @@ window.MathJax = {
                     
                         
                         
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -964,10 +964,10 @@ window.MathJax = {
 	 
 	 
 		
-			<a class="nav nav-prev" href="../../android/intents/" title="2. Messaging - Intents"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="../../android/fragments/" title="3. Complex layouting - Fragments"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="../../android/data-storage/" title="4. Data Storage - File/Network" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="../../android/data-storage/" title="5. Data Storage - File/Network" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -977,19 +977,19 @@ window.MathJax = {
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1627031041"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1627031041"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1627031041"></script>
-    <script src="../../js/jquery.sticky.js?1627031041"></script>
-    <script src="../../js/featherlight.min.js?1627031041"></script>
-    <script src="../../js/highlight.pack.js?1627031041"></script>
+    <script src="../../js/clipboard.min.js?1627294046"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1627294046"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1627294046"></script>
+    <script src="../../js/jquery.sticky.js?1627294046"></script>
+    <script src="../../js/featherlight.min.js?1627294046"></script>
+    <script src="../../js/highlight.pack.js?1627294046"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1627031041"></script>
-    <script src="../../js/learn.js?1627031041"></script>
-    <script src="../../js/hugo-learn.js?1627031041"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1627294046"></script>
+    <script src="../../js/learn.js?1627294046"></script>
+    <script src="../../js/hugo-learn.js?1627294046"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1627031041"></script>
+            <script src="../../mermaid/mermaid.js?1627294046"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

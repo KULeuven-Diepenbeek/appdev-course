@@ -12,21 +12,21 @@
     <title>2. Messaging - Intents :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1627031041" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1627031041" rel="stylesheet">
-    <link href="../../css/hybrid.css?1627031041" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1627031041" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1627031041" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1627031041" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1627031041" rel="stylesheet">
-    <link href="../../css/theme.css?1627031041" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1627031041" rel="stylesheet">
+    <link href="../../css/nucleus.css?1627294045" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1627294045" rel="stylesheet">
+    <link href="../../css/hybrid.css?1627294045" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1627294045" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1627294045" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1627294045" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1627294045" rel="stylesheet">
+    <link href="../../css/theme.css?1627294045" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1627294045" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1627031041" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1627294045" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1627031041"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1627294045"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -59,7 +59,7 @@ window.MathJax = {
 };
 </script>
 
-<script src=../../js/osc.js></script>
+
   </head>
   <body class="" data-url="../../android/intents/">
     <nav id="sidebar" class="">
@@ -82,14 +82,14 @@ window.MathJax = {
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1627031041"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1627031041"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1627294045"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1627294045"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1627031041"></script>
+<script type="text/javascript" src="../../js/search.js?1627294045"></script>
 
     
   </div>
@@ -176,51 +176,51 @@ window.MathJax = {
  
   
     
-      <li data-nav-id="/android/views/" title="3. Layouts - Views" class="dd-item ">
-        <a href="../../android/views/">
-        3. Layouts - Views
-        
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-      <li data-nav-id="/android/data-storage/" title="4. Data Storage - File/Network" class="dd-item ">
-        <a href="../../android/data-storage/">
-        4. Data Storage - File/Network
-        
-        </a>
-    </li>
-     
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
-      <li data-nav-id="/android/fragments/" title="5. Complex layouting - Fragments" class="dd-item ">
+      <li data-nav-id="/android/fragments/" title="3. Complex layouting - Fragments" class="dd-item ">
         <a href="../../android/fragments/">
-        5. Complex layouting - Fragments
+        3. Complex layouting - Fragments
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/views/" title="4. Layouts - Views" class="dd-item ">
+        <a href="../../android/views/">
+        4. Layouts - Views
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/data-storage/" title="5. Data Storage - File/Network" class="dd-item ">
+        <a href="../../android/data-storage/">
+        5. Data Storage - File/Network
         
         </a>
     </li>
@@ -592,7 +592,11 @@ window.MathJax = {
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#passing-objects-through-intents">Passing objects through intents</a></li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -615,6 +619,50 @@ window.MathJax = {
         
 
 
+<p>What if, instead of showing a generic welcome screen after logging in, we want to <em>personally</em> welcome the user?</p>
+<p>Instead of &ldquo;Welcome, have a nice day&rdquo;, as pictured in:</p>
+<p><figure>
+	<a href="../../img/activities.png" data-featherlight="image">
+		<img src="../../img/activities.png"   title="Two example activities from 1.1.">
+	</a>
+	
+		<figcaption>Two example activities from 1.1.</figcaption>
+	
+</figure>
+</p>
+<p>We&rsquo;d like to say &ldquo;Welcome [username]&rdquo;! That is, we want to <strong>pass arguments</strong> from one activity to the next. We&rsquo;ve already created an intent to start a second activity using <code>Intent(this, MyNewActivity::class.java)</code>. After this piece of code, and before calling <code>startActivity()</code>, we can add stuff to the intent which is passed along the new activity:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">val</span> <span style="color:#111">intent</span> <span style="color:#111">=</span> <span style="color:#111">Intent</span><span style="color:#111">(</span><span style="color:#00a8c8">this</span><span style="color:#111">,</span> <span style="color:#111">WelcomeActivity</span><span style="color:#f92672">::</span><span style="color:#00a8c8">class</span><span style="color:#111">.</span><span style="color:#111">java</span><span style="color:#111">)</span>
+<span style="color:#111">intent</span><span style="color:#111">.</span><span style="color:#111">putExtra</span><span style="color:#111">(</span><span style="color:#d88200">&#34;username&#34;</span><span style="color:#111">,</span> <span style="color:#111">binding</span><span style="color:#111">.</span><span style="color:#111">txtUsername</span><span style="color:#111">.</span><span style="color:#111">text</span><span style="color:#111">.</span><span style="color:#111">toString</span><span style="color:#111">())</span>
+<span style="color:#111">startActivity</span><span style="color:#111">(</span><span style="color:#111">intent</span><span style="color:#111">)</span>
+</code></pre></div><p>On the receiving side, simply pull out the data using the appropriate <code>get</code> function in the <code>onCreate()</code> function after setting the content view to the correct root binding:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">val</span> <span style="color:#111">username</span> <span style="color:#111">=</span> <span style="color:#111">intent</span><span style="color:#111">.</span><span style="color:#111">getStringExtra</span><span style="color:#111">(</span><span style="color:#d88200">&#34;username&#34;</span><span style="color:#111">)</span>
+<span style="color:#111">binding</span><span style="color:#111">.</span><span style="color:#111">txtWelcome</span><span style="color:#111">.</span><span style="color:#111">text</span> <span style="color:#111">=</span> <span style="color:#d88200">&#34;Welcome, </span><span style="color:#d88200">$username</span><span style="color:#d88200">&#34;</span>
+</code></pre></div><h2 id="passing-objects-through-intents">Passing objects through intents</h2>
+<p>Of course, passing in tens of different input fields can get cumbersome. Instead, let&rsquo;s provide a data class that represents the user:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">data</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">User</span><span style="color:#111">(</span><span style="color:#00a8c8">val</span> <span style="color:#111">name</span><span style="color:#111">:</span> <span style="color:#111">String</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+<span style="color:#111">}</span>
+</code></pre></div><p>Unfortunately, that is not enough. Intents only carry along basic key-value pairs of primitives, meaning our object has to be <strong>serialized</strong>. There are two options to do this:</p>
+<ol>
+<li>The default Java way: implement <code>Serializable</code>. Use <a href="https://betterprogramming.pub/why-and-how-to-use-kotlins-native-serialization-library-c88c0f14f93d">Kotlin native serialization</a> to make things easier here.</li>
+<li>The Android specific way: implement <code>Parcelable</code>. A &ldquo;parcel&rdquo; is a &ldquo;package&rdquo; that needs to be delivered form one side to the other. Parcels are much more efficient on Android devices than serializable. See the <a href="https://developer.android.com/kotlin/parcelize">parcelable implementation generator docs</a> on how to enable this in your Kotlin-Android project.</li>
+</ol>
+<p>Let&rsquo;s settle with the first option. In order to add <code>@Serializable</code> to your data class, we need to <a href="https://github.com/Kotlin/kotlinx.serialization">install the kotlinx.serialization</a> plugin. Add the plugin to your <code>plugins</code> block in your module <code>build.gradle.kts</code> (keep the <strong>version</strong> the same as your Kotlin version!):</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#111">plugins</span> <span style="color:#111">{</span>
+    <span style="color:#111">id</span><span style="color:#111">(</span><span style="color:#d88200">&#34;com.android.application&#34;</span><span style="color:#111">)</span>
+    <span style="color:#111">id</span><span style="color:#111">(</span><span style="color:#d88200">&#34;kotlin-android&#34;</span><span style="color:#111">)</span>
+    <span style="color:#111">kotlin</span><span style="color:#111">(</span><span style="color:#d88200">&#34;plugin.serialization&#34;</span><span style="color:#111">)</span> <span style="color:#111">version</span> <span style="color:#d88200">&#34;1.5.21&#34;</span> <span style="color:#75715e">// add this
+</span><span style="color:#75715e"></span><span style="color:#111">}</span>
+</code></pre></div><p>Then, add an implementation dependency <code>    implementation(&quot;org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2&quot;)</code>. Lastly, update your <code>User</code> data class to add the <code>@Serializable</code> annotation that should get imported from the package <code>kotlinx.serialization</code>, and the Java <code>Serializable</code> interface to tell Android-specific methods it&rsquo;s a serializable object:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#75af00">@Serializable</span>
+<span style="color:#00a8c8">data</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">User</span><span style="color:#111">(</span><span style="color:#00a8c8">val</span> <span style="color:#111">name</span><span style="color:#111">:</span> <span style="color:#111">String</span><span style="color:#111">)</span> <span style="color:#111">:</span> <span style="color:#111">Serializable</span> <span style="color:#111">{</span>
+<span style="color:#111">}</span>
+</code></pre></div><p>Now create a function that returns a new <code>User</code> object based on the viewbinding&rsquo;s values. Then pass the single <code>User</code> instance through the intent using <code>putExtra()</code>. Pull it back out using <code>getSerializableExtra()</code>.</p>
+
+<div class="notices note" ><p>Android also supports <a href="https://developer.android.com/topic/libraries/data-binding/two-way">(two-way) <strong>data binding</strong></a>, next to the <strong>view binding</strong> system introduced in <a href="../../android/activities">chapter 1.1</a>. This allows designers to directly map properties of models into the layouts, thus avoiding having to access every single property to carry over into an intent or another object. Data binding is not part of this course but feel free to use it instead of view binding, should you wish to do so.</p>
+</div>
+
+<p>Can you think of other smart ways to share data between activites?</p>
+<p>The Parcelize alternative is left as an exercise for the reader.</p>
 
 
 <footer class="footline">
@@ -955,7 +1003,7 @@ window.MathJax = {
 			<a class="nav nav-prev" href="../../android/activities/" title="1. Life Cycle - Activities"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="../../android/views/" title="3. Layouts - Views" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="../../android/fragments/" title="3. Complex layouting - Fragments" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -965,19 +1013,19 @@ window.MathJax = {
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1627031041"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1627031041"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1627031041"></script>
-    <script src="../../js/jquery.sticky.js?1627031041"></script>
-    <script src="../../js/featherlight.min.js?1627031041"></script>
-    <script src="../../js/highlight.pack.js?1627031041"></script>
+    <script src="../../js/clipboard.min.js?1627294046"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1627294046"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1627294046"></script>
+    <script src="../../js/jquery.sticky.js?1627294046"></script>
+    <script src="../../js/featherlight.min.js?1627294046"></script>
+    <script src="../../js/highlight.pack.js?1627294046"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1627031041"></script>
-    <script src="../../js/learn.js?1627031041"></script>
-    <script src="../../js/hugo-learn.js?1627031041"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1627294046"></script>
+    <script src="../../js/learn.js?1627294046"></script>
+    <script src="../../js/hugo-learn.js?1627294046"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1627031041"></script>
+            <script src="../../mermaid/mermaid.js?1627294046"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
