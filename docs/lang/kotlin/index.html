@@ -12,20 +12,20 @@
     <title>1. The Kotlin programming lang. :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1627378776" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1627378776" rel="stylesheet">
-    <link href="../../css/hybrid.css?1627378776" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1627378776" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1627378776" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1627378776" rel="stylesheet">
-    <link href="../../css/theme.css?1627378776" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1627378776" rel="stylesheet">
+    <link href="../../css/nucleus.css?1627392878" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1627392878" rel="stylesheet">
+    <link href="../../css/hybrid.css?1627392878" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1627392878" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1627392878" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1627392878" rel="stylesheet">
+    <link href="../../css/theme.css?1627392878" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1627392878" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1627378776" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1627392878" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1627378776"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1627392878"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -60,14 +60,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1627378776"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1627378776"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1627392878"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1627392878"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1627378776"></script>
+<script type="text/javascript" src="../../js/search.js?1627392878"></script>
 
     
   </div>
@@ -599,6 +599,7 @@
         <li><a href="#2-because-we-say-so">2. Because We Say So</a></li>
       </ul>
     </li>
+    <li><a href="#how-does-kotlin-fit-into-the-jvm">How does Kotlin fit into the JVM?</a></li>
     <li><a href="#a-crash-course-in-kotlin">A Crash Course in Kotlin</a>
       <ul>
         <li><a href="#1-variables">1. Variables</a></li>
@@ -652,6 +653,25 @@
 <p>Moreover, troubleshooting using Google/Stack Overflow usually nets you Kotlin code, as it&rsquo;s become that common. Yet another point in favor for learning Android app development &ldquo;the recommended way&rdquo;. We promise it won&rsquo;t hurt a bit. Maybe only sting. Just a little bit.</p>
 <h3 id="2-because-we-say-so">2. Because We Say So</h3>
 <p>The software department of ACRO, the KU Leuven research group at Diepenbeek Campus, focuses on functional languages, of which Kotlin certainly fits the bill. Kotlin&rsquo;s functional mechanics are nowhere near as complex as Prolog or Scala, and is familiar enough for students who are used to writing programs in Java. Thus, with relative little effort, a new (both for you and for the programming community) language can be learned.</p>
+<h2 id="how-does-kotlin-fit-into-the-jvm">How does Kotlin fit into the JVM?</h2>
+<p>It&rsquo;s actually very simple: you should treat Kotlin as a <em>separate language</em> that compiles into the <em>same byte code</em> class files as traditional Java <code>.class</code> files. These can be packaged into a <code>.jar</code> like any other Java app, and run using the JVM, that won&rsquo;t even know it started as Kotlin code:</p>
+<p><figure>
+	<a href="../../img/ktcompile.jpg" data-featherlight="image">
+		<img src="../../img/ktcompile.jpg"   title="Compiling java/kotlin files. src: Kotlin in Action book">
+	</a>
+	
+		<figcaption>Compiling java/kotlin files. src: Kotlin in Action book</figcaption>
+	
+</figure>
+</p>
+<p>The only block that stands out here is the <strong>Kotlin runtime</strong> that has to be packaged with the application, using the correct arguments when compiling command-line:</p>
+<pre><code>kotlinc hello.kt -include-runtime -d hello.jar
+</code></pre><p>The <code>-include-runtime</code> check simply tells the Kotlin compiler to pack along Kotlin&rsquo;s API. That is, utility functions such as <code>print()</code>, that serve as simple wrappers for <code>System.out.println()</code>, need to be packaged in the same jar. That is, the Kotlin &ldquo;runtime&rdquo; (nothing <em>runtime</em> about it) is just a <em>dependency</em>! <br/>The above schematic also reveals that interoperability between Java and Kotlin is very easy: they&rsquo;re both (eventually) JVM-class files! So, calling Kotlin from Java or Java from Kotlin is easy as pie.</p>
+
+<div class="notices note" ><p>The Kotlin language can also be compiled natively using the LLVM compiler, or compile into JavaScript and run on Node. We will be focusing on Kotlin for the JVM in this course.</p>
+</div>
+
+<p>Now you&rsquo;re ready to get your hands dirty!</p>
 <h2 id="a-crash-course-in-kotlin">A Crash Course in Kotlin</h2>
 <p>Roughly based upon Google&rsquo;s <a href="https://developer.android.com/kotlin/learn">Introduction to Kotlin crash course</a>.</p>
 <p><strong>Play with Kotlin</strong> to get to know the language before focusing on Android specifics. The best way to do this is creating simple Kotlin projects in Intellij (see <a href="../../lang/kotlin-examples">Kotlin examples</a>) or simply by browsing to <a href="https://play.kotlinlang.org/">https://play.kotlinlang.org/</a></p>
@@ -671,6 +691,7 @@
 </span><span style="color:#75715e"></span><span style="color:#111">}</span>
 </code></pre></div><p>This works just like in JavaScript: <code>let</code> (used to be <code>var</code>) and <code>const</code>.</p>
 <p><code>val</code>ues cannot be changed: they&rsquo;re values. What else is new? No <code>;</code>&mdash;finally! Note Kotlin has built-in <a href="https://kotlinlang.org/spec/type-inference.html">type inference</a>: specifying <code>:= Int</code> is not needed, the compiler knows this since you provide a whole number on the right-hand side of the equation sign.</p>
+<p>Try to use <code>val</code> as much as possible: <strong>make verything immutable</strong>, unless you absolutely have to use a mutable variable. This is good practice that promotes functional-style programming and prevents making mistakes with, among others, concurrency. Note that <code>val person = Person()</code> means you cannot assign another <code>Person</code> to the <code>person</code> variable, but you can still mutate the reference itself: <code>person.age = 10</code>&mdash;unless the setter is private, that is.</p>
 <p>Spot the new syntax in the next section:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">fun</span> <span style="color:#75af00">main</span><span style="color:#111">(</span><span style="color:#111">args</span><span style="color:#111">:</span> <span style="color:#111">Array</span><span style="color:#111">&lt;</span><span style="color:#111">String</span><span style="color:#111">&gt;)</span> <span style="color:#111">{</span>
     <span style="color:#00a8c8">var</span> <span style="color:#111">name</span><span style="color:#111">:</span> <span style="color:#111">String</span> <span style="color:#111">=</span> <span style="color:#00a8c8">null</span> <span style="color:#75715e">// does not compile
@@ -688,7 +709,7 @@
 <span style="color:#111">}</span>
 </code></pre></div><p>This is called <strong>null safety</strong>. To assign <code>null</code>, you explicitly have to use the question mark <code>?</code> sign. <code>orEmpty()</code> returns an empty string if the value it holds is effectively <code>null</code>. This method, or using <code>var?.</code> to access properties, omits needlessly checking with <code>if(...)</code> statements, complicating your codebase, such as the last two statements.</p>
 
-<div class="notices info" ><p>All standard JDK API methods are still available to you. Remember that you are still working on a Java-specific Virtual Machine. Thus, <code>System.out.println()</code> is still valid (but can be shortened to <code>prinln()</code>, imported from package <code>kotlin.io</code>), although you have to omit the <code>;</code> at the end of the statement. So, in essence, you already know how to create threads, access files, &hellip;! <br/>This is also very important in Android development, as many system-level Android API methods are still Java.</p>
+<div class="notices note" ><p>All standard JDK API methods are still available to you. Remember that you are still working on a Java-specific Virtual Machine. Thus, <code>System.out.println()</code> is still valid (but can be shortened to <code>prinln()</code>, imported from package <code>kotlin.io</code>), although you have to omit the <code>;</code> at the end of the statement. So, in essence, you already know how to create threads, access files, &hellip;! <br/>This is also very important in Android development, as many system-level Android API methods are still Java.</p>
 </div>
 
 <h3 id="2-conditionals">2. Conditionals</h3>
@@ -700,7 +721,24 @@
 <span style="color:#111">}</span>
 
 <span style="color:#111">println</span><span style="color:#111">(</span><span style="color:#111">answerString</span><span style="color:#111">)</span>
-</code></pre></div><p>Note that no ternary operator exists (<code>val bla = d == 10 ? &quot;jup&quot; : &quot;nah&quot;</code>).</p>
+</code></pre></div><p>Note that in the example above, the expression seems to be missing. If <code>when</code> is used without brackets, Kotlin will check for Boolean values. <code>when</code> is very powerful in Kotlin, compared to <code>switch</code> in Java, that requires constants. You can <code>when</code> over any string/object instance/whatever:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">val</span> <span style="color:#111">color</span> <span style="color:#111">=</span> <span style="color:#111">Color</span><span style="color:#111">(</span><span style="color:#111">RED</span><span style="color:#111">)</span>
+<span style="color:#00a8c8">when</span><span style="color:#111">(</span><span style="color:#111">color</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+    <span style="color:#111">Color</span><span style="color:#111">(</span><span style="color:#111">GREEN</span><span style="color:#111">)</span> <span style="color:#f92672">-&gt;</span> <span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#d88200">&#34;its green&#34;</span><span style="color:#111">)</span>
+    <span style="color:#111">Color</span><span style="color:#111">(</span><span style="color:#111">RED</span><span style="color:#111">)</span> <span style="color:#f92672">-&gt;</span> <span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#d88200">&#34;its red&#34;</span><span style="color:#111">)</span>
+<span style="color:#111">}</span>
+</code></pre></div><p>Kotlin uses <em>equality checks</em> behind the scenes, so it will look like this in Java:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#111">Color</span> <span style="color:#111">color</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">new</span> <span style="color:#111">Color</span><span style="color:#f92672">(</span><span style="color:#111">RED</span><span style="color:#f92672">);</span>
+<span style="color:#00a8c8">if</span><span style="color:#f92672">(</span><span style="color:#111">color</span><span style="color:#f92672">.</span><span style="color:#75af00">equals</span><span style="color:#f92672">(</span><span style="color:#00a8c8">new</span> <span style="color:#111">Color</span><span style="color:#f92672">(</span><span style="color:#111">GREEN</span><span style="color:#f92672">)))</span> <span style="color:#f92672">{</span>
+    <span style="color:#111">System</span><span style="color:#f92672">.</span><span style="color:#75af00">out</span><span style="color:#f92672">.</span><span style="color:#75af00">println</span><span style="color:#f92672">(</span><span style="color:#d88200">&#34;its green&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#f92672">}</span> <span style="color:#00a8c8">else</span> <span style="color:#00a8c8">if</span><span style="color:#f92672">(</span><span style="color:#111">color</span><span style="color:#f92672">.</span><span style="color:#75af00">equals</span><span style="color:#f92672">(</span><span style="color:#00a8c8">new</span> <span style="color:#111">Color</span><span style="color:#f92672">(</span><span style="color:#111">RED</span><span style="color:#f92672">)))</span> <span style="color:#f92672">{</span>
+    <span style="color:#111">System</span><span style="color:#f92672">.</span><span style="color:#75af00">out</span><span style="color:#f92672">.</span><span style="color:#75af00">println</span><span style="color:#f92672">(</span><span style="color:#d88200">&#34;its red&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Note that no ternary operator exists (<code>val bla = d == 10 ? &quot;jup&quot; : &quot;nah&quot;</code>), although that can be written in a single-line using Kotlin&rsquo;s <code>if</code>:</p>
+
+<div class="notices note" ><p>In Kotlin, <code>if</code> and <code>when</code> constructs are <strong>expressions</strong>: they hold a value. In Java, they are <strong>statements</strong> that require code blocks. That means that both constructs can appear on the right-hand side of a variable assignment in one line. Don&rsquo;t let the weird syntax scare you: <code>var max = if(a &gt; b) a else b</code>. This makes the ternary operator redundant.</p>
+</div>
+
 <h3 id="3-classes-and-functions">3. Classes and Functions</h3>
 <p>Suppose we&rsquo;d like to represent a pawn and its position. This is the Java way to do it:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00a8c8">public</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">Pawn</span> <span style="color:#f92672">{</span>
@@ -754,7 +792,7 @@
 </code></pre></div><p>That&rsquo;s a <em>lot</em> shorter! What happened here?</p>
 <ol>
 <li>We create a class with a constructor&mdash;on the same line. <code>class Pawn { ... }</code> would work just as well, but everything between <code>()</code> are constructor arguments. That means we can immediately use them in the assignments of the variables.</li>
-<li>Properties of the class are by default <code>public</code>! So <code>p.y = 346</code> would be valid, but to countermeasure this, we set the setter to private. There are no &ldquo;getter&rdquo; and &ldquo;setter&rdquo; methods needed this way!</li>
+<li>Properties of the class are by default <code>public</code>! So <code>p.y = 346</code> would be valid, but to countermeasure this, we set the setter to private. There are no &ldquo;getter&rdquo; and &ldquo;setter&rdquo; methods needed this way! You can still define them if you want using <code>get() {</code> below the variable name, as we did with the setter (that has no body, and thus stays the generated one).</li>
 <li>Remember to put the <code>main()</code> function outside any class. No separate (<code>static</code>) class needed for that.</li>
 <li><strong>String interpolation</strong> exists in Kotlin. Within double quotes, you can access a variable using the <code>$</code> prefix.</li>
 </ol>
@@ -775,7 +813,11 @@
 <li>Want to call the function? <code>name(false)</code></li>
 <li>Want to name arguments while calling? <code>name(arg1: false)</code></li>
 </ul>
-<p>Single-line functions can be simplified from <code>fun hi(): String { return &quot;sup!&quot; }</code> to <code>fun hi(): String = &quot;sup!&quot;</code>.</p>
+
+<div class="notices note" ><p>Single-line functions, called <strong>expression bodies</strong>, can be simplified from <code>fun hi(): String { return &quot;sup!&quot; }</code> to <code>fun hi(): String = &quot;sup!&quot;</code>. The body is specified after the <code>=</code> symbol, and you&rsquo;ll see these functions often. The last statement will automatically be returned, so <code>return</code> can also be omitted. Expression bodies become very powerful when combined with <code>when</code>: <code>fun hi(): String = when { ... }</code>. <br/>
+The <a href="https://kotlinlang.org/docs/coding-conventions.html#functions">official Kotlin coding conventions style guide</a> recommends you use expression bodies when the body consists of a single expression (getters/setters come to mind).</p>
+</div>
+
 <p>More information about unit-returning functions <a href="https://kotlinlang.org/docs/functions.html#unit-returning-functions">can be found here</a>.</p>
 <p>Sometimes, in Java, you need to quickly create a new subclass or an implementation of an interface, to be able to provide an event listener, for example. The typical syntax for that is very convoluted:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#111">window</span><span style="color:#f92672">.</span><span style="color:#75af00">addMouseListener</span><span style="color:#f92672">(</span><span style="color:#00a8c8">new</span> <span style="color:#111">MouseAdapter</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
@@ -788,7 +830,7 @@
     <span style="color:#75715e">// ALL methods of the interface need to be provided!
 </span><span style="color:#75715e"></span><span style="color:#f92672">})</span>
 </code></pre></div><p>In Kotlin, an <code>object</code> is used, which is a &ldquo;temporary class&rdquo; that fits the bill:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#111">window</span><span style="color:#111">.</span><span style="color:#111">addMouseListener</span><span style="color:#111">(</span><span style="color:#00a8c8">object</span> <span style="color:#960050;background-color:#1e0010">: </span><span style="color:#75af00">MouseAdapter</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#111">window</span><span style="color:#111">.</span><span style="color:#111">addMouseListener</span><span style="color:#111">(</span><span style="color:#00a8c8">object</span><span style="color:#111">:</span> <span style="color:#111">MouseAdapter</span><span style="color:#111">()</span> <span style="color:#111">{</span>
     <span style="color:#00a8c8">override</span> <span style="color:#00a8c8">fun</span> <span style="color:#75af00">mouseClicked</span><span style="color:#111">(</span><span style="color:#111">e</span><span style="color:#111">:</span> <span style="color:#111">MouseEvent</span><span style="color:#111">)</span> <span style="color:#111">{</span> 
         <span style="color:#111">println</span><span style="color:#111">(</span><span style="color:#d88200">&#34;Good job, right on target!&#34;</span><span style="color:#111">)</span>
     <span style="color:#111">}</span>
@@ -805,7 +847,7 @@
     <span style="color:#111">age</span> <span style="color:#111">=</span> <span style="color:#111">adder</span><span style="color:#111">(</span><span style="color:#111">age</span><span style="color:#111">)</span>
     <span style="color:#111">println</span><span style="color:#111">(</span><span style="color:#d88200">&#34;Hello, world!!! I&#39;m currently </span><span style="color:#d88200">$age</span><span style="color:#d88200"> old&#34;</span><span style="color:#111">)</span>
 <span style="color:#111">}</span>
-</code></pre></div><p>Functions can be declared within functions within functions within &hellip; Its scope closes the variables around it, meaning you can shield off variables created inside functions from the outside world, but not the other way around. <code>age</code> is visible inside <code>adder</code>, but <code>x</code> is not visible inside <code>main</code>.</p>
+</code></pre></div><p>Here, <code>adder</code> is again declared using an <em>expression body</em>. Try to get used to it! Functions can be declared within functions within functions within &hellip; Its scope closes the variables around it, meaning you can shield off variables created inside functions from the outside world, but not the other way around. <code>age</code> is visible inside <code>adder</code>, but <code>x</code> is not visible inside <code>main</code>.</p>
 <p>The above code is easily replicated in JavaScript:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#00a8c8">function</span> <span style="color:#75af00">main</span><span style="color:#111">()</span> <span style="color:#111">{</span>
     <span style="color:#00a8c8">var</span> <span style="color:#75af00">age</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>
@@ -818,12 +860,12 @@
 </code></pre></div><p>But not so easily done in Java, although later JDK versions also introduced (clumsy versions of) lambda&rsquo;s.</p>
 <p>A few more things to remember:</p>
 <ul>
-<li>If <code>return</code> is missing, the result of the last expression is returned instead.</li>
+<li>Inside expression bodies, <code>return</code> is missing, but the result of the last line is returned instead.</li>
 <li>If a return type is missing, <code>kotlin.Unit</code> is returned, <a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/">corresponding with void in Java</a>. There&rsquo;s also a <a href="https://play.kotlinlang.org/koans/Introduction/Nothing%20type/Task.kt">Nothing type</a> to dictate a function will always return an exception, such as an assertion.</li>
 </ul>
 <p>Functions can return functions or accept functions as arguments. This is handy when recycling logic that sorts, collects, or filters collections. Speaking of&hellip;</p>
 <h3 id="5-arrays-collections-looping">5. Arrays, Collections, Looping</h3>
-<p>Kotlin&rsquo;s <code>Array&lt;&gt;</code> generic class is the same as a <code>[]</code> in Java: it&rsquo;s set in size. Most of the time we&rsquo;ll want to use Java&rsquo;s <code>ArrayList&lt;&gt;</code> equivalent. Kotlin also leverages interfaces to hide the collection implementation. You will see <code>MutableList&lt;&gt;</code> often:</p>
+<p>Kotlin&rsquo;s <code>Array&lt;&gt;</code> generic class is the same as a <code>[]</code> in Java: it&rsquo;s set in size. In Kotlin, arrays are simply classes: there&rsquo;s no distinction between low-level arrays and high-level collections. However, most of the time, we&rsquo;ll want to use Java&rsquo;s <code>ArrayList&lt;&gt;</code> equivalent. Kotlin also leverages interfaces to hide the collection implementation. You will see <code>MutableList&lt;&gt;</code> often:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">class</span> <span style="color:#75af00">Stuff</span><span style="color:#111">(</span><span style="color:#111">name</span><span style="color:#111">:</span> <span style="color:#111">String</span><span style="color:#111">)</span> <span style="color:#111">{</span>
     <span style="color:#00a8c8">val</span> <span style="color:#111">name</span> <span style="color:#111">=</span> <span style="color:#111">name</span>
     <span style="color:#00a8c8">override</span> <span style="color:#00a8c8">fun</span> <span style="color:#75af00">toString</span><span style="color:#111">():</span> <span style="color:#111">String</span> <span style="color:#111">{</span>
@@ -834,7 +876,7 @@
     <span style="color:#00a8c8">val</span> <span style="color:#111">items</span><span style="color:#111">:</span> <span style="color:#111">MutableList</span><span style="color:#111">&lt;</span><span style="color:#111">Stuff</span><span style="color:#111">&gt;</span> <span style="color:#111">=</span> <span style="color:#111">mutableListOf</span><span style="color:#111">(</span><span style="color:#111">Stuff</span><span style="color:#111">(</span><span style="color:#d88200">&#34;pen&#34;</span><span style="color:#111">),</span> <span style="color:#111">Stuff</span><span style="color:#111">(</span><span style="color:#d88200">&#34;apple&#34;</span><span style="color:#111">))</span>
 <span style="color:#111">}</span>
 </code></pre></div>
-<div class="notices info" ><p>Remember, as soon as you initialize an object and do not want to change it, use <code>val</code> instead of <code>var</code>. The list will grow and shrink in size as things get added and removed, but the reference to items, the list instance itself, will <em>not</em> change. That is, <code>items = ArrayList&lt;Stuff&gt;()</code>, which creates a new empty list, is something we don&rsquo;t want to see somewhere in the code.</p>
+<div class="notices note" ><p>Remember, as soon as you initialize an object and do not want to change it, use <code>val</code> instead of <code>var</code>. The list will grow and shrink in size as things get added and removed, but the reference to items, the list instance itself, will <em>not</em> change. That is, <code>items = ArrayList&lt;Stuff&gt;()</code>, which creates a new empty list, is something we don&rsquo;t want to see somewhere in the code.</p>
 </div>
 
 <p>Now that we have a bag of items, how do we print out each one? Add the following function to <code>Bag</code>:</p>
@@ -847,12 +889,17 @@
 </span><span style="color:#75715e"></span>    <span style="color:#111">items</span><span style="color:#111">.</span><span style="color:#111">forEach</span> <span style="color:#111">{</span>
         <span style="color:#111">println</span><span style="color:#111">(</span><span style="color:#00a8c8">it</span><span style="color:#111">)</span>
     <span style="color:#111">}</span>
+    <span style="color:#75715e">// option 3, the closest thing to an ugly ol&#39; for we have
+</span><span style="color:#75715e"></span>    <span style="color:#00a8c8">for</span><span style="color:#111">(</span><span style="color:#111">x</span> <span style="color:#00a8c8">in</span> <span style="color:#ae81ff">0.</span><span style="color:#111">.</span><span style="color:#111">items</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+        <span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#111">items</span><span style="color:#111">)</span>
+    <span style="color:#111">}</span>
 <span style="color:#111">}</span>
 </code></pre></div><p>The second function is the <em>functional</em> option where we pass in a <strong>closure</strong> that prints an item. The only argument is automatically available as <code>it</code>. This is how the <code>forEach</code> function is defined in <code>_Collections.kt</code>:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">public</span> <span style="color:#00a8c8">inline</span> <span style="color:#00a8c8">fun</span> <span style="color:#111">&lt;</span><span style="color:#75af00">T</span><span style="color:#111">&gt;</span> <span style="color:#75af00">Iterable</span><span style="color:#111">&lt;</span><span style="color:#111">T</span><span style="color:#111">&gt;.</span><span style="color:#111">forEach</span><span style="color:#111">(</span><span style="color:#111">action</span><span style="color:#111">:</span> <span style="color:#111">(</span><span style="color:#111">T</span><span style="color:#111">)</span> <span style="color:#f92672">-&gt;</span> <span style="color:#111">Unit</span><span style="color:#111">):</span> <span style="color:#111">Unit</span> <span style="color:#111">{</span>
     <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#111">element</span> <span style="color:#00a8c8">in</span> <span style="color:#00a8c8">this</span><span style="color:#111">)</span> <span style="color:#111">action</span><span style="color:#111">(</span><span style="color:#111">element</span><span style="color:#111">)</span>
 <span style="color:#111">}</span>
-</code></pre></div><p>Kotlin provides The Usual Suspects of functional loop tools, such as:</p>
+</code></pre></div><p>Hold on there! Where&rsquo;s the argument <code>action</code> in our example? We say <code>items.forEach {</code> and not <code>items.forEach(arg) {</code>. This is a special case: if the last argument is a closure, the block that is attached to the function <em>is</em> the argument itself! This is yet another bit of syntactic sugar to ease the use of passing in functions as arguments.</p>
+<p>Kotlin provides The Usual Suspects of functional loop tools, such as:</p>
 <ul>
 <li><code>.filter {}</code></li>
 <li><code>.reduce {}</code></li>
@@ -861,7 +908,7 @@
 <li><code>.replaceAll {}</code></li>
 <li>&hellip;</li>
 </ul>
-<p>To initialize arrays/lists/whatever, Kotlin provides handy utility methods so that we don&rsquo;t need to do silly plumbing as we&rsquo;re used to do in Java. For instance, in Java, creating an ArrayList and adding stuff using <code>new ArrayList&lt;Bag&gt;() { add(new Bag(&quot;apple&quot;); add... }</code> is sometimes shortened using <code>Arrays.asList()</code>. In Kotlin, we simply rely on <code>mutableListOf(Bag(&quot;apple&quot;))</code>, <code>arrayOf(...)</code>, <code>arrayListOf(...)</code>, etc.</p>
+<p>To initialize arrays/lists/whatever, Kotlin provides handy utility methods so that we don&rsquo;t need to do silly plumbing as we&rsquo;re used to do in Java. For instance, in Java, creating an ArrayList and adding stuff using <code>new ArrayList&lt;Bag&gt;() { add(new Bag(&quot;apple&quot;); add... }</code> is sometimes shortened using <code>Arrays.asList()</code>. In Kotlin, we simply rely on <code>mutableListOf(Bag(&quot;apple&quot;))</code>, <code>arrayOf(...)</code>, <code>arrayListOf(...)</code>, etc. There are no new collections introduced in the language: we simply leverage Java&rsquo;s set. The only new things are the utility wrapper functions that come with the Kotlin runtime library.</p>
 
 
 <footer class="footline">
@@ -1228,17 +1275,17 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1627378776"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1627378776"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1627378776"></script>
-    <script src="../../js/jquery.sticky.js?1627378776"></script>
-    <script src="../../js/featherlight.min.js?1627378776"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1627378776"></script>
-    <script src="../../js/learn.js?1627378776"></script>
-    <script src="../../js/hugo-learn.js?1627378776"></script>
+    <script src="../../js/clipboard.min.js?1627392878"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1627392878"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1627392878"></script>
+    <script src="../../js/jquery.sticky.js?1627392878"></script>
+    <script src="../../js/featherlight.min.js?1627392878"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1627392878"></script>
+    <script src="../../js/learn.js?1627392878"></script>
+    <script src="../../js/hugo-learn.js?1627392878"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1627378776"></script>
+            <script src="../../mermaid/mermaid.js?1627392878"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
