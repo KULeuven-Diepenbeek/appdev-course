@@ -16,5 +16,32 @@ class WelcomeActivity : AppCompatActivity() {
         setContentView(binding.root)
         val user: User = intent.getSerializableExtra("user") as User
         binding.txtWelcome.text = "Welcome, ${user.name}"
+
+        println("WelcomeActivity--onCreate")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        println("WelcomeActivity--onStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        println("WelcomeActivity--onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        println("WelcomeActivity--onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        println("WelcomeActivity--onStop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        println("WelcomeActivity--onDestroy")
     }
 }

@@ -23,6 +23,7 @@ Last changes for academic year _2020 - 2021_.
 4. [Data storage: **File and Network access**](/android/data-storage)
 5. [Complex layouting: **Fragments**](/android/fragments)
 6. [Embedded Hardware: **Signals**](/android/signals)
+7. [**Security** by design](/android/security)
 
 ### 2. Language & Support Tools
 

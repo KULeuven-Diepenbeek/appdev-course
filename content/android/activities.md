@@ -103,7 +103,7 @@ class MainActivity : AppCompatActivity() {
 }
 ```
 
-In JavaFX, this is a bit simpler:
+In JavaFX, this is a bit simpler (at first):
 
 ```java
 public class SomeController {
@@ -117,7 +117,7 @@ public class SomeController {
 }
 ```
 
-Here, we can create fields and auto-wire them. In Android, you have to rely on the generated binding class where the fields are: less messy but one more step needed to take.
+Here, we can create fields and auto-wire them. In Android, you have to rely on the generated binding class where the fields are: less messy but one more step needed to take. Remember that the more components you have, the more convoluted your FXML Controller is going to get. This is well-hidden behind the binding object in Android systems. 
 
 We react to events such as the `click` ("tap") event in the same way as you would do in JavaFX:
 
@@ -131,9 +131,19 @@ binding.btnLogin.setOnClickListener { view ->
 
 ![](/img/loginbtn.jpg)
 
-{{% notice note %}}
+What else are possible events you can listen to?
+
+- `setOnCapturedPointerListener`
+- `setOnApplyWindowInsetsListener`
+- `setOnFocusChangeListener`
+- `setOnDragListener`
+- `setOnKeyListener`
+- `setOnHoverListener`
+- ...
+
+{{% task %}}
 Retrieve the password value and check it with some hard-coded value. If not correct, show a warning message using a `Snackbar`. If the username is empty, also show a warning message.
-{{% /notice %}}
+{{% /task %}}
 
 ## Adding a second Activity
 
@@ -141,7 +151,7 @@ What should happen once we're logged in successfully? Take another look at the f
 
 Create a second layout XML file by right-clicking on the `res` folder (or layout), select New -- Layout Resource File, and name it `activity_welcome`. You're given the option to change the root element, but another `ConstraintLayout` is fine, since we're now familiar with the basics of element placing in that particular layout. Go to the design editor and pull in a nice welcome text and a sample image that corresponds to the user's avatar. When you're done with that, create the corresponding controller class called `WelcomeActivity`. 
 
-Next, we need a piece of code to change the activity to the new one, provided the password is correct. That's done using an **Intent**, of which we'll see more in the next chapter. An intent is a way to pass messages from one activity to another, but also to tell one activity it should transition to the other:
+Next, we need a piece of code to change the activity to the new one, provided the password is correct. That's done using an **Intent**, of which we'll see [more in the coming chapter](/android/intents). An intent is a way to pass messages from one activity to another, but also to tell one activity it should transition to the other:
 
 ```kt
 val intent = Intent(this, MyNewActivity::class.java)
@@ -168,3 +178,42 @@ A note on (text) sizes: in Common Attributes, changing the text size means selec
 {{% /notice %}}
 
 To learn more about message passing, see [messaging: intents](/android/intents).
+
+## The lifecycle of an activity
+
+See [Android Developer Guide: Understanding the Activity Lifecycle](https://developer.android.com/guide/components/activities/activity-lifecycle)
+
+So far, we have leveraged the `onCreate()` state to wire together things like events and fetch our binding object. However, an activity has multiple stages to go through, and each of them can be hooked into if desired. `onCreatae()` just so happens to be the first (obligatory!) callback to implement, next to other five important ones: `onStart()`, `onResume()`, `onPause()`, `onStop()`, and `onDestroy()`. Take a look at this schematic to see how they relate to each other:
+
+![](/img/activity_lifecycle.png "A simplified illustration of the activity lifecycle. Src: android.developer.com")
+
+As soon as the user navigates from our main activity to `MyNewActivity`, the main activity will be paused. Pressing BACK causes `onResume()` to trigger, while the other activity will be paused. When the second activity was successfully (1) created, (2) started and (3) resumed, the previous one will be stopped. Pressing back results in (1) second paused, (2) main started and (3) resumed, so that (4) second is stopped and ultimately (5) destroyed. Try it yourself!
+
+{{% task %}}
+Implement all six callbacks on the two activities (see above, section "_Adding a second Activity_"). Print a message (in the console if debugging, or using [a simple Toast message](https://developer.android.com/guide/topics/ui/notifiers/toasts)) for each one to get a sense of what state the application/activity is in. You'll notice that `onResume()` is also always called during launch.
+{{% /task %}}
+
+### Saving and restoring UI state
+
+Besides obvious uses such as saving draft text in `onStop()`, knowing about the lifecycle is important because as soon as the user rotates the device or switches into multi-window mode, the current activity is destroyed and restarted. The problem is that any UI state is **wiped away**, but the user still expects an activity's UI state to be persistent!
+
+For each activity you design, think about its implications. What does the user expect when he or she returns to it? Should it be wiped? Yes? No? User expectations ans system behavior should match. The Android Dev Guide states:
+
+> Depending upon the action a user takes, they either expect that activity state to be cleared or the state to be preserved. In some cases the system automatically does what is expected by the user. In other cases the system does the opposite of what the user expects.
+
+In order to save additional instance data before the rotation transition occurs, override `onSaveInstanceState()` and put data in the `Bundle` object:
+
+```kt
+override fun onSaveInstanceState(outState: Bundle) {
+    outState.run {
+        putString("name", binding.txtUsername.text.toString())
+    }
+    super.onSaveInstanceState(outState)
+}
+```
+
+Retrieval is possible in `onRestoreInstamceState()`, or even in `onCreate()` if for whatever reason the Android OS decided to destroy your activity and recreate it. Make sure to check the contents of the single argument. `isEmpty()` is a handy check function.
+
+{{% notice note %}}
+There are a plethora of options for preserving and restoring UI state. See [saving states docs](https://developer.android.com/topic/libraries/architecture/saving-states): use a viewmodel, use raw instance state such as the example above, or even persistent storage. All options come with their own advantages and disadvantages. 
+{{% /notice %}}

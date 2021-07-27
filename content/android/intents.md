@@ -76,7 +76,9 @@ Besides switching activities as screens within a single app, an intent can also 
 - To upload data to a back-end server using a HTTP POST
 - ...
 
-Services, and the difference between them and typical Java threads, are explained in detail in the [Services overview dev guide](https://developer.android.com/guide/components/services). The use services are not part of this course. 
+Services, and the difference between them and typical Java threads, are explained in detail in the [Services overview dev guide](https://developer.android.com/guide/components/services). 
+
+The usage of services is not part of this course. 
 
 ## Using intents to interact with other apps
 
@@ -112,7 +114,7 @@ Each system-wide known implicit intent is specified with a pre-defined String th
 See the [guide to intents](https://developer.android.com/training/basics/intents/sending) for more examples such as opening a map, a webpage, creating an e-mail with attachments, and so forth. 
 
 {{% notice warning %}}
-Applications that are not allowed to make calls will generate a `SecurityException` while attempting to start the `action.CALL` intent with the message "Permission Denial", stating which specific permission is missing (`android.permission.CALL_PHONE` in case of calling). Add these in your [android manifest file](https://developer.android.com/training/permissions/declaring) if needed. More on that in the [security by design](/android/security) chapter.
+Applications that are not allowed to make calls will generate a `SecurityException` while attempting to start the `action.CALL` intent with the message "Permission Denial", stating which specific permission is missing (`android.permission.CALL_PHONE` in case of calling). Add these in your [android manifest file](https://developer.android.com/training/permissions/declaring) if needed. More on that in the [**security by design**](/android/security) chapter.
 {{% /notice %}}
 
 In case no single application knows how to handle your implicit intent, not even your own, `startActivity()` will throw an `ActivityNotFoundException`. It would thus be in your best interest to wrap your activity starts with a try block!
