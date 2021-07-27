@@ -31,6 +31,27 @@ Moreover, troubleshooting using Google/Stack Overflow usually nets you Kotlin co
 
 The software department of ACRO, the KU Leuven research group at Diepenbeek Campus, focuses on functional languages, of which Kotlin certainly fits the bill. Kotlin's functional mechanics are nowhere near as complex as Prolog or Scala, and is familiar enough for students who are used to writing programs in Java. Thus, with relative little effort, a new (both for you and for the programming community) language can be learned. 
 
+
+## How does Kotlin fit into the JVM?
+
+It's actually very simple: you should treat Kotlin as a _separate language_ that compiles into the _same byte code_ class files as traditional Java `.class` files. These can be packaged into a `.jar` like any other Java app, and run using the JVM, that won't even know it started as Kotlin code:
+
+![](/img/ktcompile.jpg "Compiling java/kotlin files. src: Kotlin in Action book")
+
+The only block that stands out here is the **Kotlin runtime** that has to be packaged with the application, using the correct arguments when compiling command-line:
+
+```
+kotlinc hello.kt -include-runtime -d hello.jar
+```
+
+The `-include-runtime` check simply tells the Kotlin compiler to pack along Kotlin's API. That is, utility functions such as `print()`, that serve as simple wrappers for `System.out.println()`, need to be packaged in the same jar. That is, the Kotlin "runtime" (nothing _runtime_ about it) is just a _dependency_! <br/>The above schematic also reveals that interoperability between Java and Kotlin is very easy: they're both (eventually) JVM-class files! So, calling Kotlin from Java or Java from Kotlin is easy as pie.
+
+{{% notice note %}}
+The Kotlin language can also be compiled natively using the LLVM compiler, or compile into JavaScript and run on Node. We will be focusing on Kotlin for the JVM in this course. 
+{{% /notice %}}
+
+Now you're ready to get your hands dirty!
+
 ## A Crash Course in Kotlin
 
 Roughly based upon Google's [Introduction to Kotlin crash course](https://developer.android.com/kotlin/learn).
@@ -60,6 +81,8 @@ This works just like in JavaScript: `let` (used to be `var`) and `const`.
 
 `val`ues cannot be changed: they're values. What else is new? No `;`---finally! Note Kotlin has built-in [type inference](https://kotlinlang.org/spec/type-inference.html): specifying `:= Int` is not needed, the compiler knows this since you provide a whole number on the right-hand side of the equation sign. 
 
+Try to use `val` as much as possible: **make verything immutable**, unless you absolutely have to use a mutable variable. This is good practice that promotes functional-style programming and prevents making mistakes with, among others, concurrency. Note that `val person = Person()` means you cannot assign another `Person` to the `person` variable, but you can still mutate the reference itself: `person.age = 10`---unless the setter is private, that is. 
+
 Spot the new syntax in the next section:
 
 ```kt
@@ -81,7 +104,7 @@ fun main(args: Array<String>) {
 
 This is called **null safety**. To assign `null`, you explicitly have to use the question mark `?` sign. `orEmpty()` returns an empty string if the value it holds is effectively `null`. This method, or using `var?.` to access properties, omits needlessly checking with `if(...)` statements, complicating your codebase, such as the last two statements. 
 
-{{% notice info %}}
+{{% notice note %}}
 All standard JDK API methods are still available to you. Remember that you are still working on a Java-specific Virtual Machine. Thus, `System.out.println()` is still valid (but can be shortened to `prinln()`, imported from package `kotlin.io`), although you have to omit the `;` at the end of the statement. So, in essence, you already know how to create threads, access files, ...! <br/>This is also very important in Android development, as many system-level Android API methods are still Java. 
 {{% /notice %}}
 
@@ -99,7 +122,32 @@ val answerString = when {
 println(answerString)
 ```
 
-Note that no ternary operator exists (`val bla = d == 10 ? "jup" : "nah"`).
+Note that in the example above, the expression seems to be missing. If `when` is used without brackets, Kotlin will check for Boolean values. `when` is very powerful in Kotlin, compared to `switch` in Java, that requires constants. You can `when` over any string/object instance/whatever:
+
+```kt
+val color = Color(RED)
+when(color) {
+    Color(GREEN) -> print("its green")
+    Color(RED) -> print("its red")
+}
+```
+
+Kotlin uses _equality checks_ behind the scenes, so it will look like this in Java:
+
+```java
+Color color = new Color(RED);
+if(color.equals(new Color(GREEN))) {
+    System.out.println("its green")
+} else if(color.equals(new Color(RED))) {
+    System.out.println("its red")
+}
+```
+
+Note that no ternary operator exists (`val bla = d == 10 ? "jup" : "nah"`), although that can be written in a single-line using Kotlin's `if`:
+
+{{% notice note %}}
+In Kotlin, `if` and `when` constructs are **expressions**: they hold a value. In Java, they are **statements** that require code blocks. That means that both constructs can appear on the right-hand side of a variable assignment in one line. Don't let the weird syntax scare you: `var max = if(a > b) a else b`. This makes the ternary operator redundant.
+{{% /notice %}}
 
 ### 3. Classes and Functions
 
@@ -163,7 +211,7 @@ fun main(args: Array<String>) {
 That's a _lot_ shorter! What happened here?
 
 1. We create a class with a constructor---on the same line. `class Pawn { ... }` would work just as well, but everything between `()` are constructor arguments. That means we can immediately use them in the assignments of the variables.
-2. Properties of the class are by default `public`! So `p.y = 346` would be valid, but to countermeasure this, we set the setter to private. There are no "getter" and "setter" methods needed this way!
+2. Properties of the class are by default `public`! So `p.y = 346` would be valid, but to countermeasure this, we set the setter to private. There are no "getter" and "setter" methods needed this way! You can still define them if you want using `get() {` below the variable name, as we did with the setter (that has no body, and thus stays the generated one).
 3. Remember to put the `main()` function outside any class. No separate (`static`) class needed for that. 
 4. **String interpolation** exists in Kotlin. Within double quotes, you can access a variable using the `$` prefix. 
 
@@ -189,7 +237,10 @@ As for **defining functions**, just `fun name() {}` suffices. Functions are _pub
 - Want to call the function? `name(false)`
 - Want to name arguments while calling? `name(arg1: false)`
 
-Single-line functions can be simplified from `fun hi(): String { return "sup!" }` to `fun hi(): String = "sup!"`.
+{{% notice note %}}
+Single-line functions, called **expression bodies**, can be simplified from `fun hi(): String { return "sup!" }` to `fun hi(): String = "sup!"`. The body is specified after the `=` symbol, and you'll see these functions often. The last statement will automatically be returned, so `return` can also be omitted. Expression bodies become very powerful when combined with `when`: `fun hi(): String = when { ... }`. <br/>
+The [official Kotlin coding conventions style guide](https://kotlinlang.org/docs/coding-conventions.html#functions) recommends you use expression bodies when the body consists of a single expression (getters/setters come to mind).
+{{% /notice %}}
 
 More information about unit-returning functions [can be found here](https://kotlinlang.org/docs/functions.html#unit-returning-functions).
 
@@ -210,7 +261,7 @@ window.addMouseListener(new MouseAdapter() {
 In Kotlin, an `object` is used, which is a "temporary class" that fits the bill:
 
 ```kt
-window.addMouseListener(object : MouseAdapter() {
+window.addMouseListener(object: MouseAdapter() {
     override fun mouseClicked(e: MouseEvent) { 
         println("Good job, right on target!")
     }
@@ -236,7 +287,7 @@ fun main() {
 }
 ```
 
-Functions can be declared within functions within functions within ... Its scope closes the variables around it, meaning you can shield off variables created inside functions from the outside world, but not the other way around. `age` is visible inside `adder`, but `x` is not visible inside `main`.
+Here, `adder` is again declared using an _expression body_. Try to get used to it! Functions can be declared within functions within functions within ... Its scope closes the variables around it, meaning you can shield off variables created inside functions from the outside world, but not the other way around. `age` is visible inside `adder`, but `x` is not visible inside `main`.
 
 The above code is easily replicated in JavaScript:
 
@@ -255,14 +306,14 @@ But not so easily done in Java, although later JDK versions also introduced (clu
 
 A few more things to remember:
 
-- If `return` is missing, the result of the last expression is returned instead. 
+- Inside expression bodies, `return` is missing, but the result of the last line is returned instead. 
 - If a return type is missing, `kotlin.Unit` is returned, [corresponding with void in Java](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/). There's also a [Nothing type](https://play.kotlinlang.org/koans/Introduction/Nothing%20type/Task.kt) to dictate a function will always return an exception, such as an assertion.
 
 Functions can return functions or accept functions as arguments. This is handy when recycling logic that sorts, collects, or filters collections. Speaking of...
 
 ### 5. Arrays, Collections, Looping
 
-Kotlin's `Array<>` generic class is the same as a `[]` in Java: it's set in size. Most of the time we'll want to use Java's `ArrayList<>` equivalent. Kotlin also leverages interfaces to hide the collection implementation. You will see `MutableList<>` often:
+Kotlin's `Array<>` generic class is the same as a `[]` in Java: it's set in size. In Kotlin, arrays are simply classes: there's no distinction between low-level arrays and high-level collections. However, most of the time, we'll want to use Java's `ArrayList<>` equivalent. Kotlin also leverages interfaces to hide the collection implementation. You will see `MutableList<>` often:
 
 ```kt
 class Stuff(name: String) {
@@ -276,7 +327,7 @@ class Bag {
 }
 ```
 
-{{% notice info %}}
+{{% notice note %}}
 Remember, as soon as you initialize an object and do not want to change it, use `val` instead of `var`. The list will grow and shrink in size as things get added and removed, but the reference to items, the list instance itself, will _not_ change. That is, `items = ArrayList<Stuff>()`, which creates a new empty list, is something we don't want to see somewhere in the code. 
 {{% /notice %}}
 
@@ -292,6 +343,10 @@ fun rummageThrough() {
     items.forEach {
         println(it)
     }
+    // option 3, the closest thing to an ugly ol' for we have
+    for(x in 0..items.size) {
+        print(items)
+    }
 }
 ```
 
@@ -303,6 +358,8 @@ public inline fun <T> Iterable<T>.forEach(action: (T) -> Unit): Unit {
 }
 ```
 
+Hold on there! Where's the argument `action` in our example? We say `items.forEach {` and not `items.forEach(arg) {`. This is a special case: if the last argument is a closure, the block that is attached to the function _is_ the argument itself! This is yet another bit of syntactic sugar to ease the use of passing in functions as arguments.
+
 Kotlin provides The Usual Suspects of functional loop tools, such as:
 
 - `.filter {}`
@@ -312,4 +369,4 @@ Kotlin provides The Usual Suspects of functional loop tools, such as:
 - `.replaceAll {}`
 - ...
 
-To initialize arrays/lists/whatever, Kotlin provides handy utility methods so that we don't need to do silly plumbing as we're used to do in Java. For instance, in Java, creating an ArrayList and adding stuff using `new ArrayList<Bag>() { add(new Bag("apple"); add... }` is sometimes shortened using `Arrays.asList()`. In Kotlin, we simply rely on `mutableListOf(Bag("apple"))`, `arrayOf(...)`, `arrayListOf(...)`, etc.
+To initialize arrays/lists/whatever, Kotlin provides handy utility methods so that we don't need to do silly plumbing as we're used to do in Java. For instance, in Java, creating an ArrayList and adding stuff using `new ArrayList<Bag>() { add(new Bag("apple"); add... }` is sometimes shortened using `Arrays.asList()`. In Kotlin, we simply rely on `mutableListOf(Bag("apple"))`, `arrayOf(...)`, `arrayListOf(...)`, etc. There are no new collections introduced in the language: we simply leverage Java's set. The only new things are the utility wrapper functions that come with the Kotlin runtime library.
