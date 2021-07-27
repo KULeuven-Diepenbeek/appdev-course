@@ -12,20 +12,20 @@
     <title>2. Messaging - Intents :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1627306196" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1627306196" rel="stylesheet">
-    <link href="../../css/hybrid.css?1627306196" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1627306196" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1627306196" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1627306196" rel="stylesheet">
-    <link href="../../css/theme.css?1627306196" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1627306196" rel="stylesheet">
+    <link href="../../css/nucleus.css?1627378775" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1627378775" rel="stylesheet">
+    <link href="../../css/hybrid.css?1627378775" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1627378775" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1627378775" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1627378775" rel="stylesheet">
+    <link href="../../css/theme.css?1627378775" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1627378775" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1627306196" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1627378775" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1627306196"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1627378775"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -60,14 +60,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1627306196"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1627306196"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1627378775"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1627378775"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1627306196"></script>
+<script type="text/javascript" src="../../js/search.js?1627378775"></script>
 
     
   </div>
@@ -682,7 +682,8 @@
 <li>To upload data to a back-end server using a HTTP POST</li>
 <li>&hellip;</li>
 </ul>
-<p>Services, and the difference between them and typical Java threads, are explained in detail in the <a href="https://developer.android.com/guide/components/services">Services overview dev guide</a>. The use services are not part of this course.</p>
+<p>Services, and the difference between them and typical Java threads, are explained in detail in the <a href="https://developer.android.com/guide/components/services">Services overview dev guide</a>.</p>
+<p>The usage of services is not part of this course.</p>
 <h2 id="using-intents-to-interact-with-other-apps">Using intents to interact with other apps</h2>
 <h3 id="implicit-intents">Implicit intents</h3>
 <p>When you create an intent to switch to an activity, your own app knows how to handle that intent: it should go to that new activity that also lives within your own app. These are called <strong>explicit intents</strong>: you specify which application will satisfy the intent by supplying the class name of the activity.</p>
@@ -714,7 +715,7 @@
 </p>
 <p>See the <a href="https://developer.android.com/training/basics/intents/sending">guide to intents</a> for more examples such as opening a map, a webpage, creating an e-mail with attachments, and so forth.</p>
 
-<div class="notices warning" ><p>Applications that are not allowed to make calls will generate a <code>SecurityException</code> while attempting to start the <code>action.CALL</code> intent with the message &ldquo;Permission Denial&rdquo;, stating which specific permission is missing (<code>android.permission.CALL_PHONE</code> in case of calling). Add these in your <a href="https://developer.android.com/training/permissions/declaring">android manifest file</a> if needed. More on that in the <a href="../../android/security">security by design</a> chapter.</p>
+<div class="notices warning" ><p>Applications that are not allowed to make calls will generate a <code>SecurityException</code> while attempting to start the <code>action.CALL</code> intent with the message &ldquo;Permission Denial&rdquo;, stating which specific permission is missing (<code>android.permission.CALL_PHONE</code> in case of calling). Add these in your <a href="https://developer.android.com/training/permissions/declaring">android manifest file</a> if needed. More on that in the <a href="../../android/security"><strong>security by design</strong></a> chapter.</p>
 </div>
 
 <p>In case no single application knows how to handle your implicit intent, not even your own, <code>startActivity()</code> will throw an <code>ActivityNotFoundException</code>. It would thus be in your best interest to wrap your activity starts with a try block!</p>
@@ -1140,17 +1141,17 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1627306196"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1627306196"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1627306196"></script>
-    <script src="../../js/jquery.sticky.js?1627306196"></script>
-    <script src="../../js/featherlight.min.js?1627306196"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1627306196"></script>
-    <script src="../../js/learn.js?1627306196"></script>
-    <script src="../../js/hugo-learn.js?1627306196"></script>
+    <script src="../../js/clipboard.min.js?1627378776"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1627378776"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1627378776"></script>
+    <script src="../../js/jquery.sticky.js?1627378776"></script>
+    <script src="../../js/featherlight.min.js?1627378776"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1627378776"></script>
+    <script src="../../js/learn.js?1627378776"></script>
+    <script src="../../js/hugo-learn.js?1627378776"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1627306196"></script>
+            <script src="../../mermaid/mermaid.js?1627378776"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

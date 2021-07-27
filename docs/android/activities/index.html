@@ -12,20 +12,20 @@
     <title>1. Life Cycle - Activities :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1627306196" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1627306196" rel="stylesheet">
-    <link href="../../css/hybrid.css?1627306196" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1627306196" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1627306196" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1627306196" rel="stylesheet">
-    <link href="../../css/theme.css?1627306196" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1627306196" rel="stylesheet">
+    <link href="../../css/nucleus.css?1627378775" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1627378775" rel="stylesheet">
+    <link href="../../css/hybrid.css?1627378775" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1627378775" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1627378775" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1627378775" rel="stylesheet">
+    <link href="../../css/theme.css?1627378775" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1627378775" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1627306196" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1627378775" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1627306196"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1627378775"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -60,14 +60,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1627306196"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1627306196"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1627378775"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1627378775"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1627306196"></script>
+<script type="text/javascript" src="../../js/search.js?1627378775"></script>
 
     
   </div>
@@ -597,6 +597,11 @@
     <li><a href="#creating-activities-in-android-studio">Creating activities in Android Studio</a></li>
     <li><a href="#adding-actions">Adding actions</a></li>
     <li><a href="#adding-a-second-activity">Adding a second Activity</a></li>
+    <li><a href="#the-lifecycle-of-an-activity">The lifecycle of an activity</a>
+      <ul>
+        <li><a href="#saving-and-restoring-ui-state">Saving and restoring UI state</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -719,7 +724,7 @@
 </span><span style="color:#75715e"></span>        <span style="color:#111">binding</span><span style="color:#111">.</span><span style="color:#111">btnLogin</span><span style="color:#111">.</span><span style="color:#111">setText</span><span style="color:#111">(</span><span style="color:#d88200">&#34;lol&#34;</span><span style="color:#111">)</span>        
     <span style="color:#111">}</span>
 <span style="color:#111">}</span>
-</code></pre></div><p>In JavaFX, this is a bit simpler:</p>
+</code></pre></div><p>In JavaFX, this is a bit simpler (at first):</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00a8c8">public</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">SomeController</span> <span style="color:#f92672">{</span>
     <span style="color:#75af00">@FXML</span>
     <span style="color:#00a8c8">private</span> <span style="color:#111">BUtton</span> <span style="color:#111">btnLogin</span><span style="color:#f92672">;</span>
@@ -729,7 +734,7 @@
         <span style="color:#111">btnLogin</span><span style="color:#f92672">.</span><span style="color:#75af00">setOnClick</span><span style="color:#f92672">....</span>
     <span style="color:#f92672">}</span>
 <span style="color:#f92672">}</span>
-</code></pre></div><p>Here, we can create fields and auto-wire them. In Android, you have to rely on the generated binding class where the fields are: less messy but one more step needed to take.</p>
+</code></pre></div><p>Here, we can create fields and auto-wire them. In Android, you have to rely on the generated binding class where the fields are: less messy but one more step needed to take. Remember that the more components you have, the more convoluted your FXML Controller is going to get. This is well-hidden behind the binding object in Android systems.</p>
 <p>We react to events such as the <code>click</code> (&ldquo;tap&rdquo;) event in the same way as you would do in JavaFX:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#111">binding</span><span style="color:#111">.</span><span style="color:#111">btnLogin</span><span style="color:#111">.</span><span style="color:#111">setOnClickListener</span> <span style="color:#111">{</span> <span style="color:#111">view</span> <span style="color:#f92672">-&gt;</span>
     <span style="color:#111">Snackbar</span><span style="color:#111">.</span><span style="color:#111">make</span><span style="color:#111">(</span><span style="color:#111">view</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;Nice, clicked a button&#34;</span><span style="color:#111">,</span> <span style="color:#111">Snackbar</span><span style="color:#111">.</span><span style="color:#111">LENGTH_LONG</span><span style="color:#111">).</span><span style="color:#111">setAction</span><span style="color:#111">(</span><span style="color:#d88200">&#34;Action&#34;</span><span style="color:#111">,</span> <span style="color:#00a8c8">null</span><span style="color:#111">).</span><span style="color:#111">show</span><span style="color:#111">()</span>
@@ -742,14 +747,27 @@
 	
 </figure>
 </p>
+<p>What else are possible events you can listen to?</p>
+<ul>
+<li><code>setOnCapturedPointerListener</code></li>
+<li><code>setOnApplyWindowInsetsListener</code></li>
+<li><code>setOnFocusChangeListener</code></li>
+<li><code>setOnDragListener</code></li>
+<li><code>setOnKeyListener</code></li>
+<li><code>setOnHoverListener</code></li>
+<li>&hellip;</li>
+</ul>
 
-<div class="notices note" ><p>Retrieve the password value and check it with some hard-coded value. If not correct, show a warning message using a <code>Snackbar</code>. If the username is empty, also show a warning message.</p>
+<div class="ex">
+	<div class="inner">
+    	<p>Retrieve the password value and check it with some hard-coded value. If not correct, show a warning message using a <code>Snackbar</code>. If the username is empty, also show a warning message.</p>
+
+	</div>
 </div>
-
 <h2 id="adding-a-second-activity">Adding a second Activity</h2>
 <p>What should happen once we&rsquo;re logged in successfully? Take another look at the first image on this page: a <strong>welcome screen</strong> would be nice.</p>
 <p>Create a second layout XML file by right-clicking on the <code>res</code> folder (or layout), select New &ndash; Layout Resource File, and name it <code>activity_welcome</code>. You&rsquo;re given the option to change the root element, but another <code>ConstraintLayout</code> is fine, since we&rsquo;re now familiar with the basics of element placing in that particular layout. Go to the design editor and pull in a nice welcome text and a sample image that corresponds to the user&rsquo;s avatar. When you&rsquo;re done with that, create the corresponding controller class called <code>WelcomeActivity</code>.</p>
-<p>Next, we need a piece of code to change the activity to the new one, provided the password is correct. That&rsquo;s done using an <strong>Intent</strong>, of which we&rsquo;ll see more in the next chapter. An intent is a way to pass messages from one activity to another, but also to tell one activity it should transition to the other:</p>
+<p>Next, we need a piece of code to change the activity to the new one, provided the password is correct. That&rsquo;s done using an <strong>Intent</strong>, of which we&rsquo;ll see <a href="../../android/intents">more in the coming chapter</a>. An intent is a way to pass messages from one activity to another, but also to tell one activity it should transition to the other:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">val</span> <span style="color:#111">intent</span> <span style="color:#111">=</span> <span style="color:#111">Intent</span><span style="color:#111">(</span><span style="color:#00a8c8">this</span><span style="color:#111">,</span> <span style="color:#111">MyNewActivity</span><span style="color:#f92672">::</span><span style="color:#00a8c8">class</span><span style="color:#111">.</span><span style="color:#111">java</span><span style="color:#111">)</span>
 <span style="color:#111">startActivity</span><span style="color:#111">(</span><span style="color:#111">intent</span><span style="color:#111">)</span>
 </code></pre></div><p>Note that <code>::class.java</code> is the Kotlin way to grab hold of the static <code>.class</code> instance of a class. Run your app and see if it works. Chances are you&rsquo;ll see it crash with the following message in the console:</p>
@@ -766,6 +784,44 @@
 </div>
 
 <p>To learn more about message passing, see <a href="../../android/intents">messaging: intents</a>.</p>
+<h2 id="the-lifecycle-of-an-activity">The lifecycle of an activity</h2>
+<p>See <a href="https://developer.android.com/guide/components/activities/activity-lifecycle">Android Developer Guide: Understanding the Activity Lifecycle</a></p>
+<p>So far, we have leveraged the <code>onCreate()</code> state to wire together things like events and fetch our binding object. However, an activity has multiple stages to go through, and each of them can be hooked into if desired. <code>onCreatae()</code> just so happens to be the first (obligatory!) callback to implement, next to other five important ones: <code>onStart()</code>, <code>onResume()</code>, <code>onPause()</code>, <code>onStop()</code>, and <code>onDestroy()</code>. Take a look at this schematic to see how they relate to each other:</p>
+<p><figure>
+	<a href="../../img/activity_lifecycle.png" data-featherlight="image">
+		<img src="../../img/activity_lifecycle.png"   title="A simplified illustration of the activity lifecycle. Src: android.developer.com">
+	</a>
+	
+		<figcaption>A simplified illustration of the activity lifecycle. Src: android.developer.com</figcaption>
+	
+</figure>
+</p>
+<p>As soon as the user navigates from our main activity to <code>MyNewActivity</code>, the main activity will be paused. Pressing BACK causes <code>onResume()</code> to trigger, while the other activity will be paused. When the second activity was successfully (1) created, (2) started and (3) resumed, the previous one will be stopped. Pressing back results in (1) second paused, (2) main started and (3) resumed, so that (4) second is stopped and ultimately (5) destroyed. Try it yourself!</p>
+
+<div class="ex">
+	<div class="inner">
+    	<p>Implement all six callbacks on the two activities (see above, section &ldquo;<em>Adding a second Activity</em>&quot;). Print a message (in the console if debugging, or using <a href="https://developer.android.com/guide/topics/ui/notifiers/toasts">a simple Toast message</a>) for each one to get a sense of what state the application/activity is in. You&rsquo;ll notice that <code>onResume()</code> is also always called during launch.</p>
+
+	</div>
+</div>
+<h3 id="saving-and-restoring-ui-state">Saving and restoring UI state</h3>
+<p>Besides obvious uses such as saving draft text in <code>onStop()</code>, knowing about the lifecycle is important because as soon as the user rotates the device or switches into multi-window mode, the current activity is destroyed and restarted. The problem is that any UI state is <strong>wiped away</strong>, but the user still expects an activity&rsquo;s UI state to be persistent!</p>
+<p>For each activity you design, think about its implications. What does the user expect when he or she returns to it? Should it be wiped? Yes? No? User expectations ans system behavior should match. The Android Dev Guide states:</p>
+<blockquote>
+<p>Depending upon the action a user takes, they either expect that activity state to be cleared or the state to be preserved. In some cases the system automatically does what is expected by the user. In other cases the system does the opposite of what the user expects.</p>
+</blockquote>
+<p>In order to save additional instance data before the rotation transition occurs, override <code>onSaveInstanceState()</code> and put data in the <code>Bundle</code> object:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">override</span> <span style="color:#00a8c8">fun</span> <span style="color:#75af00">onSaveInstanceState</span><span style="color:#111">(</span><span style="color:#111">outState</span><span style="color:#111">:</span> <span style="color:#111">Bundle</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+    <span style="color:#111">outState</span><span style="color:#111">.</span><span style="color:#111">run</span> <span style="color:#111">{</span>
+        <span style="color:#111">putString</span><span style="color:#111">(</span><span style="color:#d88200">&#34;name&#34;</span><span style="color:#111">,</span> <span style="color:#111">binding</span><span style="color:#111">.</span><span style="color:#111">txtUsername</span><span style="color:#111">.</span><span style="color:#111">text</span><span style="color:#111">.</span><span style="color:#111">toString</span><span style="color:#111">())</span>
+    <span style="color:#111">}</span>
+    <span style="color:#00a8c8">super</span><span style="color:#111">.</span><span style="color:#111">onSaveInstanceState</span><span style="color:#111">(</span><span style="color:#111">outState</span><span style="color:#111">)</span>
+<span style="color:#111">}</span>
+</code></pre></div><p>Retrieval is possible in <code>onRestoreInstamceState()</code>, or even in <code>onCreate()</code> if for whatever reason the Android OS decided to destroy your activity and recreate it. Make sure to check the contents of the single argument. <code>isEmpty()</code> is a handy check function.</p>
+
+<div class="notices note" ><p>There are a plethora of options for preserving and restoring UI state. See <a href="https://developer.android.com/topic/libraries/architecture/saving-states">saving states docs</a>: use a viewmodel, use raw instance state such as the example above, or even persistent storage. All options come with their own advantages and disadvantages.</p>
+</div>
+
 
 
 <footer class="footline">
@@ -1129,17 +1185,17 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1627306196"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1627306196"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1627306196"></script>
-    <script src="../../js/jquery.sticky.js?1627306196"></script>
-    <script src="../../js/featherlight.min.js?1627306196"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1627306196"></script>
-    <script src="../../js/learn.js?1627306196"></script>
-    <script src="../../js/hugo-learn.js?1627306196"></script>
+    <script src="../../js/clipboard.min.js?1627378776"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1627378776"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1627378776"></script>
+    <script src="../../js/jquery.sticky.js?1627378776"></script>
+    <script src="../../js/featherlight.min.js?1627378776"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1627378776"></script>
+    <script src="../../js/learn.js?1627378776"></script>
+    <script src="../../js/hugo-learn.js?1627378776"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1627306196"></script>
+            <script src="../../mermaid/mermaid.js?1627378776"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
