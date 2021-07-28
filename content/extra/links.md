@@ -6,20 +6,19 @@ title: 3. Links and Tutorials
 
 #### Kotlin-Specific
 
-- [The Official Kotlin Koans](https://play.kotlinlang.org/koans/overview) and [examples](https://play.kotlinlang.org/byExample/overview)
+- Exercises: [The Official Kotlin Koans](https://play.kotlinlang.org/koans/overview) and [examples](https://play.kotlinlang.org/byExample/overview)
+- [The Kotlin docs](https://kotlinlang.org/docs/home.html): basics, ways to learn, what's new, the YouTube channel, ... 
 
 #### Android-Specific
 
-- [Official Android Developer Guide](https://developer.android.com/guide)
+- [Official Android Developer Guide](https://developer.android.com/guide): thé way to start learning Android development. 
+- [Android developer MAD skills videos](https://developer.android.com/series/mad-skills) in case you're too lazy to read. 
+
+Third party tutorials that can prove to be handy as well:
+
 - [CodePath Android Cliffnotes](https://guides.codepath.com/android)
 - [Tutorialspoint.com Android Tutorial](http://www.tutorialspoint.com/android/index.htm)
 - [Vogella.com Android Development Tutorials](https://www.vogella.com/tutorials/android.html)
-
-### Advanced Android UI Concepts
-
-- [Android Widgets on the home screen](https://www.vogella.com/tutorials/AndroidWidgets/article.html)
-- [Drag-and-drop systems](https://www.vogella.com/tutorials/AndroidDragAndDrop/article.html)
-- [Notifications](https://www.vogella.com/tutorials/AndroidNotifications/article.html)
 
 ### Various
 

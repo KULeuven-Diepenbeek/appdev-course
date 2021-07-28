@@ -1,5 +1,5 @@
 ---
-title: 2. Kotlin Examples/Exercises
+title: 3. Kotlin Examples/Exercises
 ---
 
 All examples can be found in the GitHub repository of this very course, at https://github.com/KULeuven-Diepenbeek/appdev-course/tree/main/examples

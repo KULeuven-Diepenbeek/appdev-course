@@ -1,5 +1,5 @@
 ---
-title: 1. The Kotlin programming lang.
+title: "1. Kotlin programming: Essentials"
 ---
 
 ## Why in Kotlin, Yet Another Language?
@@ -370,3 +370,7 @@ Kotlin provides The Usual Suspects of functional loop tools, such as:
 - ...
 
 To initialize arrays/lists/whatever, Kotlin provides handy utility methods so that we don't need to do silly plumbing as we're used to do in Java. For instance, in Java, creating an ArrayList and adding stuff using `new ArrayList<Bag>() { add(new Bag("apple"); add... }` is sometimes shortened using `Arrays.asList()`. In Kotlin, we simply rely on `mutableListOf(Bag("apple"))`, `arrayOf(...)`, `arrayListOf(...)`, etc. There are no new collections introduced in the language: we simply leverage Java's set. The only new things are the utility wrapper functions that come with the Kotlin runtime library.
+
+{{% notice note %}}
+Now that you know the basics of Kotlin, you can start programming in the language and adhere to the structure and style of Java development as you are used to. The more you write Kotlin, the more you will gravitate towards functional-style programming. [Advanced techniques](/lang/kotlin-advanced) shed more light on these. If you're impatient, go ahead and start your first venture into the [Android dungeons](/android)!<br/>Remember, if you're stuck, open up the [Kotlin docs](https://kotlinlang.org/docs/home.html) and refresh your memory.
+{{% /notice %}}
