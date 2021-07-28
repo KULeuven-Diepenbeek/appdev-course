@@ -12,20 +12,20 @@
     <title>1. Kotlin programming: Essentials :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1627478135" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1627478135" rel="stylesheet">
-    <link href="../../css/hybrid.css?1627478135" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1627478135" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1627478135" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1627478135" rel="stylesheet">
-    <link href="../../css/theme.css?1627478135" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1627478135" rel="stylesheet">
+    <link href="../../css/nucleus.css?1627482072" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1627482072" rel="stylesheet">
+    <link href="../../css/hybrid.css?1627482072" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1627482072" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1627482072" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1627482072" rel="stylesheet">
+    <link href="../../css/theme.css?1627482072" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1627482072" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1627478135" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1627482072" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1627478135"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1627482072"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -60,14 +60,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1627478135"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1627478135"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1627482072"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1627482072"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1627478135"></script>
+<script type="text/javascript" src="../../js/search.js?1627482072"></script>
 
     
   </div>
@@ -919,12 +919,40 @@ The <a href="https://kotlinlang.org/docs/coding-conventions.html#functions">offi
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">public</span> <span style="color:#00a8c8">inline</span> <span style="color:#00a8c8">fun</span> <span style="color:#111">&lt;</span><span style="color:#75af00">T</span><span style="color:#111">&gt;</span> <span style="color:#75af00">Iterable</span><span style="color:#111">&lt;</span><span style="color:#111">T</span><span style="color:#111">&gt;.</span><span style="color:#111">forEach</span><span style="color:#111">(</span><span style="color:#111">action</span><span style="color:#111">:</span> <span style="color:#111">(</span><span style="color:#111">T</span><span style="color:#111">)</span> <span style="color:#f92672">-&gt;</span> <span style="color:#111">Unit</span><span style="color:#111">):</span> <span style="color:#111">Unit</span> <span style="color:#111">{</span>
     <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#111">element</span> <span style="color:#00a8c8">in</span> <span style="color:#00a8c8">this</span><span style="color:#111">)</span> <span style="color:#111">action</span><span style="color:#111">(</span><span style="color:#111">element</span><span style="color:#111">)</span>
 <span style="color:#111">}</span>
-</code></pre></div><p>Hold on there! Where&rsquo;s the argument <code>action</code> in our example? We say <code>items.forEach {</code> and not <code>items.forEach(arg) {</code>. This is a special case: if the last argument is a closure, the block that is attached to the function <em>is</em> the argument itself! This is yet another bit of syntactic sugar to ease the use of passing in functions as arguments.</p>
-<p>Kotlin provides The Usual Suspects of functional loop tools, such as:</p>
+</code></pre></div><p><em>Hold on there!</em> Where&rsquo;s the argument <code>action</code> in our example? We say <code>items.forEach {</code> and not <code>items.forEach(arg) {</code>. This is a special case: if the last argument is a closure, the block that is attached to the function <em>is</em> the argument itself! This is yet another bit of syntactic sugar to ease the use of passing in functions as arguments.</p>
+<p>Not convinced? This piece of Java code:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// wrongfully assumes &#34;forEach&#34; exists as a method on the collection
+</span><span style="color:#75715e"></span><span style="color:#00a8c8">public</span> <span style="color:#00a8c8">interface</span> <span style="color:#75af00">ForEachAction</span> <span style="color:#f92672">{</span>
+    <span style="color:#00a8c8">void</span> <span style="color:#75af00">act</span><span style="color:#f92672">(</span><span style="color:#111">Item</span> <span style="color:#111">i</span><span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+<span style="color:#111">items</span><span style="color:#f92672">.</span><span style="color:#75af00">forEach</span><span style="color:#f92672">(</span><span style="color:#00a8c8">new</span> <span style="color:#111">ForEachAction</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#75af00">@Override</span>
+    <span style="color:#00a8c8">public</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">act</span><span style="color:#f92672">(</span><span style="color:#111">Item</span> <span style="color:#111">i</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#111">System</span><span style="color:#f92672">.</span><span style="color:#75af00">out</span><span style="color:#f92672">.</span><span style="color:#75af00">println</span><span style="color:#f92672">(</span><span style="color:#111">i</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">})</span>
+</code></pre></div><p>Is the same as <em>each</em> of the following lines in Kotlin:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#75715e">// step 1: still too verbose
+</span><span style="color:#75715e"></span><span style="color:#111">items</span><span style="color:#111">.</span><span style="color:#111">forEach</span><span style="color:#111">({</span> <span style="color:#111">i</span><span style="color:#111">:</span> <span style="color:#111">Item</span> <span style="color:#f92672">-&gt;</span> <span style="color:#111">println</span><span style="color:#111">(</span><span style="color:#111">i</span><span style="color:#111">)</span> <span style="color:#111">})</span>
+
+<span style="color:#75715e">// step 2: a lambda expression can be moved out of the paranthesis if it&#39;s the last argument
+</span><span style="color:#75715e"></span><span style="color:#111">items</span><span style="color:#111">.</span><span style="color:#111">forEach</span><span style="color:#111">()</span> <span style="color:#111">{</span> <span style="color:#111">i</span><span style="color:#111">:</span> <span style="color:#111">Item</span> <span style="color:#f92672">-&gt;</span> <span style="color:#111">println</span><span style="color:#111">(</span><span style="color:#111">i</span><span style="color:#111">)</span> <span style="color:#111">}</span>
+
+<span style="color:#75715e">// step 3: the empty parenthesis can also be removed if the lambda is the only argument
+</span><span style="color:#75715e"></span><span style="color:#111">items</span><span style="color:#111">.</span><span style="color:#111">forEach</span> <span style="color:#111">{</span> <span style="color:#111">i</span><span style="color:#111">:</span> <span style="color:#111">Item</span> <span style="color:#f92672">-&gt;</span> <span style="color:#111">println</span><span style="color:#111">(</span><span style="color:#111">i</span><span style="color:#111">)</span> <span style="color:#111">}</span>
+
+<span style="color:#75715e">// step 4: parameter type inferred
+</span><span style="color:#75715e"></span><span style="color:#111">items</span><span style="color:#111">.</span><span style="color:#111">forEach</span> <span style="color:#111">{</span> <span style="color:#111">i</span> <span style="color:#f92672">-&gt;</span> <span style="color:#111">println</span><span style="color:#111">(</span><span style="color:#111">i</span><span style="color:#111">)</span> <span style="color:#111">s</span><span style="color:#111">}</span>
+
+<span style="color:#75715e">// step 5: use the default parameter name &#34;it&#34;
+</span><span style="color:#75715e"></span><span style="color:#111">items</span><span style="color:#111">.</span><span style="color:#111">forEach</span> <span style="color:#111">{</span> <span style="color:#111">println</span><span style="color:#111">(</span><span style="color:#00a8c8">it</span><span style="color:#111">)</span> <span style="color:#111">}</span>
+</code></pre></div><p>The reason the above <code>ForEachAction</code> interface gets covered in a Kotlin lambda without having to refer to the method <code>act</code> at all is that it&rsquo;s an interface with a single method: a <em>functional interface</em> or a Single Action Method (SAM) interface. The JDK and Android API are littered with these interfaces, and you already know many of those: <code>java.lang.Runnable</code>, <code>java.util.Comparator</code>, <code>javax.event.EventhHandler</code>, &hellip; This means it&rsquo;s easy to replace anonymous inner functions with Kotlin lambda&rsquo;s when working with JDK/Android APIs. <a href="https://kotlinlang.org/docs/fun-interfaces.html">See the kotlin docs</a> for more information.</p>
+<p>Next to <code>forEach</code>, Kotlin provides The Usual Suspects of functional loop tools, such as:</p>
 <ul>
 <li><code>.filter {}</code></li>
 <li><code>.reduce {}</code></li>
 <li><code>.sumOf {}</code></li>
+<li><code>.maxOf {}</code></li>
 <li><code>.removeIf {}</code></li>
 <li><code>.replaceAll {}</code></li>
 <li>&hellip;</li>
@@ -1316,17 +1344,17 @@ The <a href="https://kotlinlang.org/docs/coding-conventions.html#functions">offi
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1627478135"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1627478135"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1627478135"></script>
-    <script src="../../js/jquery.sticky.js?1627478135"></script>
-    <script src="../../js/featherlight.min.js?1627478135"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1627478135"></script>
-    <script src="../../js/learn.js?1627478135"></script>
-    <script src="../../js/hugo-learn.js?1627478135"></script>
+    <script src="../../js/clipboard.min.js?1627482072"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1627482072"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1627482072"></script>
+    <script src="../../js/jquery.sticky.js?1627482072"></script>
+    <script src="../../js/featherlight.min.js?1627482072"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1627482072"></script>
+    <script src="../../js/learn.js?1627482072"></script>
+    <script src="../../js/hugo-learn.js?1627482072"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1627478135"></script>
+            <script src="../../mermaid/mermaid.js?1627482072"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
