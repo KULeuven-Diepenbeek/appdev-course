@@ -130,5 +130,135 @@ What's interesting here?
 
 To conclude, we can assume that the Kotlin compiler always spews out fully Java-complaint code in such a way that our classic Java projects seamlessly integrate with the more modern language. The only problem is the `import kotlin.` statements, where the kotlin runtime jar is required to be in the classpath. 
 
-## A closer look at Java/Kotlin interop
+{{% notice note %}}
+If you do not understand the syntax of Kotlin at one point. **decompile the class file**. Try to compile and decompile some of the [provided advanced snippets](https://github.com/KULeuven-Diepenbeek/appdev-course/tree/main/examples/kotlin/advanced-snippets) in the course repository and you'll gain a much better understanding of the inner workings of both Kotlin and Java. We highly recommend you try to do this at least once!
+{{% /notice %}}
 
+## A class inheritance example
+
+Since `class` files are `final` by default, you'll need to add the `open` keyword to classes you'd like to extend from. 
+
+### Subclassing, getters/setters, equality checks
+
+Below is another elaborated example that demonstrates some of Kotlin's inheritance quirks:
+
+```kt
+package be.kuleuven.adv
+
+open class Animal() {
+
+}
+interface Plays {
+    fun play()
+}
+
+// without "open" in Animal's definition, this wouldn't work
+// classes are FINAL by default!
+// "implements" and "extends" are both replaced by a semicolon
+open class Monkey(val name: String) : Animal(), Plays {
+
+    lateinit var hobbies: String
+        private set
+
+    // all paths to all constructors MUST initialize this
+    // otherwise: Exception in thread "main" kotlin.UninitializedPropertyAccessException: lateinit property hobbies has not been initialized
+    // since the primary constructor doesn't do this, we'll need an "init" block for it instead.
+    init {
+        hobbies = "Boring myself to death with a rock or perhaps a small bush of grass"
+    }
+
+    constructor(name: String, hobbies: String) : this(name) {
+        this.hobbies = hobbies
+    }
+
+    constructor(twinbrother: Monkey): this(twinbrother.name, twinbrother.hobbies)
+
+    override fun play() {
+        println("ooh ooh aah aah monkey see monkey do?")
+    }
+
+    // Note that since it's a standard Java equals, the argument can be null
+    // Note that after calling "is?, the argument automagically is class-casted! Wowza! Check out the decompiled source to see the magic:
+    /*
+    @Override
+    public boolean equals(@Nullable final Object other) {
+        return other != null && other instanceof Monkey && Intrinsics.areEqual((Object)((Monkey)other).name, (Object)this.name) && Intrinsics.areEqual((Object)((Monkey)other).getHobbies(), (Object)this.getHobbies());
+    }
+     */
+    override fun equals(other: Any?): Boolean {
+        if(other == null || other !is Monkey)
+            return false
+        return other.name == name && other.hobbies == hobbies
+    }
+}
+
+class VeryPrivateMonkey private constructor(): Monkey("I'd rather not say")
+
+fun main(args: Array<String>) {
+    val george = Monkey("George")
+    val jeffrey = Monkey(george)
+
+    // can't. there's a "private" constructor
+    // Seems easier in Java, isn't it?
+    // val anonymous = VeryPrivateMonkey()
+
+    george.play()
+    jeffrey.play()
+
+    println("Are George and Jeffrey alike? " + (george == jeffrey))
+}
+```
+
+The above code demonstrates the following concepts:
+
+- Access modifiers, and custom ones in a setter
+- primary and secondary constructors
+- init blocks and late binding on properties
+- the obligatory explicit usage of the keyword `override`
+- how to implement a basic `equals` method the Kotlin way
+- how to use that equality check: with `==` instead of `.equals()`. The identity/reference check uses three `=` signs: `===`, as in JavaScript.
+
+### Interfaces, default implementations, properties
+
+Suppose we want to oblige the implementation of a getter of a property, but we're building an interface, not a class. In Kotlin, you can add properties to interfaces: these will generate `getProperty()` function definitions one has to override:
+
+```kt
+package be.kuleuven.adv
+
+// note that these implementations generate four different class files: NameProvider, NickNameProvider, PoshNameProvider, and [FilenameKt]
+// see build/classes/kotlin
+
+// interfaces can hold properties. There are just getter method definitions
+// interfaces can hold default implementations. (JDK 8+, this is also legal in Java)
+interface NameProvider {
+    val name: String
+    val email: String
+        get() {
+            return "$name@hotmail.com"
+        }
+}
+
+// We have to provide the "getName()" method, but we're simply creating a backing field here
+class NickNameProvider(override val name: String) : NameProvider
+
+// Alternatively, implement the getter.
+class PoshNameProvider() : NameProvider {
+    override val name: String
+        get() = "Prof. Dr. Genius"
+}
+
+fun main(args: Array<String>) {
+    val myProf = PoshNameProvider()
+    val me = NickNameProvider("Exterminator 2000")
+
+    println("Reach me at ${me.email} - following a lecture of ${myProf.name}")
+}
+```
+
+The above code demonstrates the following concepts:
+
+- Properties in interfaces, with custom getters that reference to others if needed. Note that you cannot dictate where to store the value: it's an interface, after all. 
+- Implementing that interface and simply using `override val` in the primary constructor to satisfy the constraints.
+- Implementing the getter yourself manually. 
+- Again, class bodies that are empty (`class bla {}`) are redundant: there are no curly braces used in the definition of `NickNameProvider`.
+- Again, string interpolation, not limited to a single expression, using curly braces inside double quotes. 
