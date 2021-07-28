@@ -12,20 +12,20 @@
     <title>2. Kotlin programming: Advanced :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1627467038" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1627467038" rel="stylesheet">
-    <link href="../../css/hybrid.css?1627467038" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1627467038" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1627467038" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1627467038" rel="stylesheet">
-    <link href="../../css/theme.css?1627467038" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1627467038" rel="stylesheet">
+    <link href="../../css/nucleus.css?1627478135" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1627478135" rel="stylesheet">
+    <link href="../../css/hybrid.css?1627478135" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1627478135" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1627478135" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1627478135" rel="stylesheet">
+    <link href="../../css/theme.css?1627478135" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1627478135" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1627467038" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1627478135" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1627467038"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1627478135"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -60,14 +60,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1627467038"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1627467038"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1627478135"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1627478135"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1627467038"></script>
+<script type="text/javascript" src="../../js/search.js?1627478135"></script>
 
     
   </div>
@@ -615,7 +615,12 @@
 <nav id="TableOfContents">
   <ul>
     <li><a href="#a-closer-look-at-javakotlin-interop">A closer look at Java/Kotlin interop</a></li>
-    <li><a href="#a-closer-look-at-javakotlin-interop-1">A closer look at Java/Kotlin interop</a></li>
+    <li><a href="#a-class-inheritance-example">A class inheritance example</a>
+      <ul>
+        <li><a href="#subclassing-getterssetters-equality-checks">Subclassing, getters/setters, equality checks</a></li>
+        <li><a href="#interfaces-default-implementations-properties">Interfaces, default implementations, properties</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -756,7 +761,127 @@
 <li>Semicolons are back!</li>
 </ol>
 <p>To conclude, we can assume that the Kotlin compiler always spews out fully Java-complaint code in such a way that our classic Java projects seamlessly integrate with the more modern language. The only problem is the <code>import kotlin.</code> statements, where the kotlin runtime jar is required to be in the classpath.</p>
-<h2 id="a-closer-look-at-javakotlin-interop-1">A closer look at Java/Kotlin interop</h2>
+
+<div class="notices note" ><p>If you do not understand the syntax of Kotlin at one point. <strong>decompile the class file</strong>. Try to compile and decompile some of the <a href="https://github.com/KULeuven-Diepenbeek/appdev-course/tree/main/examples/kotlin/advanced-snippets">provided advanced snippets</a> in the course repository and you&rsquo;ll gain a much better understanding of the inner workings of both Kotlin and Java. We highly recommend you try to do this at least once!</p>
+</div>
+
+<h2 id="a-class-inheritance-example">A class inheritance example</h2>
+<p>Since <code>class</code> files are <code>final</code> by default, you&rsquo;ll need to add the <code>open</code> keyword to classes you&rsquo;d like to extend from.</p>
+<h3 id="subclassing-getterssetters-equality-checks">Subclassing, getters/setters, equality checks</h3>
+<p>Below is another elaborated example that demonstrates some of Kotlin&rsquo;s inheritance quirks:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">package</span> <span style="color:#111">be.kuleuven.adv</span>
+
+<span style="color:#00a8c8">open</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">Animal</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+
+<span style="color:#111">}</span>
+<span style="color:#00a8c8">interface</span> <span style="color:#75af00">Plays</span> <span style="color:#111">{</span>
+    <span style="color:#00a8c8">fun</span> <span style="color:#75af00">play</span><span style="color:#111">()</span>
+<span style="color:#111">}</span>
+
+<span style="color:#75715e">// without &#34;open&#34; in Animal&#39;s definition, this wouldn&#39;t work
+</span><span style="color:#75715e">// classes are FINAL by default!
+</span><span style="color:#75715e">// &#34;implements&#34; and &#34;extends&#34; are both replaced by a semicolon
+</span><span style="color:#75715e"></span><span style="color:#00a8c8">open</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">Monkey</span><span style="color:#111">(</span><span style="color:#00a8c8">val</span> <span style="color:#111">name</span><span style="color:#111">:</span> <span style="color:#111">String</span><span style="color:#111">)</span> <span style="color:#111">:</span> <span style="color:#111">Animal</span><span style="color:#111">(),</span> <span style="color:#111">Plays</span> <span style="color:#111">{</span>
+
+    <span style="color:#00a8c8">lateinit</span> <span style="color:#00a8c8">var</span> <span style="color:#111">hobbies</span><span style="color:#111">:</span> <span style="color:#111">String</span>
+        <span style="color:#00a8c8">private</span> <span style="color:#00a8c8">set</span>
+
+    <span style="color:#75715e">// all paths to all constructors MUST initialize this
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// otherwise: Exception in thread &#34;main&#34; kotlin.UninitializedPropertyAccessException: lateinit property hobbies has not been initialized
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// since the primary constructor doesn&#39;t do this, we&#39;ll need an &#34;init&#34; block for it instead.
+</span><span style="color:#75715e"></span>    <span style="color:#00a8c8">init</span> <span style="color:#111">{</span>
+        <span style="color:#111">hobbies</span> <span style="color:#111">=</span> <span style="color:#d88200">&#34;Boring myself to death with a rock or perhaps a small bush of grass&#34;</span>
+    <span style="color:#111">}</span>
+
+    <span style="color:#00a8c8">constructor</span><span style="color:#111">(</span><span style="color:#111">name</span><span style="color:#111">:</span> <span style="color:#111">String</span><span style="color:#111">,</span> <span style="color:#111">hobbies</span><span style="color:#111">:</span> <span style="color:#111">String</span><span style="color:#111">)</span> <span style="color:#111">:</span> <span style="color:#00a8c8">this</span><span style="color:#111">(</span><span style="color:#111">name</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+        <span style="color:#00a8c8">this</span><span style="color:#111">.</span><span style="color:#111">hobbies</span> <span style="color:#111">=</span> <span style="color:#111">hobbies</span>
+    <span style="color:#111">}</span>
+
+    <span style="color:#00a8c8">constructor</span><span style="color:#111">(</span><span style="color:#111">twinbrother</span><span style="color:#111">:</span> <span style="color:#111">Monkey</span><span style="color:#111">):</span> <span style="color:#00a8c8">this</span><span style="color:#111">(</span><span style="color:#111">twinbrother</span><span style="color:#111">.</span><span style="color:#111">name</span><span style="color:#111">,</span> <span style="color:#111">twinbrother</span><span style="color:#111">.</span><span style="color:#111">hobbies</span><span style="color:#111">)</span>
+
+    <span style="color:#00a8c8">override</span> <span style="color:#00a8c8">fun</span> <span style="color:#75af00">play</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+        <span style="color:#111">println</span><span style="color:#111">(</span><span style="color:#d88200">&#34;ooh ooh aah aah monkey see monkey do?&#34;</span><span style="color:#111">)</span>
+    <span style="color:#111">}</span>
+
+    <span style="color:#75715e">// Note that since it&#39;s a standard Java equals, the argument can be null
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// Note that after calling &#34;is?, the argument automagically is class-casted! Wowza! Check out the decompiled source to see the magic:
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">/*
+</span><span style="color:#75715e">    @Override
+</span><span style="color:#75715e">    public boolean equals(@Nullable final Object other) {
+</span><span style="color:#75715e">        return other != null &amp;&amp; other instanceof Monkey &amp;&amp; Intrinsics.areEqual((Object)((Monkey)other).name, (Object)this.name) &amp;&amp; Intrinsics.areEqual((Object)((Monkey)other).getHobbies(), (Object)this.getHobbies());
+</span><span style="color:#75715e">    }
+</span><span style="color:#75715e">     */</span>
+    <span style="color:#00a8c8">override</span> <span style="color:#00a8c8">fun</span> <span style="color:#75af00">equals</span><span style="color:#111">(</span><span style="color:#111">other</span><span style="color:#111">:</span> <span style="color:#111">Any</span><span style="color:#111">?):</span> <span style="color:#111">Boolean</span> <span style="color:#111">{</span>
+        <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#111">other</span> <span style="color:#f92672">==</span> <span style="color:#00a8c8">null</span> <span style="color:#f92672">||</span> <span style="color:#111">other</span> <span style="color:#f92672">!is</span> <span style="color:#111">Monkey</span><span style="color:#111">)</span>
+            <span style="color:#00a8c8">return</span> <span style="color:#00a8c8">false</span>
+        <span style="color:#00a8c8">return</span> <span style="color:#111">other</span><span style="color:#111">.</span><span style="color:#111">name</span> <span style="color:#f92672">==</span> <span style="color:#111">name</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">other</span><span style="color:#111">.</span><span style="color:#111">hobbies</span> <span style="color:#f92672">==</span> <span style="color:#111">hobbies</span>
+    <span style="color:#111">}</span>
+<span style="color:#111">}</span>
+
+<span style="color:#00a8c8">class</span> <span style="color:#75af00">VeryPrivateMonkey</span> <span style="color:#00a8c8">private</span> <span style="color:#00a8c8">constructor</span><span style="color:#111">():</span> <span style="color:#111">Monkey</span><span style="color:#111">(</span><span style="color:#d88200">&#34;I&#39;d rather not say&#34;</span><span style="color:#111">)</span>
+
+<span style="color:#00a8c8">fun</span> <span style="color:#75af00">main</span><span style="color:#111">(</span><span style="color:#111">args</span><span style="color:#111">:</span> <span style="color:#111">Array</span><span style="color:#111">&lt;</span><span style="color:#111">String</span><span style="color:#111">&gt;)</span> <span style="color:#111">{</span>
+    <span style="color:#00a8c8">val</span> <span style="color:#111">george</span> <span style="color:#111">=</span> <span style="color:#111">Monkey</span><span style="color:#111">(</span><span style="color:#d88200">&#34;George&#34;</span><span style="color:#111">)</span>
+    <span style="color:#00a8c8">val</span> <span style="color:#111">jeffrey</span> <span style="color:#111">=</span> <span style="color:#111">Monkey</span><span style="color:#111">(</span><span style="color:#111">george</span><span style="color:#111">)</span>
+
+    <span style="color:#75715e">// can&#39;t. there&#39;s a &#34;private&#34; constructor
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// Seems easier in Java, isn&#39;t it?
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// val anonymous = VeryPrivateMonkey()
+</span><span style="color:#75715e"></span>
+    <span style="color:#111">george</span><span style="color:#111">.</span><span style="color:#111">play</span><span style="color:#111">()</span>
+    <span style="color:#111">jeffrey</span><span style="color:#111">.</span><span style="color:#111">play</span><span style="color:#111">()</span>
+
+    <span style="color:#111">println</span><span style="color:#111">(</span><span style="color:#d88200">&#34;Are George and Jeffrey alike? &#34;</span> <span style="color:#111">+</span> <span style="color:#111">(</span><span style="color:#111">george</span> <span style="color:#f92672">==</span> <span style="color:#111">jeffrey</span><span style="color:#111">))</span>
+<span style="color:#111">}</span>
+</code></pre></div><p>The above code demonstrates the following concepts:</p>
+<ul>
+<li>Access modifiers, and custom ones in a setter</li>
+<li>primary and secondary constructors</li>
+<li>init blocks and late binding on properties</li>
+<li>the obligatory explicit usage of the keyword <code>override</code></li>
+<li>how to implement a basic <code>equals</code> method the Kotlin way</li>
+<li>how to use that equality check: with <code>==</code> instead of <code>.equals()</code>. The identity/reference check uses three <code>=</code> signs: <code>===</code>, as in JavaScript.</li>
+</ul>
+<h3 id="interfaces-default-implementations-properties">Interfaces, default implementations, properties</h3>
+<p>Suppose we want to oblige the implementation of a getter of a property, but we&rsquo;re building an interface, not a class. In Kotlin, you can add properties to interfaces: these will generate <code>getProperty()</code> function definitions one has to override:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">package</span> <span style="color:#111">be.kuleuven.adv</span>
+
+<span style="color:#75715e">// note that these implementations generate four different class files: NameProvider, NickNameProvider, PoshNameProvider, and [FilenameKt]
+</span><span style="color:#75715e">// see build/classes/kotlin
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">// interfaces can hold properties. There are just getter method definitions
+</span><span style="color:#75715e">// interfaces can hold default implementations. (JDK 8+, this is also legal in Java)
+</span><span style="color:#75715e"></span><span style="color:#00a8c8">interface</span> <span style="color:#75af00">NameProvider</span> <span style="color:#111">{</span>
+    <span style="color:#00a8c8">val</span> <span style="color:#111">name</span><span style="color:#111">:</span> <span style="color:#111">String</span>
+    <span style="color:#00a8c8">val</span> <span style="color:#111">email</span><span style="color:#111">:</span> <span style="color:#111">String</span>
+        <span style="color:#00a8c8">get</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+            <span style="color:#00a8c8">return</span> <span style="color:#d88200">&#34;</span><span style="color:#d88200">$name</span><span style="color:#d88200">@hotmail.com&#34;</span>
+        <span style="color:#111">}</span>
+<span style="color:#111">}</span>
+
+<span style="color:#75715e">// We have to provide the &#34;getName()&#34; method, but we&#39;re simply creating a backing field here
+</span><span style="color:#75715e"></span><span style="color:#00a8c8">class</span> <span style="color:#75af00">NickNameProvider</span><span style="color:#111">(</span><span style="color:#00a8c8">override</span> <span style="color:#00a8c8">val</span> <span style="color:#111">name</span><span style="color:#111">:</span> <span style="color:#111">String</span><span style="color:#111">)</span> <span style="color:#111">:</span> <span style="color:#111">NameProvider</span>
+
+<span style="color:#75715e">// Alternatively, implement the getter.
+</span><span style="color:#75715e"></span><span style="color:#00a8c8">class</span> <span style="color:#75af00">PoshNameProvider</span><span style="color:#111">()</span> <span style="color:#111">:</span> <span style="color:#111">NameProvider</span> <span style="color:#111">{</span>
+    <span style="color:#00a8c8">override</span> <span style="color:#00a8c8">val</span> <span style="color:#111">name</span><span style="color:#111">:</span> <span style="color:#111">String</span>
+        <span style="color:#00a8c8">get</span><span style="color:#111">()</span> <span style="color:#111">=</span> <span style="color:#d88200">&#34;Prof. Dr. Genius&#34;</span>
+<span style="color:#111">}</span>
+
+<span style="color:#00a8c8">fun</span> <span style="color:#75af00">main</span><span style="color:#111">(</span><span style="color:#111">args</span><span style="color:#111">:</span> <span style="color:#111">Array</span><span style="color:#111">&lt;</span><span style="color:#111">String</span><span style="color:#111">&gt;)</span> <span style="color:#111">{</span>
+    <span style="color:#00a8c8">val</span> <span style="color:#111">myProf</span> <span style="color:#111">=</span> <span style="color:#111">PoshNameProvider</span><span style="color:#111">()</span>
+    <span style="color:#00a8c8">val</span> <span style="color:#111">me</span> <span style="color:#111">=</span> <span style="color:#111">NickNameProvider</span><span style="color:#111">(</span><span style="color:#d88200">&#34;Exterminator 2000&#34;</span><span style="color:#111">)</span>
+
+    <span style="color:#111">println</span><span style="color:#111">(</span><span style="color:#d88200">&#34;Reach me at </span><span style="color:#d88200">${me.email}</span><span style="color:#d88200"> - following a lecture of </span><span style="color:#d88200">${myProf.name}</span><span style="color:#d88200">&#34;</span><span style="color:#111">)</span>
+<span style="color:#111">}</span>
+</code></pre></div><p>The above code demonstrates the following concepts:</p>
+<ul>
+<li>Properties in interfaces, with custom getters that reference to others if needed. Note that you cannot dictate where to store the value: it&rsquo;s an interface, after all.</li>
+<li>Implementing that interface and simply using <code>override val</code> in the primary constructor to satisfy the constraints.</li>
+<li>Implementing the getter yourself manually.</li>
+<li>Again, class bodies that are empty (<code>class bla {}</code>) are redundant: there are no curly braces used in the definition of <code>NickNameProvider</code>.</li>
+<li>Again, string interpolation, not limited to a single expression, using curly braces inside double quotes.</li>
+</ul>
 
 
 <footer class="footline">
@@ -1142,17 +1267,17 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1627467038"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1627467038"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1627467038"></script>
-    <script src="../../js/jquery.sticky.js?1627467038"></script>
-    <script src="../../js/featherlight.min.js?1627467038"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1627467038"></script>
-    <script src="../../js/learn.js?1627467038"></script>
-    <script src="../../js/hugo-learn.js?1627467038"></script>
+    <script src="../../js/clipboard.min.js?1627478135"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1627478135"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1627478135"></script>
+    <script src="../../js/jquery.sticky.js?1627478135"></script>
+    <script src="../../js/featherlight.min.js?1627478135"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1627478135"></script>
+    <script src="../../js/learn.js?1627478135"></script>
+    <script src="../../js/hugo-learn.js?1627478135"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1627467038"></script>
+            <script src="../../mermaid/mermaid.js?1627478135"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
