@@ -40,7 +40,8 @@ Solution: just keep these the same. The error disappeared here after selecting f
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
       <guid>https://kuleuven-diepenbeek.github.io/appdev-course/extra/links/</guid>
-      <description>Tutorials Kotlin-Specific  The Official Kotlin Koans and examples  Android-Specific  Official Android Developer Guide CodePath Android Cliffnotes Tutorialspoint.com Android Tutorial Vogella.com Android Development Tutorials  Advanced Android UI Concepts  Android Widgets on the home screen Drag-and-drop systems Notifications  Various  Awesome Android Kotlin Apps &amp;mdash; a curated list on GitHub  </description>
+      <description>Tutorials Kotlin-Specific  Exercises: The Official Kotlin Koans and examples The Kotlin docs: basics, ways to learn, what&amp;rsquo;s new, the YouTube channel, &amp;hellip;  Android-Specific  Official Android Developer Guide: thé way to start learning Android development. Android developer MAD skills videos in case you&amp;rsquo;re too lazy to read.  Third party tutorials that can prove to be handy as well:
+ CodePath Android Cliffnotes Tutorialspoint.com Android Tutorial Vogella.com Android Development Tutorials  Various  Awesome Android Kotlin Apps &amp;mdash; a curated list on GitHub  </description>
     </item>
     
     <item>

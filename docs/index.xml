@@ -20,18 +20,7 @@ Required IDE disk space: 1.</description>
     </item>
     
     <item>
-      <title>1. Life Cycle - Activities</title>
-      <link>https://kuleuven-diepenbeek.github.io/appdev-course/android/activities/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
-      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/android/activities/</guid>
-      <description>What&amp;rsquo;s an activity?  An activity is a single, focused thing that a user can do.
- To put it simply, an activity is a window in your app. Each window should do one thing, such as:
- Let the user login Show a welcome screen Let the user pick something out of a list Show the user detail information of the picked item Let the user modify settings &amp;hellip;    Two example activities.</description>
-    </item>
-    
-    <item>
-      <title>1. The Kotlin programming lang.</title>
+      <title>1. Kotlin programming: Essentials</title>
       <link>https://kuleuven-diepenbeek.github.io/appdev-course/lang/kotlin/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
@@ -40,6 +29,17 @@ Required IDE disk space: 1.</description>
 1. Because Google Says So Google says you should Develop Android apps with Kotlin. It&amp;rsquo;s their recommended way of doing so. They state:
  Write better Android apps faster with Kotlin. Kotlin is a modern statically typed programming language used by over 60% of professional Android developers that helps boost productivity, developer satisfaction, and code safety.
  Among a slew of listed advantages, they have also created an Android Basics in Kotlin course, where the basics of the Kotlin language is the first hurdle to take.</description>
+    </item>
+    
+    <item>
+      <title>1. Life Cycle - Activities</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/android/activities/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/android/activities/</guid>
+      <description>What&amp;rsquo;s an activity?  An activity is a single, focused thing that a user can do.
+ To put it simply, an activity is a window in your app. Each window should do one thing, such as:
+ Let the user login Show a welcome screen Let the user pick something out of a list Show the user detail information of the picked item Let the user modify settings &amp;hellip;    Two example activities.</description>
     </item>
     
     <item>
@@ -58,14 +58,13 @@ Solution: just keep these the same. The error disappeared here after selecting f
     </item>
     
     <item>
-      <title>2. Kotlin Examples/Exercises</title>
-      <link>https://kuleuven-diepenbeek.github.io/appdev-course/lang/kotlin-examples/</link>
+      <title>2. Kotlin programming: Advanced</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/lang/kotlin-advanced/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
-      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/lang/kotlin-examples/</guid>
-      <description>All examples can be found in the GitHub repository of this very course, at https://github.com/KULeuven-Diepenbeek/appdev-course/tree/main/examples
-We&amp;rsquo;ll be using IntelliJ to create simple Kotlin projects, so leave Android Studio closed for the moment. While creating a new project, choose
- A Gradle style project, Enable the Kotlin DSL Build Script, and finally Check Kotlin/JVM (uncheck Java)    New Project settings for Kotlin  Wait for the initial Gradle download/build to finish.</description>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/lang/kotlin-advanced/</guid>
+      <description>A closer look at Java/Kotlin interop As seen in the kotlin basics, both languages compile to .class files that the JVM can understand. And since class files can be decompiled by the likes of procyon, let&amp;rsquo;s see what happens when we do that to a bit of Kotlin code, just to deepen our understanding of how Kotlin works in relation to Java.
+Suppose we build a joinToString function to print out a string representation of a collection with separators.</description>
     </item>
     
     <item>
@@ -80,15 +79,6 @@ Instead of &amp;ldquo;Welcome, have a nice day&amp;rdquo;, as pictured in:
     </item>
     
     <item>
-      <title>2. Test Driven Development</title>
-      <link>https://kuleuven-diepenbeek.github.io/appdev-course/lang/tdd/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
-      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/lang/tdd/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>3. Complex layouting - Fragments</title>
       <link>https://kuleuven-diepenbeek.github.io/appdev-course/android/fragments/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -100,21 +90,24 @@ Navigation using fragments</description>
     </item>
     
     <item>
+      <title>3. Kotlin Examples/Exercises</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/lang/kotlin-examples/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/lang/kotlin-examples/</guid>
+      <description>All examples can be found in the GitHub repository of this very course, at https://github.com/KULeuven-Diepenbeek/appdev-course/tree/main/examples
+We&amp;rsquo;ll be using IntelliJ to create simple Kotlin projects, so leave Android Studio closed for the moment. While creating a new project, choose
+ A Gradle style project, Enable the Kotlin DSL Build Script, and finally Check Kotlin/JVM (uncheck Java)    New Project settings for Kotlin  Wait for the initial Gradle download/build to finish.</description>
+    </item>
+    
+    <item>
       <title>3. Links and Tutorials</title>
       <link>https://kuleuven-diepenbeek.github.io/appdev-course/extra/links/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
       <guid>https://kuleuven-diepenbeek.github.io/appdev-course/extra/links/</guid>
-      <description>Tutorials Kotlin-Specific  The Official Kotlin Koans and examples  Android-Specific  Official Android Developer Guide CodePath Android Cliffnotes Tutorialspoint.com Android Tutorial Vogella.com Android Development Tutorials  Advanced Android UI Concepts  Android Widgets on the home screen Drag-and-drop systems Notifications  Various  Awesome Android Kotlin Apps &amp;mdash; a curated list on GitHub  </description>
-    </item>
-    
-    <item>
-      <title>3. Multiplatform Mobile dev.</title>
-      <link>https://kuleuven-diepenbeek.github.io/appdev-course/lang/multiplatform/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
-      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/lang/multiplatform/</guid>
-      <description></description>
+      <description>Tutorials Kotlin-Specific  Exercises: The Official Kotlin Koans and examples The Kotlin docs: basics, ways to learn, what&amp;rsquo;s new, the YouTube channel, &amp;hellip;  Android-Specific  Official Android Developer Guide: thé way to start learning Android development. Android developer MAD skills videos in case you&amp;rsquo;re too lazy to read.  Third party tutorials that can prove to be handy as well:
+ CodePath Android Cliffnotes Tutorialspoint.com Android Tutorial Vogella.com Android Development Tutorials  Various  Awesome Android Kotlin Apps &amp;mdash; a curated list on GitHub  </description>
     </item>
     
     <item>
@@ -139,6 +132,15 @@ pressing back, rotating, data gone?</description>
     </item>
     
     <item>
+      <title>4. Test Driven Development</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/lang/tdd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/lang/tdd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>5. Data Storage - File/Network</title>
       <link>https://kuleuven-diepenbeek.github.io/appdev-course/android/data-storage/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -155,6 +157,15 @@ pressing back, rotating, data gone?</description>
       <guid>https://kuleuven-diepenbeek.github.io/appdev-course/extra/demo/</guid>
       <description>TODO howlongtobeat achtig iets?
  Een Java-only en een Kotlin-only app? Een multiplatform gebaseerd op Kotlin&amp;rsquo;s platform? Een React-native gelijkaardige?  </description>
+    </item>
+    
+    <item>
+      <title>5. Multiplatform Mobile dev.</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/lang/multiplatform/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/lang/multiplatform/</guid>
+      <description></description>
     </item>
     
     <item>

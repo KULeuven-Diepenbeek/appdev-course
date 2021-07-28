@@ -9,7 +9,7 @@
     <managingEditor>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</managingEditor>
     <webMaster>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</webMaster><atom:link href="https://kuleuven-diepenbeek.github.io/appdev-course/lang/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>1. The Kotlin programming lang.</title>
+      <title>1. Kotlin programming: Essentials</title>
       <link>https://kuleuven-diepenbeek.github.io/appdev-course/lang/kotlin/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
@@ -21,7 +21,17 @@
     </item>
     
     <item>
-      <title>2. Kotlin Examples/Exercises</title>
+      <title>2. Kotlin programming: Advanced</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/lang/kotlin-advanced/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/lang/kotlin-advanced/</guid>
+      <description>A closer look at Java/Kotlin interop As seen in the kotlin basics, both languages compile to .class files that the JVM can understand. And since class files can be decompiled by the likes of procyon, let&amp;rsquo;s see what happens when we do that to a bit of Kotlin code, just to deepen our understanding of how Kotlin works in relation to Java.
+Suppose we build a joinToString function to print out a string representation of a collection with separators.</description>
+    </item>
+    
+    <item>
+      <title>3. Kotlin Examples/Exercises</title>
       <link>https://kuleuven-diepenbeek.github.io/appdev-course/lang/kotlin-examples/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
@@ -32,7 +42,7 @@ We&amp;rsquo;ll be using IntelliJ to create simple Kotlin projects, so leave And
     </item>
     
     <item>
-      <title>2. Test Driven Development</title>
+      <title>4. Test Driven Development</title>
       <link>https://kuleuven-diepenbeek.github.io/appdev-course/lang/tdd/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
@@ -41,7 +51,7 @@ We&amp;rsquo;ll be using IntelliJ to create simple Kotlin projects, so leave And
     </item>
     
     <item>
-      <title>3. Multiplatform Mobile dev.</title>
+      <title>5. Multiplatform Mobile dev.</title>
       <link>https://kuleuven-diepenbeek.github.io/appdev-course/lang/multiplatform/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
