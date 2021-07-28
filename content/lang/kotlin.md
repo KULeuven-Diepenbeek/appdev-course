@@ -358,13 +358,50 @@ public inline fun <T> Iterable<T>.forEach(action: (T) -> Unit): Unit {
 }
 ```
 
-Hold on there! Where's the argument `action` in our example? We say `items.forEach {` and not `items.forEach(arg) {`. This is a special case: if the last argument is a closure, the block that is attached to the function _is_ the argument itself! This is yet another bit of syntactic sugar to ease the use of passing in functions as arguments.
+_Hold on there!_ Where's the argument `action` in our example? We say `items.forEach {` and not `items.forEach(arg) {`. This is a special case: if the last argument is a closure, the block that is attached to the function _is_ the argument itself! This is yet another bit of syntactic sugar to ease the use of passing in functions as arguments. 
 
-Kotlin provides The Usual Suspects of functional loop tools, such as:
+Not convinced? This piece of Java code:
+
+```java
+// wrongfully assumes "forEach" exists as a method on the collection
+public interface ForEachAction {
+    void act(Item i);
+}
+items.forEach(new ForEachAction() {
+    @Override
+    public void act(Item i) {
+        System.out.println(i);
+    }
+})
+```
+
+Is the same as _each_ of the following lines in Kotlin:
+
+```kt
+// step 1: still too verbose
+items.forEach({ i: Item -> println(i) })
+
+// step 2: a lambda expression can be moved out of the paranthesis if it's the last argument
+items.forEach() { i: Item -> println(i) }
+
+// step 3: the empty parenthesis can also be removed if the lambda is the only argument
+items.forEach { i: Item -> println(i) }
+
+// step 4: parameter type inferred
+items.forEach { i -> println(i) s}
+
+// step 5: use the default parameter name "it"
+items.forEach { println(it) }
+```
+
+The reason the above `ForEachAction` interface gets covered in a Kotlin lambda without having to refer to the method `act` at all is that it's an interface with a single method: a _functional interface_ or a Single Action Method (SAM) interface. The JDK and Android API are littered with these interfaces, and you already know many of those: `java.lang.Runnable`, `java.util.Comparator`, `javax.event.EventhHandler`, ... This means it's easy to replace anonymous inner functions with Kotlin lambda's when working with JDK/Android APIs. [See the kotlin docs](https://kotlinlang.org/docs/fun-interfaces.html) for more information.
+
+Next to `forEach`, Kotlin provides The Usual Suspects of functional loop tools, such as:
 
 - `.filter {}`
 - `.reduce {}`
 - `.sumOf {}`
+- `.maxOf {}`
 - `.removeIf {}`
 - `.replaceAll {}`
 - ...

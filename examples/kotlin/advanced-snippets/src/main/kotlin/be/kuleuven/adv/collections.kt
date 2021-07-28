@@ -19,6 +19,9 @@ fun main(args: Array<String>) {
 
     println(joinToString(someCollection.values))
     println(joinToString(someCollection.values, ", ", prefix = "(", suffix = ")"))
+
+    val stuff = arrayListOf(1, 2, 3, 4)
+    stuff.forEach { println(it) }
 }
 
 // suppose we throw the above into a Java decompiler such as https://github.com/mstrobel/procyon
