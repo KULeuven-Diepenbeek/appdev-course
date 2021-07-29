@@ -12,20 +12,20 @@
     <title>1. Life Cycle - Activities :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1627561774" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1627561774" rel="stylesheet">
-    <link href="../../css/hybrid.css?1627561774" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1627561774" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1627561774" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1627561774" rel="stylesheet">
-    <link href="../../css/theme.css?1627561774" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1627561774" rel="stylesheet">
+    <link href="../../css/nucleus.css?1627563484" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1627563484" rel="stylesheet">
+    <link href="../../css/hybrid.css?1627563484" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1627563484" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1627563484" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1627563484" rel="stylesheet">
+    <link href="../../css/theme.css?1627563484" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1627563484" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1627561774" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1627563484" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1627561774"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1627563484"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -37,7 +37,9 @@
         }
       
     </style>
-    
+    <script src=../../js/devselector.js></script>
+<link href="../../css/devselector.css" rel="stylesheet">
+
   </head>
   <body class="" data-url="../../android/activities/">
     <nav id="sidebar" class="">
@@ -60,14 +62,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1627561774"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1627561774"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1627563484"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1627563484"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1627561774"></script>
+<script type="text/javascript" src="../../js/search.js?1627563484"></script>
 
     
   </div>
@@ -757,10 +759,19 @@
 <span style="color:#f92672">}</span>
 </code></pre></div><p>Here, we can create fields and auto-wire them. In Android, you have to rely on the generated binding class where the fields are: less messy but one more step needed to take. Remember that the more components you have, the more convoluted your FXML Controller is going to get. This is well-hidden behind the binding object in Android systems.</p>
 <p>We react to events such as the <code>click</code> (&ldquo;tap&rdquo;) event in the same way as you would do in JavaFX:</p>
+<div class="devselect">
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#111">binding</span><span style="color:#111">.</span><span style="color:#111">btnLogin</span><span style="color:#111">.</span><span style="color:#111">setOnClickListener</span> <span style="color:#111">{</span> <span style="color:#111">view</span> <span style="color:#f92672">-&gt;</span>
     <span style="color:#111">Snackbar</span><span style="color:#111">.</span><span style="color:#111">make</span><span style="color:#111">(</span><span style="color:#111">view</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;Nice, clicked a button&#34;</span><span style="color:#111">,</span> <span style="color:#111">Snackbar</span><span style="color:#111">.</span><span style="color:#111">LENGTH_LONG</span><span style="color:#111">).</span><span style="color:#111">setAction</span><span style="color:#111">(</span><span style="color:#d88200">&#34;Action&#34;</span><span style="color:#111">,</span> <span style="color:#00a8c8">null</span><span style="color:#111">).</span><span style="color:#111">show</span><span style="color:#111">()</span>
 <span style="color:#111">}</span>
-</code></pre></div><p><code>Snackbar</code> is a fast way to provide periodical feedback that automatically disappears. Ta-daa:</p>
+</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#111">binding</span><span style="color:#f92672">.</span><span style="color:#75af00">getLoginButton</span><span style="color:#f92672">().</span><span style="color:#75af00">setOnClickListener</span><span style="color:#f92672">(</span><span style="color:#00a8c8">new</span> <span style="color:#111">OnClickListener</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span> 
+    <span style="color:#75af00">@Override</span>
+    <span style="color:#00a8c8">public</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">onClick</span><span style="color:#f92672">(</span><span style="color:#111">View</span> <span style="color:#111">var1</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#111">Snackbar</span><span style="color:#f92672">.</span><span style="color:#75af00">make</span><span style="color:#f92672">(</span><span style="color:#111">view</span><span style="color:#f92672">,</span> <span style="color:#d88200">&#34;Nice, clicked a button&#34;</span><span style="color:#f92672">,</span> <span style="color:#111">Snackbar</span><span style="color:#f92672">.</span><span style="color:#75af00">LENGTH_LONG</span><span style="color:#f92672">).</span><span style="color:#75af00">setAction</span><span style="color:#f92672">(</span><span style="color:#d88200">&#34;Action&#34;</span><span style="color:#f92672">,</span> <span style="color:#00a8c8">null</span><span style="color:#f92672">).</span><span style="color:#75af00">show</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">})</span>
+</code></pre></div></div>
+<p>If you can&rsquo;t make sense of the lambda syntax, take a peek at the conventional Java implementation.</p>
+<p><code>Snackbar</code> is a fast way to provide periodical feedback that automatically disappears. Ta-daa:</p>
 <p><figure>
 	<a href="../../img/loginbtn.jpg" data-featherlight="image">
 		<img src="../../img/loginbtn.jpg"  >
@@ -789,9 +800,13 @@
 <p>What should happen once we&rsquo;re logged in successfully? Take another look at the first image on this page: a <strong>welcome screen</strong> would be nice.</p>
 <p>Create a second layout XML file by right-clicking on the <code>res</code> folder (or layout), select New &ndash; Layout Resource File, and name it <code>activity_welcome</code>. You&rsquo;re given the option to change the root element, but another <code>ConstraintLayout</code> is fine, since we&rsquo;re now familiar with the basics of element placing in that particular layout. Go to the design editor and pull in a nice welcome text and a sample image that corresponds to the user&rsquo;s avatar. When you&rsquo;re done with that, create the corresponding controller class called <code>WelcomeActivity</code>.</p>
 <p>Next, we need a piece of code to change the activity to the new one, provided the password is correct. That&rsquo;s done using an <strong>Intent</strong>, of which we&rsquo;ll see <a href="../../android/intents">more in the coming chapter</a>. An intent is a way to pass messages from one activity to another, but also to tell one activity it should transition to the other:</p>
+<div class="devselect">
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">val</span> <span style="color:#111">intent</span> <span style="color:#111">=</span> <span style="color:#111">Intent</span><span style="color:#111">(</span><span style="color:#00a8c8">this</span><span style="color:#111">,</span> <span style="color:#111">MyNewActivity</span><span style="color:#f92672">::</span><span style="color:#00a8c8">class</span><span style="color:#111">.</span><span style="color:#111">java</span><span style="color:#111">)</span>
 <span style="color:#111">startActivity</span><span style="color:#111">(</span><span style="color:#111">intent</span><span style="color:#111">)</span>
-</code></pre></div><p>Note that <code>::class.java</code> is the Kotlin way to grab hold of the static <code>.class</code> instance of a class. Run your app and see if it works. Chances are you&rsquo;ll see it crash with the following message in the console:</p>
+</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#111">Intent</span> <span style="color:#111">intent</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">new</span> <span style="color:#111">Intent</span><span style="color:#f92672">(</span><span style="color:#00a8c8">this</span><span style="color:#f92672">,</span> <span style="color:#111">MyNewActivity</span><span style="color:#f92672">.</span><span style="color:#75af00">class</span><span style="color:#f92672">)</span>
+<span style="color:#111">startActivity</span><span style="color:#f92672">(</span><span style="color:#111">intent</span><span style="color:#f92672">)</span>
+</code></pre></div></div>
+<p>Note that <code>::class.java</code> is the Kotlin way to grab hold of the static <code>.class</code> instance of a class. Run your app and see if it works. Chances are you&rsquo;ll see it crash with the following message in the console:</p>
 <pre><code>E/AndroidRuntime: FATAL EXCEPTION: main
     Process: be.kuleuven.login, PID: 8457
     android.content.ActivityNotFoundException: Unable to find explicit activity class {be.kuleuven.login/be.kuleuven.login.WelcomeActivity}; have you declared this activity in your AndroidManifest.xml?
@@ -1222,17 +1237,17 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1627561775"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1627561775"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1627561775"></script>
-    <script src="../../js/jquery.sticky.js?1627561775"></script>
-    <script src="../../js/featherlight.min.js?1627561775"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1627561775"></script>
-    <script src="../../js/learn.js?1627561775"></script>
-    <script src="../../js/hugo-learn.js?1627561775"></script>
+    <script src="../../js/clipboard.min.js?1627563485"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1627563485"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1627563485"></script>
+    <script src="../../js/jquery.sticky.js?1627563485"></script>
+    <script src="../../js/featherlight.min.js?1627563485"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1627563485"></script>
+    <script src="../../js/learn.js?1627563485"></script>
+    <script src="../../js/hugo-learn.js?1627563485"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1627561775"></script>
+            <script src="../../mermaid/mermaid.js?1627563485"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

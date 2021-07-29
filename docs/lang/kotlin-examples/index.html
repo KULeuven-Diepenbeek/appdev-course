@@ -12,20 +12,20 @@
     <title>3. Kotlin Examples/Exercises :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1627561775" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1627561775" rel="stylesheet">
-    <link href="../../css/hybrid.css?1627561775" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1627561775" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1627561775" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1627561775" rel="stylesheet">
-    <link href="../../css/theme.css?1627561775" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1627561775" rel="stylesheet">
+    <link href="../../css/nucleus.css?1627563485" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1627563485" rel="stylesheet">
+    <link href="../../css/hybrid.css?1627563485" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1627563485" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1627563485" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1627563485" rel="stylesheet">
+    <link href="../../css/theme.css?1627563485" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1627563485" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1627561775" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1627563485" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1627561775"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1627563485"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -37,7 +37,9 @@
         }
       
     </style>
-    
+    <script src=../../js/devselector.js></script>
+<link href="../../css/devselector.css" rel="stylesheet">
+
   </head>
   <body class="" data-url="../../lang/kotlin-examples/">
     <nav id="sidebar" class="">
@@ -60,14 +62,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1627561775"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1627561775"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1627563485"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1627563485"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1627561775"></script>
+<script type="text/javascript" src="../../js/search.js?1627563485"></script>
 
     
   </div>
@@ -658,7 +660,7 @@
 </figure>
 </p>
 <p>Wait for the initial Gradle download/build to finish. Create your Kotlin class/source files in <code>src/main/kotlin</code>. Do not forget creating the correct package structure. See the examples in the above GitHub link.</p>
-<p>The Kotlin DSL (<em>Domain Specific Language</em>) provides an alternative syntax to the traditional Groovy DSL in Gradle buidlfiles with superious IDE support. This means that every statement in your build script should be valid Kotlin syntax. Read up on the <a href="https://docs.gradle.org/current/userguide/kotlin_dsl.html">Gradle Kotlin DSL Primer</a> for more information. Kotlin DSL script files use the <code>.gradle.kts</code> file name extension.</p>
+<p>The Kotlin DSL (<em>Domain Specific Language</em>) provides an alternative syntax to the traditional Groovy DSL in Gradle buidlfiles with superious IDE support. This means that every statement in your build script should be valid Kotlin syntax. For more information, inspect to the <a href="https://kuleuven-diepenbeek.github.io/ses-course/dependency-management/kotlin-gradle/">Software Engineering Skills: Kotlin Gradle files</a> course information page.</p>
 <h2 id="1-taxi-driving-basic-kotlin-syntax">1. Taxi Driving: Basic Kotlin syntax</h2>
 <p>Remember the taxi exercise from INF1 last year? The one in BlueJ that teaches you about <strong>object composition</strong>?</p>
 <blockquote>
@@ -701,6 +703,7 @@
 </ul>
 <p>There are a lot of things that can go wrong when calling Java from Kotlin. For example, some Kotlin-specific keywords, such as <code>when</code>, can be simply functions in Java. To call these, you need to use backticks. Consult the <a href="https://developer.android.com/kotlin/interop">Kotlin-Java interop guide</a> if you encounter a weird error while calling a native Java method.</p>
 <h2 id="more-examples">More Examples</h2>
+<p>More small and large examples can be found in the GitHub repository of this very course, at <a href="https://github.com/KULeuven-Diepenbeek/appdev-course/tree/main/examples/kotlin">https://github.com/KULeuven-Diepenbeek/appdev-course/tree/main/examples/kotlin</a></p>
 <p>On <code>kotlinlang.org</code>, examples that explore every aspect of the Kotlin language are neatly summarized using their online Playground: <a href="https://play.kotlinlang.org/byExample/overview">https://play.kotlinlang.org/byExample/overview</a>. We <strong>strongly recommend</strong> you to check these out: they are very short, do not require anything to install, and touch upon every basic but important concept you&rsquo;ll need to master.</p>
 <p>There are also Koans available <a href="https://play.kotlinlang.org/koans/overview">https://play.kotlinlang.org/koans/overview</a> that let you get familiar with the Kotlin syntax by training again and again until the syntax has been well-imprinted into your brain.</p>
 
@@ -1088,17 +1091,17 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1627561775"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1627561775"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1627561775"></script>
-    <script src="../../js/jquery.sticky.js?1627561775"></script>
-    <script src="../../js/featherlight.min.js?1627561775"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1627561775"></script>
-    <script src="../../js/learn.js?1627561775"></script>
-    <script src="../../js/hugo-learn.js?1627561775"></script>
+    <script src="../../js/clipboard.min.js?1627563485"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1627563485"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1627563485"></script>
+    <script src="../../js/jquery.sticky.js?1627563485"></script>
+    <script src="../../js/featherlight.min.js?1627563485"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1627563485"></script>
+    <script src="../../js/learn.js?1627563485"></script>
+    <script src="../../js/hugo-learn.js?1627563485"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1627561775"></script>
+            <script src="../../mermaid/mermaid.js?1627563485"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

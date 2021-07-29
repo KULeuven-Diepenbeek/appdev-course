@@ -12,20 +12,20 @@
     <title>2. Messaging - Intents :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1627561774" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1627561774" rel="stylesheet">
-    <link href="../../css/hybrid.css?1627561774" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1627561774" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1627561774" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1627561774" rel="stylesheet">
-    <link href="../../css/theme.css?1627561774" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1627561774" rel="stylesheet">
+    <link href="../../css/nucleus.css?1627563484" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1627563484" rel="stylesheet">
+    <link href="../../css/hybrid.css?1627563484" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1627563484" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1627563484" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1627563484" rel="stylesheet">
+    <link href="../../css/theme.css?1627563484" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1627563484" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1627561774" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1627563484" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1627561774"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1627563484"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -37,7 +37,9 @@
         }
       
     </style>
-    
+    <script src=../../js/devselector.js></script>
+<link href="../../css/devselector.css" rel="stylesheet">
+
   </head>
   <body class="" data-url="../../android/intents/">
     <nav id="sidebar" class="">
@@ -60,14 +62,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1627561774"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1627561774"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1627563484"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1627563484"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1627561774"></script>
+<script type="text/javascript" src="../../js/search.js?1627563484"></script>
 
     
   </div>
@@ -671,9 +673,33 @@
 <span style="color:#111">binding</span><span style="color:#111">.</span><span style="color:#111">txtWelcome</span><span style="color:#111">.</span><span style="color:#111">text</span> <span style="color:#111">=</span> <span style="color:#d88200">&#34;Welcome, </span><span style="color:#d88200">$username</span><span style="color:#d88200">&#34;</span>
 </code></pre></div><h3 id="passing-objects-through-intents">Passing objects through intents</h3>
 <p>Of course, passing in tens of different input fields can get cumbersome. Instead, let&rsquo;s provide a data class that represents the user:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">data</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">User</span><span style="color:#111">(</span><span style="color:#00a8c8">val</span> <span style="color:#111">name</span><span style="color:#111">:</span> <span style="color:#111">String</span><span style="color:#111">)</span> <span style="color:#111">{</span>
-<span style="color:#111">}</span>
-</code></pre></div><p>Unfortunately, that is not enough. Intents only carry along basic key-value pairs of primitives, meaning our object has to be <strong>serialized</strong>. There are two options to do this:</p>
+<div class="devselect">
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">data</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">User</span><span style="color:#111">(</span><span style="color:#00a8c8">val</span> <span style="color:#111">name</span><span style="color:#111">:</span> <span style="color:#111">String</span><span style="color:#111">)</span>
+</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00a8c8">public</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">User</span> <span style="color:#f92672">{</span>
+    <span style="color:#00a8c8">private</span> <span style="color:#00a8c8">final</span> <span style="color:#111">String</span> <span style="color:#111">name</span><span style="color:#f92672">;</span>
+    <span style="color:#00a8c8">public</span> <span style="color:#111">String</span> <span style="color:#75af00">getName</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#00a8c8">return</span> <span style="color:#111">name</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#75af00">@Override</span>
+    <span style="color:#00a8c8">public</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">toString</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#00a8c8">return</span> <span style="color:#d88200">&#34;[&#34;</span> <span style="color:#f92672">+</span> <span style="color:#111">name</span> <span style="color:#f92672">+</span> <span style="color:#d88200">&#34;]&#34;</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#75af00">@Override</span>
+    <span style="color:#00a8c8">public</span> <span style="color:#111">bool</span> <span style="color:#75af00">equals</span><span style="color:#f92672">(</span><span style="color:#111">object</span> <span style="color:#111">other</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#00a8c8">if</span><span style="color:#f92672">(</span><span style="color:#111">other</span> <span style="color:#f92672">==</span> <span style="color:#00a8c8">null</span> <span style="color:#f92672">||</span> <span style="color:#111">other</span> <span style="color:#f92672">!</span><span style="color:#00a8c8">instanceof</span> <span style="color:#111">User</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#00a8c8">return</span> <span style="color:#00a8c8">false</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#111">User</span> <span style="color:#111">otherUser</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#111">User</span><span style="color:#f92672">)</span> <span style="color:#111">other</span><span style="color:#f92672">;</span>
+        <span style="color:#00a8c8">return</span> <span style="color:#111">name</span><span style="color:#f92672">.</span><span style="color:#75af00">equals</span><span style="color:#f92672">(</span><span style="color:#111">otherUser</span><span style="color:#f92672">.</span><span style="color:#75af00">name</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#75af00">@Override</span>
+    <span style="color:#00a8c8">public</span> <span style="color:#00a8c8">int</span> <span style="color:#75af00">hashCode</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#00a8c8">return</span> <span style="color:#111">name</span><span style="color:#f92672">.</span><span style="color:#75af00">hashCode</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div></div>
+<p>Remember that data classes are convenient ways to automatically implement getters/setters/equals/hashcode/tostring. Take a look at the Java code and try not to freak out. It&rsquo;s that ugly.</p>
+<p>Unfortunately, that is not enough. Intents only carry along basic key-value pairs of primitives, meaning our object has to be <strong>serialized</strong>. There are two options to do this:</p>
 <ol>
 <li>The default Java way: implement <code>Serializable</code>. Use <a href="https://betterprogramming.pub/why-and-how-to-use-kotlins-native-serialization-library-c88c0f14f93d">Kotlin native serialization</a> to make things easier here.</li>
 <li>The Android specific way: implement <code>Parcelable</code>. A &ldquo;parcel&rdquo; is a &ldquo;package&rdquo; that needs to be delivered form one side to the other. Parcels are much more efficient on Android devices than serializable. See the <a href="https://developer.android.com/kotlin/parcelize">parcelable implementation generator docs</a> on how to enable this in your Kotlin-Android project.</li>
@@ -1178,17 +1204,17 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1627561775"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1627561775"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1627561775"></script>
-    <script src="../../js/jquery.sticky.js?1627561775"></script>
-    <script src="../../js/featherlight.min.js?1627561775"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1627561775"></script>
-    <script src="../../js/learn.js?1627561775"></script>
-    <script src="../../js/hugo-learn.js?1627561775"></script>
+    <script src="../../js/clipboard.min.js?1627563485"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1627563485"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1627563485"></script>
+    <script src="../../js/jquery.sticky.js?1627563485"></script>
+    <script src="../../js/featherlight.min.js?1627563485"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1627563485"></script>
+    <script src="../../js/learn.js?1627563485"></script>
+    <script src="../../js/hugo-learn.js?1627563485"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1627561775"></script>
+            <script src="../../mermaid/mermaid.js?1627563485"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

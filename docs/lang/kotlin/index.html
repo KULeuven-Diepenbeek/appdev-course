@@ -12,20 +12,20 @@
     <title>1. Kotlin programming: Essentials :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1627561775" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1627561775" rel="stylesheet">
-    <link href="../../css/hybrid.css?1627561775" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1627561775" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1627561775" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1627561775" rel="stylesheet">
-    <link href="../../css/theme.css?1627561775" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1627561775" rel="stylesheet">
+    <link href="../../css/nucleus.css?1627563485" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1627563485" rel="stylesheet">
+    <link href="../../css/hybrid.css?1627563485" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1627563485" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1627563485" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1627563485" rel="stylesheet">
+    <link href="../../css/theme.css?1627563485" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1627563485" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1627561775" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1627563485" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1627561775"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1627563485"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -37,7 +37,9 @@
         }
       
     </style>
-    
+    <script src=../../js/devselector.js></script>
+<link href="../../css/devselector.css" rel="stylesheet">
+
   </head>
   <body class="" data-url="../../lang/kotlin/">
     <nav id="sidebar" class="">
@@ -60,14 +62,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1627561775"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1627561775"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1627563485"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1627563485"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1627561775"></script>
+<script type="text/javascript" src="../../js/search.js?1627563485"></script>
 
     
   </div>
@@ -698,8 +700,9 @@
 <p><strong>Play with Kotlin</strong> to get to know the language before focusing on Android specifics. The best way to do this is creating simple Kotlin projects in Intellij (see <a href="../../lang/kotlin-examples">Kotlin examples</a>) or simply by browsing to <a href="https://play.kotlinlang.org/">https://play.kotlinlang.org/</a></p>
 <h3 id="1-variables">1. Variables</h3>
 <p>As mentioned before, Kotlin has many functional aspects to it. For variable declaration, you can <em>pre-set</em> a value, declaring it will never change (it&rsquo;s a constant), or just call it a &ldquo;variable&rdquo;.</p>
+<div class="devselect">
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">fun</span> <span style="color:#75af00">main</span><span style="color:#111">(</span><span style="color:#111">args</span><span style="color:#111">:</span> <span style="color:#111">Array</span><span style="color:#111">&lt;</span><span style="color:#111">String</span><span style="color:#111">&gt;)</span> <span style="color:#111">{</span>
-    <span style="color:#111">System</span><span style="color:#111">.</span><span style="color:#00a8c8">out</span><span style="color:#111">.</span><span style="color:#111">println</span><span style="color:#111">(</span><span style="color:#d88200">&#34;Hi from Kotlin! the Main fun(ction) should be placed outside of a class. Strange, isn&#39;t it? No? Hmm.&#34;</span><span style="color:#111">)</span>
+    <span style="color:#111">println</span><span style="color:#111">(</span><span style="color:#d88200">&#34;Hi from Kotlin! the Main fun(ction) can be placed outside a class. Cool!&#34;</span><span style="color:#111">)</span>
 
     <span style="color:#00a8c8">var</span> <span style="color:#111">count1</span><span style="color:#111">:</span> <span style="color:#111">Int</span> <span style="color:#111">=</span> <span style="color:#ae81ff">10</span>
     <span style="color:#111">count1</span><span style="color:#f92672">++</span>
@@ -710,7 +713,22 @@
 </span><span style="color:#75715e"></span>    <span style="color:#00a8c8">val</span> <span style="color:#111">count4</span> <span style="color:#111">=</span> <span style="color:#ae81ff">10</span>
     <span style="color:#111">count4</span><span style="color:#f92672">++</span>    <span style="color:#75715e">// compile error
 </span><span style="color:#75715e"></span><span style="color:#111">}</span>
-</code></pre></div><p>This works just like in JavaScript: <code>let</code> (used to be <code>var</code>) and <code>const</code>.</p>
+</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00a8c8">public</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">MainClass</span> <span style="color:#f92672">{</span>
+    <span style="color:#00a8c8">public</span> <span style="color:#00a8c8">static</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">main</span><span style="color:#f92672">(</span><span style="color:#111">Stringp</span><span style="color:#f92672">[]</span> <span style="color:#111">args</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#111">System</span><span style="color:#f92672">.</span><span style="color:#75af00">out</span><span style="color:#f92672">.</span><span style="color:#75af00">println</span><span style="color:#f92672">(</span><span style="color:#d88200">&#34;Hi from... ugly old... Java? Great... &#34;</span><span style="color:#f92672">);</span>
+
+        <span style="color:#111">var</span> <span style="color:#111">count1</span> <span style="color:#f92672">=</span> <span style="color:#111">10</span><span style="color:#f92672">;</span> <span style="color:#75715e">// this works in JDK9+
+</span><span style="color:#75715e"></span>        <span style="color:#111">count1</span><span style="color:#f92672">++;</span>
+        <span style="color:#00a8c8">int</span> <span style="color:#111">count2</span> <span style="color:#f92672">=</span> <span style="color:#111">10</span><span style="color:#f92672">;</span>
+        <span style="color:#111">count2</span><span style="color:#f92672">++;</span>
+        <span style="color:#00a8c8">final</span> <span style="color:#111">var</span> <span style="color:#111">count3</span> <span style="color:#f92672">=</span> <span style="color:#111">10</span><span style="color:#f92672">;</span>
+        <span style="color:#111">count3</span><span style="color:#f92672">++;</span> <span style="color:#75715e">// compile error
+</span><span style="color:#75715e"></span>        <span style="color:#00a8c8">final</span> <span style="color:#00a8c8">int</span> <span style="color:#111">count4</span> <span style="color:#f92672">=</span> <span style="color:#111">10</span><span style="color:#f92672">;</span>
+        <span style="color:#111">count4</span><span style="color:#f92672">++;</span> <span style="color:#75715e">// compile error
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div></div>
+<p>This works just like in JavaScript: <code>let</code> (used to be <code>var</code>) and <code>const</code>.</p>
 <p><code>val</code>ues cannot be changed: they&rsquo;re values. What else is new? No <code>;</code>&mdash;finally! Note Kotlin has built-in <a href="https://kotlinlang.org/spec/type-inference.html">type inference</a>: specifying <code>:= Int</code> is not needed, the compiler knows this since you provide a whole number on the right-hand side of the equation sign.</p>
 <p>Try to use <code>val</code> as much as possible: <strong>make verything immutable</strong>, unless you absolutely have to use a mutable variable. This is good practice that promotes functional-style programming and prevents making mistakes with, among others, concurrency. Note that <code>val person = Person()</code> means you cannot assign another <code>Person</code> to the <code>person</code> variable, but you can still mutate the reference itself: <code>person.age = 10</code>&mdash;unless the setter is private, that is.</p>
 <p>Spot the new syntax in the next section:</p>
@@ -721,9 +739,11 @@
     <span style="color:#00a8c8">var</span> <span style="color:#111">nameGood</span><span style="color:#111">:</span> <span style="color:#111">String</span><span style="color:#111">?</span> <span style="color:#111">=</span> <span style="color:#00a8c8">null</span>
     <span style="color:#111">nameGood</span> <span style="color:#111">=</span> <span style="color:#d88200">&#34;Wouter&#34;</span>
 
-    <span style="color:#111">System</span><span style="color:#111">.</span><span style="color:#00a8c8">out</span><span style="color:#111">.</span><span style="color:#111">println</span><span style="color:#111">(</span><span style="color:#d88200">&#34;My name is &#34;</span> <span style="color:#111">+</span> <span style="color:#111">nameGood</span><span style="color:#111">.</span><span style="color:#111">orEmpty</span><span style="color:#111">())</span>
+    <span style="color:#75715e">// We can just as well use standard Java invocations.
+</span><span style="color:#75715e"></span>    <span style="color:#111">System</span><span style="color:#111">.</span><span style="color:#00a8c8">out</span><span style="color:#111">.</span><span style="color:#111">println</span><span style="color:#111">(</span><span style="color:#d88200">&#34;My name is &#34;</span> <span style="color:#111">+</span> <span style="color:#111">nameGood</span><span style="color:#111">.</span><span style="color:#111">orEmpty</span><span style="color:#111">())</span>
 
-    <span style="color:#111">println</span><span style="color:#111">(</span><span style="color:#d88200">&#34;My name is &#34;</span> <span style="color:#111">+</span> <span style="color:#111">nameGood</span><span style="color:#f92672">?.</span><span style="color:#111">toLowerCase</span><span style="color:#111">())</span> <span style="color:#75715e">// without if check: use ?.
+    <span style="color:#75715e">// this is simply a Kotlin-wrapper.
+</span><span style="color:#75715e"></span>    <span style="color:#111">println</span><span style="color:#111">(</span><span style="color:#d88200">&#34;My name is &#34;</span> <span style="color:#111">+</span> <span style="color:#111">nameGood</span><span style="color:#f92672">?.</span><span style="color:#111">toLowerCase</span><span style="color:#111">())</span> <span style="color:#75715e">// without if check: use ?.
 </span><span style="color:#75715e"></span>    <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#111">nameGood</span> <span style="color:#f92672">!=</span> <span style="color:#00a8c8">null</span><span style="color:#111">)</span> <span style="color:#111">{</span>
         <span style="color:#111">println</span><span style="color:#111">(</span><span style="color:#d88200">&#34;My name surely is &#34;</span> <span style="color:#111">+</span> <span style="color:#111">nameGood</span><span style="color:#111">.</span><span style="color:#111">toLowerCase</span><span style="color:#111">())</span> <span style="color:#75715e">// with if check: no ? after dot
 </span><span style="color:#75715e"></span>    <span style="color:#111">}</span>
@@ -735,6 +755,7 @@
 
 <h3 id="2-conditionals">2. Conditionals</h3>
 <p><code>if()</code> is still <code>if()</code>, including the <code>else</code>. What&rsquo;s more interesting, however, is the possibility of replacing your if-else expressions with a <code>when</code> expression:</p>
+<div class="devselect">
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">val</span> <span style="color:#111">answerString</span> <span style="color:#111">=</span> <span style="color:#00a8c8">when</span> <span style="color:#111">{</span>
     <span style="color:#111">count</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">42</span> <span style="color:#f92672">-&gt;</span> <span style="color:#d88200">&#34;I have the answer.&#34;</span>
     <span style="color:#111">count</span> <span style="color:#111">&gt;</span> <span style="color:#ae81ff">35</span> <span style="color:#f92672">-&gt;</span> <span style="color:#d88200">&#34;The answer is close.&#34;</span>
@@ -742,26 +763,43 @@
 <span style="color:#111">}</span>
 
 <span style="color:#111">println</span><span style="color:#111">(</span><span style="color:#111">answerString</span><span style="color:#111">)</span>
-</code></pre></div><p>Note that in the example above, the expression seems to be missing. If <code>when</code> is used without brackets, Kotlin will check for Boolean values. <code>when</code> is very powerful in Kotlin, compared to <code>switch</code> in Java, that requires constants. You can <code>when</code> over any string/object instance/whatever:</p>
+</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// awkward! Need some kind of wrapper
+</span><span style="color:#75715e"></span><span style="color:#00a8c8">private</span> <span style="color:#111">String</span> <span style="color:#75af00">cantAssignResultOfSwitchInAVar</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#00a8c8">switch</span><span style="color:#f92672">(</span><span style="color:#111">count</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#00a8c8">case</span> <span style="color:#111">42</span><span style="color:#f92672">:</span> <span style="color:#00a8c8">return</span> <span style="color:#d88200">&#34;I have the answer.&#34;</span><span style="color:#f92672">;</span>
+        <span style="color:#00a8c8">case</span> <span style="color:#111">41</span><span style="color:#f92672">:</span>
+        <span style="color:#00a8c8">case</span> <span style="color:#111">40</span><span style="color:#f92672">:</span>
+        <span style="color:#00a8c8">case</span> <span style="color:#111">39</span><span style="color:#f92672">:</span>    <span style="color:#75715e">// wow, this is awkward! &#34;&gt; 35&#34; is impossible in Java.
+</span><span style="color:#75715e"></span>        <span style="color:#00a8c8">case</span> <span style="color:#111">38</span><span style="color:#f92672">:</span>
+        <span style="color:#00a8c8">case</span> <span style="color:#111">37</span><span style="color:#f92672">:</span>
+        <span style="color:#00a8c8">case</span> <span style="color:#111">36</span><span style="color:#f92672">:</span> <span style="color:#00a8c8">return</span> <span style="color:#d88200">&#34;The answer is close.&#34;</span><span style="color:#f92672">;</span>
+        <span style="color:#00a8c8">default</span><span style="color:#f92672">:</span> <span style="color:#00a8c8">return</span> <span style="color:#d88200">&#34;The answer eludes me.&#34;</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#00a8c8">return</span> <span style="color:#d88200">&#34;&#34;</span><span style="color:#f92672">;</span> <span style="color:#75715e">// awkward.
+</span><span style="color:#75715e"></span><span style="color:#111">String</span> <span style="color:#111">answerString</span> <span style="color:#f92672">=</span> <span style="color:#111">cantAssignResultOfSwitchInAVar</span><span style="color:#f92672">();</span>
+</code></pre></div></div>
+<p>Note that in the example above, the expression seems to be missing. If <code>when</code> is used without brackets, Kotlin will check for Boolean values. <code>when</code> is very powerful in Kotlin, compared to <code>switch</code> in Java, that requires constants. You can <code>when</code> over any string/object instance/whatever:</p>
+<div class="devselect">
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">val</span> <span style="color:#111">color</span> <span style="color:#111">=</span> <span style="color:#111">Color</span><span style="color:#111">(</span><span style="color:#111">RED</span><span style="color:#111">)</span>
 <span style="color:#00a8c8">when</span><span style="color:#111">(</span><span style="color:#111">color</span><span style="color:#111">)</span> <span style="color:#111">{</span>
     <span style="color:#111">Color</span><span style="color:#111">(</span><span style="color:#111">GREEN</span><span style="color:#111">)</span> <span style="color:#f92672">-&gt;</span> <span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#d88200">&#34;its green&#34;</span><span style="color:#111">)</span>
     <span style="color:#111">Color</span><span style="color:#111">(</span><span style="color:#111">RED</span><span style="color:#111">)</span> <span style="color:#f92672">-&gt;</span> <span style="color:#111">print</span><span style="color:#111">(</span><span style="color:#d88200">&#34;its red&#34;</span><span style="color:#111">)</span>
 <span style="color:#111">}</span>
-</code></pre></div><p>Kotlin uses <em>equality checks</em> behind the scenes, so it will look like this in Java:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#111">Color</span> <span style="color:#111">color</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">new</span> <span style="color:#111">Color</span><span style="color:#f92672">(</span><span style="color:#111">RED</span><span style="color:#f92672">);</span>
+</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#111">Color</span> <span style="color:#111">color</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">new</span> <span style="color:#111">Color</span><span style="color:#f92672">(</span><span style="color:#111">RED</span><span style="color:#f92672">);</span>
 <span style="color:#00a8c8">if</span><span style="color:#f92672">(</span><span style="color:#111">color</span><span style="color:#f92672">.</span><span style="color:#75af00">equals</span><span style="color:#f92672">(</span><span style="color:#00a8c8">new</span> <span style="color:#111">Color</span><span style="color:#f92672">(</span><span style="color:#111">GREEN</span><span style="color:#f92672">)))</span> <span style="color:#f92672">{</span>
     <span style="color:#111">System</span><span style="color:#f92672">.</span><span style="color:#75af00">out</span><span style="color:#f92672">.</span><span style="color:#75af00">println</span><span style="color:#f92672">(</span><span style="color:#d88200">&#34;its green&#34;</span><span style="color:#f92672">)</span>
 <span style="color:#f92672">}</span> <span style="color:#00a8c8">else</span> <span style="color:#00a8c8">if</span><span style="color:#f92672">(</span><span style="color:#111">color</span><span style="color:#f92672">.</span><span style="color:#75af00">equals</span><span style="color:#f92672">(</span><span style="color:#00a8c8">new</span> <span style="color:#111">Color</span><span style="color:#f92672">(</span><span style="color:#111">RED</span><span style="color:#f92672">)))</span> <span style="color:#f92672">{</span>
     <span style="color:#111">System</span><span style="color:#f92672">.</span><span style="color:#75af00">out</span><span style="color:#f92672">.</span><span style="color:#75af00">println</span><span style="color:#f92672">(</span><span style="color:#d88200">&#34;its red&#34;</span><span style="color:#f92672">)</span>
 <span style="color:#f92672">}</span>
-</code></pre></div><p>Note that no ternary operator exists (<code>val bla = d == 10 ? &quot;jup&quot; : &quot;nah&quot;</code>), although that can be written in a single-line using Kotlin&rsquo;s <code>if</code>:</p>
+</code></pre></div></div>
+<p>Kotlin uses <em>equality checks</em> behind the scenes, the only possible way to implement it in Java. Take a look at the Java implementation to uncover its details.</p>
+<p>Note that no ternary operator exists (<code>val bla = d == 10 ? &quot;jup&quot; : &quot;nah&quot;</code>), although that can be written in a single-line using Kotlin&rsquo;s <code>if</code>:</p>
 
 <div class="notices note" ><p>In Kotlin, <code>if</code> and <code>when</code> constructs are <strong>expressions</strong>: they hold a value. In Java, they are <strong>statements</strong> that require code blocks. That means that both constructs can appear on the right-hand side of a variable assignment in one line. Don&rsquo;t let the weird syntax scare you: <code>var max = if(a &gt; b) a else b</code>. This makes the ternary operator redundant.</p>
 </div>
 
 <h3 id="3-classes-and-functions">3. Classes and Functions</h3>
-<p>Suppose we&rsquo;d like to represent a pawn and its position. This is the Java way to do it:</p>
+<p>Suppose we&rsquo;d like to represent a pawn and its position. This is the (often painfully long) Java way to do it:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00a8c8">public</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">Pawn</span> <span style="color:#f92672">{</span>
     <span style="color:#00a8c8">private</span> <span style="color:#00a8c8">int</span> <span style="color:#111">x</span><span style="color:#f92672">;</span>
     <span style="color:#00a8c8">private</span> <span style="color:#00a8c8">int</span> <span style="color:#111">y</span><span style="color:#f92672">;</span>
@@ -1344,17 +1382,17 @@ The <a href="https://kotlinlang.org/docs/coding-conventions.html#functions">offi
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1627561775"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1627561775"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1627561775"></script>
-    <script src="../../js/jquery.sticky.js?1627561775"></script>
-    <script src="../../js/featherlight.min.js?1627561775"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1627561775"></script>
-    <script src="../../js/learn.js?1627561775"></script>
-    <script src="../../js/hugo-learn.js?1627561775"></script>
+    <script src="../../js/clipboard.min.js?1627563485"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1627563485"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1627563485"></script>
+    <script src="../../js/jquery.sticky.js?1627563485"></script>
+    <script src="../../js/featherlight.min.js?1627563485"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1627563485"></script>
+    <script src="../../js/learn.js?1627563485"></script>
+    <script src="../../js/hugo-learn.js?1627563485"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1627561775"></script>
+            <script src="../../mermaid/mermaid.js?1627563485"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
