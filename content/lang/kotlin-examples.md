@@ -14,7 +14,7 @@ We'll be using **IntelliJ** to create simple Kotlin projects, so leave Android S
 
 Wait for the initial Gradle download/build to finish. Create your Kotlin class/source files in `src/main/kotlin`. Do not forget creating the correct package structure. See the examples in the above GitHub link.
 
-The Kotlin DSL (_Domain Specific Language_) provides an alternative syntax to the traditional Groovy DSL in Gradle buidlfiles with superious IDE support. This means that every statement in your build script should be valid Kotlin syntax. Read up on the [Gradle Kotlin DSL Primer](https://docs.gradle.org/current/userguide/kotlin_dsl.html) for more information. Kotlin DSL script files use the `.gradle.kts` file name extension. 
+The Kotlin DSL (_Domain Specific Language_) provides an alternative syntax to the traditional Groovy DSL in Gradle buidlfiles with superious IDE support. This means that every statement in your build script should be valid Kotlin syntax. For more information, inspect to the [Software Engineering Skills: Kotlin Gradle files](https://kuleuven-diepenbeek.github.io/ses-course/dependency-management/kotlin-gradle/) course information page. 
 
 ## 1. Taxi Driving: Basic Kotlin syntax
 
@@ -63,6 +63,8 @@ When you're done, compare your solution with the one provided. The following con
 There are a lot of things that can go wrong when calling Java from Kotlin. For example, some Kotlin-specific keywords, such as `when`, can be simply functions in Java. To call these, you need to use backticks. Consult the [Kotlin-Java interop guide](https://developer.android.com/kotlin/interop) if you encounter a weird error while calling a native Java method. 
 
 ## More Examples
+
+More small and large examples can be found in the GitHub repository of this very course, at https://github.com/KULeuven-Diepenbeek/appdev-course/tree/main/examples/kotlin
 
 On `kotlinlang.org`, examples that explore every aspect of the Kotlin language are neatly summarized using their online Playground: https://play.kotlinlang.org/byExample/overview. We **strongly recommend** you to check these out: they are very short, do not require anything to install, and touch upon every basic but important concept you'll need to master.
 

@@ -121,11 +121,26 @@ Here, we can create fields and auto-wire them. In Android, you have to rely on t
 
 We react to events such as the `click` ("tap") event in the same way as you would do in JavaFX:
 
+<div class="devselect">
+
 ```kt
 binding.btnLogin.setOnClickListener { view ->
     Snackbar.make(view, "Nice, clicked a button", Snackbar.LENGTH_LONG).setAction("Action", null).show()
 }
 ```
+
+```java
+binding.getLoginButton().setOnClickListener(new OnClickListener() { 
+    @Override
+    public void onClick(View var1) {
+        Snackbar.make(view, "Nice, clicked a button", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+    }
+})
+```
+
+</div>
+
+If you can't make sense of the lambda syntax, take a peek at the conventional Java implementation.
 
 `Snackbar` is a fast way to provide periodical feedback that automatically disappears. Ta-daa:
 
@@ -153,10 +168,18 @@ Create a second layout XML file by right-clicking on the `res` folder (or layout
 
 Next, we need a piece of code to change the activity to the new one, provided the password is correct. That's done using an **Intent**, of which we'll see [more in the coming chapter](/android/intents). An intent is a way to pass messages from one activity to another, but also to tell one activity it should transition to the other:
 
+<div class="devselect">
+
 ```kt
 val intent = Intent(this, MyNewActivity::class.java)
 startActivity(intent)
 ```
+
+```java
+Intent intent = new Intent(this, MyNewActivity.class)
+startActivity(intent)
+```
+</div>
 
 Note that `::class.java` is the Kotlin way to grab hold of the static `.class` instance of a class. Run your app and see if it works. Chances are you'll see it crash with the following message in the console:
 

@@ -29,10 +29,40 @@ binding.txtWelcome.text = "Welcome, $username"
 
 Of course, passing in tens of different input fields can get cumbersome. Instead, let's provide a data class that represents the user:
 
+<div class="devselect">
+
 ```kt
-data class User(val name: String) {
+data class User(val name: String)
+```
+
+```java
+public class User {
+    private final String name;
+    public String getName() {
+        return name;
+    }
+    @Override
+    public void toString() {
+        return "[" + name + "]";
+    }
+    @Override
+    public bool equals(object other) {
+        if(other == null || other !instanceof User) {
+            return false;
+        }
+        User otherUser = (User) other;
+        return name.equals(otherUser.name);
+    }
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
 }
 ```
+
+</div>
+
+Remember that data classes are convenient ways to automatically implement getters/setters/equals/hashcode/tostring. Take a look at the Java code and try not to freak out. It's that ugly. 
 
 Unfortunately, that is not enough. Intents only carry along basic key-value pairs of primitives, meaning our object has to be **serialized**. There are two options to do this:
 

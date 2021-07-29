@@ -62,9 +62,11 @@ Roughly based upon Google's [Introduction to Kotlin crash course](https://develo
 
 As mentioned before, Kotlin has many functional aspects to it. For variable declaration, you can _pre-set_ a value, declaring it will never change (it's a constant), or just call it a "variable".
 
+<div class="devselect">
+
 ```kt
 fun main(args: Array<String>) {
-    System.out.println("Hi from Kotlin! the Main fun(ction) should be placed outside of a class. Strange, isn't it? No? Hmm.")
+    println("Hi from Kotlin! the Main fun(ction) can be placed outside a class. Cool!")
 
     var count1: Int = 10
     count1++
@@ -76,6 +78,24 @@ fun main(args: Array<String>) {
     count4++    // compile error
 }
 ```
+
+```java
+public class MainClass {
+    public static void main(Stringp[] args) {
+        System.out.println("Hi from... ugly old... Java? Great... ");
+
+        var count1 = 10; // this works in JDK9+
+        count1++;
+        int count2 = 10;
+        count2++;
+        final var count3 = 10;
+        count3++; // compile error
+        final int count4 = 10;
+        count4++; // compile error
+    }
+}
+```
+</div>
 
 This works just like in JavaScript: `let` (used to be `var`) and `const`.
 
@@ -93,8 +113,10 @@ fun main(args: Array<String>) {
     var nameGood: String? = null
     nameGood = "Wouter"
 
+    // We can just as well use standard Java invocations.
     System.out.println("My name is " + nameGood.orEmpty())
 
+    // this is simply a Kotlin-wrapper.
     println("My name is " + nameGood?.toLowerCase()) // without if check: use ?.
     if(nameGood != null) {
         println("My name surely is " + nameGood.toLowerCase()) // with if check: no ? after dot
@@ -112,6 +134,8 @@ All standard JDK API methods are still available to you. Remember that you are s
 
 `if()` is still `if()`, including the `else`. What's more interesting, however, is the possibility of replacing your if-else expressions with a `when` expression:
 
+<div class="devselect">
+
 ```kt
 val answerString = when {
     count == 42 -> "I have the answer."
@@ -122,7 +146,27 @@ val answerString = when {
 println(answerString)
 ```
 
+```java
+// awkward! Need some kind of wrapper
+private String cantAssignResultOfSwitchInAVar() {
+    switch(count) {
+        case 42: return "I have the answer.";
+        case 41:
+        case 40:
+        case 39:    // wow, this is awkward! "> 35" is impossible in Java.
+        case 38:
+        case 37:
+        case 36: return "The answer is close.";
+        default: return "The answer eludes me.";
+    }
+    return ""; // awkward.
+String answerString = cantAssignResultOfSwitchInAVar();
+```
+</div>
+
 Note that in the example above, the expression seems to be missing. If `when` is used without brackets, Kotlin will check for Boolean values. `when` is very powerful in Kotlin, compared to `switch` in Java, that requires constants. You can `when` over any string/object instance/whatever:
+
+<div class="devselect">
 
 ```kt
 val color = Color(RED)
@@ -132,8 +176,6 @@ when(color) {
 }
 ```
 
-Kotlin uses _equality checks_ behind the scenes, so it will look like this in Java:
-
 ```java
 Color color = new Color(RED);
 if(color.equals(new Color(GREEN))) {
@@ -142,6 +184,9 @@ if(color.equals(new Color(GREEN))) {
     System.out.println("its red")
 }
 ```
+</div>
+
+Kotlin uses _equality checks_ behind the scenes, the only possible way to implement it in Java. Take a look at the Java implementation to uncover its details.
 
 Note that no ternary operator exists (`val bla = d == 10 ? "jup" : "nah"`), although that can be written in a single-line using Kotlin's `if`:
 
@@ -151,7 +196,7 @@ In Kotlin, `if` and `when` constructs are **expressions**: they hold a value. In
 
 ### 3. Classes and Functions
 
-Suppose we'd like to represent a pawn and its position. This is the Java way to do it:
+Suppose we'd like to represent a pawn and its position. This is the (often painfully long) Java way to do it:
 
 ```java
 public class Pawn {
