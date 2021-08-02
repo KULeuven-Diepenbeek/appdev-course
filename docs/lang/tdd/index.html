@@ -12,20 +12,20 @@
     <title>4. Test Driven Development :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1627900271" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1627900271" rel="stylesheet">
-    <link href="../../css/hybrid.css?1627900271" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1627900271" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1627900271" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1627900271" rel="stylesheet">
-    <link href="../../css/theme.css?1627900271" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1627900271" rel="stylesheet">
+    <link href="../../css/nucleus.css?1627904564" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1627904564" rel="stylesheet">
+    <link href="../../css/hybrid.css?1627904564" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1627904564" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1627904564" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1627904564" rel="stylesheet">
+    <link href="../../css/theme.css?1627904564" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1627904564" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1627900271" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1627904564" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1627900271"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1627904564"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -62,14 +62,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1627900271"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1627900271"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1627904564"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1627904564"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1627900271"></script>
+<script type="text/javascript" src="../../js/search.js?1627904564"></script>
 
     
   </div>
@@ -721,7 +721,26 @@ tasks.test {
         <span style="color:#111">Intents</span><span style="color:#111">.</span><span style="color:#111">intended</span><span style="color:#111">(</span><span style="color:#111">IntentMatchers</span><span style="color:#111">.</span><span style="color:#111">hasComponent</span><span style="color:#111">(</span><span style="color:#111">WelcomeActivity</span><span style="color:#f92672">::</span><span style="color:#00a8c8">class</span><span style="color:#111">.</span><span style="color:#111">java</span><span style="color:#111">.</span><span style="color:#111">name</span><span style="color:#111">))</span>
     <span style="color:#111">}</span>
 <span style="color:#111">}</span>
-</code></pre></div><p>Feel free to fiddle with the Espresso toolset. The course repository has ample examples of these tests: see the <code>loginactivity</code> Kotlin example project, where the above example comes from.</p>
+</code></pre></div>
+<div class="notices note" ><p>The Espresso activity suite expects a <code>public</code> field for JUnit Rules to apply. Although in Kotlin, properties are <code>public</code> by dfeault, Kotlin&rsquo;s <code>val</code> in fact generates a private field with public getters by default. <code>@get:Rule</code> applies the rule to the field. <code>@JvmField</code> is an alternative way to tell Kotlin to produce a pure backing field.</p>
+</div>
+
+<p>See the test in action:</p>
+<div class="video-mask">
+	<video controls preload="metadata">
+	  <source src="../../vid/espresso.mp4#t=0.5" type="video/mp4">
+	  Your browser does not support HTML video. Here's a link to the MP4-encoded video instead: <a href="../../vid/espresso.mp4">/vid/espresso.mp4</a>.
+	</video>
+</div>
+<p>Do not forget to add the following <em>test dependencies</em> to your Gradle app module:</p>
+<pre><code>dependencies {
+    testImplementation(&quot;junit:junit:4.+&quot;)
+    androidTestImplementation(&quot;androidx.test.ext:junit:1.1.3&quot;)
+    androidTestImplementation(&quot;androidx.test.espresso:espresso-core:3.4.0&quot;)
+    androidTestImplementation(&quot;androidx.test.espresso:espresso-intents:3.4.0&quot;)
+}
+</code></pre><p>If you created the project using an existing template in Android Studio, only the latter one will be missing. The <code>espresso</code> library version numbers must match!</br>
+Feel free to fiddle with the Espresso toolset. The course repository has ample examples of these tests: see the <code>loginactivity</code> Kotlin example project, where the above example comes from.</p>
 <p>However, this falls beyond the scope of this course.</p>
 
 
@@ -1108,17 +1127,17 @@ tasks.test {
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1627900271"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1627900271"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1627900271"></script>
-    <script src="../../js/jquery.sticky.js?1627900271"></script>
-    <script src="../../js/featherlight.min.js?1627900271"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1627900271"></script>
-    <script src="../../js/learn.js?1627900271"></script>
-    <script src="../../js/hugo-learn.js?1627900271"></script>
+    <script src="../../js/clipboard.min.js?1627904564"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1627904564"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1627904564"></script>
+    <script src="../../js/jquery.sticky.js?1627904564"></script>
+    <script src="../../js/featherlight.min.js?1627904564"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1627904564"></script>
+    <script src="../../js/learn.js?1627904564"></script>
+    <script src="../../js/hugo-learn.js?1627904564"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1627900271"></script>
+            <script src="../../mermaid/mermaid.js?1627904564"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

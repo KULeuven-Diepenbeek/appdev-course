@@ -12,20 +12,20 @@
     <title>2. Common Errors FAQ :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1627900271" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1627900271" rel="stylesheet">
-    <link href="../../css/hybrid.css?1627900271" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1627900271" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1627900271" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1627900271" rel="stylesheet">
-    <link href="../../css/theme.css?1627900271" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1627900271" rel="stylesheet">
+    <link href="../../css/nucleus.css?1627904564" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1627904564" rel="stylesheet">
+    <link href="../../css/hybrid.css?1627904564" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1627904564" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1627904564" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1627904564" rel="stylesheet">
+    <link href="../../css/theme.css?1627904564" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1627904564" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1627900271" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1627904564" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1627900271"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1627904564"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -62,14 +62,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1627900271"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1627900271"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1627904564"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1627904564"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1627900271"></script>
+<script type="text/javascript" src="../../js/search.js?1627904564"></script>
 
     
   </div>
@@ -623,6 +623,7 @@
         <li><a href="#3-virtualization-haxvm-related-errors">3. Virtualization HAXVM-related errors</a></li>
         <li><a href="#4-invalid-entry-crc-while-deploying">4. Invalid Entry CRC while deploying</a></li>
         <li><a href="#5-lifecycleowners-must-call-register-before-they-are-started">5. LifecycleOwners must call register before they are STARTED.</a></li>
+        <li><a href="#6-noactivityresumedexception-when-running-instrumented-tests">6. NoActivityResumedException when running instrumented tests</a></li>
       </ul>
     </li>
   </ul>
@@ -699,6 +700,19 @@
 <p>Cause:</p>
 <p>Are you calling <code>registerForActivityResult</code> in <code>onCreate()</code> using a callback of sorts? If so, your fragment/activity is still in STARTED state and should be in CREATED state for this particular intent to receive the results. Usually if you want to receive a camera image.</p>
 <p>Solution: move your listener outside of create scope (e.g. <code>onViewCreated()</code>).</p>
+<h3 id="6-noactivityresumedexception-when-running-instrumented-tests">6. NoActivityResumedException when running instrumented tests</h3>
+<p>Error:</p>
+<pre><code>androidx.test.espresso.NoActivityResumedException: No activities found. Did you forget to launch the activity by calling getActivity() or startActivitySync or similar?
+    at dalvik.system.VMStack.getThreadStackTrace(Native Method)
+    at java.lang.Thread.getStackTrace(Thread.java:1736)
+    at androidx.test.espresso.base.DefaultFailureHandler.getUserFriendlyError(DefaultFailureHandler.java:12)
+    at androidx.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:7)
+    at androidx.test.espresso.ViewInteraction.waitForAndHandleInteractionResults(ViewInteraction.java:8)
+    at androidx.test.espresso.ViewInteraction.desugaredPerform(ViewInteraction.java:11)
+    at androidx.test.espresso.ViewInteraction.perform(ViewInteraction.java:4)
+    at be.kuleuven.login.MainActivityTests.givenCorrectPassword_whenLoginPressed_thenTransitionToWelcome(MainActivityTests.kt:60)
+</code></pre><p>Cause: you forgot to bootstrap an activity in your test using <code>@get:Rule</code> and <code>@Before</code>/<code>@After</code> methods. See the <a href="../../lang/tdd">Kotlin/Android TDD</a> chapter for more information.</p>
+<p>Solution: Initialize your activity before making any assumptions!</p>
 
 
 <footer class="footline">
@@ -1084,17 +1098,17 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1627900271"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1627900271"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1627900271"></script>
-    <script src="../../js/jquery.sticky.js?1627900271"></script>
-    <script src="../../js/featherlight.min.js?1627900271"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1627900271"></script>
-    <script src="../../js/learn.js?1627900271"></script>
-    <script src="../../js/hugo-learn.js?1627900271"></script>
+    <script src="../../js/clipboard.min.js?1627904564"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1627904564"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1627904564"></script>
+    <script src="../../js/jquery.sticky.js?1627904564"></script>
+    <script src="../../js/featherlight.min.js?1627904564"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1627904564"></script>
+    <script src="../../js/learn.js?1627904564"></script>
+    <script src="../../js/hugo-learn.js?1627904564"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1627900271"></script>
+            <script src="../../mermaid/mermaid.js?1627904564"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
