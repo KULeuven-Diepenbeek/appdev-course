@@ -7,12 +7,10 @@ import androidx.test.espresso.intent.Intents
 import androidx.test.espresso.intent.matcher.IntentMatchers
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.*
-import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import junit.framework.TestCase.assertEquals
 import org.junit.After
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -24,18 +22,18 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class MainActivityTests {
 
-    @get:Rule
-    val rule = ActivityScenarioRule(MainActivity::class.java)
+    //@get:Rule
+    //val rule = ActivityScenarioRule(MainActivity::class.java)
     // the OLD but still documented way: var mIntentsRule: IntentsTestRule<MainActivity> = IntentsTestRule(MainActivity::class.java)
 
     @Before
     fun setUp() {
-        Intents.init()
+        //Intents.init()
     }
 
     @After
     fun tearDown() {
-        Intents.release()
+        //Intents.release()
     }
 
     @Test

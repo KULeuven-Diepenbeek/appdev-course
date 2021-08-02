@@ -66,3 +66,23 @@ Cause:
 Are you calling `registerForActivityResult` in `onCreate()` using a callback of sorts? If so, your fragment/activity is still in STARTED state and should be in CREATED state for this particular intent to receive the results. Usually if you want to receive a camera image. 
 
 Solution: move your listener outside of create scope (e.g. `onViewCreated()`).
+
+### 6. NoActivityResumedException when running instrumented tests
+
+Error:
+
+```
+androidx.test.espresso.NoActivityResumedException: No activities found. Did you forget to launch the activity by calling getActivity() or startActivitySync or similar?
+    at dalvik.system.VMStack.getThreadStackTrace(Native Method)
+    at java.lang.Thread.getStackTrace(Thread.java:1736)
+    at androidx.test.espresso.base.DefaultFailureHandler.getUserFriendlyError(DefaultFailureHandler.java:12)
+    at androidx.test.espresso.base.DefaultFailureHandler.handle(DefaultFailureHandler.java:7)
+    at androidx.test.espresso.ViewInteraction.waitForAndHandleInteractionResults(ViewInteraction.java:8)
+    at androidx.test.espresso.ViewInteraction.desugaredPerform(ViewInteraction.java:11)
+    at androidx.test.espresso.ViewInteraction.perform(ViewInteraction.java:4)
+    at be.kuleuven.login.MainActivityTests.givenCorrectPassword_whenLoginPressed_thenTransitionToWelcome(MainActivityTests.kt:60)
+```
+
+Cause: you forgot to bootstrap an activity in your test using `@get:Rule` and `@Before`/`@After` methods. See the [Kotlin/Android TDD](/lang/tdd) chapter for more information.
+
+Solution: Initialize your activity before making any assumptions!

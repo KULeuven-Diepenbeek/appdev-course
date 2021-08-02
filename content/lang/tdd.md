@@ -101,6 +101,26 @@ class MainActivityTests {
 }
 ```
 
+{{% notice note %}}
+The Espresso activity suite expects a `public` field for JUnit Rules to apply. Although in Kotlin, properties are `public` by dfeault, Kotlin's `val` in fact generates a private field with public getters by default. `@get:Rule` applies the rule to the field. `@JvmField` is an alternative way to tell Kotlin to produce a pure backing field. 
+{{% /notice %}}
+
+See the test in action:
+
+{{< video "/vid/espresso.mp4" >}}
+
+Do not forget to add the following _test dependencies_ to your Gradle app module:
+
+```
+dependencies {
+    testImplementation("junit:junit:4.+")
+    androidTestImplementation("androidx.test.ext:junit:1.1.3")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    androidTestImplementation("androidx.test.espresso:espresso-intents:3.4.0")
+}
+```
+
+If you created the project using an existing template in Android Studio, only the latter one will be missing. The `espresso` library version numbers must match!</br>
 Feel free to fiddle with the Espresso toolset. The course repository has ample examples of these tests: see the `loginactivity` Kotlin example project, where the above example comes from.
 
 However, this falls beyond the scope of this course. 
