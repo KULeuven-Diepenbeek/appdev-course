@@ -27,10 +27,19 @@ Simply search for "kotlin" and "android" on GitHub and you'll find yourself wadi
 
 Moreover, troubleshooting using Google/Stack Overflow usually nets you Kotlin code, as it's become that common. Yet another point in favor for learning Android app development "the recommended way". We promise it won't hurt a bit. Maybe only sting. Just a little bit. 
 
-### 2. Because We Say So
+### 2. Because Kotlin is Java 2.0
 
-The software department of ACRO, the KU Leuven research group at Diepenbeek Campus, focuses on functional languages, of which Kotlin certainly fits the bill. Kotlin's functional mechanics are nowhere near as complex as Prolog or Scala, and is familiar enough for students who are used to writing programs in Java. Thus, with relative little effort, a new (both for you and for the programming community) language can be learned. 
+Writing Kotlin code on the JVM still means programming on the JVM---the _Java_ Virtual Machine. That is, in the end, you'll still need a firm grasp of Java if things get awry. The ability to decompile `.class` files lets you take a peek at what the Kotlin compiler does for us. See [advanced Kotlin aspects](/lang/kotlin-advanced).
 
+Software developers are slowly integrating parts of Kotlin into existing Java architectures: Kotlin mingles well with existing Java-based solutions. The learning curve, therefore, is flattened: you can choose to gradually migrate towards the new functionalities instead of having to go all out with a big bang. 
+
+However, since within this course you'll be creating _new_ projects, we'll opt for an all-in Kotlin solution here. In other courses such as Software Engineering Skills, you can choose to do parts in Kotlin, or everything---or nothing. We hope you've come to appreciate the beauty of this relatively new language by then. 
+
+### 3. Because We Say So
+
+The software department of [ACRO](https://iiw.kuleuven.be/onderzoek/acro), the KU Leuven research group at Diepenbeek Campus, focuses on functional languages, of which Kotlin certainly fits the bill. Kotlin's functional mechanics are nowhere near as complex as Prolog or Scala (it is a multi-purpose multi-paradigm language, not a pure functional one such as the aforementioned), and is familiar enough for students who are used to writing programs in Java. Thus, with relative little effort, a new (both for you and for the programming community) language can be learned. 
+
+---
 
 ## How does Kotlin fit into the JVM?
 

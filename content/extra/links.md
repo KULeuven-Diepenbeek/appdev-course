@@ -8,6 +8,7 @@ title: 3. Links and Tutorials
 
 - Exercises: [The Official Kotlin Koans](https://play.kotlinlang.org/koans/overview) and [examples](https://play.kotlinlang.org/byExample/overview)
 - [The Kotlin docs](https://kotlinlang.org/docs/home.html): basics, ways to learn, what's new, the YouTube channel, ... 
+- [Live Kotlin coding sessions](https://www.twitch.tv/livecodingwithsch3lp) to be followed on Twitch
 
 #### Android-Specific
 
