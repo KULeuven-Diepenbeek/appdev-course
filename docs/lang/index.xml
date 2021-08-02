@@ -47,7 +47,10 @@ We&amp;rsquo;ll be using IntelliJ to create simple Kotlin projects, so leave And
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
       <guid>https://kuleuven-diepenbeek.github.io/appdev-course/lang/tdd/</guid>
-      <description></description>
+      <description>Learn the whys and the hows of TDD in Software Engineering Skills: TDD.
+Kotlin and JUnit 5 When writing tests in Kotlin, pretty much all conventional Java rules apply. Just write the JUnit 5 test as if you were writing a Java test, except that the syntax is Kotlin-specific.
+An example:
+class PeriodTests { @Test fun `Given two overlapping periods When overlapsWith is called Then return true`() { val jandec19 = Periode( LocalDate.</description>
     </item>
     
     <item>

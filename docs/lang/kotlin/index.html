@@ -12,20 +12,20 @@
     <title>1. Kotlin programming: Essentials :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1627563485" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1627563485" rel="stylesheet">
-    <link href="../../css/hybrid.css?1627563485" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1627563485" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1627563485" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1627563485" rel="stylesheet">
-    <link href="../../css/theme.css?1627563485" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1627563485" rel="stylesheet">
+    <link href="../../css/nucleus.css?1627900271" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1627900271" rel="stylesheet">
+    <link href="../../css/hybrid.css?1627900271" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1627900271" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1627900271" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1627900271" rel="stylesheet">
+    <link href="../../css/theme.css?1627900271" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1627900271" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1627563485" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1627900271" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1627563485"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1627900271"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -62,14 +62,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1627563485"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1627563485"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1627900271"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1627900271"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1627563485"></script>
+<script type="text/javascript" src="../../js/search.js?1627900271"></script>
 
     
   </div>
@@ -619,7 +619,8 @@
     <li><a href="#why-in-kotlin-yet-another-language">Why in Kotlin, Yet Another Language?</a>
       <ul>
         <li><a href="#1-because-google-says-so">1. Because Google Says So</a></li>
-        <li><a href="#2-because-we-say-so">2. Because We Say So</a></li>
+        <li><a href="#2-because-kotlin-is-java-20">2. Because Kotlin is Java 2.0</a></li>
+        <li><a href="#3-because-we-say-so">3. Because We Say So</a></li>
       </ul>
     </li>
     <li><a href="#how-does-kotlin-fit-into-the-jvm">How does Kotlin fit into the JVM?</a></li>
@@ -674,8 +675,13 @@
 </ul>
 <p>Simply search for &ldquo;kotlin&rdquo; and &ldquo;android&rdquo; on GitHub and you&rsquo;ll find yourself wading knee-deep into modern and highly-maintained app source code.</p>
 <p>Moreover, troubleshooting using Google/Stack Overflow usually nets you Kotlin code, as it&rsquo;s become that common. Yet another point in favor for learning Android app development &ldquo;the recommended way&rdquo;. We promise it won&rsquo;t hurt a bit. Maybe only sting. Just a little bit.</p>
-<h3 id="2-because-we-say-so">2. Because We Say So</h3>
-<p>The software department of ACRO, the KU Leuven research group at Diepenbeek Campus, focuses on functional languages, of which Kotlin certainly fits the bill. Kotlin&rsquo;s functional mechanics are nowhere near as complex as Prolog or Scala, and is familiar enough for students who are used to writing programs in Java. Thus, with relative little effort, a new (both for you and for the programming community) language can be learned.</p>
+<h3 id="2-because-kotlin-is-java-20">2. Because Kotlin is Java 2.0</h3>
+<p>Writing Kotlin code on the JVM still means programming on the JVM&mdash;the <em>Java</em> Virtual Machine. That is, in the end, you&rsquo;ll still need a firm grasp of Java if things get awry. The ability to decompile <code>.class</code> files lets you take a peek at what the Kotlin compiler does for us. See <a href="../../lang/kotlin-advanced">advanced Kotlin aspects</a>.</p>
+<p>Software developers are slowly integrating parts of Kotlin into existing Java architectures: Kotlin mingles well with existing Java-based solutions. The learning curve, therefore, is flattened: you can choose to gradually migrate towards the new functionalities instead of having to go all out with a big bang.</p>
+<p>However, since within this course you&rsquo;ll be creating <em>new</em> projects, we&rsquo;ll opt for an all-in Kotlin solution here. In other courses such as Software Engineering Skills, you can choose to do parts in Kotlin, or everything&mdash;or nothing. We hope you&rsquo;ve come to appreciate the beauty of this relatively new language by then.</p>
+<h3 id="3-because-we-say-so">3. Because We Say So</h3>
+<p>The software department of <a href="https://iiw.kuleuven.be/onderzoek/acro">ACRO</a>, the KU Leuven research group at Diepenbeek Campus, focuses on functional languages, of which Kotlin certainly fits the bill. Kotlin&rsquo;s functional mechanics are nowhere near as complex as Prolog or Scala (it is a multi-purpose multi-paradigm language, not a pure functional one such as the aforementioned), and is familiar enough for students who are used to writing programs in Java. Thus, with relative little effort, a new (both for you and for the programming community) language can be learned.</p>
+<hr>
 <h2 id="how-does-kotlin-fit-into-the-jvm">How does Kotlin fit into the JVM?</h2>
 <p>It&rsquo;s actually very simple: you should treat Kotlin as a <em>separate language</em> that compiles into the <em>same byte code</em> class files as traditional Java <code>.class</code> files. These can be packaged into a <code>.jar</code> like any other Java app, and run using the JVM, that won&rsquo;t even know it started as Kotlin code:</p>
 <p><figure>
@@ -1382,17 +1388,17 @@ The <a href="https://kotlinlang.org/docs/coding-conventions.html#functions">offi
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1627563485"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1627563485"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1627563485"></script>
-    <script src="../../js/jquery.sticky.js?1627563485"></script>
-    <script src="../../js/featherlight.min.js?1627563485"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1627563485"></script>
-    <script src="../../js/learn.js?1627563485"></script>
-    <script src="../../js/hugo-learn.js?1627563485"></script>
+    <script src="../../js/clipboard.min.js?1627900271"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1627900271"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1627900271"></script>
+    <script src="../../js/jquery.sticky.js?1627900271"></script>
+    <script src="../../js/featherlight.min.js?1627900271"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1627900271"></script>
+    <script src="../../js/learn.js?1627900271"></script>
+    <script src="../../js/hugo-learn.js?1627900271"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1627563485"></script>
+            <script src="../../mermaid/mermaid.js?1627900271"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
