@@ -12,20 +12,20 @@
     <title>3. Complex layouting - Fragments :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1627907565" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1627907565" rel="stylesheet">
-    <link href="../../css/hybrid.css?1627907565" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1627907565" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1627907565" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1627907565" rel="stylesheet">
-    <link href="../../css/theme.css?1627907565" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1627907565" rel="stylesheet">
+    <link href="../../css/nucleus.css?1627985576" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1627985576" rel="stylesheet">
+    <link href="../../css/hybrid.css?1627985576" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1627985576" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1627985576" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1627985576" rel="stylesheet">
+    <link href="../../css/theme.css?1627985576" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1627985576" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1627907565" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1627985576" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1627907565"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1627985576"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -62,14 +62,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1627907565"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1627907565"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1627985576"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1627985576"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1627907565"></script>
+<script type="text/javascript" src="../../js/search.js?1627985576"></script>
 
     
   </div>
@@ -621,8 +621,12 @@
 <nav id="TableOfContents">
   <ul>
     <li><a href="#whats-a-fragment">What&rsquo;s a fragment?</a></li>
-    <li><a href="#uses-reusability">Uses: reusability</a></li>
-    <li><a href="#uses-easing-navigation">Uses: easing navigation</a></li>
+    <li><a href="#why-use-fragments-reusabilitymodularity">Why use fragments? Reusability/Modularity</a>
+      <ul>
+        <li><a href="#creating-fragments">Creating fragments</a></li>
+      </ul>
+    </li>
+    <li><a href="#why-use-fragments-easing-navigation">Why use fragments? Easing navigation</a></li>
   </ul>
 </nav>
     </div>
@@ -647,19 +651,81 @@
         
 
 
+<p>See also: <a href="https://developer.android.com/guide/fragments">Android developer guide: fragments</a>.</p>
 <h2 id="whats-a-fragment">What&rsquo;s a fragment?</h2>
-<p>Extend from <code>Fragment</code> from package <code>androidx.fragment.app</code>.</p>
-<h2 id="uses-reusability">Uses: reusability</h2>
+<p>A fragment is, simply put, a <em>reusable</em> UI portion of an activity. For example, the welcome message from the <a href="../../android/activities/">activities chapter</a> can be a separate fragment, and the image containing the avatar of the user can be a separate fragment. Fragments are programmatically created by extending from <code>Fragment</code> from package <code>androidx.fragment.app</code>.</p>
+<p>From the docs:</p>
+<blockquote>
+<p>A Fragment represents a reusable portion of your app&rsquo;s UI. A fragment defines and manages its own layout, has its own lifecycle, and can handle its own input events. Fragments cannot live on their own&ndash;they must be hosted by an activity or another fragment. The fragment’s view hierarchy becomes part of, or attaches to, the host’s view hierarchy.</p>
+</blockquote>
+<p>Until now, we have not explicitly used fragments: we have directly created UI components on top of activities by dragging them in the design editor onto the designated <em>layout</em>. In most cases, that would be a single <code>ConstraintLayout</code> that uses constraints to specify where that particular button and text input component should be placed. When integrating fragments into an activity, these things do not change: instead of putting them directly onto the activity, you simply configure them on the fragment, and put one or more fragments onto an activity. In other words, it&rsquo;s another <em>abstraction layer</em>.</p>
+<p>A few things to remember:</p>
+<ul>
+<li>Fragments have their own lifecycle</li>
+<li>There&rsquo;s always an activity that holds one or more fragments (the parent container), and fragments are affected by the lifecycle of the activity.</li>
+</ul>
+<h2 id="why-use-fragments-reusabilitymodularity">Why use fragments? Reusability/Modularity</h2>
+<p>The easiest way to demonstrate its use is through the following schematic:</p>
 <p><figure>
 	<a href="../../img/fragment.jpg" data-featherlight="image">
-		<img src="../../img/fragment.jpg"   title="src: componentdriven.org">
+		<img src="../../img/fragment.jpg"   title="src: Android docs">
 	</a>
 	
-		<figcaption>src: componentdriven.org</figcaption>
+		<figcaption>src: Android docs</figcaption>
 	
 </figure>
 </p>
-<h2 id="uses-easing-navigation">Uses: easing navigation</h2>
+<p>Suppose we develop an Android app that we know will be running on:</p>
+<ul>
+<li>A tablet with a big screen, where people usually hold it horizontally.</li>
+<li>A smartphone with a smaller screen that is usually held vertically.</li>
+</ul>
+<p>On that smartphone screen, because of the dimensions, not all UI components can be shown at once. As a concrete example, just think about any master/detail screen you&rsquo;ve ever used in a tablet or on a smartphone: the <strong>master</strong> screen, that displays a <em>list</em> of things to select, is always shown first, while after selecting something, the <strong>detail</strong> screen appears. On a tablet device or on a PC, we can show both screens at the same time! This effect is visible in your typical Mail client:</p>
+<p><figure>
+	<a href="../../img/mail.jpg" data-featherlight="image">
+		<img src="../../img/mail.jpg"   title="Left: the master screen with navigation. Right: the detail: zoomed in on a single mail.">
+	</a>
+	
+		<figcaption>Left: the master screen with navigation. Right: the detail: zoomed in on a single mail.</figcaption>
+	
+</figure>
+</p>
+<p>Instead of designing two separate applications, we want to encapsulate these into a single one where we simply re-use the master part and the detail part! On a smaller screen, we split those into two separate activities. On a bigger screen, we simply show them both at once. Thus, we need something to capture the essence of this principle: hence the concept of <em>fragments</em>.</p>
+<h3 id="creating-fragments">Creating fragments</h3>
+<p>Just treat them as UI components. That is, they are also defined in the layout <code>.xml</code> files, and they are also a part of your <code>ConstsraintLayout</code> (constraints omitted for brevity):</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;fragment</span>
+    <span style="color:#75af00">android:name=</span><span style="color:#d88200">&#34;be.kuleuven.fragmentswitcher.FirstFragment&#34;</span>
+    <span style="color:#75af00">android:id=</span><span style="color:#d88200">&#34;@+id/myfragment&#34;</span>
+    <span style="color:#75af00">android:layout_width=</span><span style="color:#d88200">&#34;match_parent&#34;</span>
+    <span style="color:#75af00">android:layout_height=</span><span style="color:#d88200">&#34;0dp&#34;</span> <span style="color:#f92672">/&gt;</span>
+</code></pre></div><p>As with activities, they need their own Java/Kotlin class, so make sure to add the needed classes. (Rightclick, new -&gt; Fragment -&gt; Blank, this automatically creates the layout file. If your fragment is called <code>FirstFragment</code>, the layout file will be <code>fragement_first</code>). The gray <code>&lt;fragment/&gt;</code> box indicates just <em>a ssection</em> of the activity that will be <strong>replaced</strong> as fragments get swapped in and out! That means we don&rsquo;t need to (re)create an entire activity, and the fragment can be re-used.</p>
+<p>In the simplest possible form, the fragment companion class looks like this:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">class</span> <span style="color:#75af00">FirstFragment</span> <span style="color:#111">:</span> <span style="color:#111">Fragment</span><span style="color:#111">(</span><span style="color:#111">R</span><span style="color:#111">.</span><span style="color:#111">layout</span><span style="color:#111">.</span><span style="color:#111">fragment_first</span><span style="color:#111">)</span>
+</code></pre></div><p>Instead of returning <code>inflater.inflate(R.layout.fragment_first, container, false)</code> in an override of <code>onCreateView()</code>, simply pass your fragment ID to the super constructor. <code>onCreateView()</code> is the function where your view properties should be set, and not in <code>onCreate()</code>, where you&rsquo;d likely put it if you&rsquo;re used to working with activities.</p>
+<p>The <code>android:name</code> property in the XML refers to the class name of the fragment you initially want the fragment container to hold. Boot up the application, and you&rsquo;ll see your first fragment layout in the activity. However, if you want to change dynamically, change the fragment to a <code>&lt;FrameLayout/&gt;</code> (remove the name), and let&rsquo;s add some code in the MainActivity <code>onCreate()</code>:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">val</span> <span style="color:#111">firstFragment</span> <span style="color:#111">=</span> <span style="color:#111">FirstFragment</span><span style="color:#111">()</span>
+<span style="color:#111">supportFragmentManager</span><span style="color:#111">.</span><span style="color:#111">beginTransaction</span><span style="color:#111">().</span><span style="color:#111">apply</span> <span style="color:#111">{</span> 
+    <span style="color:#111">replace</span><span style="color:#111">(</span><span style="color:#111">R</span><span style="color:#111">.</span><span style="color:#111">id</span><span style="color:#111">.</span><span style="color:#111">fragmentContainer</span><span style="color:#111">,</span> <span style="color:#111">firstFragment</span><span style="color:#111">)</span>
+    <span style="color:#111">commit</span><span style="color:#111">()</span>
+<span style="color:#111">}</span>
+</code></pre></div><p>See also: <a href="https://developer.android.com/guide/fragments/transactions">android dev guide: fragment transactions</a>. Reboot the application and you&rsquo;ll still see the first fragment. Use the same code in button click listeners to dynamically change when your application is running.</p>
+<h4 id="fixing-the-back-button">Fixing the back button</h4>
+<p>While interacting with fragment-based applications, your users will likely expect the <em>back button</em> to work properly. That is, when they press &ldquo;back&rdquo;, they expect the previous &ldquo;screen&rdquo; to be shown. Whether that is an activity or a fragment is an implementation detail, not something an end user should be bothered with! However, <code>replace()</code> does not suffice. Add a call to <code>addToBackStack()</code> before the <code>commit()</code> and that problem is fixed.</p>
+<p>Everything in Android is pushed onto a <strong>stack</strong>. When the user wants to go back, an item is <strong>popped</strong> off the stack. When the user navigates to another screen&mdash;be it activity or fragment&mdash;, an item is (or should be) <strong>pushed</strong> onto the stack. Think of it as browsing the web using your cellphone. When you click on a link, and you decide you don&rsquo;t like that site, you likely want to go back. How to go back? By pressing that <code>&lt;</code> button, the previously loaded website suddenly reappears. This navigational experience is very important to smartphone users, and something Android app developers will want to emulate: using the <em>back stack</em>.</p>
+<p>Read more about the back stack in <a href="https://developer.android.com/guide/components/activities/tasks-and-back-stack">Android dev guide: understanding tasks and the back stack</a>.</p>
+<h4 id="the-lifecycle-of-a-fragment">The lifecycle of a fragment</h4>
+<p>See <a href="https://developer.android.com/guide/fragments/lifecycle">Android dev guide: fragment lifecycles</a>. Another reminder that fragments have their own lifecycle, but are still affected by <a href="../../appdev-course/android/activities/">activity lifecycles</a>. For example, <code>onCreateView()</code>, as mentioned above, does not exist in the activity lifecycle diagram, but does here:</p>
+<p><figure>
+	<a href="../../img/fragment-view-lifecycle.png" data-featherlight="image">
+		<img src="../../img/fragment-view-lifecycle.png"   title="src: developer.android.com">
+	</a>
+	
+		<figcaption>src: developer.android.com</figcaption>
+	
+</figure>
+</p>
+<p>The biggest difference (and mistake to make) is to NOT access UI components in <code>onCreate()</code>, as the view isn&rsquo;t initialized yet.</p>
+<h2 id="why-use-fragments-easing-navigation">Why use fragments? Easing navigation</h2>
 <p><a href="https://developer.android.com/guide/navigation/navigation-getting-started">https://developer.android.com/guide/navigation/navigation-getting-started</a></p>
 <p>Navigation using fragments</p>
 
@@ -1044,17 +1110,17 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1627907565"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1627907565"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1627907565"></script>
-    <script src="../../js/jquery.sticky.js?1627907565"></script>
-    <script src="../../js/featherlight.min.js?1627907565"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1627907565"></script>
-    <script src="../../js/learn.js?1627907565"></script>
-    <script src="../../js/hugo-learn.js?1627907565"></script>
+    <script src="../../js/clipboard.min.js?1627985576"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1627985576"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1627985576"></script>
+    <script src="../../js/jquery.sticky.js?1627985576"></script>
+    <script src="../../js/featherlight.min.js?1627985576"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1627985576"></script>
+    <script src="../../js/learn.js?1627985576"></script>
+    <script src="../../js/hugo-learn.js?1627985576"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1627907565"></script>
+            <script src="../../mermaid/mermaid.js?1627985576"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
