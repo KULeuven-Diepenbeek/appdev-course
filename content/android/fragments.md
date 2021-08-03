@@ -52,13 +52,22 @@ As with activities, they need their own Java/Kotlin class, so make sure to add t
 
 In the simplest possible form, the fragment companion class looks like this:
 
+<div class="devselect">
+
 ```kt
 class FirstFragment : Fragment(R.layout.fragment_first)
 ```
 
+```java
+public class FirstFragment extends Fragment(R.layout.fragment_first) { }
+```
+</div>
+
 Instead of returning `inflater.inflate(R.layout.fragment_first, container, false)` in an override of `onCreateView()`, simply pass your fragment ID to the super constructor. `onCreateView()` is the function where your view properties should be set, and not in `onCreate()`, where you'd likely put it if you're used to working with activities. 
 
 The `android:name` property in the XML refers to the class name of the fragment you initially want the fragment container to hold. Boot up the application, and you'll see your first fragment layout in the activity. However, if you want to change dynamically, change the fragment to a `<FrameLayout/>` (remove the name), and let's add some code in the MainActivity `onCreate()`:
+
+<div class="devselect">
 
 ```kt
 val firstFragment = FirstFragment()
@@ -67,6 +76,15 @@ supportFragmentManager.beginTransaction().apply {
     commit()
 }
 ```
+
+```java
+FirstFragment firstFragment = new FirstFragment();
+Transaction transaction = supportFragmentManager.beginTransaction();
+transaction.replace(R.id.fragmentContainer, firstFragment);
+transaction.commit();
+```
+
+</div>
 
 See also: [android dev guide: fragment transactions](https://developer.android.com/guide/fragments/transactions). Reboot the application and you'll still see the first fragment. Use the same code in button click listeners to dynamically change when your application is running. 
 
@@ -86,8 +104,115 @@ See [Android dev guide: fragment lifecycles](https://developer.android.com/guide
 
 The biggest difference (and mistake to make) is to NOT access UI components in `onCreate()`, as the view isn't initialized yet. 
 
+#### Sharing data between fragments
+
+The Android-recommended way to share data is to utilize [viewModels](https://developer.android.com/topic/libraries/architecture/viewmodel), which are separate classes that can be bound to UI components to automatically update properties. However, this concept is out of scope for this course. 
+
+A simpler, but more crude, way to exchange information is to simply create a separate class, acting as a model, and to set state on that shared instance. Pass it along the fragment's constructor. See `examples/kotlin/FragmentSwitcher` in the course git repository for code examples. 
+
 ## Why use fragments? Easing navigation
 
-https://developer.android.com/guide/navigation/navigation-getting-started
+See [Android Dev Guide: Navigation - getting started](https://developer.android.com/guide/navigation/navigation-getting-started)
 
-Navigation using fragments
+Remember the wireframe figure from the [activities chapter](/android/activities)?
+
+![](/img/wireframe.png "An example wireframe that defines relationships between activities.")
+
+To navigate form one activity to the next, we simply created an `Intent` that starts the next one. This works for simple apps, but does not for more intricate designs: many different screens and many different ways to direct the user from one part to the next make manually creating and calling `startActivity()` not only cumbersome, but also buggy. 
+
+Instead, the Android toolkit has a navigational component built-in, which leverages fragments to do the dirty work. Here, we create a **single activity** but use a **fragment container**, as explained above, to hop from one fragment to the next. Instead of coding the navigation by hand, we leverage what is called a **navigation graph**, which is---again---XML to describe how fragment x gets replaced by fragment y. 
+
+As an example, here are two fragments, where fragment 1 contains an action to go to fragment 2:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    app:startDestination="@id/blankFragment">
+    <fragment
+        android:id="@+id/blankFragment"
+        android:name="com.example.cashdog.cashdog.BlankFragment"
+        android:label="fragment_blank"
+        tools:layout="@layout/fragment_blank" >
+        <action
+            android:id="@+id/action_blankFragment_to_blankFragment2"
+            app:destination="@id/blankFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/blankFragment2"
+        android:name="com.example.cashdog.cashdog.BlankFragment2"
+        android:label="fragment_blank_fragment2"
+        tools:layout="@layout/fragment_blank_fragment2" />
+</navigation>
+```
+
+These fragments will be placed in a container view in your main activity, which acts as the _navigation host_: an empty container where destinations are swapped in and out of. Therefore, the main activity XML only needs to contain one element, where all the navigation will take place:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+```
+
+Note the `app:navGraph` property, which points to the first XML file. Do not forget to add the necessary Gradle dependencies, as the navigation components reside in separate library files: see the getting started link from `developer.android.com`.
+
+#### Putting it all together
+
+To use navigational components, we so far did the following:
+
+1. Add a `FragmentContainerView` and remove everything else in our single activity.
+2. Create a new XML file called `nav_graph.xml` in the `res/navigation` directory (rightclick on res -> New -> Android Resource File, choose "Navigation" as Resource type and remember the name).
+3. Add all fragments to the navigation and set the first one as the starting one. 
+4. Add an `<action/>` to the first fragment to navigate to the second one. 
+
+Now all that is left is executing the action, called `action_firstFragment_to_secondFragment`, for example on click. Go to your first fragment, which is already view binded, and add the following in `onCreateView()`:
+
+```kt
+binding.btnGoToNext.setOnClickListener {
+    val bundle = bundleOf("mydata" to data)
+    findNavController().navigate(R.id.action_firstFragment_to_secondFragment, bundle)
+}
+```
+
+Remember to enable the necessary serialization plugins if you want to pass objects through bundles---otherwise, stick with primitive values. See the [intents chapter](/android/intents). 
+
+On the receiving side, you can pluck out the arguments fairly easily:
+
+<div class="devselect">
+
+```kt
+data = (arguments?.getSerializable("mydata") as MySharedData?) ?: MySharedData()
+```
+
+```java
+if(arguments != null) {
+    object mydata = arguments.getSerializable("mydata");
+    if(mydata != null) {
+        data = (MySharedData) mydata;
+    } else {
+        data = new MySharedData();
+    }
+} else {
+    data = new MySharedData();
+}
+```
+</div>
+
+Note how the elvis operator (`?:`) and the optional operator (`?.`) make things much, much easier in Kotlin, compared to a bunch of ugly if's in Java.<br/>
+And that's it, now we've connected all the separate pieces together using a navigation graph XML file!
+
+See `examples/kotlin/FragmentSwitcherWithNavigation` in the git repository. Compare the source code to the one without the navigation to see the difference between manually switching fragments and letting the navigation tool do its thing. Remember that these are _tiny_ examples: real-world apps have a bit more than merely two fragments... 

@@ -4,13 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import be.kuleuven.fragmentswitcher.databinding.FragmentFirstBinding
 import be.kuleuven.fragmentswitcher.model.MySharedData
 
-class FirstFragment(val data: MySharedData) : Fragment(R.layout.fragment_first) {
+class FirstFragment : Fragment(R.layout.fragment_first) {
 
     private lateinit var binding: FragmentFirstBinding
+    private var data: MySharedData = MySharedData()
 
     // here the view should be set
     override fun onCreateView(
@@ -27,6 +30,12 @@ class FirstFragment(val data: MySharedData) : Fragment(R.layout.fragment_first) 
         binding.txtFragmentFirst.setOnClickListener {
             data.age++
             updateTextFromModel()
+        }
+        binding.btnGoToNext.setOnClickListener {
+            // adding an object to a bundle only works with serialization plugins!
+            // see the intents parts of the course.
+            val bundle = bundleOf("mydata" to data)
+            findNavController().navigate(R.id.action_firstFragment_to_secondFragment, bundle)
         }
 
         // remember to do this instead of super.onCreateView()

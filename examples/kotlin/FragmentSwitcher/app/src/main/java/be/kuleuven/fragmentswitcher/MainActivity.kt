@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import be.kuleuven.fragmentswitcher.databinding.ActivityMainBinding
+import be.kuleuven.fragmentswitcher.model.MySharedData
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,8 +16,10 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        val firstFragment = FirstFragment()
-        val secondFragment = SecondFragment()
+        // share a single instance to communicate between fragments
+        val model = MySharedData()
+        val firstFragment = FirstFragment(model)
+        val secondFragment = SecondFragment(model)
 
         binding.btnFragment1.setOnClickListener { switchTo(firstFragment) }
         binding.btnFragment2.setOnClickListener { switchTo(secondFragment) }
