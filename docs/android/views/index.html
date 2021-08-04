@@ -9,23 +9,23 @@
 
     <link rel="icon" href="../../images/favicon.png" type="image/png">
 
-    <title>4. Complex layouting - Views :: App Development</title>
+    <title>4. Complex layouts: Nested Views :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1628071063" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1628071063" rel="stylesheet">
-    <link href="../../css/hybrid.css?1628071063" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1628071063" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1628071063" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1628071063" rel="stylesheet">
-    <link href="../../css/theme.css?1628071063" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1628071063" rel="stylesheet">
+    <link href="../../css/nucleus.css?1628082719" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1628082719" rel="stylesheet">
+    <link href="../../css/hybrid.css?1628082719" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1628082719" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1628082719" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1628082719" rel="stylesheet">
+    <link href="../../css/theme.css?1628082719" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1628082719" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1628071063" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1628082719" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1628071063"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1628082719"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -62,14 +62,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1628071063"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1628071063"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1628082719"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1628082719"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1628071063"></script>
+<script type="text/javascript" src="../../js/search.js?1628082719"></script>
 
     
   </div>
@@ -156,9 +156,9 @@
  
   
     
-      <li data-nav-id="/android/fragments/" title="3. Complex layouting - Fragments" class="dd-item ">
+      <li data-nav-id="/android/fragments/" title="3. Complex layouts: Fragments" class="dd-item ">
         <a href="../../android/fragments/">
-        3. Complex layouting - Fragments
+        3. Complex layouts: Fragments
         
         </a>
     </li>
@@ -177,9 +177,9 @@
  
   
     
-      <li data-nav-id="/android/views/" title="4. Complex layouting - Views" class="dd-item active">
+      <li data-nav-id="/android/views/" title="4. Complex layouts: Nested Views" class="dd-item active">
         <a href="../../android/views/">
-        4. Complex layouting - Views
+        4. Complex layouts: Nested Views
         
         </a>
     </li>
@@ -198,9 +198,9 @@
  
   
     
-      <li data-nav-id="/android/data-storage/" title="5. Data Storage - File/Network" class="dd-item ">
+      <li data-nav-id="/android/data-storage/" title="5. Data Storage: File/Network" class="dd-item ">
         <a href="../../android/data-storage/">
-        5. Data Storage - File/Network
+        5. Data Storage: File/Network
         
         </a>
     </li>
@@ -605,7 +605,7 @@
             
           
           
-            <a href='../../'>Course Contents</a> > <a href='../../android/'>1. Android Essentials</a> > 4. Complex layouting - Views
+            <a href='../../'>Course Contents</a> > <a href='../../android/'>1. Android Essentials</a> > 4. Complex layouts: Nested Views
           
         
           
@@ -620,15 +620,19 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#recyclerviews">RecyclerViews</a>
+    <li><a href="#1-recyclerviews">1. RecyclerViews</a>
       <ul>
         <li><a href="#1-design-your-layouts">1. Design your layouts</a></li>
         <li><a href="#2-create-your-model-and-adapter">2. Create your model and adapter</a></li>
         <li><a href="#3-initialize-your-adapter-in-the-main-activity">3. Initialize your adapter in the main activity</a></li>
       </ul>
     </li>
-    <li><a href="#about-responsive-design">About Responsive Design</a></li>
-    <li><a href="#recyclerview">RecyclerView</a></li>
+    <li><a href="#2-navigation-drawers">2. Navigation Drawers</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#lab-exercises">Lab Exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -646,14 +650,14 @@
           
             <h1>
               
-              4. Complex layouting - Views
+              4. Complex layouts: Nested Views
             </h1>
           
 
         
 
 
-<h2 id="recyclerviews">RecyclerViews</h2>
+<h2 id="1-recyclerviews">1. RecyclerViews</h2>
 <p>See also: <a href="https://developer.android.com/guide/topics/ui/layout/recyclerview">Android dev guide: create dynamic lists with RecyclerView</a>.</p>
 <p>Now that we know what <a href="../../android/activities">activities</a> are, how to re-use components using <a href="../../android/fragments">fragments</a>, and how to interact between these systems using <a href="../../android/intents">intents</a>, we almost know all the basics of Android app development. Remember the Mac Mail App layout, introduced in the fragment chapter?</p>
 <p><figure>
@@ -717,9 +721,14 @@ As the name implies, RecyclerView recycles those individual elements. When an it
 
     <span style="color:#00a8c8">override</span> <span style="color:#00a8c8">fun</span> <span style="color:#75af00">getItemCount</span><span style="color:#111">():</span> <span style="color:#111">Int</span> <span style="color:#111">=</span> <span style="color:#111">items</span><span style="color:#111">.</span><span style="color:#111">size</span>
 <span style="color:#111">}</span>
-</code></pre></div><p>The model, the <code>Todo</code> class, is very simple, holding only a string and a boolean:</p>
+</code></pre></div>
+<div class="notices note" ><p>It is common practice to include an &ldquo;inner class&rdquo;&mdash;just like you would in Java&mdash;as a ViewHolder: the above definition does not have a body. You can move some of the bind logic there or provide custom <code>onClick</code> events for the checkboxes.</p>
+</div>
+
+<p>The model, the <code>Todo</code> class, is very simple, holding only a string and a boolean:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">data</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">Todo</span><span style="color:#111">(</span><span style="color:#00a8c8">val</span> <span style="color:#111">title</span><span style="color:#111">:</span> <span style="color:#111">String</span><span style="color:#111">,</span> <span style="color:#00a8c8">val</span> <span style="color:#111">isDone</span><span style="color:#111">:</span> <span style="color:#111">Boolean</span><span style="color:#111">)</span>
-</code></pre></div><h3 id="3-initialize-your-adapter-in-the-main-activity">3. Initialize your adapter in the main activity</h3>
+</code></pre></div><p>Note that this means the list the RecyclerView shows is a <code>List&lt;Todo&gt;</code>: it&rsquo;s not list of primitives, it can be <em>anything</em>! The official <a href="https://github.com/android/views-widgets-samples/tree/main/RecyclerViewKotlin">Android RecyclerView example on GitHub</a> is a &ldquo;flower finder&rdquo; app and shows a list of thumbnails and descriptions.</p>
+<h3 id="3-initialize-your-adapter-in-the-main-activity">3. Initialize your adapter in the main activity</h3>
 <p>For demonstrative purposes, create a <code>sampleTodoItems</code> array list with a few sample Todo item values. Then, we can create an instance of <code>TodoAdapter</code> in <code>onCreate()</code>:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">var</span> <span style="color:#111">adapter</span> <span style="color:#111">=</span> <span style="color:#111">TodoAdapter</span><span style="color:#111">(</span><span style="color:#111">sampleTodoItems</span><span style="color:#111">)</span>
 <span style="color:#111">binding</span><span style="color:#111">.</span><span style="color:#111">rvwTodo</span><span style="color:#111">.</span><span style="color:#111">adapter</span> <span style="color:#111">=</span> <span style="color:#111">adapter</span>
@@ -733,10 +742,80 @@ As the name implies, RecyclerView recycles those individual elements. When an it
 <span style="color:#111">}</span>
 </code></pre></div><p>A simpler alternative would be to call <code>adapter.notifyDatasetChanged()</code>&mdash;however, this is much more inefficient as it updates <em>all elements</em> in the list, not only the last added one.</p>
 <p>To see it all in action, build <code>examples/kotlin/recyclerview</code> from the course repository.</p>
-<h2 id="about-responsive-design">About Responsive Design</h2>
-<p>TODO geen px maar sd</p>
-<h2 id="recyclerview">RecyclerView</h2>
-<p>TODO</p>
+<h2 id="2-navigation-drawers">2. Navigation Drawers</h2>
+<p>Many Android apps contain some form of menu system. In practice, these are, perhaps as you might have expected by now, also separate views, which slide on top of each other. A classic example of this is the <em>navigation drawer</em> from Google&rsquo;s Material Design stack. It contains menu items, defined in a menu XML file, and has a header, which can contain anything, from a simple <code>TextView</code> to a more intricate <code>Fragment</code>:</p>
+<p><figure>
+	<a href="../../img/navdrawer.png" data-featherlight="image">
+		<img src="../../img/navdrawer.png"   title="The navigation drawer slided on top of the app. src: android dev.">
+	</a>
+	
+		<figcaption>The navigation drawer slided on top of the app. src: android dev.</figcaption>
+	
+</figure>
+</p>
+<p>Key mechanics involved:</p>
+<ol>
+<li>Use a <code>DrawerLayout</code> in the activity where you want the menu to slide in, instead of a regular <code>ConstraintLayout</code>. It should only contain 2 items: an activity/fragment layout and a <code>NavigationView</code> element.</li>
+<li>Create a separate layout XML file where the drawer header layout resides. For example, as in the above screenshot, it could contain a logo and some text (&ldquo;Android Studio&rdquo;, <code>android.studio@android.com</code>)</li>
+<li>Create a separate menu XML file where all menu items, icons, and titles reside.</li>
+<li>Update the activity code to glue it all together.</li>
+</ol>
+<h4 id="layouting">Layouting</h4>
+<p>The <code>NavigationView</code> refers to both the menu and the layout XML:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;com.google.android.material.navigation.NavigationView</span>
+    <span style="color:#75af00">android:id=</span><span style="color:#d88200">&#34;@+id/navView&#34;</span>
+    <span style="color:#75af00">android:layout_width=</span><span style="color:#d88200">&#34;wrap_content&#34;</span>
+    <span style="color:#75af00">android:layout_height=</span><span style="color:#d88200">&#34;match_parent&#34;</span>
+    <span style="color:#75af00">app:headerLayout=</span><span style="color:#d88200">&#34;@layout/nav_header&#34;</span>
+    <span style="color:#75af00">app:menu=</span><span style="color:#d88200">&#34;@menu/nav_menu&#34;</span>
+    <span style="color:#75af00">android:layout_gravity=</span><span style="color:#d88200">&#34;start&#34;</span>
+    <span style="color:#75af00">android:fitsSystemWindows=</span><span style="color:#d88200">&#34;true&#34;</span> <span style="color:#f92672">/&gt;</span>
+</code></pre></div><p>While the menu, created in directory <code>app/res/menu</code>, is quite simple:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<span style="color:#f92672">&lt;menu</span> <span style="color:#75af00">xmlns:android=</span><span style="color:#d88200">&#34;http://schemas.android.com/apk/res/android&#34;</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;item</span>
+        <span style="color:#75af00">android:id=</span><span style="color:#d88200">&#34;@+id/menuPony&#34;</span>
+        <span style="color:#75af00">android:title=</span><span style="color:#d88200">&#34;My Little Pony&#34;</span> <span style="color:#f92672">/&gt;</span>
+<span style="color:#f92672">&lt;/menu&gt;</span>
+</code></pre></div><p>Don&rsquo;t forget to create a separate layout file for the navigation header (in the XML above referenced as <code>@layout/nav_header</code>). Thus, in total, we have altered and/or created three resource files.</p>
+<h4 id="binding">Binding</h4>
+<p>The meat of the work is done though an instance of <code>ActionBarDrawerToggle</code>. This represents the menu icon (a &ldquo;sandwich&rdquo;-style icon) on the top right where the user clicks on in order for the menu drawer to slide in. After creating an instance and adding it to the drawer layout, we call <code>syncState()</code>, which does the dirty work for us.</p>
+<p>Lastly, and perhaps most importantly: drawer menu item click listeners, bound through the navigation view <code>setNavigationItemSelectedListener</code>. Putting everything together in our main activity&rsquo;s <code>onCreate()</code>:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#111">menuBarToggle</span> <span style="color:#111">=</span> <span style="color:#111">ActionBarDrawerToggle</span><span style="color:#111">(</span><span style="color:#00a8c8">this</span><span style="color:#111">,</span> <span style="color:#111">binding</span><span style="color:#111">.</span><span style="color:#111">drawerLayout</span><span style="color:#111">,</span> <span style="color:#111">R</span><span style="color:#111">.</span><span style="color:#111">string</span><span style="color:#111">.</span><span style="color:#111">menu_open</span><span style="color:#111">,</span> <span style="color:#111">R</span><span style="color:#111">.</span><span style="color:#111">string</span><span style="color:#111">.</span><span style="color:#111">menu_close</span><span style="color:#111">)</span>
+<span style="color:#111">binding</span><span style="color:#111">.</span><span style="color:#111">drawerLayout</span><span style="color:#111">.</span><span style="color:#111">addDrawerListener</span><span style="color:#111">(</span><span style="color:#111">menuBarToggle</span><span style="color:#111">)</span>
+<span style="color:#111">menuBarToggle</span><span style="color:#111">.</span><span style="color:#111">syncState</span><span style="color:#111">()</span>
+<span style="color:#111">supportActionBar</span><span style="color:#f92672">?.</span><span style="color:#111">setDisplayHomeAsUpEnabled</span><span style="color:#111">(</span><span style="color:#00a8c8">true</span><span style="color:#111">)</span>
+
+<span style="color:#111">binding</span><span style="color:#111">.</span><span style="color:#111">navView</span><span style="color:#111">.</span><span style="color:#111">setNavigationItemSelectedListener</span> <span style="color:#111">{</span>
+    <span style="color:#00a8c8">when</span> <span style="color:#111">(</span><span style="color:#00a8c8">it</span><span style="color:#111">.</span><span style="color:#111">itemId</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+        <span style="color:#111">R</span><span style="color:#111">.</span><span style="color:#111">id</span><span style="color:#111">.</span><span style="color:#111">menuPony</span> <span style="color:#f92672">-&gt;</span> <span style="color:#111">doStuff</span><span style="color:#111">()</span>
+        <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>    <span style="color:#111">}</span>
+    <span style="color:#00a8c8">true</span>
+<span style="color:#111">}</span>
+</code></pre></div>
+<div class="notices note" ><p>Note that, in Kotlin, the last statement in closure blocks simply acts as a return value. Hence the perhaps weird <code>true</code> statement, where you&rsquo;d expect a Java-like <code>return true;</code>. That also works, of course&mdash;minus the semicolon. Returning <code>false</code> tells the navigation view that the listener failed to catch the event.</p>
+</div>
+
+<p>In order for the menu drawer button to change into a &ldquo;back&rdquo; button that will close the drawer, we simply call <code>setDisplayHomeAsUpEnabled()</code> and pass in <code>true</code>.</p>
+<p>To see it all in action, build <code>examples/kotlin/recyclerviewWithNavDrawer</code> from the course repository. This is an evolution from the earlier example in this chapter, <code>recyclerview</code>.</p>
+<h2 id="lab-exercises">Lab Exercises</h2>
+<p>Let&rsquo;s <em>finally</em> try to recreate that Mail App.</p>
+<ol>
+<li>First, design the single item view. It should show a title, the first x characters of the mail body, and a date on the top right (see screenshot above).</li>
+<li>Next, integrate the above RecyclerView patterns to display the mail list view. Run the app to make sure at least the list view works, before continuing.</li>
+<li>Add an <code>onClick</code> listener to each item which navigates to another activity (or fragment using navigation: your choice). The detail view should again display the title and date, but also the authors, and the full mail body.</li>
+<li>Again, make sure the above runs fine before continuing. Now extract the <code>RecyclerView</code> into a single fragment using a <code>FrameLayout</code> and the <code>supportFragmentManager</code>. See <a href="../../android/fragments">the fragments chapter</a>. Re-run and test again.</li>
+<li>Lastly, now that we have extracted a fragment, introducing a navigation drawer is much simpler: replace the constraint layout of the main activity with a <code>DrawerLayout</code> and create a menu system with the following items:
+<ul>
+<li>&ldquo;Clear All Mails&rdquo; (clears the recyclerview list)</li>
+<li>&ldquo;Reset Mails&rdquo; (resets the list to the hardcoded values)</li>
+<li>&ldquo;Sort Mails&rdquo; (sorts by date, descending)</li>
+</ul>
+</li>
+</ol>
+<p>Just make up hard-coded fake data to test your app, just like we did in the demo TODO app. If you&rsquo;re done with the above exercise, implement a <code>FloatingActionButton</code> to add a new element to the list as a bonus.</p>
+<p>In case you were wondering: to display both the list and the detail layout, typically, a <a href="https://developer.android.com/guide/topics/ui/layout/twopane">sliding pane layout</a> is used, also called a <em>two-pane</em> layout. If you create a new project in Android Studio and select the &ldquo;Primary/Detail Flow&rdquo; template, you&rsquo;ll see an example of this.</p>
 
 
 <footer class="footline">
@@ -1106,10 +1185,10 @@ As the name implies, RecyclerView recycles those individual elements. When an it
 	 
 	 
 		
-			<a class="nav nav-prev" href="../../android/fragments/" title="3. Complex layouting - Fragments"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="../../android/fragments/" title="3. Complex layouts: Fragments"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="../../android/data-storage/" title="5. Data Storage - File/Network" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="../../android/data-storage/" title="5. Data Storage: File/Network" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1119,17 +1198,17 @@ As the name implies, RecyclerView recycles those individual elements. When an it
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1628071063"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1628071063"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1628071063"></script>
-    <script src="../../js/jquery.sticky.js?1628071063"></script>
-    <script src="../../js/featherlight.min.js?1628071063"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1628071063"></script>
-    <script src="../../js/learn.js?1628071063"></script>
-    <script src="../../js/hugo-learn.js?1628071063"></script>
+    <script src="../../js/clipboard.min.js?1628082719"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1628082719"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1628082719"></script>
+    <script src="../../js/jquery.sticky.js?1628082719"></script>
+    <script src="../../js/featherlight.min.js?1628082719"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1628082719"></script>
+    <script src="../../js/learn.js?1628082719"></script>
+    <script src="../../js/hugo-learn.js?1628082719"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1628071063"></script>
+            <script src="../../mermaid/mermaid.js?1628082719"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
