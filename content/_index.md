@@ -77,4 +77,4 @@ The course lies in the _second semester_ of the _second year_ and has quite a bi
 
 ### More learning material
 
-See the section "Extra" in the menu or in the links above. Each section will contain a "More learning material" part at the bottom of each page linking to supplemental bits and pieces for the curious student. 
+[See the section "Extra"](/extra/) in the menu or in the links above. Each section will contain a "More learning material" part at the bottom of each page linking to supplemental bits and pieces for the curious student. 

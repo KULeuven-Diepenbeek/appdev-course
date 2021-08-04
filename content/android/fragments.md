@@ -216,3 +216,5 @@ Note how the elvis operator (`?:`) and the optional operator (`?.`) make things 
 And that's it, now we've connected all the separate pieces together using a navigation graph XML file!
 
 See `examples/kotlin/FragmentSwitcherWithNavigation` in the git repository. Compare the source code to the one without the navigation to see the difference between manually switching fragments and letting the navigation tool do its thing. Remember that these are _tiny_ examples: real-world apps have a bit more than merely two fragments... 
+
+There's only one thing left to learn before we can easily tackle a responsive master/detail screen such as the above Mac Mail screenshot: [RecyclerViews](/android/views). 

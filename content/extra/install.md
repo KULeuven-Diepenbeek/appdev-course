@@ -118,7 +118,7 @@ The toplevel `build.gradle` file should not be modified---changes usually happen
 
 The wrapper properties file should point to Gradle 7.x for Android projects. 
 
-For more information on Gradle, see the [Software Engineering Skills: Java Gradle Projects](https://kuleuven-diepenbeek.github.io/ses-course/dependency-management/gradle/) lessons. 
+For more information on Gradle, see the [Software Engineering Skills: Java Gradle Projects](https://kuleuven-diepenbeek.github.io/ses-course/dependency-management/gradle/) lessons. Remember that in case you create Kotlin DSL tyle Gradle projects, you should be on the lookout for `build.gradle.kts` - see [Gradle Kotlin-style projects](https://kuleuven-diepenbeek.github.io/ses-course/dependency-management/kotlin-gradle/).
 
 #### Code
 
