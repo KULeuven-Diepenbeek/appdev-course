@@ -1,8 +1,8 @@
 ---
-title: 4. Complex layouting - Views
+title: "4. Complex layouts: Nested Views"
 ---
 
-## RecyclerViews
+## 1. RecyclerViews
 
 See also: [Android dev guide: create dynamic lists with RecyclerView](https://developer.android.com/guide/topics/ui/layout/recyclerview).
 
@@ -69,11 +69,17 @@ state accordingly
 }
 ```
 
+{{% notice note %}}
+It is common practice to include an "inner class"---just like you would in Java---as a ViewHolder: the above definition does not have a body. You can move some of the bind logic there or provide custom `onClick` events for the checkboxes.
+{{% /notice %}}
+
 The model, the `Todo` class, is very simple, holding only a string and a boolean:
 
 ```kt
 data class Todo(val title: String, val isDone: Boolean)
 ```
+
+Note that this means the list the RecyclerView shows is a `List<Todo>`: it's not list of primitives, it can be _anything_! The official [Android RecyclerView example on GitHub](https://github.com/android/views-widgets-samples/tree/main/RecyclerViewKotlin) is a "flower finder" app and shows a list of thumbnails and descriptions. 
 
 ### 3. Initialize your adapter in the main activity 
 
@@ -101,12 +107,91 @@ A simpler alternative would be to call `adapter.notifyDatasetChanged()`---howeve
 
 To see it all in action, build `examples/kotlin/recyclerview` from the course repository. 
 
+## 2. Navigation Drawers
 
-## About Responsive Design
+Many Android apps contain some form of menu system. In practice, these are, perhaps as you might have expected by now, also separate views, which slide on top of each other. A classic example of this is the _navigation drawer_ from Google's Material Design stack. It contains menu items, defined in a menu XML file, and has a header, which can contain anything, from a simple `TextView` to a more intricate `Fragment`:
 
-TODO geen px maar sd
+![](/img/navdrawer.png "The navigation drawer slided on top of the app. src: android dev.")
+
+Key mechanics involved:
+
+1. Use a `DrawerLayout` in the activity where you want the menu to slide in, instead of a regular `ConstraintLayout`. It should only contain 2 items: an activity/fragment layout and a `NavigationView` element. 
+2. Create a separate layout XML file where the drawer header layout resides. For example, as in the above screenshot, it could contain a logo and some text ("Android Studio", `android.studio@android.com`)
+3. Create a separate menu XML file where all menu items, icons, and titles reside. 
+4. Update the activity code to glue it all together.
+
+#### Layouting
+
+The `NavigationView` refers to both the menu and the layout XML:
+
+```xml
+<com.google.android.material.navigation.NavigationView
+    android:id="@+id/navView"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    app:headerLayout="@layout/nav_header"
+    app:menu="@menu/nav_menu"
+    android:layout_gravity="start"
+    android:fitsSystemWindows="true" />
+```
+
+While the menu, created in directory `app/res/menu`, is quite simple:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menuPony"
+        android:title="My Little Pony" />
+</menu>
+```
+
+Don't forget to create a separate layout file for the navigation header (in the XML above referenced as `@layout/nav_header`). Thus, in total, we have altered and/or created three resource files. 
+
+#### Binding
+
+The meat of the work is done though an instance of `ActionBarDrawerToggle`. This represents the menu icon (a "sandwich"-style icon) on the top right where the user clicks on in order for the menu drawer to slide in. After creating an instance and adding it to the drawer layout, we call `syncState()`, which does the dirty work for us. 
+
+Lastly, and perhaps most importantly: drawer menu item click listeners, bound through the navigation view `setNavigationItemSelectedListener`. Putting everything together in our main activity's `onCreate()`:
+
+```kt
+menuBarToggle = ActionBarDrawerToggle(this, binding.drawerLayout, R.string.menu_open, R.string.menu_close)
+binding.drawerLayout.addDrawerListener(menuBarToggle)
+menuBarToggle.syncState()
+supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+binding.navView.setNavigationItemSelectedListener {
+    when (it.itemId) {
+        R.id.menuPony -> doStuff()
+        // ...
+    }
+    true
+}
+```
+
+{{% notice note %}}
+Note that, in Kotlin, the last statement in closure blocks simply acts as a return value. Hence the perhaps weird `true` statement, where you'd expect a Java-like `return true;`. That also works, of course---minus the semicolon. Returning `false` tells the navigation view that the listener failed to catch the event. 
+{{% /notice %}}
+
+In order for the menu drawer button to change into a "back" button that will close the drawer, we simply call `setDisplayHomeAsUpEnabled()` and pass in `true`.
+
+To see it all in action, build `examples/kotlin/recyclerviewWithNavDrawer` from the course repository. This is an evolution from the earlier example in this chapter, `recyclerview`. 
 
 
-## RecyclerView
+## Lab Exercises
 
-TODO
+Let's _finally_ try to recreate that Mail App. 
+
+1. First, design the single item view. It should show a title, the first x characters of the mail body, and a date on the top right (see screenshot above).
+2. Next, integrate the above RecyclerView patterns to display the mail list view. Run the app to make sure at least the list view works, before continuing.
+3. Add an `onClick` listener to each item which navigates to another activity (or fragment using navigation: your choice). The detail view should again display the title and date, but also the authors, and the full mail body. 
+4. Again, make sure the above runs fine before continuing. Now extract the `RecyclerView` into a single fragment using a `FrameLayout` and the `supportFragmentManager`. See [the fragments chapter](/android/fragments). Re-run and test again. 
+5. Lastly, now that we have extracted a fragment, introducing a navigation drawer is much simpler: replace the constraint layout of the main activity with a `DrawerLayout` and create a menu system with the following items:
+    - "Clear All Mails" (clears the recyclerview list)
+    - "Reset Mails" (resets the list to the hardcoded values)
+    - "Sort Mails" (sorts by date, descending)
+
+Just make up hard-coded fake data to test your app, just like we did in the demo TODO app. If you're done with the above exercise, implement a `FloatingActionButton` to add a new element to the list as a bonus. 
+
+In case you were wondering: to display both the list and the detail layout, typically, a [sliding pane layout](https://developer.android.com/guide/topics/ui/layout/twopane) is used, also called a _two-pane_ layout. If you create a new project in Android Studio and select the "Primary/Detail Flow" template, you'll see an example of this.
+

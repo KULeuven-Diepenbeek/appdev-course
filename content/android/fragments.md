@@ -1,5 +1,5 @@
 ---
-title: 3. Complex layouting - Fragments
+title: "3. Complex layouts: Fragments"
 --- 
 
 See also: [Android developer guide: fragments](https://developer.android.com/guide/fragments).
