@@ -111,14 +111,14 @@ We&amp;rsquo;ll be using IntelliJ to create simple Kotlin projects, so leave And
     </item>
     
     <item>
-      <title>4. Layouts - Views</title>
+      <title>4. Complex layouting - Views</title>
       <link>https://kuleuven-diepenbeek.github.io/appdev-course/android/views/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
       <guid>https://kuleuven-diepenbeek.github.io/appdev-course/android/views/</guid>
-      <description>Responsive design TODO geen px maar sd
-RecyclerView Storing and saving states TODO https://developer.android.com/topic/libraries/architecture/saving-states
-pressing back, rotating, data gone?</description>
+      <description>RecyclerViews See also: Android dev guide: create dynamic lists with RecyclerView.
+Now that we know what activities are, how to re-use components using fragments, and how to interact between these systems using intents, we almost know all the basics of Android app development. Remember the Mac Mail App layout, introduced in the fragment chapter?
+  Left: the master screen with navigation. Right: the detail: zoomed in on a single mail.</description>
     </item>
     
     <item>
