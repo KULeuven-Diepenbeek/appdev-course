@@ -143,5 +143,34 @@ To correctly unit test and debug your database, please refer to the [android dev
 
 ## 4. HTTP Network Access
 
-http client? https://square.github.io/retrofit/ 
+Volley is Android's Go-To HTTP client that comes with advanced caching mechanisms built-in: see the [android dev guide on volley](https://developer.android.com/training/volley/simple). Be prepared to add yet another dependency. To access the internet in our app, we'll have to add the `android.permission.INTERNET` permission in the app's manifest file. 
+
+Let's try to create a simple `GET` request and print out the results. In Volley, all requests are put in **a queue**: HTTP calls are **asynchronous**! This means we can't simply `return results`: it needs to be handled in a callback. Welcome to async hell---those who've struggled with it in JavaScript will know what to expect. 
+
+```kt
+val queue = Volley.newRequestQueue(context)
+
+val req = StringRequest(Request.Method.GET, "https://www.google.com", Response.Listener<String> {
+    println("cool, we've got a result: $it")
+}, Response.ErrorListener { 
+    println("whoops, something went wrong: ${it.message}")
+})
+queue.add(req)
+```
+
+The two parameters, a response listener and error listener, are anonymous interface implementations with a single method. 
+
+In most cases, a `GET` without any header does not suffice. Instead of a `StringRequest`, you can also create a `JSONObjectRequest` and pass in a `JSONObject` as your request body. Fully customized HTTP calls are best handled by implementing your own request object. This allows you to:
+
+- `override fun getParams()`: Form parameters in case of a `x-www-form-urlencoded` request
+- `override fun getBodyContentType()` to specify a custom `Content-Type`
+- `override fun getHeaders()` to specify other custom headers
+
+The `todosavestate` code contains an example of such a custom request object. 
+
+{{% notice warning %}}
+Be warned (again): Volley is **asynchronous**, meaning "return bla" on response just won't work. To make things work, you'll have to (1) show a loading widget, (2) fire off the HTTP call by adding it to the queue and (3) do your thing on response, also not forgetting to update the UI. In case of a RecyclerView, that's `notifyDataSetChanged()`. Watch out with multithreading and changing UI logic!<br/>The example shows how you can still pass along a custom response handler object by making use of Kotlin's [SAM interfaces](https://kotlinlang.org/docs/fun-interfaces.html).
+{{% /notice %}}
+
+Volley can be confusing and difficult to use. It's a complimentary library, meaning it can be swapped out at any time in favor for alternatives such as [Retrofit](https://square.github.io/retrofit/). Feel free to do so. 
 
