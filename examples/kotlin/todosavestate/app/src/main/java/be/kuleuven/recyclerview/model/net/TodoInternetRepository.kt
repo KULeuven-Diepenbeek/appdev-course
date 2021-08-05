@@ -8,14 +8,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONObject
 
-// don't forget to add android.permission.INTERNET to your manifest!
-class TodoInternetRepository(val context: Context, val onFetched: OnTodoItemsFetched) : TodoRepository {
-
-    // Remember, Volley handles HTML requests ASYNC. This is by design.
-    // So, returning from this repository's load will never work!
-    fun interface OnTodoItemsFetched {
-        fun onResponse(items: List<Todo>)
-    }
+class TodoInternetRepository(val context: Context, val onResponseFetched: (List<Todo>) -> Unit) : TodoRepository {
 
     private fun howLongToBeatRequestObj(): JSONObject {
         val obj = JSONObject().apply {
@@ -67,10 +60,11 @@ class TodoInternetRepository(val context: Context, val onFetched: OnTodoItemsFet
         val queue = Volley.newRequestQueue(context)
         val req = HLTBRequest(howLongToBeatRequestObj()) {
             println("Raw HTML Response: $it")
-            onFetched.onResponse(HowLongToBeatResultParser.parse(it))
+            onResponseFetched(HowLongToBeatResultParser.parse(it))
         }
         queue.add(req)
         // Remember, this is ASYNC, so we can't return anything here (yet), that's what onResponse() is for...
+        // don't forget to add android.permission.INTERNET to your manifest!
         return arrayListOf()
     }
 
