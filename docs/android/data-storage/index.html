@@ -12,20 +12,20 @@
     <title>5. Data Storage: File/Network :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1628173101" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1628173101" rel="stylesheet">
-    <link href="../../css/hybrid.css?1628173101" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1628173101" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1628173101" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1628173101" rel="stylesheet">
-    <link href="../../css/theme.css?1628173101" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1628173101" rel="stylesheet">
+    <link href="../../css/nucleus.css?1628174935" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1628174935" rel="stylesheet">
+    <link href="../../css/hybrid.css?1628174935" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1628174935" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1628174935" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1628174935" rel="stylesheet">
+    <link href="../../css/theme.css?1628174935" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1628174935" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1628173101" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1628174935" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1628173101"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1628174935"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -62,14 +62,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1628173101"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1628173101"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1628174935"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1628174935"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1628173101"></script>
+<script type="text/javascript" src="../../js/search.js?1628174935"></script>
 
     
   </div>
@@ -756,7 +756,29 @@ dependencies {
 </code></pre></div><p>That&rsquo;s it, now we can call <code>query()</code> and <code>insert()</code> from our activity/fragment! The above <code>appContext</code> which is needed to build the database object is the Application Context of an activity.</p>
 <p>To correctly unit test and debug your database, please refer to the <a href="https://developer.android.com/training/data-storage/room/testing-db">android developer guide</a>. Since the database requires an application context, it&rsquo;s best to create <strong>instrumented tests</strong>. See the <a href="../../lang/tdd">TDD chapter</a> for more information. Samples are, again, to be found in <code>examples/kotlin/todosavestate</code> in the repository.</p>
 <h2 id="4-http-network-access">4. HTTP Network Access</h2>
-<p>http client? <a href="https://square.github.io/retrofit/">https://square.github.io/retrofit/</a></p>
+<p>Volley is Android&rsquo;s Go-To HTTP client that comes with advanced caching mechanisms built-in: see the <a href="https://developer.android.com/training/volley/simple">android dev guide on volley</a>. Be prepared to add yet another dependency. To access the internet in our app, we&rsquo;ll have to add the <code>android.permission.INTERNET</code> permission in the app&rsquo;s manifest file.</p>
+<p>Let&rsquo;s try to create a simple <code>GET</code> request and print out the results. In Volley, all requests are put in <strong>a queue</strong>: HTTP calls are <strong>asynchronous</strong>! This means we can&rsquo;t simply <code>return results</code>: it needs to be handled in a callback. Welcome to async hell&mdash;those who&rsquo;ve struggled with it in JavaScript will know what to expect.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">val</span> <span style="color:#111">queue</span> <span style="color:#111">=</span> <span style="color:#111">Volley</span><span style="color:#111">.</span><span style="color:#111">newRequestQueue</span><span style="color:#111">(</span><span style="color:#111">context</span><span style="color:#111">)</span>
+
+<span style="color:#00a8c8">val</span> <span style="color:#111">req</span> <span style="color:#111">=</span> <span style="color:#111">StringRequest</span><span style="color:#111">(</span><span style="color:#111">Request</span><span style="color:#111">.</span><span style="color:#111">Method</span><span style="color:#111">.</span><span style="color:#111">GET</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;https://www.google.com&#34;</span><span style="color:#111">,</span> <span style="color:#111">Response</span><span style="color:#111">.</span><span style="color:#111">Listener</span><span style="color:#111">&lt;</span><span style="color:#111">String</span><span style="color:#111">&gt;</span> <span style="color:#111">{</span>
+    <span style="color:#111">println</span><span style="color:#111">(</span><span style="color:#d88200">&#34;cool, we&#39;ve got a result: </span><span style="color:#d88200">$it</span><span style="color:#d88200">&#34;</span><span style="color:#111">)</span>
+<span style="color:#111">},</span> <span style="color:#111">Response</span><span style="color:#111">.</span><span style="color:#111">ErrorListener</span> <span style="color:#111">{</span> 
+    <span style="color:#111">println</span><span style="color:#111">(</span><span style="color:#d88200">&#34;whoops, something went wrong: </span><span style="color:#d88200">${it.message}</span><span style="color:#d88200">&#34;</span><span style="color:#111">)</span>
+<span style="color:#111">})</span>
+<span style="color:#111">queue</span><span style="color:#111">.</span><span style="color:#111">add</span><span style="color:#111">(</span><span style="color:#111">req</span><span style="color:#111">)</span>
+</code></pre></div><p>The two parameters, a response listener and error listener, are anonymous interface implementations with a single method.</p>
+<p>In most cases, a <code>GET</code> without any header does not suffice. Instead of a <code>StringRequest</code>, you can also create a <code>JSONObjectRequest</code> and pass in a <code>JSONObject</code> as your request body. Fully customized HTTP calls are best handled by implementing your own request object. This allows you to:</p>
+<ul>
+<li><code>override fun getParams()</code>: Form parameters in case of a <code>x-www-form-urlencoded</code> request</li>
+<li><code>override fun getBodyContentType()</code> to specify a custom <code>Content-Type</code></li>
+<li><code>override fun getHeaders()</code> to specify other custom headers</li>
+</ul>
+<p>The <code>todosavestate</code> code contains an example of such a custom request object.</p>
+
+<div class="notices warning" ><p>Be warned (again): Volley is <strong>asynchronous</strong>, meaning &ldquo;return bla&rdquo; on response just won&rsquo;t work. To make things work, you&rsquo;ll have to (1) show a loading widget, (2) fire off the HTTP call by adding it to the queue and (3) do your thing on response, also not forgetting to update the UI. In case of a RecyclerView, that&rsquo;s <code>notifyDataSetChanged()</code>. Watch out with multithreading and changing UI logic!<br/>The example shows how you can still pass along a custom response handler object by making use of Kotlin&rsquo;s <a href="https://kotlinlang.org/docs/fun-interfaces.html">SAM interfaces</a>.</p>
+</div>
+
+<p>Volley can be confusing and difficult to use. It&rsquo;s a complimentary library, meaning it can be swapped out at any time in favor for alternatives such as <a href="https://square.github.io/retrofit/">Retrofit</a>. Feel free to do so.</p>
 
 
 <footer class="footline">
@@ -1139,17 +1161,17 @@ dependencies {
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1628173102"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1628173102"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1628173102"></script>
-    <script src="../../js/jquery.sticky.js?1628173102"></script>
-    <script src="../../js/featherlight.min.js?1628173102"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1628173102"></script>
-    <script src="../../js/learn.js?1628173102"></script>
-    <script src="../../js/hugo-learn.js?1628173102"></script>
+    <script src="../../js/clipboard.min.js?1628174936"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1628174936"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1628174936"></script>
+    <script src="../../js/jquery.sticky.js?1628174936"></script>
+    <script src="../../js/featherlight.min.js?1628174936"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1628174936"></script>
+    <script src="../../js/learn.js?1628174936"></script>
+    <script src="../../js/hugo-learn.js?1628174936"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1628173102"></script>
+            <script src="../../mermaid/mermaid.js?1628174936"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
