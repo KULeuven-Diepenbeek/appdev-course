@@ -65,6 +65,31 @@ As with the typical unit/integration/end2end test pyramid you've learned in the 
 
 Looking for Android testing sample projects? https://github.com/android/testing-samples
 
+### Database integration testing
+
+After you've chewed on the [data storage chapter](/android/data-storage) and got your feet wet with Android's Room to access SQLite databases, you can try to write a few integration tests which test your queries and persistence layer. These tests are similar to the integration tests present in the [SESsy library](https://kuleuven-diepenbeek.github.io/ses-course/extra/sessy/) webapp. 
+
+For exmaple, to test if something can be persisted:
+
+```kt
+@Test
+fun todoItemCanBePersisted() {
+    val item = Todo("brush my little pony", false)
+    dao.insert(arrayListOf(item))
+
+    val refreshedItem = dao.query().single()
+    with(refreshedItem) {
+        assertEquals(item.title, title)
+        assertEquals(item.isDone, isDone)
+        assertEquals(1, id)
+    }
+}
+```
+
+Employ the `Room.inMemoryDatabaseBuilder` to create your Database object. See the `todosavestate` example in the course repository for a full-fledged example. 
+
+Since databases are part of the 3rd year program and plenty of integration testing happens in the SES course, integration-testing your Room objects is not a part of this course. Nonetheless, do take a look at the example: cross-pollination between software courses facilitates your learning!
+
 ### Scenario-based UI testing
 
 Besides the exposed `Context` object in instrumented tests, we can also write **scenario tests**. For web-based programs, we can rely on WebDriver and a Selenium webbrowser plugin to record a specific scenario and verify the visibility and position of UI elements. 

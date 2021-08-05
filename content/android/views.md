@@ -120,6 +120,8 @@ Key mechanics involved:
 3. Create a separate menu XML file where all menu items, icons, and titles reside. 
 4. Update the activity code to glue it all together.
 
+The navigation drawer component is part of the external `androidx.navigation` libraries we also used in the [fragment navigation chapter](/android/fragments/#why-use-fragments-easing-navigation): see [setting up your environment](https://developer.android.com/guide/navigation/navigation-getting-started) in the Android Developers Guide.
+
 #### Layouting
 
 The `NavigationView` refers to both the menu and the layout XML:

@@ -168,7 +168,7 @@ These fragments will be placed in a container view in your main activity, which 
 </androidx.constraintlayout.widget.ConstraintLayout>
 ```
 
-Note the `app:navGraph` property, which points to the first XML file. Do not forget to add the necessary Gradle dependencies, as the navigation components reside in separate library files: see the getting started link from `developer.android.com`.
+Note the `app:navGraph` property, which points to the first XML file. Do not forget to add the necessary Gradle dependencies, as the navigation components reside in separate library files: see [the getting started link](https://developer.android.com/guide/navigation/navigation-getting-started) from the Android Developers Guide.
 
 #### Putting it all together
 

@@ -86,3 +86,22 @@ androidx.test.espresso.NoActivityResumedException: No activities found. Did you 
 Cause: you forgot to bootstrap an activity in your test using `@get:Rule` and `@Before`/`@After` methods. See the [Kotlin/Android TDD](/lang/tdd) chapter for more information.
 
 Solution: Initialize your activity before making any assumptions!
+
+### 7.  Build failures: KaptWithoutKotlincTask$...
+
+Error:
+
+```
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:kaptDebugKotlin'.
+> A failure occurred while executing org.jetbrains.kotlin.gradle.internal.KaptWithoutKotlincTask$KaptExecutionWorkAction
+   > java.lang.reflect.InvocationTargetException (no error message)
+```
+
+Cause: You've enabled `kotlin-kapt`---probably for Room database tooling. That means you've done something wrong in your Dao or object-to-save. For instance, made the primary key an immutable `val` instead of a `var`. Re-check your database objects and make sure everything is as it should be!
+
+Build radle with `./gradle build --stacktrace` to get more output and see the underlying exception. 
+
+Solution: fix the Room-specific mistakes (annotation-related). Another possible cuse is your M1 Mac chipset: see [data storage](/android/data-storage), add the `kapt "org.xerial:sqlite-jdbc:3.34.0"` dependency yourself. 
