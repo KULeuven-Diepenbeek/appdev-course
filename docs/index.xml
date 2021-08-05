@@ -149,7 +149,8 @@ class PeriodTests { @Test fun `Given two overlapping periods When overlapsWith i
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
       <guid>https://kuleuven-diepenbeek.github.io/appdev-course/android/data-storage/</guid>
-      <description>http client? https://square.github.io/retrofit/</description>
+      <description>Suppose we&amp;rsquo;d like to store the TODO elements in the example from the nested views chapter. Remember that TODO app, where you could check off several items and add new ones? Every time we reboot that app, our newly added items and checked state&amp;mdash;the data, so to speak&amp;mdash;is gone.
+  The TODO App from the view chapter: how do we save its state?  There are several possibilities to tuck away and re-retrieve the above data:</description>
     </item>
     
     <item>

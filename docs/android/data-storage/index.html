@@ -12,20 +12,20 @@
     <title>5. Data Storage: File/Network :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1628082719" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1628082719" rel="stylesheet">
-    <link href="../../css/hybrid.css?1628082719" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1628082719" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1628082719" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1628082719" rel="stylesheet">
-    <link href="../../css/theme.css?1628082719" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1628082719" rel="stylesheet">
+    <link href="../../css/nucleus.css?1628173101" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1628173101" rel="stylesheet">
+    <link href="../../css/hybrid.css?1628173101" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1628173101" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1628173101" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1628173101" rel="stylesheet">
+    <link href="../../css/theme.css?1628173101" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1628173101" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1628082719" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1628173101" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1628082719"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1628173101"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -62,14 +62,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1628082719"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1628082719"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1628173101"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1628173101"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1628082719"></script>
+<script type="text/javascript" src="../../js/search.js?1628173101"></script>
 
     
   </div>
@@ -618,7 +618,18 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-preferences-access">1. Preferences Access</a></li>
+    <li><a href="#2-file-access">2. File Access</a></li>
+    <li><a href="#3-database-access">3. Database Access</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#4-http-network-access">4. HTTP Network Access</a></li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -641,6 +652,110 @@
         
 
 
+<p>Suppose we&rsquo;d like to store the TODO elements in the example from <a href="../../android/views">the nested views chapter</a>. Remember that TODO app, where you could check off several items and add new ones? Every time we reboot that app, our newly added items and checked state&mdash;the data, so to speak&mdash;is gone.</p>
+<p><figure>
+	<a href="../../img/todoapp.jpg" data-featherlight="image">
+		<img src="../../img/todoapp.jpg"   title="The TODO App from the view chapter: how do we save its state?">
+	</a>
+	
+		<figcaption>The TODO App from the view chapter: how do we save its state?</figcaption>
+	
+</figure>
+</p>
+<p>There are <a href="https://developer.android.com/training/data-storage">several possibilities</a> to tuck away and re-retrieve the above data:</p>
+<ul>
+<li>It could be part of Android&rsquo;s preferences system: simple key/value pairs accessible through the Activity API: it doens&rsquo;t get any simpler than this.</li>
+<li>It could be simply written to a file. You should be familiar with JSON serialization, we&rsquo;ve used it in INF1 while getting to know Java with the help of <a href="https://github.com/google/gson">the GSON library</a> from Google.</li>
+<li>It could be part of sharable Media, usable through the <code>MediaStore</code> API. This allows different apps to share data, but requires extra permissions!</li>
+<li>It could be stored in a real database. That database could be a simple local SQLite file. <a href="https://kuleuven-diepenbeek.github.io/db-course/">The databases course</a> is reserved for the third academic year, but a simplistic example will be handled in this chapter.</li>
+<li>It could be stored remotely: on another website, accessible only through the internet via for example HTTP GET calls.</li>
+</ul>
+<p>In this chapter, we&rsquo;ll see how we store and retrieve data in Android apps.</p>
+
+<div class="notices warning" ><p>Carefully consider which of the data storage solutions is right for you. Do you want your data to be persisted after the user uninstalls your app? Do you want it to be sharable? Do you want other (web)applications to be able to access it? <br/>This isn&rsquo;t a case of picking an appealing technology but of picking what is appropriate for the thing you&rsquo;re trying to achieve.</p>
+</div>
+
+<p>Before being able to save the TODO items, we need to enable <strong>two-way data binding</strong>. Until now, the TODO items in the view were synced based on the values in the backend. Go to the Todo adapter, and add a click listener to <code>chkTodoDone</code>. When it is clicked, we want to re-sync the state with the current todo item (in <code>onBindViewHolder()</code>). It needs to go both ways, otherwise we don&rsquo;t have any data to save:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">val</span> <span style="color:#111">checkBoxTodo</span> <span style="color:#111">=</span> <span style="color:#111">findViewById</span><span style="color:#111">&lt;</span><span style="color:#111">CheckBox</span><span style="color:#111">&gt;(</span><span style="color:#111">R</span><span style="color:#111">.</span><span style="color:#111">id</span><span style="color:#111">.</span><span style="color:#111">chkTodoDone</span><span style="color:#111">)</span>
+<span style="color:#111">checkBoxTodo</span><span style="color:#111">.</span><span style="color:#111">isChecked</span> <span style="color:#111">=</span> <span style="color:#111">currentTodoItem</span><span style="color:#111">.</span><span style="color:#111">isDone</span>
+<span style="color:#111">checkBoxTodo</span><span style="color:#111">.</span><span style="color:#111">setOnClickListener</span> <span style="color:#111">{</span>
+    <span style="color:#111">currentTodoItem</span><span style="color:#111">.</span><span style="color:#111">isDone</span> <span style="color:#111">=</span> <span style="color:#111">checkBoxTodo</span><span style="color:#111">.</span><span style="color:#111">isChecked</span>
+<span style="color:#111">}</span>
+</code></pre></div><p>Also, think about at what point exactly to save and load. Should it be <code>onDestroy()</code>? Somewhere else? Consult the activity/fragment licecycle diagram to determine the best suited event. Remember that some events do NOT get triggered on force closes/crashes/etc. Treat loading as if things were never saved if things go awry: always have backup plan.</p>
+<h2 id="1-preferences-access">1. Preferences Access</h2>
+<p>There are two kinds of preferences:</p>
+<ol>
+<li>The ones shared by a single activity, accessible through <code>getPreferences()</code> on the activity.</li>
+<li>The ones shared by your whole app, independent of the view/activity, accessible through <code>getSharedPreferences()</code>.</li>
+</ol>
+<p>The rest is simple enough:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#75715e">// reading
+</span><span style="color:#75715e"></span><span style="color:#00a8c8">val</span> <span style="color:#111">sharedPref</span> <span style="color:#111">=</span> <span style="color:#111">activity</span><span style="color:#f92672">?.</span><span style="color:#111">getSharedPreferences</span><span style="color:#111">(</span>
+        <span style="color:#111">getString</span><span style="color:#111">(</span><span style="color:#d88200">&#34;key&#34;</span><span style="color:#111">),</span> <span style="color:#111">Context</span><span style="color:#111">.</span><span style="color:#111">MODE_PRIVATE</span><span style="color:#111">)</span>
+
+<span style="color:#75715e">// writing
+</span><span style="color:#75715e"></span><span style="color:#00a8c8">val</span> <span style="color:#111">sharedPref</span> <span style="color:#111">=</span> <span style="color:#111">activity</span><span style="color:#f92672">?.</span><span style="color:#111">getPreferences</span><span style="color:#111">(</span><span style="color:#111">Context</span><span style="color:#111">.</span><span style="color:#111">MODE_PRIVATE</span><span style="color:#111">)</span> <span style="color:#f92672">?:</span> <span style="color:#00a8c8">return</span>
+<span style="color:#111">with</span> <span style="color:#111">(</span><span style="color:#111">sharedPref</span><span style="color:#111">.</span><span style="color:#111">edit</span><span style="color:#111">())</span> <span style="color:#111">{</span>
+    <span style="color:#111">putString</span><span style="color:#111">(</span><span style="color:#d88200">&#34;key&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;Hi, I&#39;m a value!&#34;</span><span style="color:#111">)</span>
+    <span style="color:#111">apply</span><span style="color:#111">()</span>
+<span style="color:#111">}</span>
+</code></pre></div><p>The value you save can simply be a GSON-ified JSON String representation of an object. Remember the statement <code>gson.toJson(object)</code> that outputs a string? That one.</p>
+<h2 id="2-file-access">2. File Access</h2>
+<p>Private file access is also trivial: grab hold of a <code>FileOutputStream</code> through the <code>context.openFileOutput(fileName, Context.MODE_PRIVATE)</code> context API. These files are not shared between apps, and therefore, no special permissions are needed. Be sure to check for possible exceptions: for instance, <code>FileNotFoundException</code> might occur, or what to do when the file is corrupt? These situations are best handled in a separate class, such as a <em>repository</em>, as also done in the SES course.</p>
+<p>Write to the output stream as you would in any other Java code: using <code>readObject()</code> and <code>writeObject()</code>. Examples are available in the demo project at <code>examples/kotlin/todosavestate</code>.</p>
+<h2 id="3-database-access">3. Database Access</h2>
+<p>Simple object serialization might do in simple cases, but more intricate apps gravitate towards the use of databases. SQLite, the in-memory or in-file SQL database solution, also works with a single (private) file behind-the-scenes, meaning no additional security measurements are required. The usage of SQLite on Android is simplified thanks to <strong>Room</strong>, an easy-to-use API part of <a href="https://developer.android.com/training/data-storage/room">Android Jetpack</a>. Again, be sure to import the necessary dependencies:</p>
+<pre><code>plugins {
+    id(&quot;kotlin-kapt&quot;)
+}
+dependencies {
+    val room_version = &quot;2.3.0&quot;
+    implementation(&quot;androidx.room:room-runtime:$room_version&quot;)
+    implementation(&quot;androidx.room:room-ktx:$room_version&quot;)
+    testImplementation(&quot;androidx.room:room-testing:$room_version&quot;)
+    kapt(&quot;androidx.room:room-compiler:$room_version&quot;)
+    // only for Mac M1 users: kapt(&quot;org.xerial:sqlite-jdbc:3.34.0&quot;)
+}
+</code></pre>
+<div class="notices warning" ><p>Mac M1 users might be greeted with weird build-time exceptions, with underlying caused by <code>No native library is found for os.name=Mac and os.arch=aarch64.</code> In that case, add another kapt dependency: <code>kapt(&quot;org.xerial:sqlite-jdbc:3.34.0&quot;)</code>.</p>
+</div>
+
+<h4 id="configuring-your-objectsdao">Configuring your objects/Dao</h4>
+<p>To use Room, it suffices to apply a few key annotations on both our Entity (the Model, the object we wish to persist) and on a newly created Dao interface.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#75af00">@Entity</span>
+<span style="color:#00a8c8">data</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">Todo</span><span style="color:#111">(</span>
+    <span style="color:#75af00">@ColumnInfo</span><span style="color:#111">(</span><span style="color:#111">name</span> <span style="color:#111">=</span> <span style="color:#d88200">&#34;title&#34;</span><span style="color:#111">)</span> <span style="color:#00a8c8">val</span> <span style="color:#111">title</span><span style="color:#111">:</span> <span style="color:#111">String</span><span style="color:#111">,</span>
+    <span style="color:#75af00">@ColumnInfo</span><span style="color:#111">(</span><span style="color:#111">name</span> <span style="color:#111">=</span> <span style="color:#d88200">&#34;is_done&#34;</span><span style="color:#111">)</span> <span style="color:#00a8c8">var</span> <span style="color:#111">isDone</span><span style="color:#111">:</span> <span style="color:#111">Boolean</span><span style="color:#111">,</span>
+    <span style="color:#75af00">@PrimaryKey</span><span style="color:#111">(</span><span style="color:#111">autoGenerate</span> <span style="color:#111">=</span> <span style="color:#00a8c8">true</span><span style="color:#111">)</span> <span style="color:#00a8c8">var</span> <span style="color:#111">id</span><span style="color:#111">:</span> <span style="color:#111">Int</span> <span style="color:#111">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">)</span>
+</code></pre></div><p>This is indeed <em>very</em> reminiscent of JPA&rsquo;s <code>@Entity</code> annotations, but make no mistake, these are Android Room-specific. Take a look at the <a href="https://kuleuven-diepenbeek.github.io/db-course/apis/jpa/#222-hibernatejpa-peristencequerying">3rd year database course: JPA</a> chapter if you&rsquo;re curious about next year&rsquo;s course contents. If you&rsquo;re fluent with Android&rsquo;s Room and SQLite, you&rsquo;ll have no problem tackling that course.</p>
+<p>Next, create a new interface called <code>TodoDao</code>, where your SQL actions will live:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#75af00">@Dao</span>
+<span style="color:#00a8c8">interface</span> <span style="color:#75af00">TodoDao</span> <span style="color:#111">{</span>
+    <span style="color:#75af00">@Query</span><span style="color:#111">(</span><span style="color:#d88200">&#34;SELECT * FROM Todo&#34;</span><span style="color:#111">)</span>
+    <span style="color:#00a8c8">fun</span> <span style="color:#75af00">query</span><span style="color:#111">():</span> <span style="color:#111">List</span><span style="color:#111">&lt;</span><span style="color:#111">Todo</span><span style="color:#111">&gt;</span>
+
+    <span style="color:#75af00">@Insert</span>
+    <span style="color:#00a8c8">fun</span> <span style="color:#75af00">insert</span><span style="color:#111">(</span><span style="color:#111">items</span><span style="color:#111">:</span> <span style="color:#111">List</span><span style="color:#111">&lt;</span><span style="color:#111">Todo</span><span style="color:#111">&gt;)</span>
+<span style="color:#111">}</span>
+</code></pre></div><p>An implementation will be generated for you, accessible through a third (abstract!) class we call <code>TodoDatabase</code>:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#75af00">@Database</span><span style="color:#111">(</span><span style="color:#111">entities</span> <span style="color:#111">=</span> <span style="color:#111">arrayOf</span><span style="color:#111">(</span><span style="color:#111">Todo</span><span style="color:#f92672">::</span><span style="color:#00a8c8">class</span><span style="color:#111">),</span> <span style="color:#111">version</span> <span style="color:#111">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">)</span>
+<span style="color:#00a8c8">abstract</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">TodoDatabase</span> <span style="color:#111">:</span> <span style="color:#111">RoomDatabase</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+    <span style="color:#00a8c8">abstract</span> <span style="color:#00a8c8">fun</span> <span style="color:#75af00">todoDao</span><span style="color:#111">()</span> <span style="color:#111">:</span> <span style="color:#111">TodoDao</span>
+<span style="color:#111">}</span>
+</code></pre></div><h4 id="executing-your-repository-methods">Executing your repository methods</h4>
+<p>Note that the <a href="https://developer.android.com/training/data-storage/room/accessing-data">accessing data using Room DAOs</a> guide states the following:</p>
+<blockquote>
+<p>Note: Room doesn&rsquo;t support database access on the main thread unless you&rsquo;ve called allowMainThreadQueries() on the builder because it might lock the UI for a long period of time. Asynchronous queries—queries that return instances of LiveData or Flowable—are exempt from this rule because they asynchronously run the query on a background thread when needed.</p>
+</blockquote>
+<p>This means we can&rsquo;t simply call our <code>find()</code> or <code>insert()</code> queries straight form the activity/fragment. There are multiple solutions to this problem, and since the concept is fairly complex (it involves <a href="https://developer.android.com/topic/libraries/architecture/livedata">live data</a>), we went with the simplest one, adding <code>.allowMainThreadQueries()</code> to our database builder.</p>
+<p>The builder creates an instance of <code>TodoDatabase</code>, on which we can call <code>todoDao()</code> to access the DAO (Data Access Object) implementation to get and store our TODO items:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#111">db</span> <span style="color:#111">=</span> <span style="color:#111">Room</span><span style="color:#111">.</span><span style="color:#111">databaseBuilder</span><span style="color:#111">(</span><span style="color:#111">appContext</span><span style="color:#111">,</span> <span style="color:#111">TodoDatabase</span><span style="color:#f92672">::</span><span style="color:#00a8c8">class</span><span style="color:#111">.</span><span style="color:#111">java</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;todo-db&#34;</span><span style="color:#111">)</span>
+    <span style="color:#111">.</span><span style="color:#111">allowMainThreadQueries</span><span style="color:#111">()</span>
+    <span style="color:#111">.</span><span style="color:#111">build</span><span style="color:#111">()</span>
+<span style="color:#111">dao</span> <span style="color:#111">=</span> <span style="color:#111">db</span><span style="color:#111">.</span><span style="color:#111">todoDao</span><span style="color:#111">()</span>
+</code></pre></div><p>That&rsquo;s it, now we can call <code>query()</code> and <code>insert()</code> from our activity/fragment! The above <code>appContext</code> which is needed to build the database object is the Application Context of an activity.</p>
+<p>To correctly unit test and debug your database, please refer to the <a href="https://developer.android.com/training/data-storage/room/testing-db">android developer guide</a>. Since the database requires an application context, it&rsquo;s best to create <strong>instrumented tests</strong>. See the <a href="../../lang/tdd">TDD chapter</a> for more information. Samples are, again, to be found in <code>examples/kotlin/todosavestate</code> in the repository.</p>
+<h2 id="4-http-network-access">4. HTTP Network Access</h2>
 <p>http client? <a href="https://square.github.io/retrofit/">https://square.github.io/retrofit/</a></p>
 
 
@@ -1024,17 +1139,17 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1628082719"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1628082719"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1628082719"></script>
-    <script src="../../js/jquery.sticky.js?1628082719"></script>
-    <script src="../../js/featherlight.min.js?1628082719"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1628082719"></script>
-    <script src="../../js/learn.js?1628082719"></script>
-    <script src="../../js/hugo-learn.js?1628082719"></script>
+    <script src="../../js/clipboard.min.js?1628173102"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1628173102"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1628173102"></script>
+    <script src="../../js/jquery.sticky.js?1628173102"></script>
+    <script src="../../js/featherlight.min.js?1628173102"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1628173102"></script>
+    <script src="../../js/learn.js?1628173102"></script>
+    <script src="../../js/hugo-learn.js?1628173102"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1628082719"></script>
+            <script src="../../mermaid/mermaid.js?1628173102"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

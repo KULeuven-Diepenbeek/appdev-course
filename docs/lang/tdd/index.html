@@ -12,20 +12,20 @@
     <title>4. Test Driven Development :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1628082720" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1628082720" rel="stylesheet">
-    <link href="../../css/hybrid.css?1628082720" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1628082720" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1628082720" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1628082720" rel="stylesheet">
-    <link href="../../css/theme.css?1628082720" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1628082720" rel="stylesheet">
+    <link href="../../css/nucleus.css?1628173102" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1628173102" rel="stylesheet">
+    <link href="../../css/hybrid.css?1628173102" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1628173102" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1628173102" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1628173102" rel="stylesheet">
+    <link href="../../css/theme.css?1628173102" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1628173102" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1628082720" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1628173102" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1628082720"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1628173102"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -62,14 +62,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1628082720"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1628082720"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1628173102"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1628173102"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1628082720"></script>
+<script type="text/javascript" src="../../js/search.js?1628173102"></script>
 
     
   </div>
@@ -623,6 +623,7 @@
     <li><a href="#kotlin-and-junit-5">Kotlin and JUnit 5</a></li>
     <li><a href="#android-and-tdd">Android and TDD</a>
       <ul>
+        <li><a href="#database-integration-testing">Database integration testing</a></li>
         <li><a href="#scenario-based-ui-testing">Scenario-based UI testing</a></li>
       </ul>
     </li>
@@ -697,6 +698,23 @@ If writing pure Kotlin, you can also opt to use <a href="https://mockk.io/">Mock
 <p>Note that in Android development, <strong>JUnit 4</strong> is used, not JUnit 5 (although <a href="https://medium.com/@boonkeat/android-unit-testing-with-junit5-d1b8f9c620b6">it is not impossible</a>). Instrumented tests are annotated with <code>@RunWith(AndroidJUnit4::class)</code> from the <code>androidx.test.ext.junit.runners</code> package. As soon as you run an instrumented test, the configured emulator will boot up. A separate <code>.apk</code> will be built containing your instrumented tests which will be executed on the device.</p>
 <p>As with the typical unit/integration/end2end test pyramid you&rsquo;ve learned in the SES course, the same holds true here: try to write as many unit tests as possible, since bootstrapping the emulator and compiling a separate package is much, much slower! All integration, UI, and end2end tests are considered <em>instrumented</em> tests in the Android architecture.</p>
 <p>Looking for Android testing sample projects? <a href="https://github.com/android/testing-samples">https://github.com/android/testing-samples</a></p>
+<h3 id="database-integration-testing">Database integration testing</h3>
+<p>After you&rsquo;ve chewed on the <a href="../../android/data-storage">data storage chapter</a> and got your feet wet with Android&rsquo;s Room to access SQLite databases, you can try to write a few integration tests which test your queries and persistence layer. These tests are similar to the integration tests present in the <a href="https://kuleuven-diepenbeek.github.io/ses-course/extra/sessy/">SESsy library</a> webapp.</p>
+<p>For exmaple, to test if something can be persisted:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#75af00">@Test</span>
+<span style="color:#00a8c8">fun</span> <span style="color:#75af00">todoItemCanBePersisted</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+    <span style="color:#00a8c8">val</span> <span style="color:#111">item</span> <span style="color:#111">=</span> <span style="color:#111">Todo</span><span style="color:#111">(</span><span style="color:#d88200">&#34;brush my little pony&#34;</span><span style="color:#111">,</span> <span style="color:#00a8c8">false</span><span style="color:#111">)</span>
+    <span style="color:#111">dao</span><span style="color:#111">.</span><span style="color:#111">insert</span><span style="color:#111">(</span><span style="color:#111">arrayListOf</span><span style="color:#111">(</span><span style="color:#111">item</span><span style="color:#111">))</span>
+
+    <span style="color:#00a8c8">val</span> <span style="color:#111">refreshedItem</span> <span style="color:#111">=</span> <span style="color:#111">dao</span><span style="color:#111">.</span><span style="color:#111">query</span><span style="color:#111">().</span><span style="color:#111">single</span><span style="color:#111">()</span>
+    <span style="color:#111">with</span><span style="color:#111">(</span><span style="color:#111">refreshedItem</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+        <span style="color:#111">assertEquals</span><span style="color:#111">(</span><span style="color:#111">item</span><span style="color:#111">.</span><span style="color:#111">title</span><span style="color:#111">,</span> <span style="color:#111">title</span><span style="color:#111">)</span>
+        <span style="color:#111">assertEquals</span><span style="color:#111">(</span><span style="color:#111">item</span><span style="color:#111">.</span><span style="color:#111">isDone</span><span style="color:#111">,</span> <span style="color:#111">isDone</span><span style="color:#111">)</span>
+        <span style="color:#111">assertEquals</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#111">id</span><span style="color:#111">)</span>
+    <span style="color:#111">}</span>
+<span style="color:#111">}</span>
+</code></pre></div><p>Employ the <code>Room.inMemoryDatabaseBuilder</code> to create your Database object. See the <code>todosavestate</code> example in the course repository for a full-fledged example.</p>
+<p>Since databases are part of the 3rd year program and plenty of integration testing happens in the SES course, integration-testing your Room objects is not a part of this course. Nonetheless, do take a look at the example: cross-pollination between software courses facilitates your learning!</p>
 <h3 id="scenario-based-ui-testing">Scenario-based UI testing</h3>
 <p>Besides the exposed <code>Context</code> object in instrumented tests, we can also write <strong>scenario tests</strong>. For web-based programs, we can rely on WebDriver and a Selenium webbrowser plugin to record a specific scenario and verify the visibility and position of UI elements.</p>
 <p>In Android, the same concepts exist in the form of <a href="https://developer.android.com/studio/test/espresso-test-recorder">the Espresso Test Recorder</a>.</p>
@@ -1132,17 +1150,17 @@ Feel free to fiddle with the Espresso toolset. The course repository has ample e
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1628082720"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1628082720"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1628082720"></script>
-    <script src="../../js/jquery.sticky.js?1628082720"></script>
-    <script src="../../js/featherlight.min.js?1628082720"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1628082720"></script>
-    <script src="../../js/learn.js?1628082720"></script>
-    <script src="../../js/hugo-learn.js?1628082720"></script>
+    <script src="../../js/clipboard.min.js?1628173102"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1628173102"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1628173102"></script>
+    <script src="../../js/jquery.sticky.js?1628173102"></script>
+    <script src="../../js/featherlight.min.js?1628173102"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1628173102"></script>
+    <script src="../../js/learn.js?1628173102"></script>
+    <script src="../../js/hugo-learn.js?1628173102"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1628082720"></script>
+            <script src="../../mermaid/mermaid.js?1628173102"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
