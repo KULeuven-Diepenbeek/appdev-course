@@ -78,7 +78,9 @@ Now that we know what activities are, how to re-use components using fragments, 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
       <guid>https://kuleuven-diepenbeek.github.io/appdev-course/android/security/</guid>
-      <description>Android dev and Permissions https://developer.android.com/guide/topics/permissions/overview</description>
+      <description>Google&amp;rsquo;s &amp;ldquo;safest mobile platform in the world&amp;rdquo; As the Android Developer guide on security states:
+ Our goal is to make Android the safest mobile platform in the world. That&amp;rsquo;s why we consistently invest in technologies that bolster the security of the platform, its apps, and the global Android ecosystem. It&amp;rsquo;s a responsibility we share with you, as developers, to keep users safe and secure.
+ Sadly enough, Google itself doesn&amp;rsquo;t quite adhere to its own philosophy, as the Android OS is full of trackers that push personal data into Google&amp;rsquo;s greedy hands.</description>
     </item>
     
   </channel>

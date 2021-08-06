@@ -12,20 +12,20 @@
     <title>2. Messaging - Intents :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1628186466" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1628186466" rel="stylesheet">
-    <link href="../../css/hybrid.css?1628186466" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1628186466" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1628186466" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1628186466" rel="stylesheet">
-    <link href="../../css/theme.css?1628186466" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1628186466" rel="stylesheet">
+    <link href="../../css/nucleus.css?1628252031" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1628252031" rel="stylesheet">
+    <link href="../../css/hybrid.css?1628252031" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1628252031" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1628252031" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1628252031" rel="stylesheet">
+    <link href="../../css/theme.css?1628252031" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1628252031" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1628186466" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1628252031" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1628186466"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1628252031"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -62,14 +62,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1628186466"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1628186466"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1628252031"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1628252031"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1628186466"></script>
+<script type="text/javascript" src="../../js/search.js?1628252031"></script>
 
     
   </div>
@@ -716,7 +716,7 @@
 </span><span style="color:#75715e"></span><span style="color:#111">}</span>
 </code></pre></div><p>Then, add an implementation dependency <code>    implementation(&quot;org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2&quot;)</code>. Lastly, update your <code>User</code> data class to add the <code>@Serializable</code> annotation that should get imported from the package <code>kotlinx.serialization</code>, and the Java <code>Serializable</code> interface to tell Android-specific methods it&rsquo;s a serializable object:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#75af00">@Serializable</span>
-<span style="color:#00a8c8">data</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">User</span><span style="color:#111">(</span><span style="color:#00a8c8">val</span> <span style="color:#111">name</span><span style="color:#111">:</span> <span style="color:#111">String</span><span style="color:#111">)</span> <span style="color:#111">:</span> <span style="color:#111">Serializable</span> <span style="color:#111">{</span>
+<span style="color:#00a8c8">data</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">User</span><span style="color:#111">(</span><span style="color:#00a8c8">val</span> <span style="color:#111">name</span><span style="color:#111">:</span> <span style="color:#111">String</span><span style="color:#111">)</span> <span style="color:#111">:</span> <span style="color:#111">java</span><span style="color:#111">.</span><span style="color:#111">io</span><span style="color:#111">.</span><span style="color:#111">Serializable</span> <span style="color:#111">{</span>
 <span style="color:#111">}</span>
 </code></pre></div><p>Now create a function that returns a new <code>User</code> object based on the viewbinding&rsquo;s values. Then pass the single <code>User</code> instance through the intent using <code>putExtra()</code>. Pull it back out using <code>getSerializableExtra()</code>.</p>
 
@@ -817,8 +817,8 @@
         <span style="color:#00a8c8">return</span> <span style="color:#111">intent</span><span style="color:#111">.</span><span style="color:#111">getParcelableExtra</span><span style="color:#111">(</span><span style="color:#d88200">&#34;data&#34;</span><span style="color:#111">);</span>
     <span style="color:#111">}</span>
 <span style="color:#111">}</span>
-</code></pre></div><p>Aha, now we&rsquo;re getting somewhere! Upon further inspection, <code>TakePicture</code> (not the preview one) puts extra data into the intent to capture the whole output. Note the first generic type of the extended class: <code>Void</code>. So that is where that <code>Void</code> comes from in or <code>lateinit var pictureActivityResult</code>: other embedded activity result contracts will likely have other result types (<code>OpenDocument</code> has <code>String[]</code>, for instance).</p>
-<p>These details are provided for you, make use of them.</p>
+</code></pre></div><p>Aha, now we&rsquo;re getting somewhere! Upon further inspection, <code>TakePicture</code> (not the preview one) puts extra data into the intent to capture the whole output. Note the first generic type of the extended class: <code>Void</code>. So that is where that <code>Void</code> comes from in or <code>lateinit var pictureActivityResult</code>: other embedded activity result contracts will likely have other result types (<code>OpenDocument</code> has <code>String[]</code>, for instance). These details are provided for you, make use of them.</p>
+<p>Note that because of the implicit intent, handling the camera is left to <strong>another app</strong> which is already has permissions to access the camera. Therefore, we do NOT need an explicit <code>&lt;uses-permission android:name=&quot;android.permission.CAMERA&quot; /&gt;</code> entry in our manifest, but it&rsquo;s still important to <em>advertise</em> we do use the camera with a <code>&lt;uses-feature/&gt;</code> tag. See the <a href="../../android/security">security by design chapter</a> for more information.</p>
 
 <div class="notices note" ><p>You&rsquo;ll learn the most while digging through the source code of the API itself while hacking your way through the code&mdash;and <em>not</em> by just reading this page. Do not be afraid to press <code>CTRL+B</code> (Go To Declaration) in Android Studio! If you still have no idea what&rsquo;s going on, then <code>developer.android.com</code> is your best friend.</p>
 </div>
@@ -1208,17 +1208,17 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1628186466"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1628186466"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1628186466"></script>
-    <script src="../../js/jquery.sticky.js?1628186466"></script>
-    <script src="../../js/featherlight.min.js?1628186466"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1628186466"></script>
-    <script src="../../js/learn.js?1628186466"></script>
-    <script src="../../js/hugo-learn.js?1628186466"></script>
+    <script src="../../js/clipboard.min.js?1628252031"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1628252031"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1628252031"></script>
+    <script src="../../js/jquery.sticky.js?1628252031"></script>
+    <script src="../../js/featherlight.min.js?1628252031"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1628252031"></script>
+    <script src="../../js/learn.js?1628252031"></script>
+    <script src="../../js/hugo-learn.js?1628252031"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1628186466"></script>
+            <script src="../../mermaid/mermaid.js?1628252031"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

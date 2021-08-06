@@ -12,20 +12,20 @@
     <title>5. Data Storage: File/Network :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1628186465" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1628186465" rel="stylesheet">
-    <link href="../../css/hybrid.css?1628186465" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1628186465" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1628186465" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1628186465" rel="stylesheet">
-    <link href="../../css/theme.css?1628186465" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1628186465" rel="stylesheet">
+    <link href="../../css/nucleus.css?1628252031" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1628252031" rel="stylesheet">
+    <link href="../../css/hybrid.css?1628252031" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1628252031" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1628252031" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1628252031" rel="stylesheet">
+    <link href="../../css/theme.css?1628252031" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1628252031" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1628186465" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1628252031" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1628186465"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1628252031"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -62,14 +62,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1628186465"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1628186465"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1628252031"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1628252031"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1628186465"></script>
+<script type="text/javascript" src="../../js/search.js?1628252031"></script>
 
     
   </div>
@@ -742,7 +742,18 @@ dependencies {
 <span style="color:#00a8c8">abstract</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">TodoDatabase</span> <span style="color:#111">:</span> <span style="color:#111">RoomDatabase</span><span style="color:#111">()</span> <span style="color:#111">{</span>
     <span style="color:#00a8c8">abstract</span> <span style="color:#00a8c8">fun</span> <span style="color:#75af00">todoDao</span><span style="color:#111">()</span> <span style="color:#111">:</span> <span style="color:#111">TodoDao</span>
 <span style="color:#111">}</span>
-</code></pre></div><h4 id="executing-your-repository-methods">Executing your repository methods</h4>
+</code></pre></div><p>Kotlin&rsquo;s <a href="https://kotlinlang.org/docs/kapt.html">kapt compiler plugin</a>, which stands for <em>Kotlin Annotation Processor</em>, is responsible for processing the above classes, and generating two implementation files: <code>TodoDao_Impl</code> and <code>TodoDatabase_Impl</code>. The queries that are simply annotated live in there:</p>
+<p><figure>
+	<a href="../../img/daogenerated.jpg" data-featherlight="image">
+		<img src="../../img/daogenerated.jpg"   title="Generated Room Dao implementations.">
+	</a>
+	
+		<figcaption>Generated Room Dao implementations.</figcaption>
+	
+</figure>
+</p>
+<p>If you ever wondered which exact query an annotation such as <code>@Insert</code> without any arguments generates, take a little peek there. It&rsquo;s also possible to log queries as they get executed, but it involves sub-performant hooks. An example can be found in the <code>TodoPersistenceTests</code> unit tests class in the course repository.</p>
+<h4 id="executing-your-repository-methods">Executing your repository methods</h4>
 <p>Note that the <a href="https://developer.android.com/training/data-storage/room/accessing-data">accessing data using Room DAOs</a> guide states the following:</p>
 <blockquote>
 <p>Note: Room doesn&rsquo;t support database access on the main thread unless you&rsquo;ve called allowMainThreadQueries() on the builder because it might lock the UI for a long period of time. Asynchronous queries—queries that return instances of LiveData or Flowable—are exempt from this rule because they asynchronously run the query on a background thread when needed.</p>
@@ -755,6 +766,7 @@ dependencies {
 <span style="color:#111">dao</span> <span style="color:#111">=</span> <span style="color:#111">db</span><span style="color:#111">.</span><span style="color:#111">todoDao</span><span style="color:#111">()</span>
 </code></pre></div><p>That&rsquo;s it, now we can call <code>query()</code> and <code>insert()</code> from our activity/fragment! The above <code>appContext</code> which is needed to build the database object is the Application Context of an activity.</p>
 <p>To correctly unit test and debug your database, please refer to the <a href="https://developer.android.com/training/data-storage/room/testing-db">android developer guide</a>. Since the database requires an application context, it&rsquo;s best to create <strong>instrumented tests</strong>. See the <a href="../../lang/tdd">TDD chapter</a> for more information. Samples are, again, to be found in <code>examples/kotlin/todosavestate</code> in the repository.</p>
+<p>In case you store sensitive information in your database, consider using <a href="https://github.com/sqlcipher/android-database-sqlcipher">SQLCipher</a> to encrypt the database. A Room plugin is available that injects the correct configuration through the database builder objects. See the <a href="../../android/security">security by design chapter</a>. This is out of scope for this course.</p>
 <h2 id="4-http-network-access">4. HTTP Network Access</h2>
 <p>Volley is Android&rsquo;s Go-To HTTP client that comes with advanced caching mechanisms built-in: see the <a href="https://developer.android.com/training/volley/simple">android dev guide on volley</a>. Be prepared to add yet another dependency. To access the internet in our app, we&rsquo;ll have to add the <code>android.permission.INTERNET</code> permission in the app&rsquo;s manifest file.</p>
 <p>Let&rsquo;s try to create a simple <code>GET</code> request and print out the results. In Volley, all requests are put in <strong>a queue</strong>: HTTP calls are <strong>asynchronous</strong>! This means we can&rsquo;t simply <code>return results</code>: it needs to be handled in a callback. Welcome to async hell&mdash;those who&rsquo;ve struggled with it in JavaScript will know what to expect.</p>
@@ -1161,17 +1173,17 @@ dependencies {
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1628186466"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1628186466"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1628186466"></script>
-    <script src="../../js/jquery.sticky.js?1628186466"></script>
-    <script src="../../js/featherlight.min.js?1628186466"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1628186466"></script>
-    <script src="../../js/learn.js?1628186466"></script>
-    <script src="../../js/hugo-learn.js?1628186466"></script>
+    <script src="../../js/clipboard.min.js?1628252031"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1628252031"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1628252031"></script>
+    <script src="../../js/jquery.sticky.js?1628252031"></script>
+    <script src="../../js/featherlight.min.js?1628252031"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1628252031"></script>
+    <script src="../../js/learn.js?1628252031"></script>
+    <script src="../../js/hugo-learn.js?1628252031"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1628186466"></script>
+            <script src="../../mermaid/mermaid.js?1628252031"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
