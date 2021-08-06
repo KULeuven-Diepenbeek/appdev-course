@@ -83,7 +83,7 @@ Then, add an implementation dependency `    implementation("org.jetbrains.kotlin
 
 ```kt
 @Serializable
-data class User(val name: String) : Serializable {
+data class User(val name: String) : java.io.Serializable {
 }
 ```
 
@@ -212,9 +212,9 @@ public static class TakePicturePreview extends ActivityResultContract<Void, Bitm
 }
 ```
 
-Aha, now we're getting somewhere! Upon further inspection, `TakePicture` (not the preview one) puts extra data into the intent to capture the whole output. Note the first generic type of the extended class: `Void`. So that is where that `Void` comes from in or `lateinit var pictureActivityResult`: other embedded activity result contracts will likely have other result types (`OpenDocument` has `String[]`, for instance). 
+Aha, now we're getting somewhere! Upon further inspection, `TakePicture` (not the preview one) puts extra data into the intent to capture the whole output. Note the first generic type of the extended class: `Void`. So that is where that `Void` comes from in or `lateinit var pictureActivityResult`: other embedded activity result contracts will likely have other result types (`OpenDocument` has `String[]`, for instance). These details are provided for you, make use of them. 
 
-These details are provided for you, make use of them. 
+Note that because of the implicit intent, handling the camera is left to **another app** which is already has permissions to access the camera. Therefore, we do NOT need an explicit `<uses-permission android:name="android.permission.CAMERA" />` entry in our manifest, but it's still important to _advertise_ we do use the camera with a `<uses-feature/>` tag. See the [security by design chapter](/android/security) for more information.
 
 {{% notice note %}}
 You'll learn the most while digging through the source code of the API itself while hacking your way through the code---and _not_ by just reading this page. Do not be afraid to press `CTRL+B` (Go To Declaration) in Android Studio! If you still have no idea what's going on, then `developer.android.com` is your best friend.

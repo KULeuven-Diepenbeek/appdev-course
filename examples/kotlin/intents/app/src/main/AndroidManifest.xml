@@ -3,7 +3,11 @@
     package="be.kuleuven.intents">
     <!-- specify these so that you can ask for permissions an do your stuff. -->
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <!--
+        the following line is NOT needed if we use an implicit intent
+        because an external app with permissions handles the camera for us
     <uses-permission android:name="android.permission.CAMERA" />
+    -->
 
     <!-- specify these so that the App Store knows what you're up to. -->
     <uses-feature android:name="android.hardware.camera" android:required="false" />

@@ -2,7 +2,74 @@
 title: 7. Security By Design
 ---
 
-## Android dev and Permissions
+## Google's "safest mobile platform in the world"
 
-https://developer.android.com/guide/topics/permissions/overview
+As the [Android Developer guide on security](https://developer.android.com/security) states:
 
+> Our goal is to make Android the safest mobile platform in the world. That's why we consistently invest in technologies that bolster the security of the platform, its apps, and the global Android ecosystem.<br/>
+It's a responsibility we share with you, as developers, to keep users safe and secure.
+
+Sadly enough, Google itself doesn't quite adhere to its own philosophy, as the Android OS is full of trackers that push personal data into Google's greedy hands. [Idle Android phones send data to Google ten times more often than iOS devices to Apple](https://www.bleepingcomputer.com/news/google/idle-android-phones-send-data-to-google-ten-times-more-often-than-ios-devices-to-apple/), of which more than `30%` is location-related:
+
+![](/img/datacollection.png "src: linked article.")
+
+Alternatives such as [the LineageOS Android Distribution](https://lineageos.org/) exist, which is a free and open-source operating system for various devices based on the Android mobile platform. That is, anything app you build using the knowledge of this course will run flawlessly on LineageOS. 
+
+However, it's not because Google sells our private data that we must do the same. Google's recommended security best practices that make sense are:
+
+- _Encrypt your data_
+- _Communicate securely_---always use HTTPS and SSL if fetching data from the internet
+- _Test, test, and test again_---not only applicable to [TDD](/lang/tdd), but to manual testing on different physical devices.
+- _Audit third-party libraries_---before mindlessly adding in dependencies in your Gradle file, double-check that (1) you really need it and (2) the library is considered safe to use. 
+
+The following are a bit more dubious:
+
+- Detect insecure devices (SafetyNet Attestation)---This effectively prevents end users from choosing alternative Android-based OSes, such as the aforementioned Lineage. 
+- Authenticate users and keys with biometrics---Relying on biometrics can cause end users to distrust your app.
+- Be the first to know (sent vulnerability disclosures through Google's servers to you)---Another excuse to outsource vulnerable data.
+
+## Encrypting Data
+
+See also: [Android Developer Guide: security with data](https://developer.android.com/topic/security/data). 
+
+Use the `androidx.security:security-app-authenticator` package to encrypt and decrypt files that aren't private and contain sensitive information. Do NOT use `Ciper` and `SecretKeySpec` yourself, but use Android's keystore system instead. This is to prevent other apps or hackers from accessing your private key files. 
+
+Do note that encrypting files is not always needed. Simply write files and shared preferences in `MODE_PRIVATE`: see the [data chapter](/android/data-storage). This prevents other apps from accessing your data, and makes sure that the stored data gets removes along an uninstall procedure. Sure, the files can still be pried out of the system if you really want to. But preferences are... well... preferences. And caching/databases that store already readily-accessible information do not need to be encrypted at all. 
+
+If you do require database encryption, use [SQLCipher](https://github.com/sqlcipher/android-database-sqlcipher) in conjunction with Room (see [the data storage chapter](/android/data-storage)).
+
+Implementing Android encryption strategies is not part of this course. 
+
+## Asking for Permissions
+
+See also: [Android Developer Guide: Permissions Overview](https://developer.android.com/guide/topics/permissions/overview).
+
+Perhaps the most important app development principle is _permissions_, configured in the manifest file. We've briefly touched upon that in the [intents chapter](/android/intents) to access the camera API. There exist numerous permission types, and it's always best to explicitly ask for **as little** permissions as possible. Instead, leverage _implicit intents_ and let another app that already has explicit permissions handle the action for you. For example, instead of asking the user for access to their contacts to create a new contact, start an implicit intent that fires up the contacts app itself that does it for you:
+
+```kt
+val intent = Intent(Intent.ACTION_INSERT).apply {
+    type = ContactsContract.Contacts.CONTENT_TYPE
+}
+intent.resolveActivity(packageManager)?.run {
+    startActivity(intent) // this won't be run if the activity does not resolve. 
+}
+```
+
+Not all specific actions require user permissions at runtime: declaring them in your manifest might be enough. See this workflow:
+
+![](/img/permissions.jpg "src: Android docs.")
+
+The following major different permission types exist (for a full overview, see [the permissions overview docs](https://developer.android.com/guide/topics/permissions/overview)):
+
+- **install-time** permissions. These are "hard-coded" into your app and make if easy for the developer to code: just assume everything has been granted, since the app is installed. However, this is VERY off-putting for end users. Avoid. 
+- **runtime** permissions. In order to execute a certain action, the app might need access to a restricted portion of the device: access to photos, media, camera, etc. These make your life as an app developer harder, since it might be the case that the user _denies_ the request, and the app still has to work. However, this is the better option in context of user experience. 
+
+A few more best practices:
+
+- Try to be transparent: make it explicit to the user why a permission is requested. This reminder helps users understand exactly when your app accesses restricted data or performs restricted actions.
+- First try to work with loose permissions: `ACCESS_COARSE_LOCATION` gives the device's location within a 2 km radius. If that really really really (really) does not suffice, only then, you'll need `ACCESS_FINE_LOCATION`. 
+- Again, make sure you really really (...) need a permission in the first place. Delegate work to other apps using implicit intents. For example, don't declare a `CAMERA` permission. Instead, invoke the `ACTION_IMAGE_CAPTURE` intent. See the `examples/kotlin/intents` source code. 
+- Some Android OSes don't require permissions for opening media. Check the docs and only ask for it if you detect the `sdkVersion` to be lower than the threshold. See [this example](https://developer.android.com/training/permissions/evaluating): opening documents.
+- Some actions have permissions coupled to them (`BLUETOOTH_ADMIN` and `ACCESS_FINE_LOCATION` for Bluetooth functionality), but alternatives exist in the API that don't require a permission, such as [device pairing](https://developer.android.com/guide/topics/connectivity/companion-device-pairing).
+
+Consult the [Android Permissions Sample Repository](https://github.com/android/permissions-samples) for code samples on how to get started with writing/understanding Android Permissions, besides the already provided examples in this course. 

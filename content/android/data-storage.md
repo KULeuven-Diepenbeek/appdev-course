@@ -120,6 +120,12 @@ abstract class TodoDatabase : RoomDatabase() {
 }
 ```
 
+Kotlin's [kapt compiler plugin](https://kotlinlang.org/docs/kapt.html), which stands for _Kotlin Annotation Processor_, is responsible for processing the above classes, and generating two implementation files: `TodoDao_Impl` and `TodoDatabase_Impl`. The queries that are simply annotated live in there:
+
+![](/img/daogenerated.jpg "Generated Room Dao implementations.")
+
+If you ever wondered which exact query an annotation such as `@Insert` without any arguments generates, take a little peek there. It's also possible to log queries as they get executed, but it involves sub-performant hooks. An example can be found in the `TodoPersistenceTests` unit tests class in the course repository.
+
 #### Executing your repository methods
 
 Note that the [accessing data using Room DAOs](https://developer.android.com/training/data-storage/room/accessing-data) guide states the following:
@@ -140,6 +146,8 @@ dao = db.todoDao()
 That's it, now we can call `query()` and `insert()` from our activity/fragment! The above `appContext` which is needed to build the database object is the Application Context of an activity.
 
 To correctly unit test and debug your database, please refer to the [android developer guide](https://developer.android.com/training/data-storage/room/testing-db). Since the database requires an application context, it's best to create **instrumented tests**. See the [TDD chapter](/lang/tdd) for more information. Samples are, again, to be found in `examples/kotlin/todosavestate` in the repository.
+
+In case you store sensitive information in your database, consider using [SQLCipher](https://github.com/sqlcipher/android-database-sqlcipher) to encrypt the database. A Room plugin is available that injects the correct configuration through the database builder objects. See the [security by design chapter](/android/security). This is out of scope for this course. 
 
 ## 4. HTTP Network Access
 

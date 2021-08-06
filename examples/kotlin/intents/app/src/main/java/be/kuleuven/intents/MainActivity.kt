@@ -39,11 +39,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun tryToTakeThePicture(view: View) {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA),REQ_PIC_ID);
-        } else {
+        // note that we do not need the camera permission here: we use an implicit intent to let an external app handle this
+        // it's hidden in ActivityResultContracts.TakePicturePreview(): "return new Intent(MediaStore.ACTION_IMAGE_CAPTURE);"
+
+        //if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+         //   ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA),REQ_PIC_ID);
+        //} else {
             takeThePicture()
-        }
+        //}
     }
 
     private fun takeThePicture() {
