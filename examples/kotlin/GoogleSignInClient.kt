@@ -21,6 +21,17 @@ fun ApiException.googleLoginError(): Boolean = this.statusCode == 12500
  * implementation("com.google.firebase:firebase-bom:28.3.1")
  * implementation("com.google.android.gms:play-services-auth:19.2.0")
  * implementation("com.google.android.gms:play-services-base:17.6.0")
+ * 
+ * Also requires plugin id("com.google.gms.google-services")
+ * and in your root gradle file classpath("com.google.gms:google-services:4.3.10") (see Firebase docs)
+ * 
+ * How to use in your activity? 
+ *       val googleSignIn = GoogleSignInClient()
+ *       tokenGrantedActivityResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+ *           val account = googleSignIn.tryGoogleSignedIn(it, this.binding.root)
+ *           // TODO do something with the logged in account
+ *       }
+ *       tokenGrantedActivityResult.launch(googleSignIn.createSignInIntentFor(this))
  */
 class GoogleSignInClient {
 

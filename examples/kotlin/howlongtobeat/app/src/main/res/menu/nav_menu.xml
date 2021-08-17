@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mnuClear"
+        android:title="Clear All Items" />
+    <item
+        android:id="@+id/mnuClearLatest"
+        android:title="Clear Latest Item" />
+    <item
+        android:id="@+id/mnuReset"
+        android:title="Reset to Default Items" />
+
+</menu>
