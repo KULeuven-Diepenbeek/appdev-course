@@ -24,10 +24,8 @@ class GoogleVisionClient {
     suspend fun findCartCodeViaGoogleVision(cameraSnap: Bitmap): String? {
         var response: BatchAnnotateImagesResponse
         withContext(Dispatchers.IO) {
-            println("Encoding image...")
             val sml2Data = cameraSnap.asEncodedGoogleVisionImage()
 
-            println("Done, uploading image...")
             val req = AnnotateImageRequest().apply {
                 features = listOf(Feature().apply {
                     type = "TEXT_DETECTION"

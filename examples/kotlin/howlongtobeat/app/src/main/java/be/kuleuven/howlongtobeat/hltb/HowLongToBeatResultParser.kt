@@ -5,8 +5,8 @@ object HowLongToBeatResultParser {
     private val titleMatcher = """<a class=".+" title="(.+)" href=""".toRegex()
     private val hourMatcher = """<div class=".+">(.+) Hours""".toRegex()
 
-    fun parse(html: String): List<Game> {
-        val result = arrayListOf<Game>()
+    fun parse(html: String): List<HowLongToBeatResult> {
+        val result = arrayListOf<HowLongToBeatResult>()
         val rows = html.split("\n")
         for(i in 0..rows.size - 1) {
             val matched = titleMatcher.find(rows[i])
@@ -14,7 +14,7 @@ object HowLongToBeatResultParser {
                 val (title) = matched.destructured
                 val hour = parseHoursFromRow(i, rows)
 
-                result.add(Game(title, hour))
+                result.add(HowLongToBeatResult(title, hour))
             }
         }
 

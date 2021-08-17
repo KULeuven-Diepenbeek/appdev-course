@@ -5,7 +5,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 
-class HLTBClient(val context: Context, val onResponseFetched: (List<Game>) -> Unit) {
+class HLTBClient(val context: Context) {
 
     // Inspired by https://www.npmjs.com/package/howlongtobeat
     // The API is abysmal, but hey, it works...
@@ -37,7 +37,7 @@ class HLTBClient(val context: Context, val onResponseFetched: (List<Game>) -> Un
         }
     }
 
-    fun triggerFind(query: String) {
+    fun find(query: String, onResponseFetched: (List<HowLongToBeatResult>) -> Unit) {
         val queue = Volley.newRequestQueue(context)
         val req = HLTBRequest(query) {
             onResponseFetched(HowLongToBeatResultParser.parse(it))

@@ -2,24 +2,25 @@ package be.kuleuven.howlongtobeat.model.room
 
 import android.content.Context
 import androidx.room.Room
-import be.kuleuven.howlongtobeat.model.Todo
-import be.kuleuven.howlongtobeat.model.TodoRepository
+import be.kuleuven.howlongtobeat.model.Game
+import be.kuleuven.howlongtobeat.model.GameRepository
 
-class TodoRoomRepository(appContext: Context) : TodoRepository {
+class GameRepositoryRoomImpl(appContext: Context) :
+    GameRepository {
 
-    private val db: TodoDatabase
-    private val dao: TodoDao
+    private val db: GameDatabase
+    private val dao: GameDao
 
     init {
-        db = Room.databaseBuilder(appContext, TodoDatabase::class.java, "todo-db")
+        db = Room.databaseBuilder(appContext, GameDatabase::class.java, "todo-db")
             .allowMainThreadQueries()
             .build()
         dao = db.todoDao()
     }
 
-    override fun load(): List<Todo> = dao.query()
+    override fun load(): List<Game> = dao.query()
 
-    override fun save(items: List<Todo>) {
+    override fun save(items: List<Game>) {
         // You'll learn more about transactions in the database course in the 3rd academic year.
         db.runInTransaction {
             dao.deleteAll()
