@@ -23,5 +23,9 @@
     <fragment
         android:id="@+id/hltbResultsFragment"
         android:name="be.kuleuven.howlongtobeat.HltbResultsFragment"
-        android:label="HltbResultsFragment" />
+        android:label="HltbResultsFragment" >
+        <action
+            android:id="@+id/action_hltbResultsFragment_to_gameListFragment"
+            app:destination="@id/gameListFragment" />
+    </fragment>
 </navigation>

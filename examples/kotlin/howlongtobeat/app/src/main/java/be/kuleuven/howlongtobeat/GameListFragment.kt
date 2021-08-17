@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import be.kuleuven.howlongtobeat.databinding.FragmentGamelistBinding
 import be.kuleuven.howlongtobeat.model.Game
 import be.kuleuven.howlongtobeat.model.GameRepository
-import be.kuleuven.howlongtobeat.model.room.GameRepositoryRoomImpl
 
 class GameListFragment : Fragment(R.layout.fragment_gamelist) {
 
@@ -28,7 +27,7 @@ class GameListFragment : Fragment(R.layout.fragment_gamelist) {
     ): View? {
         binding = FragmentGamelistBinding.inflate(layoutInflater)
         main = activity as MainActivity
-        gameRepository = GameRepositoryRoomImpl(main.applicationContext)
+        gameRepository = GameRepository.defaultImpl(main.applicationContext)
         loadGames()
 
         adapter = GameListAdapter(gameList)

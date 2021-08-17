@@ -20,7 +20,13 @@ class GameRepositoryRoomImpl(appContext: Context) :
 
     override fun load(): List<Game> = dao.query()
 
-    override fun save(items: List<Game>) {
+    override fun save(game: Game) {
+        db.runInTransaction {
+            dao.insert(listOf(game))
+        }
+    }
+
+    override fun overwrite(items: List<Game>) {
         // You'll learn more about transactions in the database course in the 3rd academic year.
         db.runInTransaction {
             dao.deleteAll()

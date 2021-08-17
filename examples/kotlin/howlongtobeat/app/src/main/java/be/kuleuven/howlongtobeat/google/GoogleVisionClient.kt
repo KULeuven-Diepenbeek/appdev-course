@@ -1,6 +1,7 @@
 package be.kuleuven.howlongtobeat.google
 
 import android.graphics.Bitmap
+import be.kuleuven.howlongtobeat.ImageRecognizer
 import be.kuleuven.howlongtobeat.asEncodedGoogleVisionImage
 import be.kuleuven.howlongtobeat.cartridges.Cartridge
 import com.google.api.client.http.javanet.NetHttpTransport
@@ -14,7 +15,7 @@ import com.google.api.services.vision.v1.model.Feature
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class GoogleVisionClient {
+class GoogleVisionClient : ImageRecognizer {
 
     // TODO encrypt and store externally: https://cloud.google.com/docs/authentication/api-keys?hl=en&visit_id=637642790375688006-1838986332&rd=1
     private val vision = Vision.Builder(NetHttpTransport(), GsonFactory.getDefaultInstance(), null)
@@ -22,7 +23,7 @@ class GoogleVisionClient {
         .setApplicationName("How Long To Beat")
         .build()
 
-    suspend fun findCartCodeViaGoogleVision(cameraSnap: Bitmap): String? {
+    private suspend fun findCartCodeViaGoogleVision(cameraSnap: Bitmap): String? {
         var response: BatchAnnotateImagesResponse
         withContext(Dispatchers.IO) {
             val sml2Data = cameraSnap.asEncodedGoogleVisionImage()
@@ -51,4 +52,6 @@ class GoogleVisionClient {
         }.firstOrNull()
         return gbId?.description ?: null
     }
+
+    override suspend fun recognizeCartCode(image: Bitmap): String? = findCartCodeViaGoogleVision(image)
 }

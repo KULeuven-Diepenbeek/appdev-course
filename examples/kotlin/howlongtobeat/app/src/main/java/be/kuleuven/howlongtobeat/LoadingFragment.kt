@@ -12,7 +12,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import androidx.core.content.PermissionChecker
 import androidx.core.os.bundleOf
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import be.kuleuven.howlongtobeat.cartridges.Cartridge
@@ -26,12 +25,11 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import java.io.File
 
-
 class LoadingFragment : Fragment(R.layout.fragment_loading) {
 
     private lateinit var hltbClient: HLTBClient
     private lateinit var cartRepo: CartridgesRepository
-    private lateinit var visionClient: GoogleVisionClient
+    private lateinit var imageRecognizer: ImageRecognizer
 
     private lateinit var cameraPermissionActivityResult: ActivityResultLauncher<String>
     private lateinit var cameraActivityResult: ActivityResultLauncher<Uri>
@@ -49,7 +47,7 @@ class LoadingFragment : Fragment(R.layout.fragment_loading) {
         main = activity as MainActivity
 
         cartRepo = CartridgesRepository.fromAsset(main.applicationContext)
-        visionClient = GoogleVisionClient()
+        imageRecognizer = GoogleVisionClient()
         hltbClient = HLTBClient(main.applicationContext)
 
         cameraActivityResult = registerForActivityResult(ActivityResultContracts.TakePicture(), this::cameraSnapTaken)
@@ -77,11 +75,12 @@ class LoadingFragment : Fragment(R.layout.fragment_loading) {
     }
 
     private suspend fun findGameBasedOnCameraSnap(pic: Bitmap) {
-        progress("Unleashing Google Vision on the pic...")
-        val cartCode = visionClient.findCartCodeViaGoogleVision(pic)
+        /*
+        progress("Recognizing game cart from picture...")
+        val cartCode = imageRecognizer.recognizeCartCode(pic)
 
         if (cartCode == null) {
-            errorInProgress("Unable to find a code in your pic. Retry?")
+            errorInProgress("No cart code in your pic found. Retry?")
             return
         }
 
@@ -89,16 +88,19 @@ class LoadingFragment : Fragment(R.layout.fragment_loading) {
         val foundCart = cartRepo.find(cartCode)
 
         if (foundCart == Cartridge.UNKNOWN_CART) {
-            errorInProgress("$cartCode is an unknown game cartridge. Retry?")
+            errorInProgress("$cartCode is an unknown game cart. Retry?")
             return
         }
 
         progress("Valid cart code $cartCode, looking in HLTB...")
+
+         */
+        val foundCart = Cartridge("DMG", "Super Mario Land", "DMG-something")
         hltbClient.find(foundCart.title) {
-            Snackbar.make(requireView(), "Found ${it.size} game(s) for cart $cartCode", Snackbar.LENGTH_LONG).show()
+            Snackbar.make(requireView(), "Found ${it.size} game(s) for cart ${foundCart.code}", Snackbar.LENGTH_LONG).show()
 
             // TODO wat als geen hltb results gevonden?
-            val bundle = bundleOf(HowLongToBeatResult.RESULT to it, HowLongToBeatResult.CODE to cartCode)
+            val bundle = bundleOf(HowLongToBeatResult.RESULT to it)
             findNavController().navigate(R.id.action_loadingFragment_to_hltbResultsFragment, bundle)
         }
     }
@@ -123,6 +125,7 @@ class LoadingFragment : Fragment(R.layout.fragment_loading) {
     }
 
     private fun createNewTempCameraFile() {
+        // a <Provider/> should be present in the manifest file.
         val tempFile = File.createTempFile("hltbCameraSnap", ".png", main.cacheDir).apply {
             createNewFile()
             deleteOnExit()
@@ -136,9 +139,7 @@ class LoadingFragment : Fragment(R.layout.fragment_loading) {
     }
 
     private fun progress(msg: String) {
-        if(!binding.indeterminateBar.isVisible) {
-            binding.indeterminateBar.visibility = View.VISIBLE
-        }
+        binding.indeterminateBar.ensureVisible()
         binding.txtLoading.text = msg
     }
 

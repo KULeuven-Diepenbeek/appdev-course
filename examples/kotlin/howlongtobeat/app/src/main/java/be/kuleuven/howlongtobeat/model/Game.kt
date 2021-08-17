@@ -3,12 +3,17 @@ package be.kuleuven.howlongtobeat.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import be.kuleuven.howlongtobeat.hltb.HowLongToBeatResult
 
 @Entity
 data class Game(
     @ColumnInfo(name = "title") val title: String,
     @ColumnInfo(name = "is_done") var isDone: Boolean = false,
     @PrimaryKey(autoGenerate = true) var id: Int = 0) : java.io.Serializable {
+
+    constructor(result: HowLongToBeatResult) : this(result.title)
+
+    // TODO more columns (platform? hours, paths of images?)
 
     fun check() {
         isDone = true

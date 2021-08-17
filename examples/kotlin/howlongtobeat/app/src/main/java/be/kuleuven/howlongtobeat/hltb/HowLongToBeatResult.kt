@@ -7,7 +7,6 @@ import java.net.URL
 data class HowLongToBeatResult(val title: String, val howlong: Double, val boxart: String = "") : java.io.Serializable {
     companion object {
         const val RESULT = "HowLongToBeatResult"
-        const val CODE = "CartCode"
     }
 
     fun hasBoxart(): Boolean = boxart.startsWith(HLTBClient.DOMAIN)
