@@ -19,6 +19,7 @@ class GoogleVisionClient {
     // TODO encrypt and store externally: https://cloud.google.com/docs/authentication/api-keys?hl=en&visit_id=637642790375688006-1838986332&rd=1
     private val vision = Vision.Builder(NetHttpTransport(), GsonFactory.getDefaultInstance(), null)
         .setVisionRequestInitializer(VisionRequestInitializer("AIzaSyCaMjQQOY7508y95riDhr25fsrqe3m2JW0"))
+        .setApplicationName("How Long To Beat")
         .build()
 
     suspend fun findCartCodeViaGoogleVision(cameraSnap: Bitmap): String? {
@@ -39,7 +40,9 @@ class GoogleVisionClient {
             }
             response = vision.images().annotate(batch).execute()
         }
-        if(response.responses.isEmpty()) {
+        if(response.responses.isEmpty()
+            || response.responses.get(0).textAnnotations == null
+            || response.responses.get(0).textAnnotations.isEmpty()) {
             return null
         }
 

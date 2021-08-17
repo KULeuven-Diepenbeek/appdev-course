@@ -73,6 +73,8 @@ I/System.out: 									<div class="search_list_tidbit text_white shadow_text">Ma
         assertEquals(3, result.size)
         assertEquals("Super Mario Land", smland.title)
         assertEquals("Super Mario 3D Land", sm3dland.title)
+        assertEquals("https://howlongtobeat.com/games/250px-Supermariolandboxart.jpg", smland.boxart)
+        assertEquals("https://howlongtobeat.com/games/250px-Super-Mario-3D-Land-Logo.jpg", sm3dland.boxart)
         assertEquals(1.0, smland.howlong, 0.0)
         assertEquals(6.5, sm3dland.howlong, 0.0)
     }

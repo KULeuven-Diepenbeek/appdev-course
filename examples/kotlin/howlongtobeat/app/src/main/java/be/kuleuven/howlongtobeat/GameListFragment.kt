@@ -35,7 +35,9 @@ class GameListFragment : Fragment(R.layout.fragment_gamelist) {
         binding.rvGameList.adapter = adapter
         binding.rvGameList.layoutManager = LinearLayoutManager(this.context)
 
-        binding.btnAddTodo.setOnClickListener(this::addNewTotoItem)
+        binding.btnAddTodo.setOnClickListener {
+            findNavController().navigate(R.id.action_gameListFragment_to_loadingFragment)
+        }
         return binding.root
     }
 
@@ -44,10 +46,6 @@ class GameListFragment : Fragment(R.layout.fragment_gamelist) {
         if(!gameList.any()) {
             gameList.add(Game.NONE_YET)
         }
-    }
-
-    private fun addNewTotoItem(it: View) {
-        findNavController().navigate(R.id.action_gameListFragment_to_loadingFragment)
     }
 
     /*

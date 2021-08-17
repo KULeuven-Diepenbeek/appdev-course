@@ -1,17 +1,18 @@
 package be.kuleuven.howlongtobeat
 
 import android.Manifest
-import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
+import androidx.core.content.PermissionChecker
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import be.kuleuven.howlongtobeat.cartridges.Cartridge
@@ -23,6 +24,8 @@ import be.kuleuven.howlongtobeat.hltb.HowLongToBeatResult
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
+import java.io.File
+
 
 class LoadingFragment : Fragment(R.layout.fragment_loading) {
 
@@ -31,9 +34,11 @@ class LoadingFragment : Fragment(R.layout.fragment_loading) {
     private lateinit var visionClient: GoogleVisionClient
 
     private lateinit var cameraPermissionActivityResult: ActivityResultLauncher<String>
-    private lateinit var cameraActivityResult: ActivityResultLauncher<Void>
+    private lateinit var cameraActivityResult: ActivityResultLauncher<Uri>
     private lateinit var main: MainActivity
     private lateinit var binding: FragmentLoadingBinding
+
+    private var snapshot: Uri? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,24 +52,33 @@ class LoadingFragment : Fragment(R.layout.fragment_loading) {
         visionClient = GoogleVisionClient()
         hltbClient = HLTBClient(main.applicationContext)
 
-        cameraActivityResult = registerForActivityResult(ActivityResultContracts.TakePicturePreview(), this::cameraSnapTaken)
+        cameraActivityResult = registerForActivityResult(ActivityResultContracts.TakePicture(), this::cameraSnapTaken)
         cameraPermissionActivityResult = registerForActivityResult(ActivityResultContracts.RequestPermission(), this::cameraPermissionAcceptedOrDenied)
+        binding.btnRetryAfterLoading.setOnClickListener {
+            tryToMakeCameraSnap()
+        }
         tryToMakeCameraSnap()
 
         return binding.root
     }
 
-    private fun cameraSnapTaken(pic: Bitmap) {
+    private fun cameraSnapTaken(succeeded: Boolean) {
+        if(!succeeded || snapshot == null) {
+            errorInProgress("Photo could not be saved, try again?")
+            return
+        }
+
+        progress("Scaling image for upload...")
+        val bitmap = snapshot!!.toBitmap(main).scaleToWidth(1600)
+
         MainScope().launch{
-            findGameBasedOnCameraSnap(pic)
+            findGameBasedOnCameraSnap(bitmap)
         }
     }
 
     private suspend fun findGameBasedOnCameraSnap(pic: Bitmap) {
         progress("Unleashing Google Vision on the pic...")
-        // TODO remove in future
-        val dummypic = BitmapFactory.decodeResource(resources, R.drawable.supermarioland2)
-        val cartCode = visionClient.findCartCodeViaGoogleVision(dummypic)
+        val cartCode = visionClient.findCartCodeViaGoogleVision(pic)
 
         if (cartCode == null) {
             errorInProgress("Unable to find a code in your pic. Retry?")
@@ -93,35 +107,46 @@ class LoadingFragment : Fragment(R.layout.fragment_loading) {
         if(succeeded) {
             makeCameraSnap()
         } else {
-            progress("Camera permission required!")
+            errorInProgress("Camera permission required!")
         }
     }
 
     private fun tryToMakeCameraSnap() {
+        binding.btnRetryAfterLoading.hide()
         progress("Making snapshot with camera...")
-        if(ContextCompat.checkSelfPermission(main, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+
+        if(PermissionChecker.checkSelfPermission(main, Manifest.permission.CAMERA) != PermissionChecker.PERMISSION_GRANTED) {
             cameraPermissionActivityResult.launch(Manifest.permission.CAMERA)
+        } else {
+            makeCameraSnap()
         }
-        makeCameraSnap()
+    }
+
+    private fun createNewTempCameraFile() {
+        val tempFile = File.createTempFile("hltbCameraSnap", ".png", main.cacheDir).apply {
+            createNewFile()
+            deleteOnExit()
+        }
+        snapshot = FileProvider.getUriForFile(main.applicationContext, "${BuildConfig.APPLICATION_ID}.provider", tempFile)
     }
 
     private fun makeCameraSnap() {
-        cameraActivityResult.launch(null)
+        createNewTempCameraFile()
+        cameraActivityResult.launch(snapshot)
     }
 
     private fun progress(msg: String) {
-        if(!binding.indeterminateBar.isAnimating) {
-            binding.indeterminateBar.animate()
+        if(!binding.indeterminateBar.isVisible) {
+            binding.indeterminateBar.visibility = View.VISIBLE
         }
         binding.txtLoading.text = msg
     }
 
     private fun errorInProgress(msg: String) {
         progress(msg)
-        binding.indeterminateBar.clearAnimation()
+        binding.indeterminateBar.visibility = View.GONE
         Snackbar.make(requireView(), msg, Snackbar.LENGTH_LONG).show()
-        // todo show retry button or something?
+        binding.btnRetryAfterLoading.show()
     }
-
 
 }

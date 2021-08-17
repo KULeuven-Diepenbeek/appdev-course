@@ -7,10 +7,14 @@ import com.android.volley.toolbox.Volley
 
 class HLTBClient(val context: Context) {
 
+    companion object {
+        const val DOMAIN = "https://howlongtobeat.com"
+    }
+
     // Inspired by https://www.npmjs.com/package/howlongtobeat
     // The API is abysmal, but hey, it works...
     class HLTBRequest(val query: String, responseListener: Response.Listener<String>) :
-        StringRequest(Method.POST, "https://howlongtobeat.com/search_results.php?page=1", responseListener,
+        StringRequest(Method.POST, "$DOMAIN/search_results.php?page=1", responseListener,
         Response.ErrorListener {
             println("Something went wrong: ${it.message}")
         }) {

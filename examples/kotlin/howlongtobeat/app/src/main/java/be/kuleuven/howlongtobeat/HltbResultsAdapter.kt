@@ -1,11 +1,19 @@
 package be.kuleuven.howlongtobeat
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import be.kuleuven.howlongtobeat.hltb.HowLongToBeatResult
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+
 
 class HltbResultsAdapter(private val items: List<HowLongToBeatResult>) : RecyclerView.Adapter<HltbResultsAdapter.HltbResultsViewHolder>() {
 
@@ -17,10 +25,25 @@ class HltbResultsAdapter(private val items: List<HowLongToBeatResult>) : Recycle
     }
 
     override fun onBindViewHolder(holder: HltbResultsViewHolder, position: Int) {
-        val currentResult = items[position]
+        val itm = items[position]
+
         holder.itemView.apply {
-            val txtHltbItemResult = findViewById<TextView>(R.id.txtHltbItemResult)
-            txtHltbItemResult.text = currentResult.title
+            findViewById<TextView>(R.id.txtHltbItemResult).text = itm.toString()
+            val boxArtView = findViewById<ImageView>(R.id.imgHltbItemResult)
+
+            if(itm.hasBoxart()) {
+                MainScope().launch{
+                    var art: Bitmap? = null
+                    withContext(Dispatchers.IO) {
+                        art = BitmapFactory.decodeStream(itm.boxartUrl().openConnection().getInputStream())
+                    }
+                    withContext(Dispatchers.Main) {
+                        boxArtView.setImageBitmap(art)
+                    }
+                }
+            } else {
+                boxArtView.visibility = View.INVISIBLE
+            }
         }
     }
 
