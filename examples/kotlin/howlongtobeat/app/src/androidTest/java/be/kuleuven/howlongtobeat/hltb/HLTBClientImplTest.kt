@@ -10,14 +10,14 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
-class HLTBClientTest {
+class HLTBClientImplTest {
 
-    private lateinit var client: HLTBClient
+    private lateinit var client: HLTBClientImpl
 
     @Before
     fun setUp() {
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        client = HLTBClient(appContext)
+        client = HLTBClientImpl(appContext)
     }
 
     @Test

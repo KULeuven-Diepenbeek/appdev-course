@@ -14,24 +14,15 @@ import androidx.core.content.PermissionChecker
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import be.kuleuven.howlongtobeat.cartridges.CartridgeFinderViaDuckDuckGo
-import be.kuleuven.howlongtobeat.cartridges.CartridgesRepository
-import be.kuleuven.howlongtobeat.cartridges.CartridgesRepositoryGekkioFi
-import be.kuleuven.howlongtobeat.cartridges.findFirstCartridgeForRepos
 import be.kuleuven.howlongtobeat.databinding.FragmentLoadingBinding
-import be.kuleuven.howlongtobeat.google.GoogleVisionClient
-import be.kuleuven.howlongtobeat.hltb.HLTBClient
 import be.kuleuven.howlongtobeat.hltb.HowLongToBeatResult
+import be.kuleuven.howlongtobeat.model.GameFinder
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import java.io.File
 
 class LoadingFragment : Fragment(R.layout.fragment_loading) {
-
-    private lateinit var hltbClient: HLTBClient
-    private lateinit var cartRepos: List<CartridgesRepository>
-    private lateinit var imageRecognizer: ImageRecognizer
 
     private lateinit var cameraPermissionActivityResult: ActivityResultLauncher<String>
     private lateinit var cameraActivityResult: ActivityResultLauncher<Uri>
@@ -47,14 +38,6 @@ class LoadingFragment : Fragment(R.layout.fragment_loading) {
     ): View? {
         binding = FragmentLoadingBinding.inflate(layoutInflater)
         main = activity as MainActivity
-
-        // If we fail to find info in the first repo, it falls back to the second one: a (scraped) DuckDuckGo search.
-        cartRepos = listOf(
-            CartridgesRepositoryGekkioFi.fromAsset(main.applicationContext),
-            CartridgeFinderViaDuckDuckGo(main.applicationContext)
-        )
-        imageRecognizer = GoogleVisionClient()
-        hltbClient = HLTBClient(main.applicationContext)
 
         cameraActivityResult = registerForActivityResult(ActivityResultContracts.TakePicture(), this::cameraSnapTaken)
         cameraPermissionActivityResult = registerForActivityResult(ActivityResultContracts.RequestPermission(), this::cameraPermissionAcceptedOrDenied)
@@ -105,19 +88,11 @@ class LoadingFragment : Fragment(R.layout.fragment_loading) {
         // Uncomment this line if you want to stub out camera pictures
         // picToAnalyze = BitmapFactory.decodeResource(resources, R.drawable.sml2)
 
-        progress("Recognizing game cart from picture...")
-        val cartCode = imageRecognizer.recognizeCartCode(picToAnalyze)
-            ?: throw UnableToFindGameException("No cart code in your pic found")
+        val hltbResults = GameFinder.default(main.applicationContext).findGameBasedOnCameraSnap(picToAnalyze) {
+            progress(it)
+        }
 
-        progress("Found cart code $cartCode\nLooking in DBs for matching game...")
-        val foundCart = findFirstCartridgeForRepos(cartCode, cartRepos)
-            ?: throw UnableToFindGameException("$cartCode is an unknown game cart.")
-
-        progress("Valid cart code: $cartCode\n Looking in HLTB for ${foundCart.title}...")
-        val hltbResults = hltbClient.find(foundCart)
-            ?: throw UnableToFindGameException("HLTB does not know ${foundCart.title}")
-
-        Snackbar.make(requireView(), "Found ${hltbResults.size} game(s) for cart ${foundCart.code}", Snackbar.LENGTH_LONG).show()
+        Snackbar.make(requireView(), "Found ${hltbResults.size} game(s)", Snackbar.LENGTH_LONG).show()
         val bundle = bundleOf(
             HowLongToBeatResult.RESULT to hltbResults,
             HowLongToBeatResult.SNAPSHOT_URI to snapshot.toString()

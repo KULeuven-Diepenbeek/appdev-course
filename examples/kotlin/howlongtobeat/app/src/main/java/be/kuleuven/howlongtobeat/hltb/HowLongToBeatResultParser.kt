@@ -30,7 +30,7 @@ object HowLongToBeatResultParser {
         if(row - 3 >= 0) {
             val matchedBoxArt = boxArtMatcher.find(rows[row - 3])
             if(matchedBoxArt != null) {
-                return HLTBClient.DOMAIN + matchedBoxArt.groupValues[1]
+                return HLTBClientImpl.DOMAIN + matchedBoxArt.groupValues[1]
             }
         }
         return ""

@@ -10,7 +10,7 @@ data class HowLongToBeatResult(val title: String, val cartCode: String, val howl
         const val SNAPSHOT_URI = "SnapshotUri"
     }
 
-    fun hasBoxart(): Boolean = boxartUrl.startsWith(HLTBClient.DOMAIN)
+    fun hasBoxart(): Boolean = boxartUrl.startsWith(HLTBClientImpl.DOMAIN)
     fun boxartUrl(): URL = URL(boxartUrl)
     override fun toString(): String = "$title ($howlong hrs)"
 }
