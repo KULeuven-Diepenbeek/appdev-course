@@ -5,6 +5,11 @@ plugins {
     kotlin("plugin.serialization") version "1.5.21"
 }
 
+val apiKeys = file("../apikeys.properties").readLines().map {
+    val keyvalues = it.split("=")
+    keyvalues[0] to keyvalues[1]
+}.toMap()
+
 android {
     compileSdk = 31
     buildToolsVersion = "31.0.0"
@@ -28,6 +33,13 @@ android {
             )
         }
     }
+
+    buildTypes.forEach {
+        // Will crash and do weird things if you did not provide your key.
+        // See README.md for more information.
+        it.buildConfigField("String", "GOOGLE_VISION_API_KEY", apiKeys["GoogleVisionApiKey"]!!)
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -58,7 +70,6 @@ dependencies {
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.1")
 
     // --- navigation
-    // see https://developer.android.com/guide/navigation/navigation-getting-started
     val nav_version = "2.3.5"
     implementation("androidx.navigation:navigation-fragment:$nav_version")
     implementation("androidx.navigation:navigation-ui:$nav_version")
@@ -79,16 +90,7 @@ dependencies {
     // --- Volley for HTTP requests
     implementation("com.android.volley:volley:1.2.0")
 
-    // --- Google Vision API specific dependencies
-    // firebase specific
-    //implementation("com.google.firebase:firebase-bom:28.3.1")
-
-    // OAUth play services
-    //implementation("com.google.android.gms:play-services-auth:19.2.0")
-    //implementation("com.google.android.gms:play-services-base:17.6.0")
-
-
-    // Vision itself
+    // Google Vision
     // comes with conflicts, exclude http client using https://docs.gradle.org/current/userguide/dependency_downgrade_and_exclude.html
     implementation("com.google.api-client:google-api-client-android:1.32.1") {
         exclude(module = "httpclient")
