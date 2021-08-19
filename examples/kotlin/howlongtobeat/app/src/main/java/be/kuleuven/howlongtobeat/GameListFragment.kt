@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -41,32 +42,22 @@ class GameListFragment : Fragment(R.layout.fragment_gamelist) {
     }
 
     private fun loadGames() {
+        gameList.clear()
         gameList.addAll(gameRepository.load())
         if(!gameList.any()) {
             gameList.add(Game.NONE_YET)
         }
     }
 
-    /*
-    fun onHltbGamesRetrieved(games: List<HowLongToBeatResult>) {
-        gameList.clear()
-        gameList.addAll(games.map { Game("${it.title} (${it.howlong})", false) })
-        adapter.notifyDataSetChanged()
+    fun selectGame(game: Game) {
+        findNavController().navigate(R.id.action_gameListFragment_to_gameDetailFragment, bundleOf(Game.GAME_ID to game.id.toString()))
     }
 
     fun clearAllItems() {
         gameList.clear()
+        gameList.add(Game.NONE_YET)
+
         adapter.notifyDataSetChanged()
     }
-
-    fun clearLatestItem() {
-        if(gameList.size >= 1) {
-            gameList.removeAt(gameList.size - 1)
-            adapter.notifyItemRemoved(gameList.size - 1)
-        }
-    }
-
-     */
-
 
 }

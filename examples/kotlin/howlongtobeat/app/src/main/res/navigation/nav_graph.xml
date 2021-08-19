@@ -11,6 +11,9 @@
         <action
             android:id="@+id/action_gameListFragment_to_loadingFragment"
             app:destination="@id/loadingFragment" />
+        <action
+            android:id="@+id/action_gameListFragment_to_gameDetailFragment"
+            app:destination="@id/gameDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/loadingFragment"
@@ -28,4 +31,8 @@
             android:id="@+id/action_hltbResultsFragment_to_gameListFragment"
             app:destination="@id/gameListFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/gameDetailFragment"
+        android:name="be.kuleuven.howlongtobeat.GameDetailFragment"
+        android:label="GameDetailFragment" />
 </navigation>

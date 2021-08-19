@@ -1,12 +1,14 @@
 package be.kuleuven.howlongtobeat.hltb
 
+import be.kuleuven.howlongtobeat.cartridges.Cartridge
+
 object HowLongToBeatResultParser {
 
     private val titleMatcher = """<a class=".+" title="(.+)" href=""".toRegex()
     private val hourMatcher = """<div class=".+">(.+) Hours""".toRegex()
     private val boxArtMatcher = """<img alt=".+" src="(.+)"""".toRegex()
 
-    fun parse(html: String): List<HowLongToBeatResult> {
+    fun parse(html: String, sourceCart: Cartridge): List<HowLongToBeatResult>? {
         val result = arrayListOf<HowLongToBeatResult>()
         val rows = html.split("\n")
         for(i in 0..rows.size - 1) {
@@ -16,11 +18,11 @@ object HowLongToBeatResultParser {
                 val hour = parseHoursFromRow(i, rows)
                 val boxart = parseBoxArtFromRow(i, rows)
 
-                result.add(HowLongToBeatResult(title, hour, boxart))
+                result.add(HowLongToBeatResult(title, sourceCart.code, hour, boxart))
             }
         }
 
-        return result
+        return if(result.any()) result else null
     }
 
     private fun parseBoxArtFromRow(row: Int, rows: List<String>): String {

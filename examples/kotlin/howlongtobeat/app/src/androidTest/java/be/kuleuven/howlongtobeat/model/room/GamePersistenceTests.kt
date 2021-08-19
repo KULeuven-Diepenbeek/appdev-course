@@ -33,20 +33,20 @@ class GamePersistenceTests {
 
     @Test
     fun todoItemCanBePersisted() {
-        val item = Game("brush my little pony", false)
+        val item = Game("brush my little pony","code", 0.0, false)
         dao.insert(arrayListOf(item))
 
         val refreshedItem = dao.query().single()
         with(refreshedItem) {
             assertEquals(item.title, title)
-            assertEquals(item.isDone, isDone)
+            assertEquals(item.finished, finished)
             assertEquals(1, id)
         }
     }
 
     @Test
     fun updateUpdatesTodoPropertiesInDb() {
-        var todo = Game("git good at Hollow Knight", false)
+        var todo = Game("git good at Hollow Knight", "code", 10.5, false)
         dao.insert(arrayListOf(todo))
         todo = dao.query().single() // refresh to get the ID, otherwise update() will update where ID = 0
 
@@ -57,12 +57,12 @@ class GamePersistenceTests {
         assertEquals(1, itemsFromDb.size)
         with(itemsFromDb.single()) {
             assertEquals(todo.title, title)
-            assertEquals(true, isDone)
+            assertEquals(true, finished)
         }
     }
 
     private fun finallyFinishHollowKnight(item: Game) {
         println("Congrats! On to Demon Souls?")
-        item.check()
+        item.finish()
     }
 }

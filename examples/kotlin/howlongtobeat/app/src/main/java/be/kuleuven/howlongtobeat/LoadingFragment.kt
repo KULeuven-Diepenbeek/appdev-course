@@ -14,8 +14,10 @@ import androidx.core.content.PermissionChecker
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import be.kuleuven.howlongtobeat.cartridges.Cartridge
+import be.kuleuven.howlongtobeat.cartridges.CartridgeFinderViaDuckDuckGo
 import be.kuleuven.howlongtobeat.cartridges.CartridgesRepository
+import be.kuleuven.howlongtobeat.cartridges.CartridgesRepositoryGekkioFi
+import be.kuleuven.howlongtobeat.cartridges.findFirstCartridgeForRepos
 import be.kuleuven.howlongtobeat.databinding.FragmentLoadingBinding
 import be.kuleuven.howlongtobeat.google.GoogleVisionClient
 import be.kuleuven.howlongtobeat.hltb.HLTBClient
@@ -28,7 +30,7 @@ import java.io.File
 class LoadingFragment : Fragment(R.layout.fragment_loading) {
 
     private lateinit var hltbClient: HLTBClient
-    private lateinit var cartRepo: CartridgesRepository
+    private lateinit var cartRepos: List<CartridgesRepository>
     private lateinit var imageRecognizer: ImageRecognizer
 
     private lateinit var cameraPermissionActivityResult: ActivityResultLauncher<String>
@@ -46,7 +48,11 @@ class LoadingFragment : Fragment(R.layout.fragment_loading) {
         binding = FragmentLoadingBinding.inflate(layoutInflater)
         main = activity as MainActivity
 
-        cartRepo = CartridgesRepository.fromAsset(main.applicationContext)
+        // If we fail to find info in the first repo, it falls back to the second one: a (scraped) DuckDuckGo search.
+        cartRepos = listOf(
+            CartridgesRepositoryGekkioFi.fromAsset(main.applicationContext),
+            CartridgeFinderViaDuckDuckGo(main.applicationContext)
+        )
         imageRecognizer = GoogleVisionClient()
         hltbClient = HLTBClient(main.applicationContext)
 
@@ -55,9 +61,25 @@ class LoadingFragment : Fragment(R.layout.fragment_loading) {
         binding.btnRetryAfterLoading.setOnClickListener {
             tryToMakeCameraSnap()
         }
-        tryToMakeCameraSnap()
 
         return binding.root
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        val inProgress = savedInstanceState?.getBoolean("inprogress") ?: false
+        if(!inProgress) {
+            // Don't do this in onCreateView, things go awry if you rotate the smartphone!
+            tryToMakeCameraSnap()
+        }
+
+        super.onViewStateRestored(savedInstanceState)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.run {
+            putBoolean("inprogress", snapshot != null)
+        }
+        super.onSaveInstanceState(outState)
     }
 
     private fun cameraSnapTaken(succeeded: Boolean) {
@@ -67,42 +89,40 @@ class LoadingFragment : Fragment(R.layout.fragment_loading) {
         }
 
         progress("Scaling image for upload...")
-        val bitmap = snapshot!!.toBitmap(main).scaleToWidth(1600)
+        val bitmap = snapshot!!.toBitmap(requireContentResolver()).scaleToWidth(1600)
 
         MainScope().launch{
-            findGameBasedOnCameraSnap(bitmap)
+            try {
+                findGameBasedOnCameraSnap(bitmap)
+            } catch (errorDuringFind: UnableToFindGameException) {
+                errorInProgress("${errorDuringFind.message}\nRetry?")
+            }
         }
     }
 
     private suspend fun findGameBasedOnCameraSnap(pic: Bitmap) {
-        /*
+        var picToAnalyze = pic
+        // Uncomment this line if you want to stub out camera pictures
+        // picToAnalyze = BitmapFactory.decodeResource(resources, R.drawable.sml2)
+
         progress("Recognizing game cart from picture...")
-        val cartCode = imageRecognizer.recognizeCartCode(pic)
+        val cartCode = imageRecognizer.recognizeCartCode(picToAnalyze)
+            ?: throw UnableToFindGameException("No cart code in your pic found")
 
-        if (cartCode == null) {
-            errorInProgress("No cart code in your pic found. Retry?")
-            return
-        }
+        progress("Found cart code $cartCode\nLooking in DBs for matching game...")
+        val foundCart = findFirstCartridgeForRepos(cartCode, cartRepos)
+            ?: throw UnableToFindGameException("$cartCode is an unknown game cart.")
 
-        progress("Found cart code $cartCode, looking in DB...")
-        val foundCart = cartRepo.find(cartCode)
+        progress("Valid cart code: $cartCode\n Looking in HLTB for ${foundCart.title}...")
+        val hltbResults = hltbClient.find(foundCart)
+            ?: throw UnableToFindGameException("HLTB does not know ${foundCart.title}")
 
-        if (foundCart == Cartridge.UNKNOWN_CART) {
-            errorInProgress("$cartCode is an unknown game cart. Retry?")
-            return
-        }
-
-        progress("Valid cart code $cartCode, looking in HLTB...")
-
-         */
-        val foundCart = Cartridge("DMG", "Super Mario Land", "DMG-something")
-        hltbClient.find(foundCart.title) {
-            Snackbar.make(requireView(), "Found ${it.size} game(s) for cart ${foundCart.code}", Snackbar.LENGTH_LONG).show()
-
-            // TODO wat als geen hltb results gevonden?
-            val bundle = bundleOf(HowLongToBeatResult.RESULT to it)
-            findNavController().navigate(R.id.action_loadingFragment_to_hltbResultsFragment, bundle)
-        }
+        Snackbar.make(requireView(), "Found ${hltbResults.size} game(s) for cart ${foundCart.code}", Snackbar.LENGTH_LONG).show()
+        val bundle = bundleOf(
+            HowLongToBeatResult.RESULT to hltbResults,
+            HowLongToBeatResult.SNAPSHOT_URI to snapshot.toString()
+        )
+        findNavController().navigate(R.id.action_loadingFragment_to_hltbResultsFragment, bundle)
     }
 
     private fun cameraPermissionAcceptedOrDenied(succeeded: Boolean) {
@@ -130,6 +150,7 @@ class LoadingFragment : Fragment(R.layout.fragment_loading) {
             createNewFile()
             deleteOnExit()
         }
+
         snapshot = FileProvider.getUriForFile(main.applicationContext, "${BuildConfig.APPLICATION_ID}.provider", tempFile)
     }
 
@@ -144,6 +165,7 @@ class LoadingFragment : Fragment(R.layout.fragment_loading) {
     }
 
     private fun errorInProgress(msg: String) {
+        snapshot = null
         progress(msg)
         binding.indeterminateBar.visibility = View.GONE
         Snackbar.make(requireView(), msg, Snackbar.LENGTH_LONG).show()

@@ -1,6 +1,6 @@
 package be.kuleuven.howlongtobeat
 
-import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,8 +31,11 @@ class HltbResultsAdapter(private val items: List<HowLongToBeatResult>) : Recycle
         val itm = items[position]
 
         holder.itemView.apply {
-            setOnClickListener {
-                parentFragment.addResultToGameLibrary(itm)
+            var art = BitmapFactory.decodeResource(resources, R.drawable.emptygb)
+
+            setOnLongClickListener {
+                parentFragment.addResultToGameLibrary(itm, art)
+                true
             }
 
             findViewById<TextView>(R.id.txtHltbItemResult).text = itm.toString()
@@ -40,7 +43,6 @@ class HltbResultsAdapter(private val items: List<HowLongToBeatResult>) : Recycle
 
             if(itm.hasBoxart()) {
                 MainScope().launch{
-                    var art: Bitmap? = null
                     withContext(Dispatchers.IO) {
                         art = itm.boxartUrl().downloadAsImage()
                     }
@@ -49,7 +51,7 @@ class HltbResultsAdapter(private val items: List<HowLongToBeatResult>) : Recycle
                     }
                 }
             } else {
-                boxArtView.visibility = View.INVISIBLE
+                boxArtView.setImageBitmap(art)
             }
         }
     }

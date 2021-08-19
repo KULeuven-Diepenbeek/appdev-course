@@ -19,6 +19,9 @@ class GameRepositoryRoomImpl(appContext: Context) :
     }
 
     override fun load(): List<Game> = dao.query()
+    override fun update(game: Game) = dao.update(listOf(game))
+
+    override fun find(id: Int): Game = load().single { it.id == id }
 
     override fun save(game: Game) {
         db.runInTransaction {

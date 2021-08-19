@@ -54,7 +54,8 @@ dependencies {
 
     // --- kotlinx extras
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.1")
 
     // --- navigation
     // see https://developer.android.com/guide/navigation/navigation-getting-started

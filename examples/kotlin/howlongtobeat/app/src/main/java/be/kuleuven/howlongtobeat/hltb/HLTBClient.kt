@@ -1,9 +1,11 @@
 package be.kuleuven.howlongtobeat.hltb
 
 import android.content.Context
+import be.kuleuven.howlongtobeat.cartridges.Cartridge
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import kotlin.coroutines.suspendCoroutine
 
 class HLTBClient(val context: Context) {
 
@@ -41,10 +43,11 @@ class HLTBClient(val context: Context) {
         }
     }
 
-    fun find(query: String, onResponseFetched: (List<HowLongToBeatResult>) -> Unit) {
+    suspend fun find(cart: Cartridge): List<HowLongToBeatResult>? = suspendCoroutine { cont ->
         val queue = Volley.newRequestQueue(context)
-        val req = HLTBRequest(query) {
-            onResponseFetched(HowLongToBeatResultParser.parse(it))
+        val req = HLTBRequest(cart.title) {
+            val hltbResults = HowLongToBeatResultParser.parse(it, cart)
+            cont.resumeWith(Result.success(hltbResults))
         }
         queue.add(req)
     }

@@ -2,12 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/mnuClear"
-        android:title="Clear All Items" />
+        android:title="Remove All Games" />
     <item
-        android:id="@+id/mnuClearLatest"
-        android:title="Clear Latest Item" />
-    <item
-        android:id="@+id/mnuReset"
-        android:title="Reset to Default Items" />
+        android:id="@+id/mnuStats"
+        android:title="Statistics" />
 
 </menu>

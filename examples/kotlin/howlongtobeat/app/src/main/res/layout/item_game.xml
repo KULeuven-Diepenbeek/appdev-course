@@ -13,12 +13,12 @@
         android:text="Some Title"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/chkTodoDone"
+        app:layout_constraintEnd_toStartOf="@+id/chkGameFinished"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
-        android:id="@+id/chkTodoDone"
+        android:id="@+id/chkGameFinished"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

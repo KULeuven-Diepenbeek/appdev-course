@@ -15,6 +15,10 @@ interface GameRepository {
 
     fun load(): List<Game>
 
+    fun update(game: Game)
+
+    fun find(id: Int): Game
+
     fun save(game: Game)
 
     fun overwrite(items: List<Game>)
