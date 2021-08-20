@@ -12,20 +12,20 @@
     <title>7. Security By Design :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1629388493" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1629388493" rel="stylesheet">
-    <link href="../../css/hybrid.css?1629388493" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1629388493" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1629388493" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1629388493" rel="stylesheet">
-    <link href="../../css/theme.css?1629388493" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1629388493" rel="stylesheet">
+    <link href="../../css/nucleus.css?1629450884" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1629450884" rel="stylesheet">
+    <link href="../../css/hybrid.css?1629450884" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1629450884" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1629450884" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1629450884" rel="stylesheet">
+    <link href="../../css/theme.css?1629450884" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1629450884" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1629388493" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1629450884" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1629388493"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1629450884"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -62,14 +62,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1629388493"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1629388493"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1629450884"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1629450884"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1629388493"></script>
+<script type="text/javascript" src="../../js/search.js?1629450884"></script>
 
     
   </div>
@@ -621,7 +621,11 @@
 <nav id="TableOfContents">
   <ul>
     <li><a href="#googles-safest-mobile-platform-in-the-world">Google&rsquo;s &ldquo;safest mobile platform in the world&rdquo;</a></li>
-    <li><a href="#encrypting-data">Encrypting Data</a></li>
+    <li><a href="#encrypting-data">Encrypting Data</a>
+      <ul>
+        <li><a href="#do-not-expose-api-keys">Do not expose API keys!</a></li>
+      </ul>
+    </li>
     <li><a href="#asking-for-permissions">Asking for Permissions</a></li>
   </ul>
 </nav>
@@ -683,6 +687,22 @@ It&rsquo;s a responsibility we share with you, as developers, to keep users safe
 <p>Do note that encrypting files is not always needed. Simply write files and shared preferences in <code>MODE_PRIVATE</code>: see the <a href="../../android/data-storage">data chapter</a>. This prevents other apps from accessing your data, and makes sure that the stored data gets removes along an uninstall procedure. Sure, the files can still be pried out of the system if you really want to. But preferences are&hellip; well&hellip; preferences. And caching/databases that store already readily-accessible information do not need to be encrypted at all.</p>
 <p>If you do require database encryption, use <a href="https://github.com/sqlcipher/android-database-sqlcipher">SQLCipher</a> in conjunction with Room (see <a href="../../android/data-storage">the data storage chapter</a>).</p>
 <p>Implementing Android encryption strategies is not part of this course.</p>
+<h3 id="do-not-expose-api-keys">Do not expose API keys!</h3>
+<p>If your app requires data access to a third party, say a Google API, you&rsquo;ll likely need to get your hands on an API key to be able to use that particular service. These keys are usually passed in the request, either as a <code>GET</code> query parameter (unsecure!) or as a <code>POST</code> header flag. It is very tempting to hard-code these keys, as they are simple strings after all. However, this is <strong>very bad practice</strong>, as malicious users will easily unzip and decompile your <code>.apk</code> file to pry out that key. There are <a href="https://support.google.com/googleapi/answer/6310037">best practices for securely using API keys</a>.</p>
+<p>For example, in the <a href="../../extra/demo">demo project</a>, the Google Vision API key is not checked in. It resides in a separate properties file that gets integrated into the build using Gradle:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#75715e">// Remember that any piece of Kotlin code can be injected into the build file. 
+</span><span style="color:#75715e"></span><span style="color:#00a8c8">val</span> <span style="color:#111">apiKeys</span> <span style="color:#111">=</span> <span style="color:#00a8c8">file</span><span style="color:#111">(</span><span style="color:#d88200">&#34;../apikeys.properties&#34;</span><span style="color:#111">).</span><span style="color:#111">readLines</span><span style="color:#111">().</span><span style="color:#111">map</span> <span style="color:#111">{</span>
+    <span style="color:#00a8c8">val</span> <span style="color:#111">keyvalues</span> <span style="color:#111">=</span> <span style="color:#00a8c8">it</span><span style="color:#111">.</span><span style="color:#111">split</span><span style="color:#111">(</span><span style="color:#d88200">&#34;=&#34;</span><span style="color:#111">)</span>
+    <span style="color:#111">keyvalues</span><span style="color:#111">[</span><span style="color:#ae81ff">0</span><span style="color:#111">]</span> <span style="color:#111">to</span> <span style="color:#111">keyvalues</span><span style="color:#111">[</span><span style="color:#ae81ff">1</span><span style="color:#111">]</span>
+<span style="color:#111">}.</span><span style="color:#111">toMap</span><span style="color:#111">()</span>
+
+<span style="color:#111">android</span> <span style="color:#111">{</span>
+    <span style="color:#75715e">// ... (definitions of build types)
+</span><span style="color:#75715e"></span>    <span style="color:#111">buildTypes</span><span style="color:#111">.</span><span style="color:#111">forEach</span> <span style="color:#111">{</span>
+        <span style="color:#00a8c8">it</span><span style="color:#111">.</span><span style="color:#111">buildConfigField</span><span style="color:#111">(</span><span style="color:#d88200">&#34;String&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;GOOGLE_VISION_API_KEY&#34;</span><span style="color:#111">,</span> <span style="color:#111">apiKeys</span><span style="color:#111">[</span><span style="color:#d88200">&#34;GoogleVisionApiKey&#34;</span><span style="color:#111">]</span><span style="color:#f92672">!!</span><span style="color:#111">)</span>
+    <span style="color:#111">}</span>
+<span style="color:#111">}</span>
+</code></pre></div><p>Next, in your code, these &ldquo;build config fields&rdquo; are accessible as static flags through the <code>BuildConfig</code> class, which is generated by Gradle as you build the project. See the <code>build.gradle.kts</code> file for more information. Note that this is but one possibility.</p>
 <h2 id="asking-for-permissions">Asking for Permissions</h2>
 <p>See also: <a href="https://developer.android.com/guide/topics/permissions/overview">Android Developer Guide: Permissions Overview</a>.</p>
 <p>Perhaps the most important app development principle is <em>permissions</em>, configured in the manifest file. We&rsquo;ve briefly touched upon that in the <a href="../../android/intents">intents chapter</a> to access the camera API. There exist numerous permission types, and it&rsquo;s always best to explicitly ask for <strong>as little</strong> permissions as possible. Instead, leverage <em>implicit intents</em> and let another app that already has explicit permissions handle the action for you. For example, instead of asking the user for access to their contacts to create a new contact, start an implicit intent that fires up the contacts app itself that does it for you:</p>
@@ -1098,17 +1118,17 @@ It&rsquo;s a responsibility we share with you, as developers, to keep users safe
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1629388493"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1629388493"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1629388493"></script>
-    <script src="../../js/jquery.sticky.js?1629388493"></script>
-    <script src="../../js/featherlight.min.js?1629388493"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1629388493"></script>
-    <script src="../../js/learn.js?1629388493"></script>
-    <script src="../../js/hugo-learn.js?1629388493"></script>
+    <script src="../../js/clipboard.min.js?1629450884"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1629450884"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1629450884"></script>
+    <script src="../../js/jquery.sticky.js?1629450884"></script>
+    <script src="../../js/featherlight.min.js?1629450884"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1629450884"></script>
+    <script src="../../js/learn.js?1629450884"></script>
+    <script src="../../js/hugo-learn.js?1629450884"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1629388493"></script>
+            <script src="../../mermaid/mermaid.js?1629450884"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

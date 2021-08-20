@@ -12,20 +12,20 @@
     <title>5. Data Storage: File/Network :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1629388492" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1629388492" rel="stylesheet">
-    <link href="../../css/hybrid.css?1629388492" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1629388492" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1629388492" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1629388492" rel="stylesheet">
-    <link href="../../css/theme.css?1629388492" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1629388492" rel="stylesheet">
+    <link href="../../css/nucleus.css?1629450883" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1629450883" rel="stylesheet">
+    <link href="../../css/hybrid.css?1629450883" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1629450883" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1629450883" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1629450883" rel="stylesheet">
+    <link href="../../css/theme.css?1629450883" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1629450883" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1629388492" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1629450883" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1629388492"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1629450883"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -62,14 +62,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1629388492"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1629388492"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1629450883"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1629450883"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1629388492"></script>
+<script type="text/javascript" src="../../js/search.js?1629450883"></script>
 
     
   </div>
@@ -672,7 +672,7 @@
 </ul>
 <p>In this chapter, we&rsquo;ll see how we store and retrieve data in Android apps.</p>
 
-<div class="notices warning" ><p>Carefully consider which of the data storage solutions is right for you. Do you want your data to be persisted after the user uninstalls your app? Do you want it to be sharable? Do you want other (web)applications to be able to access it? <br/>This isn&rsquo;t a case of picking an appealing technology but of picking what is appropriate for the thing you&rsquo;re trying to achieve.</p>
+<div class="notices info" ><p>Carefully consider which of the data storage solutions is right for you. Do you want your data to be persisted after the user uninstalls your app? Do you want it to be sharable? Do you want other (web)applications to be able to access it? <br/>This isn&rsquo;t a case of picking an appealing technology but of picking what is appropriate for the thing you&rsquo;re trying to achieve.</p>
 </div>
 
 <p>Before being able to save the TODO items, we need to enable <strong>two-way data binding</strong>. Until now, the TODO items in the view were synced based on the values in the backend. Go to the Todo adapter, and add a click listener to <code>chkTodoDone</code>. When it is clicked, we want to re-sync the state with the current todo item (in <code>onBindViewHolder()</code>). It needs to go both ways, otherwise we don&rsquo;t have any data to save:</p>
@@ -787,10 +787,10 @@ dependencies {
 </ul>
 <p>The <code>todosavestate</code> code contains an example of such a custom request object.</p>
 
-<div class="notices warning" ><p>Be warned (again): Volley is <strong>asynchronous</strong>, meaning &ldquo;return bla&rdquo; on response just won&rsquo;t work. To make things work, you&rsquo;ll have to (1) show a loading widget, (2) fire off the HTTP call by adding it to the queue and (3) do your thing on response, also not forgetting to update the UI. In case of a RecyclerView, that&rsquo;s <code>notifyDataSetChanged()</code>. Watch out with multithreading and changing UI logic!<br/>The example shows how you can still pass along a custom response handler object by making use of Kotlin&rsquo;s <a href="https://kotlinlang.org/docs/fun-interfaces.html">SAM interfaces</a>.</p>
+<div class="notices warning" ><p>Be warned (again): Volley is <strong>asynchronous</strong>, meaning &ldquo;return bla&rdquo; on response just won&rsquo;t work. To make things work, you&rsquo;ll have to (1) show a loading widget, (2) fire off the HTTP call by adding it to the queue and (3) do your thing on response, also not forgetting to update the UI. In case of a RecyclerView, that&rsquo;s <code>notifyDataSetChanged()</code>. Watch out with multithreading and changing UI logic!<br/>The example shows how you can still pass along a custom response handler object by making use of Kotlin&rsquo;s <a href="https://kotlinlang.org/docs/fun-interfaces.html">SAM interfaces</a>.<br/>In case of network exceptions, be sure to check the error message. IO procedures are prohibited on the Android Main thread. The <a href="../../extra/demo">demo project</a> shows how to deal with it using Kotlin&rsquo;s coroutines in case you execute synchronous network-related code (optional).</p>
 </div>
 
-<p>Volley can be confusing and difficult to use. It&rsquo;s a complimentary library, meaning it can be swapped out at any time in favor for alternatives such as <a href="https://square.github.io/retrofit/">Retrofit</a>. Feel free to do so.</p>
+<p>Volley can be confusing and difficult to use. It&rsquo;s a complimentary library, meaning it can be swapped out at any time in favor for alternatives such as <a href="https://square.github.io/retrofit/">Retrofit</a>. Feel free to do so. The <a href="../../extra/demo">demo project</a> also utilizes Volley.</p>
 
 
 <footer class="footline">
@@ -1173,17 +1173,17 @@ dependencies {
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1629388493"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1629388493"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1629388493"></script>
-    <script src="../../js/jquery.sticky.js?1629388493"></script>
-    <script src="../../js/featherlight.min.js?1629388493"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1629388493"></script>
-    <script src="../../js/learn.js?1629388493"></script>
-    <script src="../../js/hugo-learn.js?1629388493"></script>
+    <script src="../../js/clipboard.min.js?1629450884"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1629450884"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1629450884"></script>
+    <script src="../../js/jquery.sticky.js?1629450884"></script>
+    <script src="../../js/featherlight.min.js?1629450884"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1629450884"></script>
+    <script src="../../js/learn.js?1629450884"></script>
+    <script src="../../js/hugo-learn.js?1629450884"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1629388493"></script>
+            <script src="../../mermaid/mermaid.js?1629450884"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

@@ -12,20 +12,20 @@
     <title>5. Demo Project :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1629388493" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1629388493" rel="stylesheet">
-    <link href="../../css/hybrid.css?1629388493" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1629388493" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1629388493" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1629388493" rel="stylesheet">
-    <link href="../../css/theme.css?1629388493" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1629388493" rel="stylesheet">
+    <link href="../../css/nucleus.css?1629450884" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1629450884" rel="stylesheet">
+    <link href="../../css/hybrid.css?1629450884" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1629450884" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1629450884" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1629450884" rel="stylesheet">
+    <link href="../../css/theme.css?1629450884" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1629450884" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1629388493" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1629450884" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1629388493"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1629450884"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -62,14 +62,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1629388493"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1629388493"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1629450884"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1629450884"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1629388493"></script>
+<script type="text/javascript" src="../../js/search.js?1629450884"></script>
 
     
   </div>
@@ -618,7 +618,17 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#_how-long-to-beat_"><em>How Long To Beat</em></a>
+      <ul>
+        <li><a href="#what-does-it-do">What does it do?</a></li>
+        <li><a href="#how-does-it-work">How does it work?</a></li>
+      </ul>
+    </li>
+    <li><a href="#inspecting-the-source-code">Inspecting the source code</a></li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -641,11 +651,100 @@
         
 
 
-<p>TODO howlongtobeat achtig iets?</p>
+<h2 id="_how-long-to-beat_"><em>How Long To Beat</em></h2>
+<p>The demo project, residing in the <a href="https://github.com/KULeuven-Diepenbeek/appdev-course/tree/main/examples/kotlin/howlongtobeat">examples/kkotlin/howlongtobeat</a> directory in the source repository, incorporates everything this course has to offer, to give you a taste of what is possible to create within a limited time frame using your newly acquired knowledge. It contains:</p>
 <ul>
-<li>Een Java-only en een Kotlin-only app?</li>
-<li>Een multiplatform gebaseerd op Kotlin&rsquo;s platform?</li>
-<li>Een React-native gelijkaardige?</li>
+<li>One main activity, <code>MainActivity</code>, controlling the navigation drawer</li>
+<li>Many segments controlled by a navigation system, including two <code>RecyclerView</code> lists.</li>
+<li>Permissions for internet and the camera, and an intent system to share information.</li>
+<li>Data storage through SQLite and Room, plus private file storage for images.</li>
+<li>Multiple HTTPS API calls to demonstrate the retrieval and processing of data.</li>
+</ul>
+<h3 id="what-does-it-do">What does it do?</h3>
+<p>A (moving) picture says more than a thousand words:</p>
+<div class="video-mask">
+	<video controls preload="metadata">
+	  <source src="../../vid/hltb.mp4#t=0.5" type="video/mp4">
+	  Your browser does not support HTML video. Here's a link to the MP4-encoded video instead: <a href="../../vid/hltb.mp4">/vid/hltb.mp4</a>.
+	</video>
+</div>
+<p>In case that still wasn&rsquo;t clear, it:</p>
+<ol>
+<li>&hellip; recognizes Game Boy and Game Boy Color cartridges based on a snapshot you take from your retro games.</li>
+<li>&hellip; downloads art data and checks on <a href="https://howlongtobeat.com">howlongtobeat.com</a> how long it takes for an average player to beat the game.</li>
+<li>&hellip; saves this information in your personal game database if selected.</li>
+<li>&hellip; shows some basic statistics on your game completion progress.</li>
+</ol>
+<h3 id="how-does-it-work">How does it work?</h3>
+<p>The cartridge recognition system (logic in <code>GameFinder.kt</code>) is programmed to adhere to the following logic flow:</p>
+<script defer src="../../mermaid/mermaid.min.js">
+	mermaid.initialize({
+		startOnLoad: true,
+		flowchart: {
+			useMaxWidth: true
+		}
+	});
+</script>
+<div class="mermaid" align="center" >
+	
+graph LR
+    Snap{Take snapshot}
+    GV[Google Vision API]
+    LocalDB[Local Cartridge DB]
+    RemoteDB[DuckDuckGo Cartridge Search]
+    HLTB[How Long To Beat API]
+    Result>HLTB Results]
+
+    Snap --> GV
+    GV --> LocalDB
+    GV --> RemoteDB
+    LocalDB --> HLTB
+    RemoteDB --> HLTB
+    HLTB --> Result
+
+</div>
+<p>First, the resized camera picture is uploaded to <a href="https://cloud.google.com/vision/">Google&rsquo;s Vision API</a>. <strong>You will need your own API key</strong> and put it in <code>apikeys.properties</code>, see the README.md file in the repository. Google offers a free trial to its Cloud system.</p>
+<p>Next, the Vision API returns OCR-recognized text from the image. We&rsquo;re interested in the so-called <strong>cartridge code</strong> on the left of the cart, which starts with <code>DMG-</code> (Dot Matrix Game) if it&rsquo;s an old school Game Boy cart, or with <code>CGB-</code> (Color Game Boy) if it&rsquo;s a Game Boy Color cart.</p>
+<p>For example, the <em>Wario Land: Super Mario Land 3</em> cartridge:</p>
+<p><figure>
+	<a href="../../img/warioland.jpg" data-featherlight="image">
+		<img src="../../img/warioland.jpg"  >
+	</a>
+	
+</figure>
+</p>
+<p>displays <code>DMG-WJ-USA</code> sideways. This code uniquely identifies the game. Google&rsquo;s Vision API is not smart enough to detect the fancy lettering in the Wario Land logo, sadly.</p>
+<p>Next, based on that code, the app searchers for the matching game title, either in a pre-defined repository (an embedded <code>.csv</code> file based on the database of <a href="https://gbhwdb.gekkio.fi/cartridges/">gekkio.fi</a>), or if it was not found, fires off a DuckDuckGo search to try and interpret its results as a game title. Note that there is no real DuckDuckGo API: the app employs HTML scraping.</p>
+<p>Lastly, if a game title could be found, it is fed to <a href="https://howlongtobeat.com">howlongtobeat.com</a>&mdash;also using (admittedly a bit advanced) HTML scraping&mdash;to finally return the results in a list for a <code>RecyclerView</code> to display to the user. If at any step something goes wrong, a correct error message is displayed, and the user can retry the whole process.</p>
+<p>Selecting a result from the HLTB results list automatically adds that game to your local database. You can &ldquo;finish&rdquo; the game by checking a checkbox in the game detail screen, meaning it took you <code>x</code> hours to finish. The statistics dialog box shows how long you still have to play to finish your entire collection. Good luck have fun!</p>
+<h2 id="inspecting-the-source-code">Inspecting the source code</h2>
+<p>What to look out for in the source code?</p>
+<ul>
+<li>Try to understand how the unit tests are written. Again, note the difference between Android-instrumented tests, which run more slowly, and genuine unit tests. The <code>mockk</code> framework is used to mock out certain objects in certain tests.</li>
+<li>Try to identify the information flow as described above. Can you follow its logic and see where one fragment switches to another one? Understanding the general flow of the program is very important!</li>
+<li>Note the use of interfaces. In case the Google Vision API does not suffice anymore, or the free trail threshold limit has been reached, it&rsquo;s easy to remove it in favor for another OCR-based API, thanks to the <code>ImageRecognizer</code> interface. Furthermore, it simplifies unit testing and separates the view code from the API logic.</li>
+</ul>
+<p>Some more advanced concepts of Kotlin/Android, such as <code>suspend</code> and coroutines, which are not part of this course, can be safely ignored. Just remember that when executing IO calls that take longer than a second, it should be done on a <em>separate thread</em>, otherwise the main thread&mdash;and thus, the UI&mdash;becomes blocked! Starting new threads can be done simply by using the Java-specific logic you have learned in the INF1 course. Otherwise, there&rsquo;s always Stack Overflow to help out. Make sure you understand what you adapt into your own project!</p>
+
+<div class="notices warning" ><p>In case the project fails to compile: did you forget to create a properties file with your API key in it? See the readme and above!</p>
+</div>
+
+<p>Dependencies used:</p>
+<ul>
+<li><code>kotlinx</code> serialization (transfer results between fragments)</li>
+<li><code>kotlinx</code> coroutines (async job processing)</li>
+<li><code>mockk</code> instead of Mockito (mocking in unit tests)</li>
+<li><code>androidx.navigation</code> (navigation)</li>
+<li><code>androidx.room</code> (DB persistence)</li>
+<li><code>android.volley</code> (HTTP calls)</li>
+<li><code>google.api-client</code> (Vision API, 3 dependencies)</li>
+</ul>
+<p>Build features used:</p>
+<ul>
+<li>Android View binding</li>
+<li>Custom build config flags</li>
+<li><code>kapt</code> for Room annotation processing</li>
+<li><code>serialization</code> for Kotlin-to-Java serialization</li>
 </ul>
 
 
@@ -1029,17 +1128,17 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1629388493"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1629388493"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1629388493"></script>
-    <script src="../../js/jquery.sticky.js?1629388493"></script>
-    <script src="../../js/featherlight.min.js?1629388493"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1629388493"></script>
-    <script src="../../js/learn.js?1629388493"></script>
-    <script src="../../js/hugo-learn.js?1629388493"></script>
+    <script src="../../js/clipboard.min.js?1629450884"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1629450884"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1629450884"></script>
+    <script src="../../js/jquery.sticky.js?1629450884"></script>
+    <script src="../../js/featherlight.min.js?1629450884"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1629450884"></script>
+    <script src="../../js/learn.js?1629450884"></script>
+    <script src="../../js/hugo-learn.js?1629450884"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1629388493"></script>
+            <script src="../../mermaid/mermaid.js?1629450884"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

@@ -159,8 +159,8 @@ class PeriodTests { @Test fun `Given two overlapping periods When overlapsWith i
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
       <guid>https://kuleuven-diepenbeek.github.io/appdev-course/extra/demo/</guid>
-      <description>TODO howlongtobeat achtig iets?
- Een Java-only en een Kotlin-only app? Een multiplatform gebaseerd op Kotlin&amp;rsquo;s platform? Een React-native gelijkaardige?  </description>
+      <description>How Long To Beat The demo project, residing in the examples/kkotlin/howlongtobeat directory in the source repository, incorporates everything this course has to offer, to give you a taste of what is possible to create within a limited time frame using your newly acquired knowledge. It contains:
+ One main activity, MainActivity, controlling the navigation drawer Many segments controlled by a navigation system, including two RecyclerView lists. Permissions for internet and the camera, and an intent system to share information.</description>
     </item>
     
     <item>

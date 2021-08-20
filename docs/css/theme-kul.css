@@ -1,6 +1,10 @@
 
 /* ---------------- custom style below */
 
+video {
+    max-width:  100%;
+}
+
 #body img {
     margin: 1rem auto !important;
 }
