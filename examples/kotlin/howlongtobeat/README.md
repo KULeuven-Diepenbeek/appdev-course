@@ -1,6 +1,9 @@
 
 # How Long To Beat Demo App
 
+## What's this?
+
+See https://kuleuven-diepenbeek.github.io/appdev-course/extra/demo/
 
 ## Building
 

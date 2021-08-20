@@ -16,7 +16,7 @@ There are [several possibilities](https://developer.android.com/training/data-st
 
 In this chapter, we'll see how we store and retrieve data in Android apps. 
 
-{{% notice warning %}}
+{{% notice info %}}
 Carefully consider which of the data storage solutions is right for you. Do you want your data to be persisted after the user uninstalls your app? Do you want it to be sharable? Do you want other (web)applications to be able to access it? <br/>This isn't a case of picking an appealing technology but of picking what is appropriate for the thing you're trying to achieve.
 {{% /notice %}}
 
@@ -177,8 +177,8 @@ In most cases, a `GET` without any header does not suffice. Instead of a `String
 The `todosavestate` code contains an example of such a custom request object. 
 
 {{% notice warning %}}
-Be warned (again): Volley is **asynchronous**, meaning "return bla" on response just won't work. To make things work, you'll have to (1) show a loading widget, (2) fire off the HTTP call by adding it to the queue and (3) do your thing on response, also not forgetting to update the UI. In case of a RecyclerView, that's `notifyDataSetChanged()`. Watch out with multithreading and changing UI logic!<br/>The example shows how you can still pass along a custom response handler object by making use of Kotlin's [SAM interfaces](https://kotlinlang.org/docs/fun-interfaces.html).
+Be warned (again): Volley is **asynchronous**, meaning "return bla" on response just won't work. To make things work, you'll have to (1) show a loading widget, (2) fire off the HTTP call by adding it to the queue and (3) do your thing on response, also not forgetting to update the UI. In case of a RecyclerView, that's `notifyDataSetChanged()`. Watch out with multithreading and changing UI logic!<br/>The example shows how you can still pass along a custom response handler object by making use of Kotlin's [SAM interfaces](https://kotlinlang.org/docs/fun-interfaces.html).<br/>In case of network exceptions, be sure to check the error message. IO procedures are prohibited on the Android Main thread. The [demo project](/extra/demo) shows how to deal with it using Kotlin's coroutines in case you execute synchronous network-related code (optional).
 {{% /notice %}}
 
-Volley can be confusing and difficult to use. It's a complimentary library, meaning it can be swapped out at any time in favor for alternatives such as [Retrofit](https://square.github.io/retrofit/). Feel free to do so. 
+Volley can be confusing and difficult to use. It's a complimentary library, meaning it can be swapped out at any time in favor for alternatives such as [Retrofit](https://square.github.io/retrofit/). Feel free to do so. The [demo project](/extra/demo) also utilizes Volley. 
 
