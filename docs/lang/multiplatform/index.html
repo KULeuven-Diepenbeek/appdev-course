@@ -12,20 +12,20 @@
     <title>5. Multiplatform Mobile dev. :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1629450884" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1629450884" rel="stylesheet">
-    <link href="../../css/hybrid.css?1629450884" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1629450884" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1629450884" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1629450884" rel="stylesheet">
-    <link href="../../css/theme.css?1629450884" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1629450884" rel="stylesheet">
+    <link href="../../css/nucleus.css?1629729469" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1629729469" rel="stylesheet">
+    <link href="../../css/hybrid.css?1629729469" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1629729469" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1629729469" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1629729469" rel="stylesheet">
+    <link href="../../css/theme.css?1629729469" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1629729469" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1629450884" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1629729469" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1629450884"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1629729469"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -62,14 +62,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1629450884"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1629450884"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1629729469"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1629729469"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1629450884"></script>
+<script type="text/javascript" src="../../js/search.js?1629729469"></script>
 
     
   </div>
@@ -618,7 +618,18 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-other-native-solutions">1. Other Native Solutions</a></li>
+    <li><a href="#2-multiplatform-mobile">2. Multiplatform Mobile</a>
+      <ul>
+        <li><a href="#21-the-kotlin-way-kmm">2.1 The Kotlin Way: KMM</a></li>
+        <li><a href="#22-the-microsoft-way-xamarin">2.2 The Microsoft way: Xamarin</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-mobile-web-tools">3. Mobile Web Tools</a></li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -641,6 +652,75 @@
         
 
 
+
+<div class="notices note" ><p>This small Section is <strong>completely optional</strong>, and not part of the core contents of this course. It showcases other possibilities for mobile app development, broken free from the solitary confinements of Android native code.</p>
+</div>
+
+<h2 id="1-other-native-solutions">1. Other Native Solutions</h2>
+<p>Not everyone buys Android-based phones. Apple&rsquo;s iPhone is arguably (much) more popular, and is based on iOS. Developing apps for iOS is a totally different development experience: it requires other tools, another language, and other deployment chains. This is a <em>bad thing</em>: it means you will have to learn to live in both worlds if you intend to release your software on both operating systems!</p>
+<p>Development of iOS apps is done through <a href="https://developer.apple.com/xcode/">the Xcode IDE</a>, a proprietary IDE that only runs on MacOS. That&rsquo;s right, you&rsquo;ll need a Mac machine to build and deploy native iOS apps.</p>
+<p>To program iOS apps in Xcode, you write code <a href="https://learnappmaking.com/learn-swift-programming/">in Swift</a>, a programming language created by Apple in 2014 built on top of the LLVM environment. Swift serves as a replacement for Apple&rsquo;s older Objective-C that originated in the eighties. One of its strengths is its flawless interoperability with Objective-C, like Kotlin has with Java. Swift is also statically typed and also uses smart inferred typing. They both are relatively modern languages. A few similarities and differences:</p>
+<div class="devselect">
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">val</span> <span style="color:#111">immutable</span> <span style="color:#111">=</span> <span style="color:#ae81ff">55</span>
+<span style="color:#00a8c8">var</span> <span style="color:#111">somevar</span><span style="color:#111">:</span> <span style="color:#111">Double</span> <span style="color:#111">=</span> <span style="color:#ae81ff">33.0</span>
+
+<span style="color:#00a8c8">fun</span> <span style="color:#75af00">greet</span><span style="color:#111">(</span><span style="color:#111">name</span><span style="color:#111">:</span> <span style="color:#111">String</span><span style="color:#111">,</span> <span style="color:#111">day</span><span style="color:#111">:</span> <span style="color:#111">String</span><span style="color:#111">):</span> <span style="color:#111">String</span> <span style="color:#111">{</span>
+    <span style="color:#00a8c8">return</span> <span style="color:#d88200">&#34;Hello </span><span style="color:#d88200">$name</span><span style="color:#d88200">, today is </span><span style="color:#d88200">$day</span><span style="color:#d88200">.&#34;</span>
+<span style="color:#111">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00a8c8">let</span> <span style="color:#111">immutable</span> <span style="color:#111">=</span> <span style="color:#ae81ff">55</span>
+<span style="color:#00a8c8">var</span> <span style="color:#111">somevar</span><span style="color:#111">:</span> <span style="color:#111">Double</span> <span style="color:#111">=</span> <span style="color:#ae81ff">33</span>
+
+<span style="color:#00a8c8">func</span> <span style="color:#75af00">greet</span><span style="color:#111">(</span><span style="color:#00a8c8">_</span> <span style="color:#111">name</span><span style="color:#111">:</span> <span style="color:#111">String</span><span style="color:#111">,</span><span style="color:#00a8c8">_</span> <span style="color:#111">day</span><span style="color:#111">:</span> <span style="color:#111">String</span><span style="color:#111">)</span> <span style="color:#111">-&gt;</span> <span style="color:#111">String</span> <span style="color:#111">{</span>
+    <span style="color:#00a8c8">return</span> <span style="color:#d88200">&#34;Hello </span><span style="color:#d88200">\(</span><span style="color:#111">name</span><span style="color:#d88200">)</span><span style="color:#d88200">, today is </span><span style="color:#d88200">\(</span><span style="color:#111">day</span><span style="color:#d88200">)</span><span style="color:#d88200">.&#34;</span>
+<span style="color:#111">}</span>
+</code></pre></div></div>
+<p>And then there&rsquo;s <a href="https://learnappmaking.com/swiftui-getting-started-how-to-ios-swift/">SwiftUI</a>:</p>
+<blockquote>
+<p>SwiftUI is a framework to build User Interfaces (UI) for iOS apps. With SwiftUI, you create the UIs of your iOS apps entirely with Swift code, using a novel declarative approach.</p>
+</blockquote>
+<p>We would have loved to introduce you to the world of iOS development for a single class, but that would mean everyone must have access to Apple hardware.</p>
+<p>Still, if you&rsquo;re serious about app development, the question isn&rsquo;t &ldquo;which language will I learn&rdquo; but &ldquo;which will I learn first&rdquo;. You simply cannot ignore the iPhone market!</p>
+<h2 id="2-multiplatform-mobile">2. Multiplatform Mobile</h2>
+<h3 id="21-the-kotlin-way-kmm">2.1 The Kotlin Way: KMM</h3>
+<p>To ease the development pains that come from maintaining two different code bases in two different languages, using two different IDEs, Kotlin introduced the KMM, or the <em>Kotlin Multiplatform Mobile</em> system. <a href="https://kotlinlang.org/docs/mobile/getting-started.html">Get familiar with KMM here</a>.</p>
+<p>In essence, KMM enables you to write and maintain a shared code base for your domain logic, while it splits the UI logic to both OSes' unique capabilities, written either in Android&rsquo;s Activity/Fragment/Intent system, or using SwiftUI. Your code base will look like this:</p>
+<pre><code>src
+    | androidMain
+        | MyActivity.kt
+    | androidTest
+    | commonMain
+        | MyObject.kt
+    | commonTest
+    | iosMain
+        | MySwiftUIWindow.swift
+    | iosTest
+</code></pre><p><figure>
+	<a href="../../img/kmm.png" data-featherlight="image">
+		<img src="../../img/kmm.png"   title="The KMM platform: shared Kotlin business logic takes the center.">
+	</a>
+	
+		<figcaption>The KMM platform: shared Kotlin business logic takes the center.</figcaption>
+	
+</figure>
+</p>
+<p>KMM will <em>scaffold</em> certain Swift files for you: it will generate parts of the Swift code, making it easier for the developer to build a single interface for both OSes. See the <a href="https://kotlinlang.org/docs/mobile/integrate-in-existing-app.html#enjoy-the-results-update-the-logic-only-once">make your android application work on iOS tutorial</a> for more in-depth information. KMM&rsquo;s <a href="https://kotlinlang.org/lp/mobile/case-studies/">case studies</a>, and especially the <a href="https://netflixtechblog.com/netflix-android-and-ios-studio-apps-kotlin-multiplatform-d6d4d8d25d23">Netflix migration blog post</a> are interesting reads.</p>
+<p>You will still need access to both the Xcode and Android Studio toolchain. Therefore, we will again leave it up to the curious student with access to a Mac to discover KMM&rsquo;s capabilities.</p>
+<h3 id="22-the-microsoft-way-xamarin">2.2 The Microsoft way: Xamarin</h3>
+<p>Microsoft developed the <a href="https://dotnet.microsoft.com/apps/xamarin">freely available Xamarin framework</a>, which is:</p>
+<blockquote>
+<p>Free. Cross-platform. Open source.<br/>
+An app platform for building Android and iOS apps with .NET and C#</p>
+</blockquote>
+<p>Using Xamarin, you can develop your apps in C# but still deploy on iOS and Android. It is fully cross-platform, and still builds natively. As the site states, <em>Anything you can do in Objective-C or Java, you can do in C#</em>. Looking a bit further, you will still notice <a href="https://dotnet.microsoft.com/apps/xamarin/mobile-apps">two separate docs pages</a> for iOS and Android, as the namespaces and framework libs differ quite a bit. The language might be the same, but the underlying principles are not. This is in line with what KMM tries to do.</p>
+<h2 id="3-mobile-web-tools">3. Mobile Web Tools</h2>
+<p>Both leaning on Kotlin/Swift and KMM requires heavy investments. What if you could develop mobile apps in a language you&rsquo;re already familiar with? Many companies opt for a JavaScript-powered solution instead, as they employ web developers that not necessarily need to take the time to learn a new web-based framework. This is a <em>rapidly changing</em> environment, meaning many frameworks came and went:</p>
+<ul>
+<li><a href="https://reactnative.dev/">React Native</a> (hot and relatively new from Facebook)</li>
+<li><a href="http://cordova.apache.org/">Apache Cordova</a> (almost considered obsolete now)</li>
+<li><a href="https://ionicframework.com/">Ionic Mobile</a> (in case you&rsquo;re tired of React and want things in Vue.js instead)</li>
+<li><a href="https://jquerymobile.com/">jQuery Mobile</a> (<em>very</em> ancient now)</li>
+</ul>
+<p>Web development techniques will be explained in detail in the cloud computing course in the master year.</p>
 
 
 <footer class="footline">
@@ -1026,17 +1106,17 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1629450884"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1629450884"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1629450884"></script>
-    <script src="../../js/jquery.sticky.js?1629450884"></script>
-    <script src="../../js/featherlight.min.js?1629450884"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1629450884"></script>
-    <script src="../../js/learn.js?1629450884"></script>
-    <script src="../../js/hugo-learn.js?1629450884"></script>
+    <script src="../../js/clipboard.min.js?1629729469"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1629729469"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1629729469"></script>
+    <script src="../../js/jquery.sticky.js?1629729469"></script>
+    <script src="../../js/featherlight.min.js?1629729469"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1629729469"></script>
+    <script src="../../js/learn.js?1629729469"></script>
+    <script src="../../js/hugo-learn.js?1629729469"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1629450884"></script>
+            <script src="../../mermaid/mermaid.js?1629729469"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

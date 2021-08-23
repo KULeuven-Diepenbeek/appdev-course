@@ -169,7 +169,8 @@ class PeriodTests { @Test fun `Given two overlapping periods When overlapsWith i
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
       <guid>https://kuleuven-diepenbeek.github.io/appdev-course/lang/multiplatform/</guid>
-      <description></description>
+      <description>This small Section is completely optional, and not part of the core contents of this course. It showcases other possibilities for mobile app development, broken free from the solitary confinements of Android native code.
+ 1. Other Native Solutions Not everyone buys Android-based phones. Apple&amp;rsquo;s iPhone is arguably (much) more popular, and is based on iOS. Developing apps for iOS is a totally different development experience: it requires other tools, another language, and other deployment chains.</description>
     </item>
     
     <item>
