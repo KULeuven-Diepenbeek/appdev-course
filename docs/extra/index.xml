@@ -50,7 +50,7 @@ Solution: just keep these the same. The error disappeared here after selecting f
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
       <guid>https://kuleuven-diepenbeek.github.io/appdev-course/extra/project/</guid>
       <description>Minimum requirements Every App should at minimum contain the following:
- Three activities: 1 master, 1 detail, 1 config screen One data request + parsing (HTTP GET Request) Use a RecyclerView Use at least one Intent Have a Menu with at least one option Use responsive design (do not hardcode px but use sp or dp) Use Fragments to vary the interface between landscape/portrait mode Use a data signal (GPS, Camera, accelerometer, &amp;hellip;) 9 Contain at least one extra feature you can freely choose.</description>
+ At least three fragments or activities; At least one data storage/request system; At least one master/detail using a RecyclerView; At least one Intent; At least one menu option; At least one data signal to be used (GPS, Camera, accelerometer, &amp;hellip;); At least one extra feature you can freely choose. For instance:  Authentication through Google&amp;rsquo;s Play Store or Firebase Sharing data between apps using a ContentProvider Etc&amp;hellip; See links for more inspiration on what&amp;rsquo;s possible.</description>
     </item>
     
     <item>

@@ -128,7 +128,7 @@ Now that we know what activities are, how to re-use components using fragments, 
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
       <guid>https://kuleuven-diepenbeek.github.io/appdev-course/extra/project/</guid>
       <description>Minimum requirements Every App should at minimum contain the following:
- Three activities: 1 master, 1 detail, 1 config screen One data request + parsing (HTTP GET Request) Use a RecyclerView Use at least one Intent Have a Menu with at least one option Use responsive design (do not hardcode px but use sp or dp) Use Fragments to vary the interface between landscape/portrait mode Use a data signal (GPS, Camera, accelerometer, &amp;hellip;) 9 Contain at least one extra feature you can freely choose.</description>
+ At least three fragments or activities; At least one data storage/request system; At least one master/detail using a RecyclerView; At least one Intent; At least one menu option; At least one data signal to be used (GPS, Camera, accelerometer, &amp;hellip;); At least one extra feature you can freely choose. For instance:  Authentication through Google&amp;rsquo;s Play Store or Firebase Sharing data between apps using a ContentProvider Etc&amp;hellip; See links for more inspiration on what&amp;rsquo;s possible.</description>
     </item>
     
     <item>
@@ -179,7 +179,7 @@ class PeriodTests { @Test fun `Given two overlapping periods When overlapsWith i
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
       <guid>https://kuleuven-diepenbeek.github.io/appdev-course/android/signals/</guid>
-      <description></description>
+      <description>Smartphones typically come equipped with a lot of hardware trinkets: multiple camera lenses, bio-metric scanners, gyroscopes, light sensors, &amp;hellip; Accessing these in your app might lead to inventive use. We&amp;rsquo;ve already seen in the intents chapter that implicit intents are a good way to let other apps or the Android system itself handle the security issues involved with accessing these embedded signals. Some commonly used systems are even provided for you in the ActivityResultContracts class, such as TakePicture and TakePicturePreview.</description>
     </item>
     
     <item>

@@ -69,7 +69,7 @@ Now that we know what activities are, how to re-use components using fragments, 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
       <guid>https://kuleuven-diepenbeek.github.io/appdev-course/android/signals/</guid>
-      <description></description>
+      <description>Smartphones typically come equipped with a lot of hardware trinkets: multiple camera lenses, bio-metric scanners, gyroscopes, light sensors, &amp;hellip; Accessing these in your app might lead to inventive use. We&amp;rsquo;ve already seen in the intents chapter that implicit intents are a good way to let other apps or the Android system itself handle the security issues involved with accessing these embedded signals. Some commonly used systems are even provided for you in the ActivityResultContracts class, such as TakePicture and TakePicturePreview.</description>
     </item>
     
     <item>
