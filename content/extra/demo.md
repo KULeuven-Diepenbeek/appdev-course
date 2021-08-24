@@ -66,7 +66,7 @@ Selecting a result from the HLTB results list automatically adds that game to yo
 
 What to look out for in the source code? 
 
-- Try to understand how the unit tests are written. Again, note the difference between Android-instrumented tests, which run more slowly, and genuine unit tests. The `mockk` framework is used to mock out certain objects in certain tests. 
+- Try to understand how the unit tests are written. Again, note the difference between Android-instrumented tests, which run more slowly, and genuine unit tests. The `mockk` framework is used to mock out certain objects in certain tests (see [test driven development](/lang/tdd)). 
 - Try to identify the information flow as described above. Can you follow its logic and see where one fragment switches to another one? Understanding the general flow of the program is very important!
 - Note the use of interfaces. In case the Google Vision API does not suffice anymore, or the free trail threshold limit has been reached, it's easy to remove it in favor for another OCR-based API, thanks to the `ImageRecognizer` interface. Furthermore, it simplifies unit testing and separates the view code from the API logic. 
 

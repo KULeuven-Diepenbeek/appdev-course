@@ -6,15 +6,24 @@ title: 4. Project Information
 
 Every App should at minimum contain the following:
 
-1. Three activities: 1 master, 1 detail, 1 config screen
-2. One _data request_ + parsing (HTTP GET Request)
-3. Use a `RecyclerView`
-4. Use at least one `Intent`
-5. Have a Menu with at least one option
-6. Use _responsive design_ (do not hardcode `px` but use `sp` or `dp`)
-7. Use _Fragments_ to vary the interface between landscape/portrait mode
-8. Use a data signal (GPS, Camera, accelerometer, ...)
-9 Contain at least one extra feature you can freely choose. For instance, data storage through SQLite/Firebase/Room, authentication through Google/Firebase/email-pwd, sharing data using a `ContentProvider`, etc... See [links](/extra/links) for more inspiration on what's possible.
+1. At least three fragments _or_ activities;
+2. At least one data storage/request system;
+3. At least one master/detail using a `RecyclerView`;
+4. At least one `Intent`;
+5. At least one menu option;
+6. At least one data signal to be used (GPS, Camera, accelerometer, ...);
+7. At least one extra feature you can freely choose. For instance:
+    - Authentication through Google's Play Store or [Firebase](https://console.firebase.google.com/?pli=1)
+    - Sharing data between apps using a `ContentProvider`
+    - Etc... See [links](/extra/links) for more inspiration on what's possible.
+
+Also remember to adhere to the _Android dev best practices_ mentioned througout this course, such as:
+
+- Responsive design (do not hardcode `px` but use `sp` or `dp`)
+- Unit tests to test and verify your code and app
+- Security by design: think about permissions and privacy in advance
+- Etc... 
+
 
 ### Deadlines
 

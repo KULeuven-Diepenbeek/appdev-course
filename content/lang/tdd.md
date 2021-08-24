@@ -49,7 +49,7 @@ tasks.test {
 
 {{% notice warning %}}
 If using the Hamcrest API to write assertions, remember that `is` is a reserved keyword in Kotlin. That is, `assertThat(bla, is(such))` in Java does not compile in Kotlin. You can escape the is with a single backtick, or import it as an uppercase Is: `import org.hamcrest.CoreMatchers.'is' as Is` (use backticks).<br/>
-If writing pure Kotlin, you can also opt to use [MockK](https://mockk.io/), a mocking library specifically designed for Kotlin that lets you write assumptions like this: `every { car.drive(Direction.NORTH) } returns Outcome.OK`.
+If writing pure Kotlin, you can also opt to use [MockK](https://mockk.io/), a mocking library specifically designed for Kotlin that lets you write assumptions like this: `every { car.drive(Direction.NORTH) } returns Outcome.OK`. Examples can be found in [the demo project](/extra/demo).
 {{% /notice %}}
 
 ## Android and TDD
