@@ -4,7 +4,7 @@ title: "2. Kotlin programming: Advanced"
 
 ## A closer look at Java/Kotlin interop
 
-As seen in the [kotlin basics](/lang/kotlin), both languages compile to `.class` files that the JVM can understand. And since class files can be decompiled by the likes of [procyon](https://github.com/mstrobel/procyon), let's see what happens when we do that to a bit of Kotlin code, just to deepen our understanding of how Kotlin works in relation to Java. 
+As seen in the [kotlin basics](/lang/kotlin), both languages compile to `.class` files that the JVM can understand. And since class files can be decompiled by the likes of [procyon](https://github.com/mstrobel/procyon) (or just **within the IntelliJ IDE**: Tools--Kotlin--Show Kotlin Bytecode), let's see what happens when we do that to a bit of Kotlin code, just to deepen our understanding of how Kotlin works in relation to Java. 
 
 Suppose we build a `joinToString` function to print out a string representation of a collection with separators. Copy the following to a single file called `collections.kt`:
 
@@ -48,7 +48,7 @@ When building using IntelliJ, the output consists of two files in `build/classes
 - `CollectionsKt.class`
 - `Person.class`
 
-Let's decompile the collections file using `java -jar procyon-decompiler.jar path/to/CollectionsKt.class`. The output is the following Java code:
+Let's decompile the collections file using `java -jar procyon-decompiler.jar path/to/CollectionsKt.class` (or just use the IntelliJ menu action, see above). The output is the following Java code:
 
 ```java
 //
