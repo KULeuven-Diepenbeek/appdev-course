@@ -12,20 +12,20 @@
     <title>2. Kotlin programming: Advanced :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1630074284" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1630074284" rel="stylesheet">
-    <link href="../../css/hybrid.css?1630074284" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1630074284" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1630074284" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1630074284" rel="stylesheet">
-    <link href="../../css/theme.css?1630074284" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1630074284" rel="stylesheet">
+    <link href="../../css/nucleus.css?1630074402" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1630074402" rel="stylesheet">
+    <link href="../../css/hybrid.css?1630074402" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1630074402" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1630074402" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1630074402" rel="stylesheet">
+    <link href="../../css/theme.css?1630074402" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1630074402" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1630074284" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1630074402" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1630074284"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1630074402"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -62,14 +62,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1630074284"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1630074284"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1630074402"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1630074402"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1630074284"></script>
+<script type="text/javascript" src="../../js/search.js?1630074402"></script>
 
     
   </div>
@@ -666,7 +666,7 @@
 
 <span style="color:#00a8c8">data</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">Person</span><span style="color:#111">(</span><span style="color:#00a8c8">val</span> <span style="color:#111">name</span><span style="color:#111">:</span> <span style="color:#111">String</span><span style="color:#111">,</span> <span style="color:#00a8c8">val</span> <span style="color:#111">age</span><span style="color:#111">:</span> <span style="color:#111">Int</span><span style="color:#111">)</span>
 
-<span style="color:#00a8c8">fun</span> <span style="color:#75af00">main</span><span style="color:#111">(</span><span style="color:#111">args</span><span style="color:#111">:</span> <span style="color:#111">Array</span><span style="color:#111">&lt;</span><span style="color:#111">String</span><span style="color:#111">&gt;)</span> <span style="color:#111">{</span>
+<span style="color:#00a8c8">fun</span> <span style="color:#75af00">main</span><span style="color:#111">()</span> <span style="color:#111">{</span>
     <span style="color:#00a8c8">val</span> <span style="color:#111">someCollection</span> <span style="color:#111">=</span> <span style="color:#111">mapOf</span><span style="color:#111">(</span><span style="color:#d88200">&#34;Jos&#34;</span> <span style="color:#111">to</span> <span style="color:#111">Person</span><span style="color:#111">(</span><span style="color:#d88200">&#34;Jos&#34;</span><span style="color:#111">,</span> <span style="color:#ae81ff">20</span><span style="color:#111">),</span> <span style="color:#d88200">&#34;Lowie&#34;</span> <span style="color:#111">to</span> <span style="color:#111">Person</span><span style="color:#111">(</span><span style="color:#d88200">&#34;Lowie&#34;</span><span style="color:#111">,</span> <span style="color:#ae81ff">56</span><span style="color:#111">))</span>
 
     <span style="color:#111">println</span><span style="color:#111">(</span><span style="color:#111">joinToString</span><span style="color:#111">(</span><span style="color:#111">someCollection</span><span style="color:#111">.</span><span style="color:#111">values</span><span style="color:#111">))</span>
@@ -826,7 +826,7 @@
 
 <span style="color:#00a8c8">class</span> <span style="color:#75af00">VeryPrivateMonkey</span> <span style="color:#00a8c8">private</span> <span style="color:#00a8c8">constructor</span><span style="color:#111">():</span> <span style="color:#111">Monkey</span><span style="color:#111">(</span><span style="color:#d88200">&#34;I&#39;d rather not say&#34;</span><span style="color:#111">)</span>
 
-<span style="color:#00a8c8">fun</span> <span style="color:#75af00">main</span><span style="color:#111">(</span><span style="color:#111">args</span><span style="color:#111">:</span> <span style="color:#111">Array</span><span style="color:#111">&lt;</span><span style="color:#111">String</span><span style="color:#111">&gt;)</span> <span style="color:#111">{</span>
+<span style="color:#00a8c8">fun</span> <span style="color:#75af00">main</span><span style="color:#111">()</span> <span style="color:#111">{</span>
     <span style="color:#00a8c8">val</span> <span style="color:#111">george</span> <span style="color:#111">=</span> <span style="color:#111">Monkey</span><span style="color:#111">(</span><span style="color:#d88200">&#34;George&#34;</span><span style="color:#111">)</span>
     <span style="color:#00a8c8">val</span> <span style="color:#111">jeffrey</span> <span style="color:#111">=</span> <span style="color:#111">Monkey</span><span style="color:#111">(</span><span style="color:#111">george</span><span style="color:#111">)</span>
 
@@ -874,7 +874,7 @@
         <span style="color:#00a8c8">get</span><span style="color:#111">()</span> <span style="color:#111">=</span> <span style="color:#d88200">&#34;Prof. Dr. Genius&#34;</span>
 <span style="color:#111">}</span>
 
-<span style="color:#00a8c8">fun</span> <span style="color:#75af00">main</span><span style="color:#111">(</span><span style="color:#111">args</span><span style="color:#111">:</span> <span style="color:#111">Array</span><span style="color:#111">&lt;</span><span style="color:#111">String</span><span style="color:#111">&gt;)</span> <span style="color:#111">{</span>
+<span style="color:#00a8c8">fun</span> <span style="color:#75af00">main</span><span style="color:#111">()</span> <span style="color:#111">{</span>
     <span style="color:#00a8c8">val</span> <span style="color:#111">myProf</span> <span style="color:#111">=</span> <span style="color:#111">PoshNameProvider</span><span style="color:#111">()</span>
     <span style="color:#00a8c8">val</span> <span style="color:#111">me</span> <span style="color:#111">=</span> <span style="color:#111">NickNameProvider</span><span style="color:#111">(</span><span style="color:#d88200">&#34;Exterminator 2000&#34;</span><span style="color:#111">)</span>
 
@@ -1273,17 +1273,17 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1630074284"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1630074284"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1630074284"></script>
-    <script src="../../js/jquery.sticky.js?1630074284"></script>
-    <script src="../../js/featherlight.min.js?1630074284"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1630074284"></script>
-    <script src="../../js/learn.js?1630074284"></script>
-    <script src="../../js/hugo-learn.js?1630074284"></script>
+    <script src="../../js/clipboard.min.js?1630074402"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1630074402"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1630074402"></script>
+    <script src="../../js/jquery.sticky.js?1630074402"></script>
+    <script src="../../js/featherlight.min.js?1630074402"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1630074402"></script>
+    <script src="../../js/learn.js?1630074402"></script>
+    <script src="../../js/hugo-learn.js?1630074402"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1630074284"></script>
+            <script src="../../mermaid/mermaid.js?1630074402"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

@@ -12,20 +12,20 @@
     <title>1. Kotlin programming: Essentials :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1630074284" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1630074284" rel="stylesheet">
-    <link href="../../css/hybrid.css?1630074284" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1630074284" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1630074284" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1630074284" rel="stylesheet">
-    <link href="../../css/theme.css?1630074284" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1630074284" rel="stylesheet">
+    <link href="../../css/nucleus.css?1630074402" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1630074402" rel="stylesheet">
+    <link href="../../css/hybrid.css?1630074402" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1630074402" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1630074402" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1630074402" rel="stylesheet">
+    <link href="../../css/theme.css?1630074402" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1630074402" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1630074284" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1630074402" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1630074284"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1630074402"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -62,14 +62,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1630074284"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1630074284"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1630074402"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1630074402"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1630074284"></script>
+<script type="text/javascript" src="../../js/search.js?1630074402"></script>
 
     
   </div>
@@ -711,7 +711,8 @@
 <h3 id="1-variables">1. Variables</h3>
 <p>As mentioned before, Kotlin has many functional aspects to it. For variable declaration, you can <em>pre-set</em> a value, declaring it will never change (it&rsquo;s a constant), or just call it a &ldquo;variable&rdquo;.</p>
 <div class="devselect">
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">fun</span> <span style="color:#75af00">main</span><span style="color:#111">(</span><span style="color:#111">args</span><span style="color:#111">:</span> <span style="color:#111">Array</span><span style="color:#111">&lt;</span><span style="color:#111">String</span><span style="color:#111">&gt;)</span> <span style="color:#111">{</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#75715e">// in Kotlin, you can leave out the argument in main() if you don&#39;t need it!
+</span><span style="color:#75715e"></span><span style="color:#00a8c8">fun</span> <span style="color:#75af00">main</span><span style="color:#111">(</span><span style="color:#111">args</span><span style="color:#111">:</span> <span style="color:#111">Array</span><span style="color:#111">&lt;</span><span style="color:#111">String</span><span style="color:#111">&gt;)</span> <span style="color:#111">{</span>
     <span style="color:#111">println</span><span style="color:#111">(</span><span style="color:#d88200">&#34;Hi from Kotlin! the Main fun(ction) can be placed outside a class. Cool!&#34;</span><span style="color:#111">)</span>
 
     <span style="color:#00a8c8">var</span> <span style="color:#111">count1</span><span style="color:#111">:</span> <span style="color:#111">Int</span> <span style="color:#111">=</span> <span style="color:#ae81ff">10</span>
@@ -742,7 +743,7 @@
 <p><code>val</code>ues cannot be changed: they&rsquo;re values. What else is new? No <code>;</code>&mdash;finally! Note Kotlin has built-in <a href="https://kotlinlang.org/spec/type-inference.html">type inference</a>: specifying <code>:= Int</code> is not needed, the compiler knows this since you provide a whole number on the right-hand side of the equation sign.</p>
 <p>Try to use <code>val</code> as much as possible: <strong>make verything immutable</strong>, unless you absolutely have to use a mutable variable. This is good practice that promotes functional-style programming and prevents making mistakes with, among others, concurrency. Note that <code>val person = Person()</code> means you cannot assign another <code>Person</code> to the <code>person</code> variable, but you can still mutate the reference itself: <code>person.age = 10</code>&mdash;unless the setter is private, that is.</p>
 <p>Spot the new syntax in the next section:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">fun</span> <span style="color:#75af00">main</span><span style="color:#111">(</span><span style="color:#111">args</span><span style="color:#111">:</span> <span style="color:#111">Array</span><span style="color:#111">&lt;</span><span style="color:#111">String</span><span style="color:#111">&gt;)</span> <span style="color:#111">{</span>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">fun</span> <span style="color:#75af00">main</span><span style="color:#111">()</span> <span style="color:#111">{</span>
     <span style="color:#00a8c8">var</span> <span style="color:#111">name</span><span style="color:#111">:</span> <span style="color:#111">String</span> <span style="color:#111">=</span> <span style="color:#00a8c8">null</span> <span style="color:#75715e">// does not compile
 </span><span style="color:#75715e"></span>    <span style="color:#111">name</span> <span style="color:#111">=</span> <span style="color:#d88200">&#34;Wouter&#34;</span>
 
@@ -854,7 +855,7 @@
         <span style="color:#00a8c8">return</span> <span style="color:#d88200">&#34;(</span><span style="color:#d88200">$x</span><span style="color:#d88200">,</span><span style="color:#d88200">$y</span><span style="color:#d88200">)&#34;</span>
     <span style="color:#111">}</span>    
 <span style="color:#111">}</span>
-<span style="color:#00a8c8">fun</span> <span style="color:#75af00">main</span><span style="color:#111">(</span><span style="color:#111">args</span><span style="color:#111">:</span> <span style="color:#111">Array</span><span style="color:#111">&lt;</span><span style="color:#111">String</span><span style="color:#111">&gt;)</span> <span style="color:#111">{</span>
+<span style="color:#00a8c8">fun</span> <span style="color:#75af00">main</span><span style="color:#111">()</span> <span style="color:#111">{</span>
     <span style="color:#00a8c8">val</span> <span style="color:#111">p</span> <span style="color:#111">=</span> <span style="color:#111">Pawn</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#ae81ff">2</span><span style="color:#111">)</span>
    <span style="color:#111">println</span><span style="color:#111">(</span><span style="color:#d88200">&#34;p is at </span><span style="color:#d88200">$p</span><span style="color:#d88200">&#34;</span><span style="color:#111">)</span>
 <span style="color:#111">}</span>
@@ -1392,17 +1393,17 @@ The <a href="https://kotlinlang.org/docs/coding-conventions.html#functions">offi
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1630074284"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1630074284"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1630074284"></script>
-    <script src="../../js/jquery.sticky.js?1630074284"></script>
-    <script src="../../js/featherlight.min.js?1630074284"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1630074284"></script>
-    <script src="../../js/learn.js?1630074284"></script>
-    <script src="../../js/hugo-learn.js?1630074284"></script>
+    <script src="../../js/clipboard.min.js?1630074402"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1630074402"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1630074402"></script>
+    <script src="../../js/jquery.sticky.js?1630074402"></script>
+    <script src="../../js/featherlight.min.js?1630074402"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1630074402"></script>
+    <script src="../../js/learn.js?1630074402"></script>
+    <script src="../../js/hugo-learn.js?1630074402"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1630074284"></script>
+            <script src="../../mermaid/mermaid.js?1630074402"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
