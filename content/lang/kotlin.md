@@ -136,7 +136,7 @@ fun main(args: Array<String>) {
 This is called **null safety**. To assign `null`, you explicitly have to use the question mark `?` sign. `orEmpty()` returns an empty string if the value it holds is effectively `null`. This method, or using `var?.` to access properties, omits needlessly checking with `if(...)` statements, complicating your codebase, such as the last two statements. 
 
 {{% notice note %}}
-All standard JDK API methods are still available to you. Remember that you are still working on a Java-specific Virtual Machine. Thus, `System.out.println()` is still valid (but can be shortened to `prinln()`, imported from package `kotlin.io`), although you have to omit the `;` at the end of the statement. So, in essence, you already know how to create threads, access files, ...! <br/>This is also very important in Android development, as many system-level Android API methods are still Java. 
+All standard JDK API methods are still available to you. Remember that you are still working on a Java-specific Virtual Machine. Thus, `System.out.println()` is still valid (but can be shortened to `println()`, imported from package `kotlin.io`), although you have to omit the `;` at the end of the statement. So, in essence, you already know how to create threads, access files, ...! <br/>This is also very important in Android development, as many system-level Android API methods are still Java. 
 {{% /notice %}}
 
 ### 2. Conditionals
