@@ -63,8 +63,7 @@ Solution: just keep these the same. The error disappeared here after selecting f
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
       <guid>https://kuleuven-diepenbeek.github.io/appdev-course/lang/kotlin-advanced/</guid>
-      <description>A closer look at Java/Kotlin interop As seen in the kotlin basics, both languages compile to .class files that the JVM can understand. And since class files can be decompiled by the likes of procyon, let&amp;rsquo;s see what happens when we do that to a bit of Kotlin code, just to deepen our understanding of how Kotlin works in relation to Java.
-Suppose we build a joinToString function to print out a string representation of a collection with separators.</description>
+      <description>A closer look at Java/Kotlin interop As seen in the kotlin basics, both languages compile to .class files that the JVM can understand. And since class files can be decompiled by the likes of procyon (or just within the IntelliJ IDE: Tools&amp;ndash;Kotlin&amp;ndash;Show Kotlin Bytecode), let&amp;rsquo;s see what happens when we do that to a bit of Kotlin code, just to deepen our understanding of how Kotlin works in relation to Java.</description>
     </item>
     
     <item>

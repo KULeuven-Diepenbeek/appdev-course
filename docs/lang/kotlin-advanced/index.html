@@ -12,20 +12,20 @@
     <title>2. Kotlin programming: Advanced :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1630074402" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1630074402" rel="stylesheet">
-    <link href="../../css/hybrid.css?1630074402" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1630074402" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1630074402" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1630074402" rel="stylesheet">
-    <link href="../../css/theme.css?1630074402" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1630074402" rel="stylesheet">
+    <link href="../../css/nucleus.css?1630074569" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1630074569" rel="stylesheet">
+    <link href="../../css/hybrid.css?1630074569" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1630074569" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1630074569" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1630074569" rel="stylesheet">
+    <link href="../../css/theme.css?1630074569" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1630074569" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1630074402" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1630074569" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1630074402"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1630074569"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -62,14 +62,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1630074402"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1630074402"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1630074569"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1630074569"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1630074402"></script>
+<script type="text/javascript" src="../../js/search.js?1630074569"></script>
 
     
   </div>
@@ -652,7 +652,7 @@
 
 
 <h2 id="a-closer-look-at-javakotlin-interop">A closer look at Java/Kotlin interop</h2>
-<p>As seen in the <a href="../../lang/kotlin">kotlin basics</a>, both languages compile to <code>.class</code> files that the JVM can understand. And since class files can be decompiled by the likes of <a href="https://github.com/mstrobel/procyon">procyon</a>, let&rsquo;s see what happens when we do that to a bit of Kotlin code, just to deepen our understanding of how Kotlin works in relation to Java.</p>
+<p>As seen in the <a href="../../lang/kotlin">kotlin basics</a>, both languages compile to <code>.class</code> files that the JVM can understand. And since class files can be decompiled by the likes of <a href="https://github.com/mstrobel/procyon">procyon</a> (or just <strong>within the IntelliJ IDE</strong>: Tools&ndash;Kotlin&ndash;Show Kotlin Bytecode), let&rsquo;s see what happens when we do that to a bit of Kotlin code, just to deepen our understanding of how Kotlin works in relation to Java.</p>
 <p>Suppose we build a <code>joinToString</code> function to print out a string representation of a collection with separators. Copy the following to a single file called <code>collections.kt</code>:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">fun</span> <span style="color:#111">&lt;</span><span style="color:#75af00">T</span><span style="color:#111">&gt;</span> <span style="color:#75af00">joinToString</span><span style="color:#111">(</span><span style="color:#111">collection</span><span style="color:#111">:</span> <span style="color:#111">Collection</span><span style="color:#111">&lt;</span><span style="color:#111">T</span><span style="color:#111">&gt;,</span> <span style="color:#111">separator</span><span style="color:#111">:</span> <span style="color:#111">String</span> <span style="color:#111">=</span> <span style="color:#d88200">&#34;:&#34;</span><span style="color:#111">,</span> <span style="color:#111">prefix</span><span style="color:#111">:</span> <span style="color:#111">String</span> <span style="color:#111">=</span> <span style="color:#d88200">&#34;[&#34;</span><span style="color:#111">,</span> <span style="color:#111">suffix</span><span style="color:#111">:</span> <span style="color:#111">String</span> <span style="color:#111">=</span> <span style="color:#d88200">&#34;]&#34;</span><span style="color:#111">):</span> <span style="color:#111">String</span> <span style="color:#111">{</span>
     <span style="color:#00a8c8">val</span> <span style="color:#111">builder</span> <span style="color:#111">=</span> <span style="color:#111">StringBuilder</span><span style="color:#111">(</span><span style="color:#111">prefix</span><span style="color:#111">)</span>
@@ -690,7 +690,7 @@
 <li><code>CollectionsKt.class</code></li>
 <li><code>Person.class</code></li>
 </ul>
-<p>Let&rsquo;s decompile the collections file using <code>java -jar procyon-decompiler.jar path/to/CollectionsKt.class</code>. The output is the following Java code:</p>
+<p>Let&rsquo;s decompile the collections file using <code>java -jar procyon-decompiler.jar path/to/CollectionsKt.class</code> (or just use the IntelliJ menu action, see above). The output is the following Java code:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">//
 </span><span style="color:#75715e">// Decompiled by Procyon v0.6-prerelease
 </span><span style="color:#75715e">//
@@ -1273,17 +1273,17 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1630074402"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1630074402"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1630074402"></script>
-    <script src="../../js/jquery.sticky.js?1630074402"></script>
-    <script src="../../js/featherlight.min.js?1630074402"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1630074402"></script>
-    <script src="../../js/learn.js?1630074402"></script>
-    <script src="../../js/hugo-learn.js?1630074402"></script>
+    <script src="../../js/clipboard.min.js?1630074569"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1630074569"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1630074569"></script>
+    <script src="../../js/jquery.sticky.js?1630074569"></script>
+    <script src="../../js/featherlight.min.js?1630074569"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1630074569"></script>
+    <script src="../../js/learn.js?1630074569"></script>
+    <script src="../../js/hugo-learn.js?1630074569"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1630074402"></script>
+            <script src="../../mermaid/mermaid.js?1630074569"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
