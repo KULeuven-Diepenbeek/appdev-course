@@ -74,6 +74,7 @@ As mentioned before, Kotlin has many functional aspects to it. For variable decl
 <div class="devselect">
 
 ```kt
+// in Kotlin, you can leave out the argument in main() if you don't need it!
 fun main(args: Array<String>) {
     println("Hi from Kotlin! the Main fun(ction) can be placed outside a class. Cool!")
 
@@ -115,7 +116,7 @@ Try to use `val` as much as possible: **make verything immutable**, unless you a
 Spot the new syntax in the next section:
 
 ```kt
-fun main(args: Array<String>) {
+fun main() {
     var name: String = null // does not compile
     name = "Wouter"
 
@@ -256,7 +257,7 @@ class Pawn(theX: Int, theY: Int) {
         return "($x,$y)"
     }    
 }
-fun main(args: Array<String>) {
+fun main() {
     val p = Pawn(1, 2)
    println("p is at $p")
 }

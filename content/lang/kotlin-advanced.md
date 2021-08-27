@@ -21,7 +21,7 @@ fun <T> joinToString(collection: Collection<T>, separator: String = ":", prefix:
 
 data class Person(val name: String, val age: Int)
 
-fun main(args: Array<String>) {
+fun main() {
     val someCollection = mapOf("Jos" to Person("Jos", 20), "Lowie" to Person("Lowie", 56))
 
     println(joinToString(someCollection.values))
@@ -194,7 +194,7 @@ open class Monkey(val name: String) : Animal(), Plays {
 
 class VeryPrivateMonkey private constructor(): Monkey("I'd rather not say")
 
-fun main(args: Array<String>) {
+fun main() {
     val george = Monkey("George")
     val jeffrey = Monkey(george)
 
@@ -247,7 +247,7 @@ class PoshNameProvider() : NameProvider {
         get() = "Prof. Dr. Genius"
 }
 
-fun main(args: Array<String>) {
+fun main() {
     val myProf = PoshNameProvider()
     val me = NickNameProvider("Exterminator 2000")
 
