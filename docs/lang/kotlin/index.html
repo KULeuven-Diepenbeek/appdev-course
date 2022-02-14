@@ -12,20 +12,20 @@
     <title>1. Kotlin programming: Essentials :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1630074569" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1630074569" rel="stylesheet">
-    <link href="../../css/hybrid.css?1630074569" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1630074569" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1630074569" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1630074569" rel="stylesheet">
-    <link href="../../css/theme.css?1630074569" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1630074569" rel="stylesheet">
+    <link href="../../css/nucleus.css?1644835417" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1644835417" rel="stylesheet">
+    <link href="../../css/hybrid.css?1644835417" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1644835417" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1644835417" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1644835417" rel="stylesheet">
+    <link href="../../css/theme.css?1644835417" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1644835417" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1630074569" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1644835417" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1630074569"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1644835417"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -62,14 +62,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1630074569"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1630074569"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1644835417"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1644835417"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1630074569"></script>
+<script type="text/javascript" src="../../js/search.js?1644835417"></script>
 
     
   </div>
@@ -810,6 +810,7 @@
 </div>
 
 <h3 id="3-classes-and-functions">3. Classes and Functions</h3>
+<h4 id="classes">Classes</h4>
 <p>Suppose we&rsquo;d like to represent a pawn and its position. This is the (often painfully long) Java way to do it:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00a8c8">public</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">Pawn</span> <span style="color:#f92672">{</span>
     <span style="color:#00a8c8">private</span> <span style="color:#00a8c8">int</span> <span style="color:#111">x</span><span style="color:#f92672">;</span>
@@ -874,6 +875,18 @@
     <span style="color:#111">}</span>
 <span style="color:#111">}</span>
 </code></pre></div><p>However, this is to be avoided if only one constructor is sufficient.</p>
+<p>The above <code>Pawn(theX: Int, theY: Int)</code> can be even further reduced! Those are primary constructor arguments, but still require the definition of fields (<code>var x = ...</code>). By adding the keyword <code>val</code> or <code>var</code> (depending on whether or not you want your field to be immutable), Kotlin does that for you:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">class</span> <span style="color:#75af00">Pawn</span><span style="color:#111">(</span><span style="color:#00a8c8">var</span> <span style="color:#111">x</span><span style="color:#111">:</span> <span style="color:#111">Int</span><span style="color:#111">,</span> <span style="color:#00a8c8">var</span> <span style="color:#111">y</span><span style="color:#111">:</span> <span style="color:#111">Int</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+    <span style="color:#00a8c8">override</span> <span style="color:#00a8c8">fun</span> <span style="color:#75af00">toString</span><span style="color:#111">():</span> <span style="color:#111">String</span> <span style="color:#111">{</span>
+        <span style="color:#00a8c8">return</span> <span style="color:#d88200">&#34;(</span><span style="color:#d88200">$x</span><span style="color:#d88200">,</span><span style="color:#d88200">$y</span><span style="color:#d88200">)&#34;</span>
+    <span style="color:#111">}</span>
+<span style="color:#111">}</span>
+<span style="color:#00a8c8">fun</span> <span style="color:#75af00">main</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+    <span style="color:#00a8c8">val</span> <span style="color:#111">p</span> <span style="color:#111">=</span> <span style="color:#111">Pawn</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#ae81ff">2</span><span style="color:#111">)</span>
+   <span style="color:#111">println</span><span style="color:#111">(</span><span style="color:#d88200">&#34;p is at </span><span style="color:#d88200">$p</span><span style="color:#d88200">&#34;</span><span style="color:#111">)</span>
+<span style="color:#111">}</span>
+</code></pre></div><p>With the above <code>var</code> in the <code>Pawn()</code> arguments, you can say <code>p.x = 23</code> after defining <code>p</code> in <code>main</code>&mdash;which cannot be altered when using <code>val</code>.</p>
+<h4 id="functions">Functions</h4>
 <p>As for <strong>defining functions</strong>, just <code>fun name() {}</code> suffices. Functions are <em>public</em> by default, contrary to Java&rsquo;s package-access! Adding <code>protected</code>/<code>private</code> before <code>fun</code> prevents this.</p>
 <ul>
 <li>Want arguments? <code>fun name(arg1: Type, arg2: Type)</code>.</li>
@@ -984,7 +997,7 @@ The <a href="https://kotlinlang.org/docs/coding-conventions.html#functions">offi
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#75715e">// step 1: still too verbose
 </span><span style="color:#75715e"></span><span style="color:#111">items</span><span style="color:#111">.</span><span style="color:#111">forEach</span><span style="color:#111">({</span> <span style="color:#111">i</span><span style="color:#111">:</span> <span style="color:#111">Item</span> <span style="color:#f92672">-&gt;</span> <span style="color:#111">println</span><span style="color:#111">(</span><span style="color:#111">i</span><span style="color:#111">)</span> <span style="color:#111">})</span>
 
-<span style="color:#75715e">// step 2: a lambda expression can be moved out of the paranthesis if it&#39;s the last argument
+<span style="color:#75715e">// step 2: a lambda expression can be moved out of the parenthesis if it&#39;s the last argument
 </span><span style="color:#75715e"></span><span style="color:#111">items</span><span style="color:#111">.</span><span style="color:#111">forEach</span><span style="color:#111">()</span> <span style="color:#111">{</span> <span style="color:#111">i</span><span style="color:#111">:</span> <span style="color:#111">Item</span> <span style="color:#f92672">-&gt;</span> <span style="color:#111">println</span><span style="color:#111">(</span><span style="color:#111">i</span><span style="color:#111">)</span> <span style="color:#111">}</span>
 
 <span style="color:#75715e">// step 3: the empty parenthesis can also be removed if the lambda is the only argument
@@ -1393,17 +1406,17 @@ The <a href="https://kotlinlang.org/docs/coding-conventions.html#functions">offi
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1630074569"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1630074569"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1630074569"></script>
-    <script src="../../js/jquery.sticky.js?1630074569"></script>
-    <script src="../../js/featherlight.min.js?1630074569"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1630074569"></script>
-    <script src="../../js/learn.js?1630074569"></script>
-    <script src="../../js/hugo-learn.js?1630074569"></script>
+    <script src="../../js/clipboard.min.js?1644835417"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1644835417"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1644835417"></script>
+    <script src="../../js/jquery.sticky.js?1644835417"></script>
+    <script src="../../js/featherlight.min.js?1644835417"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1644835417"></script>
+    <script src="../../js/learn.js?1644835417"></script>
+    <script src="../../js/hugo-learn.js?1644835417"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1630074569"></script>
+            <script src="../../mermaid/mermaid.js?1644835417"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
