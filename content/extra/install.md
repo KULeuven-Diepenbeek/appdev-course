@@ -4,6 +4,12 @@ title: 1. Installation Guide
 
 ## 0. Downloading IntelliJ IDEA
 
+If you somehow deleted your Java Development Kit from the INF1 course the previous year, you can redownload it at:
+
+- https://jdk.java.net/archive/ without logging in, or
+- https://www.oracle.com/java/technologies/downloads/archive/
+
+Be sure to select the **correct JDK version**, which is `15.0.2` (the latest v15) for this course as of 2022!
 
 This JVM IDE will be our main development studio tool for the course Software Engineering Skills---and the one you can use to practice your Kotlin skills. 
 
