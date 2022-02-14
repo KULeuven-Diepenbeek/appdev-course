@@ -1,6 +1,8 @@
 *.sublime-project
 *.sublime-workspace
 
+.hugo_build.lock
+
 .gradle
 .idea
 build/

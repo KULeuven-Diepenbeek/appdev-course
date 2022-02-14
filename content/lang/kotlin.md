@@ -206,6 +206,8 @@ In Kotlin, `if` and `when` constructs are **expressions**: they hold a value. In
 
 ### 3. Classes and Functions
 
+#### Classes
+
 Suppose we'd like to represent a pawn and its position. This is the (often painfully long) Java way to do it:
 
 ```java
@@ -282,6 +284,25 @@ class Pawn {
 ```
 
 However, this is to be avoided if only one constructor is sufficient. 
+
+The above `Pawn(theX: Int, theY: Int)` can be even further reduced! Those are primary constructor arguments, but still require the definition of fields (`var x = ...`). By adding the keyword `val` or `var` (depending on whether or not you want your field to be immutable), Kotlin does that for you:
+
+```kt
+class Pawn(var x: Int, var y: Int) {
+    override fun toString(): String {
+        return "($x,$y)"
+    }
+}
+fun main() {
+    val p = Pawn(1, 2)
+   println("p is at $p")
+}
+```
+
+With the above `var` in the `Pawn()` arguments, you can say `p.x = 23` after defining `p` in `main`---which cannot be altered when using `val`.
+
+
+#### Functions
 
 As for **defining functions**, just `fun name() {}` suffices. Functions are _public_ by default, contrary to Java's package-access! Adding `protected`/`private` before `fun` prevents this. 
 
@@ -436,7 +457,7 @@ Is the same as _each_ of the following lines in Kotlin:
 // step 1: still too verbose
 items.forEach({ i: Item -> println(i) })
 
-// step 2: a lambda expression can be moved out of the paranthesis if it's the last argument
+// step 2: a lambda expression can be moved out of the parenthesis if it's the last argument
 items.forEach() { i: Item -> println(i) }
 
 // step 3: the empty parenthesis can also be removed if the lambda is the only argument

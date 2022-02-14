@@ -2,6 +2,16 @@
 title: 1. Installation Guide
 ---
 
+## 0. Downloading IntelliJ IDEA
+
+
+This JVM IDE will be our main development studio tool for the course Software Engineering Skills---and the one you can use to practice your Kotlin skills. 
+
+Go to [jetbrains.com/idea/download](https://www.jetbrains.com/idea/download/?fromIDE=) and download the **Community version** (Open Source) of IntelliJ. It contains Java/Kotlin/Groovy/Scala development systems and can handle Gradle as a build tool. That is more than enough for our needs.
+
+What is the difference between IntelliJ and Android Studio? The former is used for general purpose Java/JVM dev, the latter specifically for Android dev. Android Studio is of course built on top of IntelliJ. Sadly, we have to download and install two IDEs if we want to switch from simple exercises to more complex ones. 
+
+
 ## 1. Downloading Android Studio
 
 Go to [developer.android.com/studio](https://developer.android.com/studio) and download the latest **stable** release of the Android Studio IDE (green button). It comes with a JDK version to compile the necessary Java/Kotlin files and automatically downloads the correct Gradle version depending on your project file. 
