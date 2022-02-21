@@ -64,9 +64,16 @@ Inspect and modify desired properties of components if needed in the right-hand 
 
 Without specifying **constraints**, the components will be re-positioned to `(0, )` after publishing to your device. To add constraints, drag the circles to touching edges of the `ConstraintLayout`, or to other elements present in the activity. This "locks" the component, allowing it only to move by adhering to the constraints. After setting all constraints, try moving one of the components: others will move along with it due to the constraints. 
 
-## Adding actions 
+## Adding actions
 
-Once you've got a login button up and running, it would be nice if it actually did something when pressing it. The easiest way to do that is to use [Android View Binding](https://developer.android.com/topic/libraries/view-binding):
+Once you've got a login button up and running, it would be nice if it actually did something when pressing it. One possibility is to rely on the statically generated ids in `R` to manipulate properties:
+
+```kotlin
+findViewById<TextView>(R.id.myIdSetInTheLayout).text = "cool I changed something!!"
+findViewById<TextView>(R.id.amotherId).text = "great stuff"
+```
+
+However, this is (1) cumbersome, (2) relies on IDs as Integers, and (3) not very pretty. Instead, the far easier way to do this is to use [Android View Binding](https://developer.android.com/topic/libraries/view-binding):
 
 > **View binding** is a feature that allows you to more easily write code that interacts with views. Once view binding is enabled in a module, it generates a binding class for each XML layout file present in that module. An instance of a binding class contains direct references to all views that have an ID in the corresponding layout.
 

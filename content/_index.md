@@ -66,9 +66,26 @@ What you should have learned after completing this course:
 
 ### Course planning
 
-See the menu to the left. This course is worth `3.0` ECTS points, hence it will be divided into 12 chunks (weeks) of `1.5h` contact moments each. Extra coaching sessions will be planned if required. 
+This course is worth `3.0` ECTS points, hence it will be divided into 12 chunks (weeks) of `2h` contact moments each. Extra coaching sessions will be planned if required. 
 
 The course lies in the _second semester_ of the _second year_ and has quite a bit of overlap with other software-related courses happening at the same time, specifically [**Software Engineering Skills**](https://kuleuven-diepenbeek.github.io/ses-course/) (SES). During the SES lessons, we'll get to know design patterns and unit testing, which will also be applied in this very course. 
+
+Below is a rough overview of the planned lab sessions:
+
+| date       | contents |
+|------------|----------|
+| 14-02-2022 | Introduction, Kotlin Programming essentials/advanced |
+| 21-02-2022 | Setup of Android Studio, Project overview, Life Cycle: Activities |
+| 28-02-2022 | Activities cont., Messaging & Intents |
+| 07-03-2022 | Messaging & Intents cont. |
+| 14-03-2022 | Complex layouting: Fragments |
+| 21-03-2022 | Fragments: cont. |
+| 28-03-2022 | Complex layouting: Nested Views |
+| 25-04-2022 | Nested views cont., Test Driven Development with Android |
+| 02-05-2022 | Data Storage on Android |
+| 09-05-2022 | Data Storage cont., embedded signals |
+| 16-05-2022 | Security by design |
+| 23-05-2022 | Summary, free project work |
 
 ### Evaluation
 

@@ -63,6 +63,7 @@ Try to **deploy** the project. Your virtual machine will probably not be install
 
 {{% notice warning %}}
 Choosing the right API and target for your virtual device is extremely important. Be sure to match your CPU architecture (x64/arm64/...). Be sure to try and match the API version with the API version in your `build.gradle` targetSdk/compileSdk/buildToolsVersion to avoid compatibility issues.
+For this course, we'll be using the virtual device **Pixal 2 API 30** that targets Android 11.0. Make sure to select "API 26: Android 8.0 (Oreo)" as the minimum SDK for any project you create. 
 {{% /notice %}}
 
 The virtual device will likely have to be downloaded first, usually into `~/.android/avd`, where the `.ini` config file of the emulator also resides. 
