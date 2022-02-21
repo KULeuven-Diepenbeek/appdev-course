@@ -12,20 +12,20 @@
     <title>1. Life Cycle - Activities :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1644846391" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1644846391" rel="stylesheet">
-    <link href="../../css/hybrid.css?1644846391" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1644846391" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1644846391" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1644846391" rel="stylesheet">
-    <link href="../../css/theme.css?1644846391" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1644846391" rel="stylesheet">
+    <link href="../../css/nucleus.css?1645435977" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1645435977" rel="stylesheet">
+    <link href="../../css/hybrid.css?1645435977" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1645435977" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1645435977" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1645435977" rel="stylesheet">
+    <link href="../../css/theme.css?1645435977" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1645435977" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1644846391" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1645435977" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1644846391"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1645435977"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -62,14 +62,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1644846391"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1644846391"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1645435977"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1645435977"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1644846391"></script>
+<script type="text/javascript" src="../../js/search.js?1645435977"></script>
 
     
   </div>
@@ -723,7 +723,10 @@
 </p>
 <p>Without specifying <strong>constraints</strong>, the components will be re-positioned to <code>(0, )</code> after publishing to your device. To add constraints, drag the circles to touching edges of the <code>ConstraintLayout</code>, or to other elements present in the activity. This &ldquo;locks&rdquo; the component, allowing it only to move by adhering to the constraints. After setting all constraints, try moving one of the components: others will move along with it due to the constraints.</p>
 <h2 id="adding-actions">Adding actions</h2>
-<p>Once you&rsquo;ve got a login button up and running, it would be nice if it actually did something when pressing it. The easiest way to do that is to use <a href="https://developer.android.com/topic/libraries/view-binding">Android View Binding</a>:</p>
+<p>Once you&rsquo;ve got a login button up and running, it would be nice if it actually did something when pressing it. One possibility is to rely on the statically generated ids in <code>R</code> to manipulate properties:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#111">findViewById</span><span style="color:#111">&lt;</span><span style="color:#111">TextView</span><span style="color:#111">&gt;(</span><span style="color:#111">R</span><span style="color:#111">.</span><span style="color:#111">id</span><span style="color:#111">.</span><span style="color:#111">myIdSetInTheLayout</span><span style="color:#111">).</span><span style="color:#111">text</span> <span style="color:#111">=</span> <span style="color:#d88200">&#34;cool I changed something!!&#34;</span>
+<span style="color:#111">findViewById</span><span style="color:#111">&lt;</span><span style="color:#111">TextView</span><span style="color:#111">&gt;(</span><span style="color:#111">R</span><span style="color:#111">.</span><span style="color:#111">id</span><span style="color:#111">.</span><span style="color:#111">amotherId</span><span style="color:#111">).</span><span style="color:#111">text</span> <span style="color:#111">=</span> <span style="color:#d88200">&#34;great stuff&#34;</span>
+</code></pre></div><p>However, this is (1) cumbersome, (2) relies on IDs as Integers, and (3) not very pretty. Instead, the far easier way to do this is to use <a href="https://developer.android.com/topic/libraries/view-binding">Android View Binding</a>:</p>
 <blockquote>
 <p><strong>View binding</strong> is a feature that allows you to more easily write code that interacts with views. Once view binding is enabled in a module, it generates a binding class for each XML layout file present in that module. An instance of a binding class contains direct references to all views that have an ID in the corresponding layout.</p>
 </blockquote>
@@ -1241,17 +1244,17 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1644846392"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1644846392"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1644846392"></script>
-    <script src="../../js/jquery.sticky.js?1644846392"></script>
-    <script src="../../js/featherlight.min.js?1644846392"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1644846392"></script>
-    <script src="../../js/learn.js?1644846392"></script>
-    <script src="../../js/hugo-learn.js?1644846392"></script>
+    <script src="../../js/clipboard.min.js?1645435978"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1645435978"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1645435978"></script>
+    <script src="../../js/jquery.sticky.js?1645435978"></script>
+    <script src="../../js/featherlight.min.js?1645435978"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1645435978"></script>
+    <script src="../../js/learn.js?1645435978"></script>
+    <script src="../../js/hugo-learn.js?1645435978"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1644846392"></script>
+            <script src="../../mermaid/mermaid.js?1645435978"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
