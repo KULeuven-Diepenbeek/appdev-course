@@ -69,7 +69,7 @@ Unfortunately, that is not enough. Intents only carry along basic key-value pair
 1. The default Java way: implement `Serializable`. Use [Kotlin native serialization](https://betterprogramming.pub/why-and-how-to-use-kotlins-native-serialization-library-c88c0f14f93d) to make things easier here. 
 2. The Android specific way: implement `Parcelable`. A "parcel" is a "package" that needs to be delivered form one side to the other. Parcels are much more efficient on Android devices than serializable. See the [parcelable implementation generator docs](https://developer.android.com/kotlin/parcelize) on how to enable this in your Kotlin-Android project. 
 
-Let's settle with the first option. In order to add `@Serializable` to your data class, we need to [install the kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization) plugin. Add the plugin to your `plugins` block in your module `build.gradle.kts` (keep the **version** the same as your Kotlin version!):
+Let's settle with the first option. In order to add `@Serializable` to your data class, we need to install the `kotlinx.serialization` plugin. Add the plugin to your `plugins` block in your module `build.gradle.kts` _and_ add a dependency:
 
 ```kt
 plugins {
@@ -77,7 +77,17 @@ plugins {
     id("kotlin-android")
     kotlin("plugin.serialization") version "1.5.21" // add this
 }
+...
+dependencies {
+    ...
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2") // add this
+    ...
+}
 ```
+
+{{% notice warning %}}
+Keep the `plugin.serialization` **version** the same as your Kotlin version! See the [official kotlinx.serialization github repo](https://github.com/Kotlin/kotlinx.serialization) and the [official kotlin serialization docs](https://kotlinlang.org/docs/serialization.html) on how to install and use the plugin.
+{{% /notice %}}
 
 Then, add an implementation dependency `    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")`. Lastly, update your `User` data class to add the `@Serializable` annotation that should get imported from the package `kotlinx.serialization`, and the Java `Serializable` interface to tell Android-specific methods it's a serializable object:
 
@@ -164,7 +174,7 @@ This has [known issues in certain Amdroid API versions](https://stackoverflow.co
 
 #### Retrieving the result from intents
 
-Let's try to capture a picture. Follow along in the [taking photos Android Dev guide](https://developer.android.com/training/camera/photobasics). Remember advertise that your app depends on having a camera by adding `<uses-feature android:name="android.hardware.camera" android:required="true" />` in the manifest file. The intent we're going to use is `MediaStore.ACTION_IMAGE_CAPTURE`.
+Let's try to capture a picture. Follow along in the [taking photos Android Dev guide](https://developer.android.com/training/camera/photobasics). Remember to advertise that your app depends on having a camera by adding `<uses-feature android:name="android.hardware.camera" android:required="true" />` in the manifest file. The intent we're going to use is `MediaStore.ACTION_IMAGE_CAPTURE`.
 
 First, we need to register an "activity result" in our `onCreate()`, because it is only safe to call the method before the activity is in its STARTED state:
 
@@ -224,4 +234,4 @@ You'll learn the most while digging through the source code of the API itself wh
 
 Instead of keeping intents as messages within your application, you can also _broadcast_ them so that any app can receive them. The system delivers various broadcasts for system events, such as on bootup or when the device starts charging. Sending broadcasts can be done through `sendBroadcast()`. 
 
-TODO in or out? what about them?
+The usage of broadcasts is not part of this course.
