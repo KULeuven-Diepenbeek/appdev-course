@@ -71,6 +71,8 @@ Unfortunately, that is not enough. Intents only carry along basic key-value pair
 
 Let's settle with the first option. In order to add `@Serializable` to your data class, we need to install the `kotlinx.serialization` plugin. Add the plugin to your `plugins` block in your module `build.gradle.kts` _and_ add a dependency:
 
+<div class="devselect">
+
 ```kt
 plugins {
     id("com.android.application")
@@ -85,8 +87,23 @@ dependencies {
 }
 ```
 
+```Groovy
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.6.10'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.6.10' // add this
+}
+...
+dependencies {
+    ...
+        implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2' // add this
+    ...
+}
+```
+
+</div>
+
 {{% notice warning %}}
-Keep the `plugin.serialization` **version** the same as your Kotlin version! See the [official kotlinx.serialization github repo](https://github.com/Kotlin/kotlinx.serialization) and the [official kotlin serialization docs](https://kotlinlang.org/docs/serialization.html) on how to install and use the plugin.
+Keep the `plugin.serialization` **version** the same as your Kotlin version! See the [official kotlinx.serialization github repo](https://github.com/Kotlin/kotlinx.serialization) and the [official kotlin serialization docs](https://kotlinlang.org/docs/serialization.html) on how to install and use the plugin. Again, be mindful if you have a `.kts` Gradle build file or not (switch to Groovy above if appropriate).
 {{% /notice %}}
 
 Then, add an implementation dependency `    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")`. Lastly, update your `User` data class to add the `@Serializable` annotation that should get imported from the package `kotlinx.serialization`, and the Java `Serializable` interface to tell Android-specific methods it's a serializable object:
