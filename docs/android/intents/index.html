@@ -12,20 +12,20 @@
     <title>2. Messaging - Intents :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1646044682" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1646044682" rel="stylesheet">
-    <link href="../../css/hybrid.css?1646044682" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1646044682" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1646044682" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1646044682" rel="stylesheet">
-    <link href="../../css/theme.css?1646044682" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1646044682" rel="stylesheet">
+    <link href="../../css/nucleus.css?1646053512" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1646053512" rel="stylesheet">
+    <link href="../../css/hybrid.css?1646053512" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1646053512" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1646053512" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1646053512" rel="stylesheet">
+    <link href="../../css/theme.css?1646053512" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1646053512" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1646044682" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1646053512" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1646044682"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1646053512"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -62,14 +62,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1646044682"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1646044682"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1646053512"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1646053512"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1646044682"></script>
+<script type="text/javascript" src="../../js/search.js?1646053512"></script>
 
     
   </div>
@@ -709,6 +709,7 @@
 <li>The Android specific way: implement <code>Parcelable</code>. A &ldquo;parcel&rdquo; is a &ldquo;package&rdquo; that needs to be delivered form one side to the other. Parcels are much more efficient on Android devices than serializable. See the <a href="https://developer.android.com/kotlin/parcelize">parcelable implementation generator docs</a> on how to enable this in your Kotlin-Android project.</li>
 </ol>
 <p>Let&rsquo;s settle with the first option. In order to add <code>@Serializable</code> to your data class, we need to install the <code>kotlinx.serialization</code> plugin. Add the plugin to your <code>plugins</code> block in your module <code>build.gradle.kts</code> <em>and</em> add a dependency:</p>
+<div class="devselect">
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#111">plugins</span> <span style="color:#111">{</span>
     <span style="color:#111">id</span><span style="color:#111">(</span><span style="color:#d88200">&#34;com.android.application&#34;</span><span style="color:#111">)</span>
     <span style="color:#111">id</span><span style="color:#111">(</span><span style="color:#d88200">&#34;kotlin-android&#34;</span><span style="color:#111">)</span>
@@ -720,8 +721,19 @@
     <span style="color:#111">implementation</span><span style="color:#111">(</span><span style="color:#d88200">&#34;org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2&#34;</span><span style="color:#111">)</span> <span style="color:#75715e">// add this
 </span><span style="color:#75715e"></span>    <span style="color:#f92672">..</span><span style="color:#111">.</span>
 <span style="color:#111">}</span>
-</code></pre></div>
-<div class="notices warning" ><p>Keep the <code>plugin.serialization</code> <strong>version</strong> the same as your Kotlin version! See the <a href="https://github.com/Kotlin/kotlinx.serialization">official kotlinx.serialization github repo</a> and the <a href="https://kotlinlang.org/docs/serialization.html">official kotlin serialization docs</a> on how to install and use the plugin.</p>
+</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Groovy" data-lang="Groovy"><span style="color:#111">plugins</span> <span style="color:#f92672">{</span>
+    <span style="color:#111">id</span> <span style="color:#d88200">&#39;org.jetbrains.kotlin.jvm&#39;</span> <span style="color:#111">version</span> <span style="color:#d88200">&#39;1.6.10&#39;</span>
+    <span style="color:#111">id</span> <span style="color:#d88200">&#39;org.jetbrains.kotlin.plugin.serialization&#39;</span> <span style="color:#111">version</span> <span style="color:#d88200">&#39;1.6.10&#39;</span> <span style="color:#75715e">// add this
+</span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
+<span style="color:#f92672">...</span>
+<span style="color:#111">dependencies</span> <span style="color:#f92672">{</span>
+    <span style="color:#f92672">...</span>
+        <span style="color:#111">implementation</span> <span style="color:#d88200">&#39;org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2&#39;</span> <span style="color:#75715e">// add this
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">...</span>
+<span style="color:#f92672">}</span>
+</code></pre></div></div>
+
+<div class="notices warning" ><p>Keep the <code>plugin.serialization</code> <strong>version</strong> the same as your Kotlin version! See the <a href="https://github.com/Kotlin/kotlinx.serialization">official kotlinx.serialization github repo</a> and the <a href="https://kotlinlang.org/docs/serialization.html">official kotlin serialization docs</a> on how to install and use the plugin. Again, be mindful if you have a <code>.kts</code> Gradle build file or not (switch to Groovy above if appropriate).</p>
 </div>
 
 <p>Then, add an implementation dependency <code>    implementation(&quot;org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2&quot;)</code>. Lastly, update your <code>User</code> data class to add the <code>@Serializable</code> annotation that should get imported from the package <code>kotlinx.serialization</code>, and the Java <code>Serializable</code> interface to tell Android-specific methods it&rsquo;s a serializable object:</p>
@@ -1218,17 +1230,17 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1646044682"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1646044682"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1646044682"></script>
-    <script src="../../js/jquery.sticky.js?1646044682"></script>
-    <script src="../../js/featherlight.min.js?1646044682"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1646044682"></script>
-    <script src="../../js/learn.js?1646044682"></script>
-    <script src="../../js/hugo-learn.js?1646044682"></script>
+    <script src="../../js/clipboard.min.js?1646053512"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1646053512"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1646053512"></script>
+    <script src="../../js/jquery.sticky.js?1646053512"></script>
+    <script src="../../js/featherlight.min.js?1646053512"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1646053512"></script>
+    <script src="../../js/learn.js?1646053512"></script>
+    <script src="../../js/hugo-learn.js?1646053512"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1646044682"></script>
+            <script src="../../mermaid/mermaid.js?1646053512"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
