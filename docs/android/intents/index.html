@@ -12,20 +12,20 @@
     <title>2. Messaging - Intents :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1645435978" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1645435978" rel="stylesheet">
-    <link href="../../css/hybrid.css?1645435978" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1645435978" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1645435978" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1645435978" rel="stylesheet">
-    <link href="../../css/theme.css?1645435978" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1645435978" rel="stylesheet">
+    <link href="../../css/nucleus.css?1646044682" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1646044682" rel="stylesheet">
+    <link href="../../css/hybrid.css?1646044682" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1646044682" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1646044682" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1646044682" rel="stylesheet">
+    <link href="../../css/theme.css?1646044682" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1646044682" rel="stylesheet">
     
-    <link href="../../css/theme-kul.css?1645435978" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1646044682" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1645435978"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1646044682"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -62,14 +62,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1645435978"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1645435978"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1646044682"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1646044682"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1645435978"></script>
+<script type="text/javascript" src="../../js/search.js?1646044682"></script>
 
     
   </div>
@@ -708,13 +708,23 @@
 <li>The default Java way: implement <code>Serializable</code>. Use <a href="https://betterprogramming.pub/why-and-how-to-use-kotlins-native-serialization-library-c88c0f14f93d">Kotlin native serialization</a> to make things easier here.</li>
 <li>The Android specific way: implement <code>Parcelable</code>. A &ldquo;parcel&rdquo; is a &ldquo;package&rdquo; that needs to be delivered form one side to the other. Parcels are much more efficient on Android devices than serializable. See the <a href="https://developer.android.com/kotlin/parcelize">parcelable implementation generator docs</a> on how to enable this in your Kotlin-Android project.</li>
 </ol>
-<p>Let&rsquo;s settle with the first option. In order to add <code>@Serializable</code> to your data class, we need to <a href="https://github.com/Kotlin/kotlinx.serialization">install the kotlinx.serialization</a> plugin. Add the plugin to your <code>plugins</code> block in your module <code>build.gradle.kts</code> (keep the <strong>version</strong> the same as your Kotlin version!):</p>
+<p>Let&rsquo;s settle with the first option. In order to add <code>@Serializable</code> to your data class, we need to install the <code>kotlinx.serialization</code> plugin. Add the plugin to your <code>plugins</code> block in your module <code>build.gradle.kts</code> <em>and</em> add a dependency:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#111">plugins</span> <span style="color:#111">{</span>
     <span style="color:#111">id</span><span style="color:#111">(</span><span style="color:#d88200">&#34;com.android.application&#34;</span><span style="color:#111">)</span>
     <span style="color:#111">id</span><span style="color:#111">(</span><span style="color:#d88200">&#34;kotlin-android&#34;</span><span style="color:#111">)</span>
     <span style="color:#111">kotlin</span><span style="color:#111">(</span><span style="color:#d88200">&#34;plugin.serialization&#34;</span><span style="color:#111">)</span> <span style="color:#111">version</span> <span style="color:#d88200">&#34;1.5.21&#34;</span> <span style="color:#75715e">// add this
 </span><span style="color:#75715e"></span><span style="color:#111">}</span>
-</code></pre></div><p>Then, add an implementation dependency <code>    implementation(&quot;org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2&quot;)</code>. Lastly, update your <code>User</code> data class to add the <code>@Serializable</code> annotation that should get imported from the package <code>kotlinx.serialization</code>, and the Java <code>Serializable</code> interface to tell Android-specific methods it&rsquo;s a serializable object:</p>
+<span style="color:#f92672">..</span><span style="color:#111">.</span>
+<span style="color:#111">dependencies</span> <span style="color:#111">{</span>
+    <span style="color:#f92672">..</span><span style="color:#111">.</span>
+    <span style="color:#111">implementation</span><span style="color:#111">(</span><span style="color:#d88200">&#34;org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2&#34;</span><span style="color:#111">)</span> <span style="color:#75715e">// add this
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">..</span><span style="color:#111">.</span>
+<span style="color:#111">}</span>
+</code></pre></div>
+<div class="notices warning" ><p>Keep the <code>plugin.serialization</code> <strong>version</strong> the same as your Kotlin version! See the <a href="https://github.com/Kotlin/kotlinx.serialization">official kotlinx.serialization github repo</a> and the <a href="https://kotlinlang.org/docs/serialization.html">official kotlin serialization docs</a> on how to install and use the plugin.</p>
+</div>
+
+<p>Then, add an implementation dependency <code>    implementation(&quot;org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2&quot;)</code>. Lastly, update your <code>User</code> data class to add the <code>@Serializable</code> annotation that should get imported from the package <code>kotlinx.serialization</code>, and the Java <code>Serializable</code> interface to tell Android-specific methods it&rsquo;s a serializable object:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#75af00">@Serializable</span>
 <span style="color:#00a8c8">data</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">User</span><span style="color:#111">(</span><span style="color:#00a8c8">val</span> <span style="color:#111">name</span><span style="color:#111">:</span> <span style="color:#111">String</span><span style="color:#111">)</span> <span style="color:#111">:</span> <span style="color:#111">java</span><span style="color:#111">.</span><span style="color:#111">io</span><span style="color:#111">.</span><span style="color:#111">Serializable</span> <span style="color:#111">{</span>
 <span style="color:#111">}</span>
@@ -779,7 +789,7 @@
 <span style="color:#111">}</span>
 </code></pre></div><p>This has <a href="https://stackoverflow.com/questions/62535856/intent-resolveactivity-returns-null-in-api-30">known issues in certain Amdroid API versions</a>. A fallback would be to still catch the exception.</p>
 <h4 id="retrieving-the-result-from-intents">Retrieving the result from intents</h4>
-<p>Let&rsquo;s try to capture a picture. Follow along in the <a href="https://developer.android.com/training/camera/photobasics">taking photos Android Dev guide</a>. Remember advertise that your app depends on having a camera by adding <code>&lt;uses-feature android:name=&quot;android.hardware.camera&quot; android:required=&quot;true&quot; /&gt;</code> in the manifest file. The intent we&rsquo;re going to use is <code>MediaStore.ACTION_IMAGE_CAPTURE</code>.</p>
+<p>Let&rsquo;s try to capture a picture. Follow along in the <a href="https://developer.android.com/training/camera/photobasics">taking photos Android Dev guide</a>. Remember to advertise that your app depends on having a camera by adding <code>&lt;uses-feature android:name=&quot;android.hardware.camera&quot; android:required=&quot;true&quot; /&gt;</code> in the manifest file. The intent we&rsquo;re going to use is <code>MediaStore.ACTION_IMAGE_CAPTURE</code>.</p>
 <p>First, we need to register an &ldquo;activity result&rdquo; in our <code>onCreate()</code>, because it is only safe to call the method before the activity is in its STARTED state:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">class</span> <span style="color:#75af00">MainActivity</span> <span style="color:#111">:</span> <span style="color:#111">AppCompatActivity</span><span style="color:#111">()</span> <span style="color:#111">{</span>
     <span style="color:#00a8c8">private</span> <span style="color:#00a8c8">lateinit</span> <span style="color:#00a8c8">var</span> <span style="color:#111">pictureActivityResult</span><span style="color:#111">:</span> <span style="color:#111">ActivityResultLauncher</span><span style="color:#111">&lt;</span><span style="color:#111">Void</span><span style="color:#111">&gt;</span>
@@ -825,7 +835,7 @@
 
 <h3 id="deliveringreceiving-a-broadcast">Delivering/receiving a broadcast</h3>
 <p>Instead of keeping intents as messages within your application, you can also <em>broadcast</em> them so that any app can receive them. The system delivers various broadcasts for system events, such as on bootup or when the device starts charging. Sending broadcasts can be done through <code>sendBroadcast()</code>.</p>
-<p>TODO in or out? what about them?</p>
+<p>The usage of broadcasts is not part of this course.</p>
 
 
 <footer class="footline">
@@ -1208,17 +1218,17 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1645435978"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1645435978"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1645435978"></script>
-    <script src="../../js/jquery.sticky.js?1645435978"></script>
-    <script src="../../js/featherlight.min.js?1645435978"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1645435978"></script>
-    <script src="../../js/learn.js?1645435978"></script>
-    <script src="../../js/hugo-learn.js?1645435978"></script>
+    <script src="../../js/clipboard.min.js?1646044682"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1646044682"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1646044682"></script>
+    <script src="../../js/jquery.sticky.js?1646044682"></script>
+    <script src="../../js/featherlight.min.js?1646044682"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1646044682"></script>
+    <script src="../../js/learn.js?1646044682"></script>
+    <script src="../../js/hugo-learn.js?1646044682"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1645435978"></script>
+            <script src="../../mermaid/mermaid.js?1646044682"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
