@@ -3,6 +3,10 @@
 
 .hugo_build.lock
 
+node_modules/
+package-lock.json
+w2pdf_output/
+
 .gradle
 .idea
 build/
