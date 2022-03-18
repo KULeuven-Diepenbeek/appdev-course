@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Course Contents on App Development</title>
+    <link>https://kuleuven-diepenbeek.github.io/appdev-course/</link>
+    <description>Recent content in Course Contents on App Development</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-uk</language>
+    <managingEditor>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</managingEditor>
+    <webMaster>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</webMaster><atom:link href="https://kuleuven-diepenbeek.github.io/appdev-course/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>1. Installation Guide</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/extra/install/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/extra/install/</guid>
+      <description>0. Downloading IntelliJ IDEA If you somehow deleted your Java Development Kit from the INF1 course the previous year, you can redownload it at:
+ https://jdk.java.net/archive/ without logging in, or https://www.oracle.com/java/technologies/downloads/archive/  Be sure to select the correct JDK version, which is 15.0.2 (the latest v15) for this course as of 2022!
+This JVM IDE will be our main development studio tool for the course Software Engineering Skills&amp;mdash;and the one you can use to practice your Kotlin skills.</description>
+    </item>
+    
+    <item>
+      <title>1. Kotlin programming: Essentials</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/lang/kotlin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/lang/kotlin/</guid>
+      <description>Why in Kotlin, Yet Another Language? Good question! The answer is multi-faceted:
+1. Because Google Says So Google says you should Develop Android apps with Kotlin. It&amp;rsquo;s their recommended way of doing so. They state:
+ Write better Android apps faster with Kotlin. Kotlin is a modern statically typed programming language used by over 60% of professional Android developers that helps boost productivity, developer satisfaction, and code safety.
+ Among a slew of listed advantages, they have also created an Android Basics in Kotlin course, where the basics of the Kotlin language is the first hurdle to take.</description>
+    </item>
+    
+    <item>
+      <title>1. Life Cycle - Activities</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/android/activities/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/android/activities/</guid>
+      <description>What&amp;rsquo;s an activity?  An activity is a single, focused thing that a user can do.
+ To put it simply, an activity is a window in your app. Each window should do one thing, such as:
+ Let the user login Show a welcome screen Let the user pick something out of a list Show the user detail information of the picked item Let the user modify settings &amp;hellip;    Two example activities.</description>
+    </item>
+    
+    <item>
+      <title>2. Common Errors FAQ</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/extra/faq/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/extra/faq/</guid>
+      <description>1. minSdkVersion mismatch Error:
+ &amp;ldquo;Expected minSdkVersion &amp;gt;= 21 but found 1&amp;rdquo;
+ Cause: mismatch in build.gradle of android SDK and configured SDK in your emulator.
+Solution: just keep these the same. The error disappeared here after selecting for example 30/30.
+2. Emulator process was killed? Error:
+ Emulator: process was killed
+ Cause: a hundred different things. Consult the Android Studio error log for more details&amp;mdash;these aren&amp;rsquo;t displayed in the IDE.</description>
+    </item>
+    
+    <item>
+      <title>2. Kotlin programming: Advanced</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/lang/kotlin-advanced/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/lang/kotlin-advanced/</guid>
+      <description>A closer look at Java/Kotlin interop As seen in the kotlin basics, both languages compile to .class files that the JVM can understand. And since class files can be decompiled by the likes of procyon (or just within the IntelliJ IDE: Tools&amp;ndash;Kotlin&amp;ndash;Show Kotlin Bytecode), let&amp;rsquo;s see what happens when we do that to a bit of Kotlin code, just to deepen our understanding of how Kotlin works in relation to Java.</description>
+    </item>
+    
+    <item>
+      <title>2. Messaging - Intents</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/android/intents/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/android/intents/</guid>
+      <description>Using intents to start an internal activity What if, instead of showing a generic welcome screen after logging in, we want to personally welcome the user?
+Instead of &amp;ldquo;Welcome, have a nice day&amp;rdquo;, as pictured in:
+  Two example activities from 1.1.  We&amp;rsquo;d like to say &amp;ldquo;Welcome [username]&amp;rdquo;! That is, we want to pass arguments from one activity to the next. We&amp;rsquo;ve already created an intent to start a second activity using Intent(this, MyNewActivity::class.</description>
+    </item>
+    
+    <item>
+      <title>3. Complex layouts: Fragments</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/android/fragments/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/android/fragments/</guid>
+      <description>See also: Android developer guide: fragments.
+What&amp;rsquo;s a fragment? A fragment is, simply put, a reusable UI portion of an activity. For example, the welcome message from the activities chapter can be a separate fragment, and the image containing the avatar of the user can be a separate fragment. Fragments are programmatically created by extending from Fragment from package androidx.fragment.app.
+From the docs:
+ A Fragment represents a reusable portion of your app&amp;rsquo;s UI.</description>
+    </item>
+    
+    <item>
+      <title>3. Kotlin Examples/Exercises</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/lang/kotlin-examples/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/lang/kotlin-examples/</guid>
+      <description>All examples can be found in the GitHub repository of this very course, at https://github.com/KULeuven-Diepenbeek/appdev-course/tree/main/examples
+We&amp;rsquo;ll be using IntelliJ to create simple Kotlin projects, so leave Android Studio closed for the moment. While creating a new project, choose
+ A Gradle style project, Enable the Kotlin DSL Build Script, and finally Check Kotlin/JVM (uncheck Java)    New Project settings for Kotlin  Wait for the initial Gradle download/build to finish.</description>
+    </item>
+    
+    <item>
+      <title>3. Links and Tutorials</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/extra/links/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/extra/links/</guid>
+      <description>Tutorials Kotlin-Specific  Exercises: The Official Kotlin Koans and examples The Kotlin docs: basics, ways to learn, what&amp;rsquo;s new, the YouTube channel, &amp;hellip; Live Kotlin coding sessions to be followed on Twitch  Android-Specific  Official Android Developer Guide: thé way to start learning Android development. Android developer MAD skills videos in case you&amp;rsquo;re too lazy to read.  Third party tutorials that can prove to be handy as well:</description>
+    </item>
+    
+    <item>
+      <title>4. Complex layouts: Nested Views</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/android/views/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/android/views/</guid>
+      <description>1. RecyclerViews See also: Android dev guide: create dynamic lists with RecyclerView.
+Now that we know what activities are, how to re-use components using fragments, and how to interact between these systems using intents, we almost know all the basics of Android app development. Remember the Mac Mail App layout, introduced in the fragment chapter?
+  Left: the master screen with navigation. Right: the detail: zoomed in on a single mail.</description>
+    </item>
+    
+    <item>
+      <title>4. Project Information</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/extra/project/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/extra/project/</guid>
+      <description>Minimum requirements Every App should at minimum contain the following:
+ At least three fragments or activities; At least one data storage/request system; At least one master/detail using a RecyclerView; At least one Intent; At least one menu option; At least one data signal to be used (GPS, Camera, accelerometer, &amp;hellip;); At least one extra feature you can freely choose. For instance:  Authentication through Google&amp;rsquo;s Play Store or Firebase Sharing data between apps using a ContentProvider Etc&amp;hellip; See links for more inspiration on what&amp;rsquo;s possible.</description>
+    </item>
+    
+    <item>
+      <title>4. Test Driven Development</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/lang/tdd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/lang/tdd/</guid>
+      <description>Learn the whys and the hows of TDD in Software Engineering Skills: TDD.
+Kotlin and JUnit 5 When writing tests in Kotlin, pretty much all conventional Java rules apply. Just write the JUnit 5 test as if you were writing a Java test, except that the syntax is Kotlin-specific.
+An example:
+class PeriodTests { @Test fun `Given two overlapping periods When overlapsWith is called Then return true`() { val jandec19 = Periode( LocalDate.</description>
+    </item>
+    
+    <item>
+      <title>5. Data Storage: File/Network</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/android/data-storage/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/android/data-storage/</guid>
+      <description>Suppose we&amp;rsquo;d like to store the TODO elements in the example from the nested views chapter. Remember that TODO app, where you could check off several items and add new ones? Every time we reboot that app, our newly added items and checked state&amp;mdash;the data, so to speak&amp;mdash;is gone.
+  The TODO App from the view chapter: how do we save its state?  There are several possibilities to tuck away and re-retrieve the above data:</description>
+    </item>
+    
+    <item>
+      <title>5. Demo Project</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/extra/demo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/extra/demo/</guid>
+      <description>How Long To Beat The demo project, residing in the examples/kkotlin/howlongtobeat directory in the source repository, incorporates everything this course has to offer, to give you a taste of what is possible to create within a limited time frame using your newly acquired knowledge. It contains:
+ One main activity, MainActivity, controlling the navigation drawer Many segments controlled by a navigation system, including two RecyclerView lists. Permissions for internet and the camera, and an intent system to share information.</description>
+    </item>
+    
+    <item>
+      <title>5. Multiplatform Mobile dev.</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/lang/multiplatform/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/lang/multiplatform/</guid>
+      <description>This small Section is completely optional, and not part of the core contents of this course. It showcases other possibilities for mobile app development, broken free from the solitary confinements of Android native code.
+ 1. Other Native Solutions Not everyone buys Android-based phones. Apple&amp;rsquo;s iPhone is arguably (much) more popular, and is based on iOS. Developing apps for iOS is a totally different development experience: it requires other tools, another language, and other deployment chains.</description>
+    </item>
+    
+    <item>
+      <title>6. Embedded Signals</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/android/signals/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/android/signals/</guid>
+      <description>Smartphones typically come equipped with a lot of hardware trinkets: multiple camera lenses, bio-metric scanners, gyroscopes, light sensors, &amp;hellip; Accessing these in your app might lead to inventive use. We&amp;rsquo;ve already seen in the intents chapter that implicit intents are a good way to let other apps or the Android system itself handle the security issues involved with accessing these embedded signals. Some commonly used systems are even provided for you in the ActivityResultContracts class, such as TakePicture and TakePicturePreview.</description>
+    </item>
+    
+    <item>
+      <title>7. Security By Design</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/android/security/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/android/security/</guid>
+      <description>Google&amp;rsquo;s &amp;ldquo;safest mobile platform in the world&amp;rdquo; As the Android Developer guide on security states:
+ Our goal is to make Android the safest mobile platform in the world. That&amp;rsquo;s why we consistently invest in technologies that bolster the security of the platform, its apps, and the global Android ecosystem. It&amp;rsquo;s a responsibility we share with you, as developers, to keep users safe and secure.
+ Sadly enough, Google itself doesn&amp;rsquo;t quite adhere to its own philosophy, as the Android OS is full of trackers that push personal data into Google&amp;rsquo;s greedy hands.</description>
+    </item>
+    
+  </channel>
+</rss>

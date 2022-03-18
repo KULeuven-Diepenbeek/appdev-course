@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.81.0" />
+    <meta name="description" content="">
+
+
+    <link rel="icon" href="../../images/favicon.png" type="image/png">
+
+    <title>3. Complex layouts: Fragments :: App Development</title>
+
+    
+    <link href="../../css/nucleus.css?1647618381" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1647618381" rel="stylesheet">
+    <link href="../../css/hybrid.css?1647618381" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1647618381" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1647618381" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1647618381" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1647618381" rel="stylesheet">
+    <link href="../../css/theme.css?1647618381" rel="stylesheet">
+    <link href="../../css/devselector.css?1647618381" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1647618381" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1647618381" rel="stylesheet">
+    
+
+    <script src="../../js/jquery-3.3.1.min.js?1647618381"></script>
+    <script src="../../js/devselector.js?1647618381"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+        :not(pre) > code + span.copy-to-clipboard {
+            display: none;
+        }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="../../android/fragments/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a href="https://www.kuleuven.be/kuleuven/" target="_blank">
+  <img src="../../images/kul.png" alt="KU Leuven" /><br/>
+</a>
+<a href="https://www.uhasselt.be/" target="_blank">
+  <img src="../../images/uhasselt.svg" alt="UHasselt" id="uhlogo" />
+</a>
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../../js/lunr.min.js?1647618381"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1647618381"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
+    
+</script>
+<script type="text/javascript" src="../../js/search.js?1647618381"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+
+      <h3><a href="../../">Course Contents</a></h3>
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/android/" title="1. Android Essentials" class="dd-item
+        parent
+        
+        
+        ">
+      <a href="../../android/">
+          1. Android Essentials
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/activities/" title="1. Life Cycle - Activities" class="dd-item ">
+        <a href="../../android/activities/">
+        1. Life Cycle - Activities
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/intents/" title="2. Messaging - Intents" class="dd-item ">
+        <a href="../../android/intents/">
+        2. Messaging - Intents
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/fragments/" title="3. Complex layouts: Fragments" class="dd-item active">
+        <a href="../../android/fragments/">
+        3. Complex layouts: Fragments
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/views/" title="4. Complex layouts: Nested Views" class="dd-item ">
+        <a href="../../android/views/">
+        4. Complex layouts: Nested Views
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/data-storage/" title="5. Data Storage: File/Network" class="dd-item ">
+        <a href="../../android/data-storage/">
+        5. Data Storage: File/Network
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/signals/" title="6. Embedded Signals" class="dd-item ">
+        <a href="../../android/signals/">
+        6. Embedded Signals
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/security/" title="7. Security By Design" class="dd-item ">
+        <a href="../../android/security/">
+        7. Security By Design
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/lang/" title="2. Language &amp; Support Tools" class="dd-item
+        
+        
+        
+        ">
+      <a href="../../lang/">
+          2. Language &amp; Support Tools
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/lang/kotlin/" title="1. Kotlin programming: Essentials" class="dd-item ">
+        <a href="../../lang/kotlin/">
+        1. Kotlin programming: Essentials
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/lang/kotlin-advanced/" title="2. Kotlin programming: Advanced" class="dd-item ">
+        <a href="../../lang/kotlin-advanced/">
+        2. Kotlin programming: Advanced
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/lang/kotlin-examples/" title="3. Kotlin Examples/Exercises" class="dd-item ">
+        <a href="../../lang/kotlin-examples/">
+        3. Kotlin Examples/Exercises
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/lang/tdd/" title="4. Test Driven Development" class="dd-item ">
+        <a href="../../lang/tdd/">
+        4. Test Driven Development
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/lang/multiplatform/" title="5. Multiplatform Mobile dev." class="dd-item ">
+        <a href="../../lang/multiplatform/">
+        5. Multiplatform Mobile dev.
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/extra/" title="3. Extra info" class="dd-item
+        
+        
+        
+        ">
+      <a href="../../extra/">
+          3. Extra info
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/extra/install/" title="1. Installation Guide" class="dd-item ">
+        <a href="../../extra/install/">
+        1. Installation Guide
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/extra/faq/" title="2. Common Errors FAQ" class="dd-item ">
+        <a href="../../extra/faq/">
+        2. Common Errors FAQ
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/extra/links/" title="3. Links and Tutorials" class="dd-item ">
+        <a href="../../extra/links/">
+        3. Links and Tutorials
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/extra/project/" title="4. Project Information" class="dd-item ">
+        <a href="../../extra/project/">
+        4. Project Information
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/extra/demo/" title="5. Demo Project" class="dd-item ">
+        <a href="../../extra/demo/">
+        5. Demo Project
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+        
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li>
+                  <a class="padding" href="https://uhintra03.uhasselt.be/studiegidswww/opleidingsonderdeel.aspx?a=2021&amp;i=3291&amp;n=4&amp;t=01"><i class='fa fa-university'></i> ECTS Sheet</a>
+              </li>
+          
+              <li>
+                  <a class="padding" href="https://toledo.kuleuven.be/portal/"><i class='fa fa-university'></i> Toledo</a>
+              </li>
+          
+              <li>
+                  <a class="padding" href="https://github.com/kuleuven-diepenbeek/appdev-course/"><i class='fab fa-github'></i> Course Git Repository</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='../../'>Course Contents</a> > <a href='../../android/'>1. Android Essentials</a> > 3. Complex layouts: Fragments
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#whats-a-fragment">What&rsquo;s a fragment?</a></li>
+    <li><a href="#why-use-fragments-reusabilitymodularity">Why use fragments? Reusability/Modularity</a>
+      <ul>
+        <li><a href="#creating-fragments">Creating fragments</a></li>
+      </ul>
+    </li>
+    <li><a href="#why-use-fragments-easing-navigation">Why use fragments? Easing navigation</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              3. Complex layouts: Fragments
+            </h1>
+          
+
+        
+
+
+<p>See also: <a href="https://developer.android.com/guide/fragments">Android developer guide: fragments</a>.</p>
+<h2 id="whats-a-fragment">What&rsquo;s a fragment?</h2>
+<p>A fragment is, simply put, a <em>reusable</em> UI portion of an activity. For example, the welcome message from the <a href="../../android/activities/">activities chapter</a> can be a separate fragment, and the image containing the avatar of the user can be a separate fragment. Fragments are programmatically created by extending from <code>Fragment</code> from package <code>androidx.fragment.app</code>.</p>
+<p>From the docs:</p>
+<blockquote>
+<p>A Fragment represents a reusable portion of your app&rsquo;s UI. A fragment defines and manages its own layout, has its own lifecycle, and can handle its own input events. Fragments cannot live on their own&ndash;they must be hosted by an activity or another fragment. The fragment’s view hierarchy becomes part of, or attaches to, the host’s view hierarchy.</p>
+</blockquote>
+<p>Until now, we have not explicitly used fragments: we have directly created UI components on top of activities by dragging them in the design editor onto the designated <em>layout</em>. In most cases, that would be a single <code>ConstraintLayout</code> that uses constraints to specify where that particular button and text input component should be placed. When integrating fragments into an activity, these things do not change: instead of putting them directly onto the activity, you simply configure them on the fragment, and put one or more fragments onto an activity. In other words, it&rsquo;s another <em>abstraction layer</em>.</p>
+<p>A few things to remember:</p>
+<ul>
+<li>Fragments have their own lifecycle</li>
+<li>There&rsquo;s always an activity that holds one or more fragments (the parent container), and fragments are affected by the lifecycle of the activity.</li>
+</ul>
+<h2 id="why-use-fragments-reusabilitymodularity">Why use fragments? Reusability/Modularity</h2>
+<p>The easiest way to demonstrate its use is through the following schematic:</p>
+<p><figure>
+	<a href="../../img/fragment.jpg" data-featherlight="image">
+		<img src="../../img/fragment.jpg"   title="src: Android docs">
+	</a>
+	
+		<figcaption>src: Android docs</figcaption>
+	
+</figure>
+</p>
+<p>Suppose we develop an Android app that we know will be running on:</p>
+<ul>
+<li>A tablet with a big screen, where people usually hold it horizontally.</li>
+<li>A smartphone with a smaller screen that is usually held vertically.</li>
+</ul>
+<p>On that smartphone screen, because of the dimensions, not all UI components can be shown at once. As a concrete example, just think about any master/detail screen you&rsquo;ve ever used in a tablet or on a smartphone: the <strong>master</strong> screen, that displays a <em>list</em> of things to select, is always shown first, while after selecting something, the <strong>detail</strong> screen appears. On a tablet device or on a PC, we can show both screens at the same time! This effect is visible in your typical Mail client:</p>
+<p><figure>
+	<a href="../../img/mail.jpg" data-featherlight="image">
+		<img src="../../img/mail.jpg"   title="Left: the master screen with navigation. Right: the detail: zoomed in on a single mail.">
+	</a>
+	
+		<figcaption>Left: the master screen with navigation. Right: the detail: zoomed in on a single mail.</figcaption>
+	
+</figure>
+</p>
+<p>Instead of designing two separate applications, we want to encapsulate these into a single one where we simply re-use the master part and the detail part! On a smaller screen, we split those into two separate activities. On a bigger screen, we simply show them both at once. Thus, we need something to capture the essence of this principle: hence the concept of <em>fragments</em>.</p>
+<h3 id="creating-fragments">Creating fragments</h3>
+<p>Just treat them as UI components. That is, they are also defined in the layout <code>.xml</code> files, and they are also a part of your <code>ConstsraintLayout</code> (constraints omitted for brevity):</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;fragment</span>
+    <span style="color:#75af00">android:name=</span><span style="color:#d88200">&#34;be.kuleuven.fragmentswitcher.FirstFragment&#34;</span>
+    <span style="color:#75af00">android:id=</span><span style="color:#d88200">&#34;@+id/myfragment&#34;</span>
+    <span style="color:#75af00">android:layout_width=</span><span style="color:#d88200">&#34;match_parent&#34;</span>
+    <span style="color:#75af00">android:layout_height=</span><span style="color:#d88200">&#34;0dp&#34;</span> <span style="color:#f92672">/&gt;</span>
+</code></pre></div><p>As with activities, they need their own Java/Kotlin class, so make sure to add the needed classes. (Rightclick, new -&gt; Fragment -&gt; Blank, this automatically creates the layout file. If your fragment is called <code>FirstFragment</code>, the layout file will be <code>fragement_first</code>). The gray <code>&lt;fragment/&gt;</code> box indicates just <em>a ssection</em> of the activity that will be <strong>replaced</strong> as fragments get swapped in and out! That means we don&rsquo;t need to (re)create an entire activity, and the fragment can be re-used.</p>
+<p>In the simplest possible form, the fragment companion class looks like this:</p>
+<div class="devselect">
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">class</span> <span style="color:#75af00">FirstFragment</span> <span style="color:#111">:</span> <span style="color:#111">Fragment</span><span style="color:#111">(</span><span style="color:#111">R</span><span style="color:#111">.</span><span style="color:#111">layout</span><span style="color:#111">.</span><span style="color:#111">fragment_first</span><span style="color:#111">)</span>
+</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00a8c8">public</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">FirstFragment</span> <span style="color:#00a8c8">extends</span> <span style="color:#75af00">Fragment</span><span style="color:#f92672">(</span><span style="color:#111">R</span><span style="color:#f92672">.</span><span style="color:#75af00">layout</span><span style="color:#f92672">.</span><span style="color:#75af00">fragment_first</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#f92672">}</span>
+</code></pre></div></div>
+<p>Instead of returning <code>inflater.inflate(R.layout.fragment_first, container, false)</code> in an override of <code>onCreateView()</code>, simply pass your fragment ID to the super constructor. <code>onCreateView()</code> is the function where your view properties should be set, and not in <code>onCreate()</code>, where you&rsquo;d likely put it if you&rsquo;re used to working with activities.</p>
+<p>The <code>android:name</code> property in the XML refers to the class name of the fragment you initially want the fragment container to hold. Boot up the application, and you&rsquo;ll see your first fragment layout in the activity. However, if you want to change dynamically, change the fragment to a <code>&lt;FrameLayout/&gt;</code> (remove the name), and let&rsquo;s add some code in the MainActivity <code>onCreate()</code>:</p>
+<div class="devselect">
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">val</span> <span style="color:#111">firstFragment</span> <span style="color:#111">=</span> <span style="color:#111">FirstFragment</span><span style="color:#111">()</span>
+<span style="color:#111">supportFragmentManager</span><span style="color:#111">.</span><span style="color:#111">beginTransaction</span><span style="color:#111">().</span><span style="color:#111">apply</span> <span style="color:#111">{</span> 
+    <span style="color:#111">replace</span><span style="color:#111">(</span><span style="color:#111">R</span><span style="color:#111">.</span><span style="color:#111">id</span><span style="color:#111">.</span><span style="color:#111">fragmentContainer</span><span style="color:#111">,</span> <span style="color:#111">firstFragment</span><span style="color:#111">)</span>
+    <span style="color:#111">commit</span><span style="color:#111">()</span>
+<span style="color:#111">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#111">FirstFragment</span> <span style="color:#111">firstFragment</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">new</span> <span style="color:#111">FirstFragment</span><span style="color:#f92672">();</span>
+<span style="color:#111">Transaction</span> <span style="color:#111">transaction</span> <span style="color:#f92672">=</span> <span style="color:#111">supportFragmentManager</span><span style="color:#f92672">.</span><span style="color:#75af00">beginTransaction</span><span style="color:#f92672">();</span>
+<span style="color:#111">transaction</span><span style="color:#f92672">.</span><span style="color:#75af00">replace</span><span style="color:#f92672">(</span><span style="color:#111">R</span><span style="color:#f92672">.</span><span style="color:#75af00">id</span><span style="color:#f92672">.</span><span style="color:#75af00">fragmentContainer</span><span style="color:#f92672">,</span> <span style="color:#111">firstFragment</span><span style="color:#f92672">);</span>
+<span style="color:#111">transaction</span><span style="color:#f92672">.</span><span style="color:#75af00">commit</span><span style="color:#f92672">();</span>
+</code></pre></div></div>
+<p>See also: <a href="https://developer.android.com/guide/fragments/transactions">android dev guide: fragment transactions</a>. Reboot the application and you&rsquo;ll still see the first fragment. Use the same code in button click listeners to dynamically change when your application is running.</p>
+<h4 id="fixing-the-back-button">Fixing the back button</h4>
+<p>While interacting with fragment-based applications, your users will likely expect the <em>back button</em> to work properly. That is, when they press &ldquo;back&rdquo;, they expect the previous &ldquo;screen&rdquo; to be shown. Whether that is an activity or a fragment is an implementation detail, not something an end user should be bothered with! However, <code>replace()</code> does not suffice. Add a call to <code>addToBackStack()</code> before the <code>commit()</code> and that problem is fixed.</p>
+<p>Everything in Android is pushed onto a <strong>stack</strong>. When the user wants to go back, an item is <strong>popped</strong> off the stack. When the user navigates to another screen&mdash;be it activity or fragment&mdash;, an item is (or should be) <strong>pushed</strong> onto the stack. Think of it as browsing the web using your cellphone. When you click on a link, and you decide you don&rsquo;t like that site, you likely want to go back. How to go back? By pressing that <code>&lt;</code> button, the previously loaded website suddenly reappears. This navigational experience is very important to smartphone users, and something Android app developers will want to emulate: using the <em>back stack</em>.</p>
+<p>Read more about the back stack in <a href="https://developer.android.com/guide/components/activities/tasks-and-back-stack">Android dev guide: understanding tasks and the back stack</a>.</p>
+<h4 id="the-lifecycle-of-a-fragment">The lifecycle of a fragment</h4>
+<p>See <a href="https://developer.android.com/guide/fragments/lifecycle">Android dev guide: fragment lifecycles</a>. Another reminder that fragments have their own lifecycle, but are still affected by <a href="../../appdev-course/android/activities/">activity lifecycles</a>. For example, <code>onCreateView()</code>, as mentioned above, does not exist in the activity lifecycle diagram, but does here:</p>
+<p><figure>
+	<a href="../../img/fragment-view-lifecycle.png" data-featherlight="image">
+		<img src="../../img/fragment-view-lifecycle.png"   title="src: developer.android.com">
+	</a>
+	
+		<figcaption>src: developer.android.com</figcaption>
+	
+</figure>
+</p>
+<p>The biggest difference (and mistake to make) is to NOT access UI components in <code>onCreate()</code>, as the view isn&rsquo;t initialized yet.</p>
+<h4 id="sharing-data-between-fragments">Sharing data between fragments</h4>
+<p>The Android-recommended way to share data is to utilize <a href="https://developer.android.com/topic/libraries/architecture/viewmodel">viewModels</a>, which are separate classes that can be bound to UI components to automatically update properties. However, this concept is out of scope for this course.</p>
+<p>A simpler, but more crude, way to exchange information is to simply create a separate class, acting as a model, and to set state on that shared instance. Pass it along the fragment&rsquo;s constructor. See <code>examples/kotlin/FragmentSwitcher</code> in the course git repository for code examples.</p>
+<h2 id="why-use-fragments-easing-navigation">Why use fragments? Easing navigation</h2>
+<p>See <a href="https://developer.android.com/guide/navigation/navigation-getting-started">Android Dev Guide: Navigation - getting started</a></p>
+<p>Remember the wireframe figure from the <a href="../../android/activities">activities chapter</a>?</p>
+<p><figure>
+	<a href="../../img/wireframe.png" data-featherlight="image">
+		<img src="../../img/wireframe.png"   title="An example wireframe that defines relationships between activities.">
+	</a>
+	
+		<figcaption>An example wireframe that defines relationships between activities.</figcaption>
+	
+</figure>
+</p>
+<p>To navigate form one activity to the next, we simply created an <code>Intent</code> that starts the next one. This works for simple apps, but does not for more intricate designs: many different screens and many different ways to direct the user from one part to the next make manually creating and calling <code>startActivity()</code> not only cumbersome, but also buggy.</p>
+<p>Instead, the Android toolkit has a navigational component built-in, which leverages fragments to do the dirty work. Here, we create a <strong>single activity</strong> but use a <strong>fragment container</strong>, as explained above, to hop from one fragment to the next. Instead of coding the navigation by hand, we leverage what is called a <strong>navigation graph</strong>, which is&mdash;again&mdash;XML to describe how fragment x gets replaced by fragment y.</p>
+<p>As an example, here are two fragments, where fragment 1 contains an action to go to fragment 2:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<span style="color:#f92672">&lt;navigation</span> <span style="color:#75af00">xmlns:app=</span><span style="color:#d88200">&#34;http://schemas.android.com/apk/res-auto&#34;</span>
+    <span style="color:#75af00">xmlns:tools=</span><span style="color:#d88200">&#34;http://schemas.android.com/tools&#34;</span>
+    <span style="color:#75af00">xmlns:android=</span><span style="color:#d88200">&#34;http://schemas.android.com/apk/res/android&#34;</span>
+    <span style="color:#75af00">app:startDestination=</span><span style="color:#d88200">&#34;@id/blankFragment&#34;</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;fragment</span>
+        <span style="color:#75af00">android:id=</span><span style="color:#d88200">&#34;@+id/blankFragment&#34;</span>
+        <span style="color:#75af00">android:name=</span><span style="color:#d88200">&#34;com.example.cashdog.cashdog.BlankFragment&#34;</span>
+        <span style="color:#75af00">android:label=</span><span style="color:#d88200">&#34;fragment_blank&#34;</span>
+        <span style="color:#75af00">tools:layout=</span><span style="color:#d88200">&#34;@layout/fragment_blank&#34;</span> <span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;action</span>
+            <span style="color:#75af00">android:id=</span><span style="color:#d88200">&#34;@+id/action_blankFragment_to_blankFragment2&#34;</span>
+            <span style="color:#75af00">app:destination=</span><span style="color:#d88200">&#34;@id/blankFragment2&#34;</span> <span style="color:#f92672">/&gt;</span>
+    <span style="color:#f92672">&lt;/fragment&gt;</span>
+    <span style="color:#f92672">&lt;fragment</span>
+        <span style="color:#75af00">android:id=</span><span style="color:#d88200">&#34;@+id/blankFragment2&#34;</span>
+        <span style="color:#75af00">android:name=</span><span style="color:#d88200">&#34;com.example.cashdog.cashdog.BlankFragment2&#34;</span>
+        <span style="color:#75af00">android:label=</span><span style="color:#d88200">&#34;fragment_blank_fragment2&#34;</span>
+        <span style="color:#75af00">tools:layout=</span><span style="color:#d88200">&#34;@layout/fragment_blank_fragment2&#34;</span> <span style="color:#f92672">/&gt;</span>
+<span style="color:#f92672">&lt;/navigation&gt;</span>
+</code></pre></div><p>These fragments will be placed in a container view in your main activity, which acts as the <em>navigation host</em>: an empty container where destinations are swapped in and out of. Therefore, the main activity XML only needs to contain one element, where all the navigation will take place:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<span style="color:#f92672">&lt;androidx.constraintlayout.widget.ConstraintLayout</span>
+    <span style="color:#75af00">xmlns:android=</span><span style="color:#d88200">&#34;http://schemas.android.com/apk/res/android&#34;</span>
+    <span style="color:#75af00">xmlns:app=</span><span style="color:#d88200">&#34;http://schemas.android.com/apk/res-auto&#34;</span>
+    <span style="color:#75af00">xmlns:tools=</span><span style="color:#d88200">&#34;http://schemas.android.com/tools&#34;</span>
+    <span style="color:#75af00">android:layout_width=</span><span style="color:#d88200">&#34;match_parent&#34;</span>
+    <span style="color:#75af00">android:layout_height=</span><span style="color:#d88200">&#34;match_parent&#34;</span>
+    <span style="color:#75af00">tools:context=</span><span style="color:#d88200">&#34;.MainActivity&#34;</span><span style="color:#f92672">&gt;</span>
+    <span style="color:#f92672">&lt;androidx.fragment.app.FragmentContainerView</span>
+        <span style="color:#75af00">android:id=</span><span style="color:#d88200">&#34;@+id/nav_host_fragment&#34;</span>
+        <span style="color:#75af00">android:name=</span><span style="color:#d88200">&#34;androidx.navigation.fragment.NavHostFragment&#34;</span>
+        <span style="color:#75af00">android:layout_width=</span><span style="color:#d88200">&#34;0dp&#34;</span>
+        <span style="color:#75af00">android:layout_height=</span><span style="color:#d88200">&#34;0dp&#34;</span>
+        <span style="color:#75af00">app:defaultNavHost=</span><span style="color:#d88200">&#34;true&#34;</span>
+        <span style="color:#75af00">app:navGraph=</span><span style="color:#d88200">&#34;@navigation/nav_graph&#34;</span> <span style="color:#f92672">/&gt;</span>
+<span style="color:#f92672">&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</span>
+</code></pre></div><p>Note the <code>app:navGraph</code> property, which points to the first XML file. Do not forget to add the necessary Gradle dependencies, as the navigation components reside in separate library files: see <a href="https://developer.android.com/guide/navigation/navigation-getting-started">the getting started link</a> from the Android Developers Guide.</p>
+<h4 id="putting-it-all-together">Putting it all together</h4>
+<p>To use navigational components, we so far did the following:</p>
+<ol>
+<li>Add a <code>FragmentContainerView</code> and remove everything else in our single activity.</li>
+<li>Create a new XML file called <code>nav_graph.xml</code> in the <code>res/navigation</code> directory (rightclick on res -&gt; New -&gt; Android Resource File, choose &ldquo;Navigation&rdquo; as Resource type and remember the name).</li>
+<li>Add all fragments to the navigation and set the first one as the starting one.</li>
+<li>Add an <code>&lt;action/&gt;</code> to the first fragment to navigate to the second one.</li>
+</ol>
+<p>Now all that is left is executing the action, called <code>action_firstFragment_to_secondFragment</code>, for example on click. Go to your first fragment, which is already view binded, and add the following in <code>onCreateView()</code>:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#111">binding</span><span style="color:#111">.</span><span style="color:#111">btnGoToNext</span><span style="color:#111">.</span><span style="color:#111">setOnClickListener</span> <span style="color:#111">{</span>
+    <span style="color:#00a8c8">val</span> <span style="color:#111">bundle</span> <span style="color:#111">=</span> <span style="color:#111">bundleOf</span><span style="color:#111">(</span><span style="color:#d88200">&#34;mydata&#34;</span> <span style="color:#111">to</span> <span style="color:#00a8c8">data</span><span style="color:#111">)</span>
+    <span style="color:#111">findNavController</span><span style="color:#111">().</span><span style="color:#111">navigate</span><span style="color:#111">(</span><span style="color:#111">R</span><span style="color:#111">.</span><span style="color:#111">id</span><span style="color:#111">.</span><span style="color:#111">action_firstFragment_to_secondFragment</span><span style="color:#111">,</span> <span style="color:#111">bundle</span><span style="color:#111">)</span>
+<span style="color:#111">}</span>
+</code></pre></div><p>Remember to enable the necessary serialization plugins if you want to pass objects through bundles&mdash;otherwise, stick with primitive values. See the <a href="../../android/intents">intents chapter</a>.</p>
+<p>On the receiving side, you can pluck out the arguments fairly easily:</p>
+<div class="devselect">
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">data</span> <span style="color:#111">=</span> <span style="color:#111">(</span><span style="color:#111">arguments</span><span style="color:#f92672">?.</span><span style="color:#111">getSerializable</span><span style="color:#111">(</span><span style="color:#d88200">&#34;mydata&#34;</span><span style="color:#111">)</span> <span style="color:#00a8c8">as</span> <span style="color:#111">MySharedData</span><span style="color:#111">?)</span> <span style="color:#f92672">?:</span> <span style="color:#111">MySharedData</span><span style="color:#111">()</span>
+</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00a8c8">if</span><span style="color:#f92672">(</span><span style="color:#111">arguments</span> <span style="color:#f92672">!=</span> <span style="color:#00a8c8">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#111">object</span> <span style="color:#111">mydata</span> <span style="color:#f92672">=</span> <span style="color:#111">arguments</span><span style="color:#f92672">.</span><span style="color:#75af00">getSerializable</span><span style="color:#f92672">(</span><span style="color:#d88200">&#34;mydata&#34;</span><span style="color:#f92672">);</span>
+    <span style="color:#00a8c8">if</span><span style="color:#f92672">(</span><span style="color:#111">mydata</span> <span style="color:#f92672">!=</span> <span style="color:#00a8c8">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#111">data</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#111">MySharedData</span><span style="color:#f92672">)</span> <span style="color:#111">mydata</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span> <span style="color:#00a8c8">else</span> <span style="color:#f92672">{</span>
+        <span style="color:#111">data</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">new</span> <span style="color:#111">MySharedData</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span> <span style="color:#00a8c8">else</span> <span style="color:#f92672">{</span>
+    <span style="color:#111">data</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">new</span> <span style="color:#111">MySharedData</span><span style="color:#f92672">();</span>
+<span style="color:#f92672">}</span>
+</code></pre></div></div>
+<p>Note how the elvis operator (<code>?:</code>) and the optional operator (<code>?.</code>) make things much, much easier in Kotlin, compared to a bunch of ugly if&rsquo;s in Java.<br/>
+And that&rsquo;s it, now we&rsquo;ve connected all the separate pieces together using a navigation graph XML file!</p>
+<p>See <code>examples/kotlin/FragmentSwitcherWithNavigation</code> in the git repository. Compare the source code to the one without the navigation to see the difference between manually switching fragments and letting the navigation tool do its thing. Remember that these are <em>tiny</em> examples: real-world apps have a bit more than merely two fragments&hellip;</p>
+<p>There&rsquo;s only one thing left to learn before we can easily tackle a responsive master/detail screen such as the above Mac Mail screenshot: <a href="../../android/views">RecyclerViews</a>.</p>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="../../android/intents/" title="2. Messaging - Intents"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="../../android/views/" title="4. Complex layouts: Nested Views" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../../js/clipboard.min.js?1647618381"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1647618381"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1647618381"></script>
+    <script src="../../js/jquery.sticky.js?1647618381"></script>
+    <script src="../../js/featherlight.min.js?1647618381"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1647618381"></script>
+    <script src="../../js/learn.js?1647618381"></script>
+    <script src="../../js/hugo-learn.js?1647618381"></script>
+    
+        
+            <script src="../../mermaid/mermaid.js?1647618381"></script>
+        
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    
+    
+
+  </body>
+</html>
+

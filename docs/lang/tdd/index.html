@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.81.0" />
+    <meta name="description" content="">
+
+
+    <link rel="icon" href="../../images/favicon.png" type="image/png">
+
+    <title>4. Test Driven Development :: App Development</title>
+
+    
+    <link href="../../css/nucleus.css?1647618381" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1647618381" rel="stylesheet">
+    <link href="../../css/hybrid.css?1647618381" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1647618381" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1647618381" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1647618381" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1647618381" rel="stylesheet">
+    <link href="../../css/theme.css?1647618381" rel="stylesheet">
+    <link href="../../css/devselector.css?1647618381" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1647618381" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1647618381" rel="stylesheet">
+    
+
+    <script src="../../js/jquery-3.3.1.min.js?1647618381"></script>
+    <script src="../../js/devselector.js?1647618381"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+        :not(pre) > code + span.copy-to-clipboard {
+            display: none;
+        }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="../../lang/tdd/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a href="https://www.kuleuven.be/kuleuven/" target="_blank">
+  <img src="../../images/kul.png" alt="KU Leuven" /><br/>
+</a>
+<a href="https://www.uhasselt.be/" target="_blank">
+  <img src="../../images/uhasselt.svg" alt="UHasselt" id="uhlogo" />
+</a>
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../../js/lunr.min.js?1647618381"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1647618381"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
+    
+</script>
+<script type="text/javascript" src="../../js/search.js?1647618381"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+
+      <h3><a href="../../">Course Contents</a></h3>
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/android/" title="1. Android Essentials" class="dd-item
+        
+        
+        
+        ">
+      <a href="../../android/">
+          1. Android Essentials
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/activities/" title="1. Life Cycle - Activities" class="dd-item ">
+        <a href="../../android/activities/">
+        1. Life Cycle - Activities
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/intents/" title="2. Messaging - Intents" class="dd-item ">
+        <a href="../../android/intents/">
+        2. Messaging - Intents
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/fragments/" title="3. Complex layouts: Fragments" class="dd-item ">
+        <a href="../../android/fragments/">
+        3. Complex layouts: Fragments
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/views/" title="4. Complex layouts: Nested Views" class="dd-item ">
+        <a href="../../android/views/">
+        4. Complex layouts: Nested Views
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/data-storage/" title="5. Data Storage: File/Network" class="dd-item ">
+        <a href="../../android/data-storage/">
+        5. Data Storage: File/Network
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/signals/" title="6. Embedded Signals" class="dd-item ">
+        <a href="../../android/signals/">
+        6. Embedded Signals
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/security/" title="7. Security By Design" class="dd-item ">
+        <a href="../../android/security/">
+        7. Security By Design
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/lang/" title="2. Language &amp; Support Tools" class="dd-item
+        parent
+        
+        
+        ">
+      <a href="../../lang/">
+          2. Language &amp; Support Tools
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/lang/kotlin/" title="1. Kotlin programming: Essentials" class="dd-item ">
+        <a href="../../lang/kotlin/">
+        1. Kotlin programming: Essentials
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/lang/kotlin-advanced/" title="2. Kotlin programming: Advanced" class="dd-item ">
+        <a href="../../lang/kotlin-advanced/">
+        2. Kotlin programming: Advanced
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/lang/kotlin-examples/" title="3. Kotlin Examples/Exercises" class="dd-item ">
+        <a href="../../lang/kotlin-examples/">
+        3. Kotlin Examples/Exercises
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/lang/tdd/" title="4. Test Driven Development" class="dd-item active">
+        <a href="../../lang/tdd/">
+        4. Test Driven Development
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/lang/multiplatform/" title="5. Multiplatform Mobile dev." class="dd-item ">
+        <a href="../../lang/multiplatform/">
+        5. Multiplatform Mobile dev.
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/extra/" title="3. Extra info" class="dd-item
+        
+        
+        
+        ">
+      <a href="../../extra/">
+          3. Extra info
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/extra/install/" title="1. Installation Guide" class="dd-item ">
+        <a href="../../extra/install/">
+        1. Installation Guide
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/extra/faq/" title="2. Common Errors FAQ" class="dd-item ">
+        <a href="../../extra/faq/">
+        2. Common Errors FAQ
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/extra/links/" title="3. Links and Tutorials" class="dd-item ">
+        <a href="../../extra/links/">
+        3. Links and Tutorials
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/extra/project/" title="4. Project Information" class="dd-item ">
+        <a href="../../extra/project/">
+        4. Project Information
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/extra/demo/" title="5. Demo Project" class="dd-item ">
+        <a href="../../extra/demo/">
+        5. Demo Project
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+        
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li>
+                  <a class="padding" href="https://uhintra03.uhasselt.be/studiegidswww/opleidingsonderdeel.aspx?a=2021&amp;i=3291&amp;n=4&amp;t=01"><i class='fa fa-university'></i> ECTS Sheet</a>
+              </li>
+          
+              <li>
+                  <a class="padding" href="https://toledo.kuleuven.be/portal/"><i class='fa fa-university'></i> Toledo</a>
+              </li>
+          
+              <li>
+                  <a class="padding" href="https://github.com/kuleuven-diepenbeek/appdev-course/"><i class='fab fa-github'></i> Course Git Repository</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='../../'>Course Contents</a> > <a href='../../lang/'>2. Language & Support Tools</a> > 4. Test Driven Development
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#kotlin-and-junit-5">Kotlin and JUnit 5</a></li>
+    <li><a href="#android-and-tdd">Android and TDD</a>
+      <ul>
+        <li><a href="#database-integration-testing">Database integration testing</a></li>
+        <li><a href="#scenario-based-ui-testing">Scenario-based UI testing</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              4. Test Driven Development
+            </h1>
+          
+
+        
+
+
+<p>Learn the whys and the hows of TDD in <a href="https://kuleuven-diepenbeek.github.io/ses-course/tdd/">Software Engineering Skills: TDD</a>.</p>
+<h2 id="kotlin-and-junit-5">Kotlin and JUnit 5</h2>
+<p>When writing tests in Kotlin, pretty much all conventional Java rules apply. Just write the JUnit 5 test as if you were writing a Java test, except that the syntax is Kotlin-specific.</p>
+<p>An example:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">class</span> <span style="color:#75af00">PeriodTests</span> <span style="color:#111">{</span>
+   <span style="color:#75af00">@Test</span>
+    <span style="color:#00a8c8">fun</span> <span style="color:#75af00">`Given two overlapping periods When overlapsWith is called Then return true`</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+        <span style="color:#00a8c8">val</span> <span style="color:#111">jandec19</span> <span style="color:#111">=</span> <span style="color:#111">Periode</span><span style="color:#111">(</span>
+            <span style="color:#111">LocalDate</span><span style="color:#111">.</span><span style="color:#111">of</span><span style="color:#111">(</span><span style="color:#ae81ff">2019</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">),</span>
+            <span style="color:#111">LocalDate</span><span style="color:#111">.</span><span style="color:#111">of</span><span style="color:#111">(</span><span style="color:#ae81ff">2019</span><span style="color:#111">,</span> <span style="color:#ae81ff">12</span><span style="color:#111">,</span> <span style="color:#ae81ff">31</span><span style="color:#111">)</span>
+        <span style="color:#111">)</span>
+        <span style="color:#00a8c8">val</span> <span style="color:#111">maartnov19</span> <span style="color:#111">=</span> <span style="color:#111">Periode</span><span style="color:#111">(</span>
+            <span style="color:#111">LocalDate</span><span style="color:#111">.</span><span style="color:#111">of</span><span style="color:#111">(</span><span style="color:#ae81ff">2019</span><span style="color:#111">,</span> <span style="color:#ae81ff">3</span><span style="color:#111">,</span> <span style="color:#ae81ff">1</span><span style="color:#111">),</span>
+            <span style="color:#111">LocalDate</span><span style="color:#111">.</span><span style="color:#111">of</span><span style="color:#111">(</span><span style="color:#ae81ff">2019</span><span style="color:#111">,</span> <span style="color:#ae81ff">11</span><span style="color:#111">,</span> <span style="color:#ae81ff">31</span><span style="color:#111">)</span>
+        <span style="color:#111">)</span>
+        <span style="color:#111">assertTrue</span> <span style="color:#111">{</span> <span style="color:#111">jandec19</span><span style="color:#111">.</span><span style="color:#111">overlapsWith</span><span style="color:#111">(</span><span style="color:#111">maartnov19</span><span style="color:#111">)</span> <span style="color:#111">}</span>
+    <span style="color:#111">}</span>
+<span style="color:#111">}</span>
+</code></pre></div><p>A note on the imports:</p>
+<ul>
+<li><code>@Test</code> is the JUnit annotation: <code>import org.junit.jupiter.api.Test</code></li>
+<li><code>assertTrue</code> is a kotlin-specific one, as you can see that a closure block is given as the single argument: <code>import kotlin.test.assertTrue</code></li>
+</ul>
+<p>Typical Java-based test functions are <code>overlapsWithWhenBothPeriodsAreFilledInIsTrue</code>. However, to enhance readability, kotlin allows you to write <em>full sentences</em> as function names using backtics. This is especially handy in test classes, as long as you constrain yourself to a system: for example, Given x When y Then z. Note that sometimes Android Studio will complain about these full-sentence test names for Android projects. In that case, you&rsquo;ll have to revert to Java-style camel case method names.</p>
+<p>To enable JUnit 5 in your Gradle-enabled Kotlin project, all you have to do is add the following to your <code>build.gradle.kts</code>:</p>
+<pre><code>dependencies {
+    testImplementation(kotlin(&quot;test&quot;))
+    // testImplementation(&quot;org.hamcrest:hamcrest:2.2&quot;) -&gt; this is optional
+}
+
+tasks.test {
+    useJUnitPlatform()
+}
+</code></pre>
+<div class="notices warning" ><p>If using the Hamcrest API to write assertions, remember that <code>is</code> is a reserved keyword in Kotlin. That is, <code>assertThat(bla, is(such))</code> in Java does not compile in Kotlin. You can escape the is with a single backtick, or import it as an uppercase Is: <code>import org.hamcrest.CoreMatchers.'is' as Is</code> (use backticks).<br/>
+If writing pure Kotlin, you can also opt to use <a href="https://mockk.io/">MockK</a>, a mocking library specifically designed for Kotlin that lets you write assumptions like this: <code>every { car.drive(Direction.NORTH) } returns Outcome.OK</code>. Examples can be found in <a href="../../extra/demo">the demo project</a>.</p>
+</div>
+
+<h2 id="android-and-tdd">Android and TDD</h2>
+<p>In Android development, there are two kinds of unit tests, as explained by <a href="https://developer.android.com/studio/test">Test your app - Android Developer docs</a>:</p>
+<ol>
+<li>Classic <em>unit test</em> classes, residing in <code>src/test/java</code>. These are the unit/integration tests you&rsquo;re used to, similar to the example above.</li>
+<li>Special <em>instrumented tests</em>, residing in <code>src/androidTest/java</code>. These are special tests that <strong>run on the hardware</strong> (or on an emulator). That is, they have access to the <code>Instrumentation</code> API giving you access to information such as <code>Context</code> of the app you&rsquo;re testing.</li>
+</ol>
+<p>Note that in Android development, <strong>JUnit 4</strong> is used, not JUnit 5 (although <a href="https://medium.com/@boonkeat/android-unit-testing-with-junit5-d1b8f9c620b6">it is not impossible</a>). Instrumented tests are annotated with <code>@RunWith(AndroidJUnit4::class)</code> from the <code>androidx.test.ext.junit.runners</code> package. As soon as you run an instrumented test, the configured emulator will boot up. A separate <code>.apk</code> will be built containing your instrumented tests which will be executed on the device.</p>
+<p>As with the typical unit/integration/end2end test pyramid you&rsquo;ve learned in the SES course, the same holds true here: try to write as many unit tests as possible, since bootstrapping the emulator and compiling a separate package is much, much slower! All integration, UI, and end2end tests are considered <em>instrumented</em> tests in the Android architecture.</p>
+<p>Looking for Android testing sample projects? <a href="https://github.com/android/testing-samples">https://github.com/android/testing-samples</a></p>
+<h3 id="database-integration-testing">Database integration testing</h3>
+<p>After you&rsquo;ve chewed on the <a href="../../android/data-storage">data storage chapter</a> and got your feet wet with Android&rsquo;s Room to access SQLite databases, you can try to write a few integration tests which test your queries and persistence layer. These tests are similar to the integration tests present in the <a href="https://kuleuven-diepenbeek.github.io/ses-course/extra/sessy/">SESsy library</a> webapp.</p>
+<p>For exmaple, to test if something can be persisted:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#75af00">@Test</span>
+<span style="color:#00a8c8">fun</span> <span style="color:#75af00">todoItemCanBePersisted</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+    <span style="color:#00a8c8">val</span> <span style="color:#111">item</span> <span style="color:#111">=</span> <span style="color:#111">Todo</span><span style="color:#111">(</span><span style="color:#d88200">&#34;brush my little pony&#34;</span><span style="color:#111">,</span> <span style="color:#00a8c8">false</span><span style="color:#111">)</span>
+    <span style="color:#111">dao</span><span style="color:#111">.</span><span style="color:#111">insert</span><span style="color:#111">(</span><span style="color:#111">arrayListOf</span><span style="color:#111">(</span><span style="color:#111">item</span><span style="color:#111">))</span>
+
+    <span style="color:#00a8c8">val</span> <span style="color:#111">refreshedItem</span> <span style="color:#111">=</span> <span style="color:#111">dao</span><span style="color:#111">.</span><span style="color:#111">query</span><span style="color:#111">().</span><span style="color:#111">single</span><span style="color:#111">()</span>
+    <span style="color:#111">with</span><span style="color:#111">(</span><span style="color:#111">refreshedItem</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+        <span style="color:#111">assertEquals</span><span style="color:#111">(</span><span style="color:#111">item</span><span style="color:#111">.</span><span style="color:#111">title</span><span style="color:#111">,</span> <span style="color:#111">title</span><span style="color:#111">)</span>
+        <span style="color:#111">assertEquals</span><span style="color:#111">(</span><span style="color:#111">item</span><span style="color:#111">.</span><span style="color:#111">isDone</span><span style="color:#111">,</span> <span style="color:#111">isDone</span><span style="color:#111">)</span>
+        <span style="color:#111">assertEquals</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#111">id</span><span style="color:#111">)</span>
+    <span style="color:#111">}</span>
+<span style="color:#111">}</span>
+</code></pre></div><p>Employ the <code>Room.inMemoryDatabaseBuilder</code> to create your Database object. See the <code>todosavestate</code> example in the course repository for a full-fledged example.</p>
+<p>Since databases are part of the 3rd year program and plenty of integration testing happens in the SES course, integration-testing your Room objects is not a part of this course. Nonetheless, do take a look at the example: cross-pollination between software courses facilitates your learning!</p>
+<h3 id="scenario-based-ui-testing">Scenario-based UI testing</h3>
+<p>Besides the exposed <code>Context</code> object in instrumented tests, we can also write <strong>scenario tests</strong>. For web-based programs, we can rely on WebDriver and a Selenium webbrowser plugin to record a specific scenario and verify the visibility and position of UI elements.</p>
+<p>In Android, the same concepts exist in the form of <a href="https://developer.android.com/studio/test/espresso-test-recorder">the Espresso Test Recorder</a>.</p>
+<p>Which procedures should be <em>instrumented</em>, and which ones should be unit testable? Anything that interacts with signals or hardware should also be instrument-tested at least once. Remember to stub/mock out as much as possible to convert these scenarios into unit tests. Espresso has interesting methods that allow you to stub intents: see <a href="https://github.com/android/testing-samples/blob/master/ui/espresso/IntentsAdvancedSample/app/src/androidTest/java/com/example/android/testing/espresso/intents/AdvancedSample/ImageViewerActivityTest.java">this activity test class</a> as an example.</p>
+<p>Espesso allows us to select views, press on buttons, and verify something on-screen:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#75af00">@RunWith</span><span style="color:#111">(</span><span style="color:#111">AndroidJUnit4</span><span style="color:#f92672">::</span><span style="color:#00a8c8">class</span><span style="color:#111">)</span>
+<span style="color:#00a8c8">class</span> <span style="color:#75af00">MainActivityTests</span> <span style="color:#111">{</span>
+
+    <span style="color:#75af00">@get</span><span style="color:#111">:</span><span style="color:#111">Rule</span>
+    <span style="color:#00a8c8">val</span> <span style="color:#111">rule</span> <span style="color:#111">=</span> <span style="color:#111">ActivityScenarioRule</span><span style="color:#111">(</span><span style="color:#111">MainActivity</span><span style="color:#f92672">::</span><span style="color:#00a8c8">class</span><span style="color:#111">.</span><span style="color:#111">java</span><span style="color:#111">)</span>
+
+    <span style="color:#75af00">@Before</span>
+    <span style="color:#00a8c8">fun</span> <span style="color:#75af00">setUp</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+        <span style="color:#111">Intents</span><span style="color:#111">.</span><span style="color:#00a8c8">init</span><span style="color:#111">()</span>
+    <span style="color:#111">}</span>
+
+    <span style="color:#75af00">@After</span>
+    <span style="color:#00a8c8">fun</span> <span style="color:#75af00">tearDown</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+        <span style="color:#111">Intents</span><span style="color:#111">.</span><span style="color:#111">release</span><span style="color:#111">()</span>
+    <span style="color:#111">}</span>
+
+    <span style="color:#75af00">@Test</span>
+    <span style="color:#00a8c8">fun</span> <span style="color:#75af00">givenCorrectPassword_whenLoginPressed_thenTransitionToWelcome</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+        <span style="color:#111">onView</span><span style="color:#111">(</span><span style="color:#111">withId</span><span style="color:#111">(</span><span style="color:#111">R</span><span style="color:#111">.</span><span style="color:#111">id</span><span style="color:#111">.</span><span style="color:#111">txtPassword</span><span style="color:#111">)).</span><span style="color:#111">perform</span><span style="color:#111">(</span><span style="color:#111">ViewActions</span><span style="color:#111">.</span><span style="color:#111">typeText</span><span style="color:#111">(</span><span style="color:#d88200">&#34;supersecret&#34;</span><span style="color:#111">),</span> <span style="color:#111">ViewActions</span><span style="color:#111">.</span><span style="color:#111">closeSoftKeyboard</span><span style="color:#111">())</span>
+        <span style="color:#111">onView</span><span style="color:#111">(</span><span style="color:#111">withId</span><span style="color:#111">(</span><span style="color:#111">R</span><span style="color:#111">.</span><span style="color:#111">id</span><span style="color:#111">.</span><span style="color:#111">btnLogin</span><span style="color:#111">)).</span><span style="color:#111">perform</span><span style="color:#111">(</span><span style="color:#111">ViewActions</span><span style="color:#111">.</span><span style="color:#111">click</span><span style="color:#111">())</span>
+
+        <span style="color:#111">Intents</span><span style="color:#111">.</span><span style="color:#111">intended</span><span style="color:#111">(</span><span style="color:#111">IntentMatchers</span><span style="color:#111">.</span><span style="color:#111">hasComponent</span><span style="color:#111">(</span><span style="color:#111">WelcomeActivity</span><span style="color:#f92672">::</span><span style="color:#00a8c8">class</span><span style="color:#111">.</span><span style="color:#111">java</span><span style="color:#111">.</span><span style="color:#111">name</span><span style="color:#111">))</span>
+    <span style="color:#111">}</span>
+<span style="color:#111">}</span>
+</code></pre></div>
+<div class="notices note" ><p>The Espresso activity suite expects a <code>public</code> field for JUnit Rules to apply. Although in Kotlin, properties are <code>public</code> by dfeault, Kotlin&rsquo;s <code>val</code> in fact generates a private field with public getters by default. <code>@get:Rule</code> applies the rule to the field. <code>@JvmField</code> is an alternative way to tell Kotlin to produce a pure backing field.</p>
+</div>
+
+<p>See the test in action:</p>
+<div class="video-mask">
+	<video controls preload="metadata">
+	  <source src="../../vid/espresso.mp4#t=0.5" type="video/mp4">
+	  Your browser does not support HTML video. Here's a link to the MP4-encoded video instead: <a href="../../vid/espresso.mp4">/vid/espresso.mp4</a>.
+	</video>
+</div>
+<p>Do not forget to add the following <em>test dependencies</em> to your Gradle app module:</p>
+<pre><code>dependencies {
+    testImplementation(&quot;junit:junit:4.+&quot;)
+    androidTestImplementation(&quot;androidx.test.ext:junit:1.1.3&quot;)
+    androidTestImplementation(&quot;androidx.test.espresso:espresso-core:3.4.0&quot;)
+    androidTestImplementation(&quot;androidx.test.espresso:espresso-intents:3.4.0&quot;)
+}
+</code></pre><p>If you created the project using an existing template in Android Studio, only the latter one will be missing. The <code>espresso</code> library version numbers must match!</br>
+Feel free to fiddle with the Espresso toolset. The course repository has ample examples of these tests: see the <code>loginactivity</code> Kotlin example project, where the above example comes from.</p>
+<p>However, this falls beyond the scope of this course.</p>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="../../lang/kotlin-examples/" title="3. Kotlin Examples/Exercises"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="../../lang/multiplatform/" title="5. Multiplatform Mobile dev." style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../../js/clipboard.min.js?1647618381"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1647618381"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1647618381"></script>
+    <script src="../../js/jquery.sticky.js?1647618381"></script>
+    <script src="../../js/featherlight.min.js?1647618381"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1647618381"></script>
+    <script src="../../js/learn.js?1647618381"></script>
+    <script src="../../js/hugo-learn.js?1647618381"></script>
+    
+        
+            <script src="../../mermaid/mermaid.js?1647618381"></script>
+        
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    
+    
+
+  </body>
+</html>
+

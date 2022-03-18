@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.81.0" />
+    <meta name="description" content="">
+
+
+    <link rel="icon" href="../../images/favicon.png" type="image/png">
+
+    <title>2. Messaging - Intents :: App Development</title>
+
+    
+    <link href="../../css/nucleus.css?1647618381" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1647618381" rel="stylesheet">
+    <link href="../../css/hybrid.css?1647618381" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1647618381" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1647618381" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1647618381" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1647618381" rel="stylesheet">
+    <link href="../../css/theme.css?1647618381" rel="stylesheet">
+    <link href="../../css/devselector.css?1647618381" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1647618381" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1647618381" rel="stylesheet">
+    
+
+    <script src="../../js/jquery-3.3.1.min.js?1647618381"></script>
+    <script src="../../js/devselector.js?1647618381"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+        :not(pre) > code + span.copy-to-clipboard {
+            display: none;
+        }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="../../android/intents/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a href="https://www.kuleuven.be/kuleuven/" target="_blank">
+  <img src="../../images/kul.png" alt="KU Leuven" /><br/>
+</a>
+<a href="https://www.uhasselt.be/" target="_blank">
+  <img src="../../images/uhasselt.svg" alt="UHasselt" id="uhlogo" />
+</a>
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../../js/lunr.min.js?1647618381"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1647618381"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
+    
+</script>
+<script type="text/javascript" src="../../js/search.js?1647618381"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+
+      <h3><a href="../../">Course Contents</a></h3>
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/android/" title="1. Android Essentials" class="dd-item
+        parent
+        
+        
+        ">
+      <a href="../../android/">
+          1. Android Essentials
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/activities/" title="1. Life Cycle - Activities" class="dd-item ">
+        <a href="../../android/activities/">
+        1. Life Cycle - Activities
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/intents/" title="2. Messaging - Intents" class="dd-item active">
+        <a href="../../android/intents/">
+        2. Messaging - Intents
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/fragments/" title="3. Complex layouts: Fragments" class="dd-item ">
+        <a href="../../android/fragments/">
+        3. Complex layouts: Fragments
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/views/" title="4. Complex layouts: Nested Views" class="dd-item ">
+        <a href="../../android/views/">
+        4. Complex layouts: Nested Views
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/data-storage/" title="5. Data Storage: File/Network" class="dd-item ">
+        <a href="../../android/data-storage/">
+        5. Data Storage: File/Network
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/signals/" title="6. Embedded Signals" class="dd-item ">
+        <a href="../../android/signals/">
+        6. Embedded Signals
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/security/" title="7. Security By Design" class="dd-item ">
+        <a href="../../android/security/">
+        7. Security By Design
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/lang/" title="2. Language &amp; Support Tools" class="dd-item
+        
+        
+        
+        ">
+      <a href="../../lang/">
+          2. Language &amp; Support Tools
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/lang/kotlin/" title="1. Kotlin programming: Essentials" class="dd-item ">
+        <a href="../../lang/kotlin/">
+        1. Kotlin programming: Essentials
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/lang/kotlin-advanced/" title="2. Kotlin programming: Advanced" class="dd-item ">
+        <a href="../../lang/kotlin-advanced/">
+        2. Kotlin programming: Advanced
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/lang/kotlin-examples/" title="3. Kotlin Examples/Exercises" class="dd-item ">
+        <a href="../../lang/kotlin-examples/">
+        3. Kotlin Examples/Exercises
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/lang/tdd/" title="4. Test Driven Development" class="dd-item ">
+        <a href="../../lang/tdd/">
+        4. Test Driven Development
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/lang/multiplatform/" title="5. Multiplatform Mobile dev." class="dd-item ">
+        <a href="../../lang/multiplatform/">
+        5. Multiplatform Mobile dev.
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/extra/" title="3. Extra info" class="dd-item
+        
+        
+        
+        ">
+      <a href="../../extra/">
+          3. Extra info
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/extra/install/" title="1. Installation Guide" class="dd-item ">
+        <a href="../../extra/install/">
+        1. Installation Guide
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/extra/faq/" title="2. Common Errors FAQ" class="dd-item ">
+        <a href="../../extra/faq/">
+        2. Common Errors FAQ
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/extra/links/" title="3. Links and Tutorials" class="dd-item ">
+        <a href="../../extra/links/">
+        3. Links and Tutorials
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/extra/project/" title="4. Project Information" class="dd-item ">
+        <a href="../../extra/project/">
+        4. Project Information
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/extra/demo/" title="5. Demo Project" class="dd-item ">
+        <a href="../../extra/demo/">
+        5. Demo Project
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+        
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li>
+                  <a class="padding" href="https://uhintra03.uhasselt.be/studiegidswww/opleidingsonderdeel.aspx?a=2021&amp;i=3291&amp;n=4&amp;t=01"><i class='fa fa-university'></i> ECTS Sheet</a>
+              </li>
+          
+              <li>
+                  <a class="padding" href="https://toledo.kuleuven.be/portal/"><i class='fa fa-university'></i> Toledo</a>
+              </li>
+          
+              <li>
+                  <a class="padding" href="https://github.com/kuleuven-diepenbeek/appdev-course/"><i class='fab fa-github'></i> Course Git Repository</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='../../'>Course Contents</a> > <a href='../../android/'>1. Android Essentials</a> > 2. Messaging - Intents
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#using-intents-to-start-an-internal-activity">Using intents to start an internal activity</a>
+      <ul>
+        <li><a href="#passing-objects-through-intents">Passing objects through intents</a></li>
+      </ul>
+    </li>
+    <li><a href="#using-intents-to-start-an-internal-service">Using intents to start an internal service</a></li>
+    <li><a href="#using-intents-to-interact-with-other-apps">Using intents to interact with other apps</a>
+      <ul>
+        <li><a href="#implicit-intents">Implicit intents</a></li>
+        <li><a href="#deliveringreceiving-a-broadcast">Delivering/receiving a broadcast</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              2. Messaging - Intents
+            </h1>
+          
+
+        
+
+
+<h2 id="using-intents-to-start-an-internal-activity">Using intents to start an internal activity</h2>
+<p>What if, instead of showing a generic welcome screen after logging in, we want to <em>personally</em> welcome the user?</p>
+<p>Instead of &ldquo;Welcome, have a nice day&rdquo;, as pictured in:</p>
+<p><figure>
+	<a href="../../img/activities.png" data-featherlight="image">
+		<img src="../../img/activities.png"   title="Two example activities from 1.1.">
+	</a>
+	
+		<figcaption>Two example activities from 1.1.</figcaption>
+	
+</figure>
+</p>
+<p>We&rsquo;d like to say &ldquo;Welcome [username]&rdquo;! That is, we want to <strong>pass arguments</strong> from one activity to the next. We&rsquo;ve already created an intent to start a second activity using <code>Intent(this, MyNewActivity::class.java)</code>. After this piece of code, and before calling <code>startActivity()</code>, we can add stuff to the intent which is passed along the new activity:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">val</span> <span style="color:#111">intent</span> <span style="color:#111">=</span> <span style="color:#111">Intent</span><span style="color:#111">(</span><span style="color:#00a8c8">this</span><span style="color:#111">,</span> <span style="color:#111">WelcomeActivity</span><span style="color:#f92672">::</span><span style="color:#00a8c8">class</span><span style="color:#111">.</span><span style="color:#111">java</span><span style="color:#111">)</span>
+<span style="color:#111">intent</span><span style="color:#111">.</span><span style="color:#111">putExtra</span><span style="color:#111">(</span><span style="color:#d88200">&#34;username&#34;</span><span style="color:#111">,</span> <span style="color:#111">binding</span><span style="color:#111">.</span><span style="color:#111">txtUsername</span><span style="color:#111">.</span><span style="color:#111">text</span><span style="color:#111">.</span><span style="color:#111">toString</span><span style="color:#111">())</span>
+<span style="color:#111">startActivity</span><span style="color:#111">(</span><span style="color:#111">intent</span><span style="color:#111">)</span>
+</code></pre></div><p>On the receiving side, simply pull out the data using the appropriate <code>get</code> function in the <code>onCreate()</code> function after setting the content view to the correct root binding:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">val</span> <span style="color:#111">username</span> <span style="color:#111">=</span> <span style="color:#111">intent</span><span style="color:#111">.</span><span style="color:#111">getStringExtra</span><span style="color:#111">(</span><span style="color:#d88200">&#34;username&#34;</span><span style="color:#111">)</span>
+<span style="color:#111">binding</span><span style="color:#111">.</span><span style="color:#111">txtWelcome</span><span style="color:#111">.</span><span style="color:#111">text</span> <span style="color:#111">=</span> <span style="color:#d88200">&#34;Welcome, </span><span style="color:#d88200">$username</span><span style="color:#d88200">&#34;</span>
+</code></pre></div><h3 id="passing-objects-through-intents">Passing objects through intents</h3>
+<p>Of course, passing in tens of different input fields can get cumbersome. Instead, let&rsquo;s provide a data class that represents the user:</p>
+<div class="devselect">
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">data</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">User</span><span style="color:#111">(</span><span style="color:#00a8c8">val</span> <span style="color:#111">name</span><span style="color:#111">:</span> <span style="color:#111">String</span><span style="color:#111">)</span>
+</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00a8c8">public</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">User</span> <span style="color:#f92672">{</span>
+    <span style="color:#00a8c8">private</span> <span style="color:#00a8c8">final</span> <span style="color:#111">String</span> <span style="color:#111">name</span><span style="color:#f92672">;</span>
+    <span style="color:#00a8c8">public</span> <span style="color:#111">String</span> <span style="color:#75af00">getName</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#00a8c8">return</span> <span style="color:#111">name</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#75af00">@Override</span>
+    <span style="color:#00a8c8">public</span> <span style="color:#00a8c8">void</span> <span style="color:#75af00">toString</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#00a8c8">return</span> <span style="color:#d88200">&#34;[&#34;</span> <span style="color:#f92672">+</span> <span style="color:#111">name</span> <span style="color:#f92672">+</span> <span style="color:#d88200">&#34;]&#34;</span><span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#75af00">@Override</span>
+    <span style="color:#00a8c8">public</span> <span style="color:#111">bool</span> <span style="color:#75af00">equals</span><span style="color:#f92672">(</span><span style="color:#111">object</span> <span style="color:#111">other</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        <span style="color:#00a8c8">if</span><span style="color:#f92672">(</span><span style="color:#111">other</span> <span style="color:#f92672">==</span> <span style="color:#00a8c8">null</span> <span style="color:#f92672">||</span> <span style="color:#111">other</span> <span style="color:#f92672">!</span><span style="color:#00a8c8">instanceof</span> <span style="color:#111">User</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#00a8c8">return</span> <span style="color:#00a8c8">false</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#111">User</span> <span style="color:#111">otherUser</span> <span style="color:#f92672">=</span> <span style="color:#f92672">(</span><span style="color:#111">User</span><span style="color:#f92672">)</span> <span style="color:#111">other</span><span style="color:#f92672">;</span>
+        <span style="color:#00a8c8">return</span> <span style="color:#111">name</span><span style="color:#f92672">.</span><span style="color:#75af00">equals</span><span style="color:#f92672">(</span><span style="color:#111">otherUser</span><span style="color:#f92672">.</span><span style="color:#75af00">name</span><span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span>
+    <span style="color:#75af00">@Override</span>
+    <span style="color:#00a8c8">public</span> <span style="color:#00a8c8">int</span> <span style="color:#75af00">hashCode</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+        <span style="color:#00a8c8">return</span> <span style="color:#111">name</span><span style="color:#f92672">.</span><span style="color:#75af00">hashCode</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div></div>
+<p>Remember that data classes are convenient ways to automatically implement getters/setters/equals/hashcode/tostring. Take a look at the Java code and try not to freak out. It&rsquo;s that ugly.</p>
+<p>Unfortunately, that is not enough. Intents only carry along basic key-value pairs of primitives, meaning our object has to be <strong>serialized</strong>. There are two options to do this:</p>
+<ol>
+<li>The default Java way: implement <code>Serializable</code>. Use <a href="https://betterprogramming.pub/why-and-how-to-use-kotlins-native-serialization-library-c88c0f14f93d">Kotlin native serialization</a> to make things easier here.</li>
+<li>The Android specific way: implement <code>Parcelable</code>. A &ldquo;parcel&rdquo; is a &ldquo;package&rdquo; that needs to be delivered form one side to the other. Parcels are much more efficient on Android devices than serializable. See the <a href="https://developer.android.com/kotlin/parcelize">parcelable implementation generator docs</a> on how to enable this in your Kotlin-Android project.</li>
+</ol>
+<p>Let&rsquo;s settle with the first option. In order to add <code>@Serializable</code> to your data class, we need to install the <code>kotlinx.serialization</code> plugin. Add the plugin to your <code>plugins</code> block in your module <code>build.gradle.kts</code> <em>and</em> add a dependency:</p>
+<div class="devselect">
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#111">plugins</span> <span style="color:#111">{</span>
+    <span style="color:#111">id</span><span style="color:#111">(</span><span style="color:#d88200">&#34;com.android.application&#34;</span><span style="color:#111">)</span>
+    <span style="color:#111">id</span><span style="color:#111">(</span><span style="color:#d88200">&#34;kotlin-android&#34;</span><span style="color:#111">)</span>
+    <span style="color:#111">kotlin</span><span style="color:#111">(</span><span style="color:#d88200">&#34;plugin.serialization&#34;</span><span style="color:#111">)</span> <span style="color:#111">version</span> <span style="color:#d88200">&#34;1.5.21&#34;</span> <span style="color:#75715e">// add this
+</span><span style="color:#75715e"></span><span style="color:#111">}</span>
+<span style="color:#f92672">..</span><span style="color:#111">.</span>
+<span style="color:#111">dependencies</span> <span style="color:#111">{</span>
+    <span style="color:#f92672">..</span><span style="color:#111">.</span>
+    <span style="color:#111">implementation</span><span style="color:#111">(</span><span style="color:#d88200">&#34;org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2&#34;</span><span style="color:#111">)</span> <span style="color:#75715e">// add this
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">..</span><span style="color:#111">.</span>
+<span style="color:#111">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Groovy" data-lang="Groovy"><span style="color:#111">plugins</span> <span style="color:#f92672">{</span>
+    <span style="color:#111">id</span> <span style="color:#d88200">&#39;org.jetbrains.kotlin.jvm&#39;</span> <span style="color:#111">version</span> <span style="color:#d88200">&#39;1.6.10&#39;</span>
+    <span style="color:#111">id</span> <span style="color:#d88200">&#39;org.jetbrains.kotlin.plugin.serialization&#39;</span> <span style="color:#111">version</span> <span style="color:#d88200">&#39;1.6.10&#39;</span> <span style="color:#75715e">// add this
+</span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
+<span style="color:#f92672">...</span>
+<span style="color:#111">dependencies</span> <span style="color:#f92672">{</span>
+    <span style="color:#f92672">...</span>
+        <span style="color:#111">implementation</span> <span style="color:#d88200">&#39;org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2&#39;</span> <span style="color:#75715e">// add this
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">...</span>
+<span style="color:#f92672">}</span>
+</code></pre></div></div>
+
+<div class="notices warning" ><p>Keep the <code>plugin.serialization</code> <strong>version</strong> the same as your Kotlin version! See the <a href="https://github.com/Kotlin/kotlinx.serialization">official kotlinx.serialization github repo</a> and the <a href="https://kotlinlang.org/docs/serialization.html">official kotlin serialization docs</a> on how to install and use the plugin. Again, be mindful if you have a <code>.kts</code> Gradle build file or not (switch to Groovy above if appropriate).</p>
+</div>
+
+<p>Then, add an implementation dependency <code>    implementation(&quot;org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2&quot;)</code>. Lastly, update your <code>User</code> data class to add the <code>@Serializable</code> annotation that should get imported from the package <code>kotlinx.serialization</code>, and the Java <code>Serializable</code> interface to tell Android-specific methods it&rsquo;s a serializable object:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#75af00">@Serializable</span>
+<span style="color:#00a8c8">data</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">User</span><span style="color:#111">(</span><span style="color:#00a8c8">val</span> <span style="color:#111">name</span><span style="color:#111">:</span> <span style="color:#111">String</span><span style="color:#111">)</span> <span style="color:#111">:</span> <span style="color:#111">java</span><span style="color:#111">.</span><span style="color:#111">io</span><span style="color:#111">.</span><span style="color:#111">Serializable</span> <span style="color:#111">{</span>
+<span style="color:#111">}</span>
+</code></pre></div><p>Now create a function that returns a new <code>User</code> object based on the viewbinding&rsquo;s values. Then pass the single <code>User</code> instance through the intent using <code>putExtra()</code>. Pull it back out using <code>getSerializableExtra()</code>.</p>
+
+<div class="notices note" ><p>Android also supports <a href="https://developer.android.com/topic/libraries/data-binding/two-way">(two-way) <strong>data binding</strong></a>, next to the <strong>view binding</strong> system introduced in <a href="../../android/activities">chapter 1.1</a>. This allows designers to directly map properties of models into the layouts, thus avoiding having to access every single property to carry over into an intent or another object. Data binding is not part of this course but feel free to use it instead of view binding, should you wish to do so.</p>
+</div>
+
+<p>Can you think of other smart ways to share data between activites?</p>
+<p>The Parcelize alternative is left as an exercise for the reader.</p>
+<h2 id="using-intents-to-start-an-internal-service">Using intents to start an internal service</h2>
+<p>Besides switching activities as screens within a single app, an intent can also pass messages along a background service that performs operations without a user interface. Services can be launched by creating a <code>JobScheduler</code> instance and passing it to <code>startService()</code> (instead of <code>startActivity()</code>) (see <a href="https://developer.android.com/reference/android/app/job/JobScheduler">API reference</a>). Why would you want to do that?</p>
+<ul>
+<li>To download a large file in the background without blocking the UI</li>
+<li>To convert a lot of images in the background</li>
+<li>To upload data to a back-end server using a HTTP POST</li>
+<li>&hellip;</li>
+</ul>
+<p>Services, and the difference between them and typical Java threads, are explained in detail in the <a href="https://developer.android.com/guide/components/services">Services overview dev guide</a>.</p>
+<p>The usage of services is not part of this course.</p>
+<h2 id="using-intents-to-interact-with-other-apps">Using intents to interact with other apps</h2>
+<h3 id="implicit-intents">Implicit intents</h3>
+<p>When you create an intent to switch to an activity, your own app knows how to handle that intent: it should go to that new activity that also lives within your own app. These are called <strong>explicit intents</strong>: you specify which application will satisfy the intent by supplying the class name of the activity.</p>
+<p>Next to <em>explicit</em> intents, you can also create <strong>implicit</strong> intents. What&rsquo;s that? According to the docs:</p>
+<blockquote>
+<p><strong>Implicit</strong> intents do not name a specific component, but instead declare a general action to perform, which allows a component from another app to handle it. For example, if you want to show the user a location on a map, you can use an implicit intent to request that another capable app show a specified location on a map.</p>
+</blockquote>
+<p>Some useful uses of implicit intents:</p>
+<ul>
+<li>Ask &ldquo;any app&rdquo; to take a picture and return a reference to us</li>
+<li>Ask &ldquo;any app&rdquo; to browse on a map to a specific location</li>
+<li>Ask &ldquo;any app&rdquo; to print something</li>
+<li>Ask &ldquo;any app&rdquo; to dail a number</li>
+<li>&hellip;</li>
+</ul>
+<p>In short, <strong>messaging between specific apps</strong> requires the creation of implicit intents that you do NOT handle yourself.</p>
+<p>The code for this is really simple:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">val</span> <span style="color:#111">number</span> <span style="color:#111">=</span> <span style="color:#111">Uri</span><span style="color:#111">.</span><span style="color:#111">parse</span><span style="color:#111">(</span><span style="color:#d88200">&#34;tel:011112233&#34;</span><span style="color:#111">)</span>
+<span style="color:#111">startActivity</span><span style="color:#111">(</span><span style="color:#111">Intent</span><span style="color:#111">(</span><span style="color:#111">Intent</span><span style="color:#111">.</span><span style="color:#111">ACTION_CALL</span><span style="color:#111">,</span> <span style="color:#111">number</span><span style="color:#111">))</span>
+</code></pre></div><p>Each system-wide known implicit intent is specified with a pre-defined String that can be auto-completed:</p>
+<p><figure>
+	<a href="../../img/implicitintent.jpg" data-featherlight="image">
+		<img src="../../img/implicitintent.jpg"   title="the Auto-completion lists of possible (implicit) intents.">
+	</a>
+	
+		<figcaption>the Auto-completion lists of possible (implicit) intents.</figcaption>
+	
+</figure>
+</p>
+<p>See the <a href="https://developer.android.com/training/basics/intents/sending">guide to intents</a> for more examples such as opening a map, a webpage, creating an e-mail with attachments, and so forth.</p>
+
+<div class="notices warning" ><p>Applications that are not allowed to make calls will generate a <code>SecurityException</code> while attempting to start the <code>action.CALL</code> intent with the message &ldquo;Permission Denial&rdquo;, stating which specific permission is missing (<code>android.permission.CALL_PHONE</code> in case of calling). Add these in your <a href="https://developer.android.com/training/permissions/declaring">android manifest file</a> if needed. More on that in the <a href="../../android/security"><strong>security by design</strong></a> chapter.</p>
+</div>
+
+<p>In case no single application knows how to handle your implicit intent, not even your own, <code>startActivity()</code> will throw an <code>ActivityNotFoundException</code>. It would thus be in your best interest to wrap your activity starts with a try block!</p>
+<p>A much better, secure way of coding would be to <a href="https://www.youtube.com/watch?v=HGElAW224dE">protect implicit intents with runtime checks</a>. Suppose you want to open the camera and afterwards receive the image URI. The app you want might simply not be there on certain devices, or that the user has restricted profile access. The key idea here is to <em>check something before using it</em>, instead of letting it crash afterwards. That&rsquo;s done via <code>resolveActivity()</code>:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">val</span> <span style="color:#111">intent</span> <span style="color:#111">=</span> <span style="color:#111">Intent</span><span style="color:#111">(</span><span style="color:#111">Intent</span><span style="color:#111">.</span><span style="color:#111">ACTION_CALL</span><span style="color:#111">,</span> <span style="color:#111">number</span><span style="color:#111">)</span>
+<span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#111">intent</span><span style="color:#111">.</span><span style="color:#111">resolveActivity</span><span style="color:#111">(</span><span style="color:#111">applicationContext</span><span style="color:#111">.</span><span style="color:#111">packageManager</span><span style="color:#111">)</span> <span style="color:#f92672">!=</span> <span style="color:#00a8c8">null</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+    <span style="color:#111">startActivity</span><span style="color:#111">(</span><span style="color:#111">intent</span><span style="color:#111">)</span>
+<span style="color:#111">}</span> <span style="color:#00a8c8">else</span> <span style="color:#111">{</span>
+    <span style="color:#111">msg</span><span style="color:#111">(</span><span style="color:#d88200">&#34;doesnt work on your device mate&#34;</span><span style="color:#111">)</span>
+<span style="color:#111">}</span>
+</code></pre></div><p>This has <a href="https://stackoverflow.com/questions/62535856/intent-resolveactivity-returns-null-in-api-30">known issues in certain Amdroid API versions</a>. A fallback would be to still catch the exception.</p>
+<h4 id="retrieving-the-result-from-intents">Retrieving the result from intents</h4>
+<p>Let&rsquo;s try to capture a picture. Follow along in the <a href="https://developer.android.com/training/camera/photobasics">taking photos Android Dev guide</a>. Remember to advertise that your app depends on having a camera by adding <code>&lt;uses-feature android:name=&quot;android.hardware.camera&quot; android:required=&quot;true&quot; /&gt;</code> in the manifest file. The intent we&rsquo;re going to use is <code>MediaStore.ACTION_IMAGE_CAPTURE</code>.</p>
+<p>First, we need to register an &ldquo;activity result&rdquo; in our <code>onCreate()</code>, because it is only safe to call the method before the activity is in its STARTED state:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">class</span> <span style="color:#75af00">MainActivity</span> <span style="color:#111">:</span> <span style="color:#111">AppCompatActivity</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+    <span style="color:#00a8c8">private</span> <span style="color:#00a8c8">lateinit</span> <span style="color:#00a8c8">var</span> <span style="color:#111">pictureActivityResult</span><span style="color:#111">:</span> <span style="color:#111">ActivityResultLauncher</span><span style="color:#111">&lt;</span><span style="color:#111">Void</span><span style="color:#111">&gt;</span>
+    <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>    <span style="color:#00a8c8">override</span> <span style="color:#00a8c8">fun</span> <span style="color:#75af00">onCreate</span><span style="color:#111">(</span><span style="color:#111">savedInstanceState</span><span style="color:#111">:</span> <span style="color:#111">Bundle</span><span style="color:#111">?)</span> <span style="color:#111">{</span>
+        <span style="color:#00a8c8">super</span><span style="color:#111">.</span><span style="color:#111">onCreate</span><span style="color:#111">(</span><span style="color:#111">savedInstanceState</span><span style="color:#111">)</span>
+        <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>        <span style="color:#111">pictureActivityResult</span> <span style="color:#111">=</span> <span style="color:#111">registerForActivityResult</span><span style="color:#111">(</span><span style="color:#111">ActivityResultContracts</span><span style="color:#111">.</span><span style="color:#111">TakePicturePreview</span><span style="color:#111">())</span> <span style="color:#111">{</span> <span style="color:#111">bm</span><span style="color:#111">:</span> <span style="color:#111">Bitmap</span> <span style="color:#f92672">-&gt;</span>
+            <span style="color:#111">msg</span><span style="color:#111">(</span><span style="color:#d88200">&#34;bitmap is </span><span style="color:#d88200">${bm.height}</span><span style="color:#d88200"> high&#34;</span><span style="color:#111">,</span> <span style="color:#111">binding</span><span style="color:#111">.</span><span style="color:#111">root</span><span style="color:#111">)</span>
+            <span style="color:#75715e">// do something with the captured image
+</span><span style="color:#75715e"></span>        <span style="color:#111">}</span>
+    <span style="color:#111">}</span>
+</code></pre></div><p>Next, in the onclick listener, after asking/checking for the correct permissions, fire off the result using <code>pictureActivityResult.launch(null)</code>.</p>
+<p>Now where exactly do we specify which intent to fire off? That magic is obfuscated inside the <code>TakePicturePreview</code> class we&rsquo;re instantiating. You can provide your own what is called <strong>activity contracts</strong>, but a lot of commons are provided for you in the <code>ActivityResultcontracts</code> class. The picture preview source code looks like this:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">public</span> <span style="color:#111">static</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">TakePicturePreview</span> <span style="color:#111">extends</span> <span style="color:#111">ActivityResultContract</span><span style="color:#111">&lt;</span><span style="color:#111">Void</span><span style="color:#111">,</span> <span style="color:#111">Bitmap</span><span style="color:#111">&gt;</span> <span style="color:#111">{</span>
+
+    <span style="color:#75af00">@CallSuper</span>
+    <span style="color:#75af00">@NonNull</span>
+    <span style="color:#75af00">@Override</span>
+    <span style="color:#00a8c8">public</span> <span style="color:#111">Intent</span> <span style="color:#111">createIntent</span><span style="color:#111">(</span><span style="color:#75af00">@NonNull</span> <span style="color:#111">Context</span> <span style="color:#111">context</span><span style="color:#111">,</span> <span style="color:#75af00">@Nullable</span> <span style="color:#111">Void</span> <span style="color:#111">input</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+        <span style="color:#00a8c8">return</span> <span style="color:#111">new</span> <span style="color:#111">Intent</span><span style="color:#111">(</span><span style="color:#111">MediaStore</span><span style="color:#111">.</span><span style="color:#111">ACTION_IMAGE_CAPTURE</span><span style="color:#111">);</span>
+    <span style="color:#111">}</span>
+
+    <span style="color:#75af00">@Nullable</span>
+    <span style="color:#75af00">@Override</span>
+    <span style="color:#00a8c8">public</span> <span style="color:#00a8c8">final</span> <span style="color:#111">SynchronousResult</span><span style="color:#111">&lt;</span><span style="color:#111">Bitmap</span><span style="color:#111">&gt;</span> <span style="color:#111">getSynchronousResult</span><span style="color:#111">(</span><span style="color:#75af00">@NonNull</span> <span style="color:#111">Context</span> <span style="color:#111">context</span><span style="color:#111">,</span>
+            <span style="color:#75af00">@Nullable</span> <span style="color:#111">Void</span> <span style="color:#111">input</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+        <span style="color:#00a8c8">return</span> <span style="color:#00a8c8">null</span><span style="color:#111">;</span>
+    <span style="color:#111">}</span>
+
+    <span style="color:#75af00">@Nullable</span>
+    <span style="color:#75af00">@Override</span>
+    <span style="color:#00a8c8">public</span> <span style="color:#00a8c8">final</span> <span style="color:#111">Bitmap</span> <span style="color:#111">parseResult</span><span style="color:#111">(</span><span style="color:#111">int</span> <span style="color:#111">resultCode</span><span style="color:#111">,</span> <span style="color:#75af00">@Nullable</span> <span style="color:#111">Intent</span> <span style="color:#111">intent</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+        <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">intent</span> <span style="color:#f92672">==</span> <span style="color:#00a8c8">null</span> <span style="color:#f92672">||</span> <span style="color:#111">resultCode</span> <span style="color:#f92672">!=</span> <span style="color:#111">Activity</span><span style="color:#111">.</span><span style="color:#111">RESULT_OK</span><span style="color:#111">)</span> <span style="color:#00a8c8">return</span> <span style="color:#00a8c8">null</span><span style="color:#111">;</span>
+        <span style="color:#00a8c8">return</span> <span style="color:#111">intent</span><span style="color:#111">.</span><span style="color:#111">getParcelableExtra</span><span style="color:#111">(</span><span style="color:#d88200">&#34;data&#34;</span><span style="color:#111">);</span>
+    <span style="color:#111">}</span>
+<span style="color:#111">}</span>
+</code></pre></div><p>Aha, now we&rsquo;re getting somewhere! Upon further inspection, <code>TakePicture</code> (not the preview one) puts extra data into the intent to capture the whole output. Note the first generic type of the extended class: <code>Void</code>. So that is where that <code>Void</code> comes from in or <code>lateinit var pictureActivityResult</code>: other embedded activity result contracts will likely have other result types (<code>OpenDocument</code> has <code>String[]</code>, for instance). These details are provided for you, make use of them.</p>
+<p>Note that because of the implicit intent, handling the camera is left to <strong>another app</strong> which is already has permissions to access the camera. Therefore, we do NOT need an explicit <code>&lt;uses-permission android:name=&quot;android.permission.CAMERA&quot; /&gt;</code> entry in our manifest, but it&rsquo;s still important to <em>advertise</em> we do use the camera with a <code>&lt;uses-feature/&gt;</code> tag. See the <a href="../../android/security">security by design chapter</a> for more information.</p>
+
+<div class="notices note" ><p>You&rsquo;ll learn the most while digging through the source code of the API itself while hacking your way through the code&mdash;and <em>not</em> by just reading this page. Do not be afraid to press <code>CTRL+B</code> (Go To Declaration) in Android Studio! If you still have no idea what&rsquo;s going on, then <code>developer.android.com</code> is your best friend.</p>
+</div>
+
+<h3 id="deliveringreceiving-a-broadcast">Delivering/receiving a broadcast</h3>
+<p>Instead of keeping intents as messages within your application, you can also <em>broadcast</em> them so that any app can receive them. The system delivers various broadcasts for system events, such as on bootup or when the device starts charging. Sending broadcasts can be done through <code>sendBroadcast()</code>.</p>
+<p>The usage of broadcasts is not part of this course.</p>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="../../android/activities/" title="1. Life Cycle - Activities"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="../../android/fragments/" title="3. Complex layouts: Fragments" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../../js/clipboard.min.js?1647618381"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1647618381"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1647618381"></script>
+    <script src="../../js/jquery.sticky.js?1647618381"></script>
+    <script src="../../js/featherlight.min.js?1647618381"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1647618381"></script>
+    <script src="../../js/learn.js?1647618381"></script>
+    <script src="../../js/hugo-learn.js?1647618381"></script>
+    
+        
+            <script src="../../mermaid/mermaid.js?1647618381"></script>
+        
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    
+    
+
+  </body>
+</html>
+

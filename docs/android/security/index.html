@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.81.0" />
+    <meta name="description" content="">
+
+
+    <link rel="icon" href="../../images/favicon.png" type="image/png">
+
+    <title>7. Security By Design :: App Development</title>
+
+    
+    <link href="../../css/nucleus.css?1647618381" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1647618381" rel="stylesheet">
+    <link href="../../css/hybrid.css?1647618381" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1647618381" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1647618381" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1647618381" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1647618381" rel="stylesheet">
+    <link href="../../css/theme.css?1647618381" rel="stylesheet">
+    <link href="../../css/devselector.css?1647618381" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1647618381" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1647618381" rel="stylesheet">
+    
+
+    <script src="../../js/jquery-3.3.1.min.js?1647618381"></script>
+    <script src="../../js/devselector.js?1647618381"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+        :not(pre) > code + span.copy-to-clipboard {
+            display: none;
+        }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="../../android/security/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a href="https://www.kuleuven.be/kuleuven/" target="_blank">
+  <img src="../../images/kul.png" alt="KU Leuven" /><br/>
+</a>
+<a href="https://www.uhasselt.be/" target="_blank">
+  <img src="../../images/uhasselt.svg" alt="UHasselt" id="uhlogo" />
+</a>
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../../js/lunr.min.js?1647618381"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1647618381"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
+    
+</script>
+<script type="text/javascript" src="../../js/search.js?1647618381"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+
+      <h3><a href="../../">Course Contents</a></h3>
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/android/" title="1. Android Essentials" class="dd-item
+        parent
+        
+        
+        ">
+      <a href="../../android/">
+          1. Android Essentials
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/activities/" title="1. Life Cycle - Activities" class="dd-item ">
+        <a href="../../android/activities/">
+        1. Life Cycle - Activities
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/intents/" title="2. Messaging - Intents" class="dd-item ">
+        <a href="../../android/intents/">
+        2. Messaging - Intents
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/fragments/" title="3. Complex layouts: Fragments" class="dd-item ">
+        <a href="../../android/fragments/">
+        3. Complex layouts: Fragments
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/views/" title="4. Complex layouts: Nested Views" class="dd-item ">
+        <a href="../../android/views/">
+        4. Complex layouts: Nested Views
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/data-storage/" title="5. Data Storage: File/Network" class="dd-item ">
+        <a href="../../android/data-storage/">
+        5. Data Storage: File/Network
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/signals/" title="6. Embedded Signals" class="dd-item ">
+        <a href="../../android/signals/">
+        6. Embedded Signals
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/security/" title="7. Security By Design" class="dd-item active">
+        <a href="../../android/security/">
+        7. Security By Design
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/lang/" title="2. Language &amp; Support Tools" class="dd-item
+        
+        
+        
+        ">
+      <a href="../../lang/">
+          2. Language &amp; Support Tools
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/lang/kotlin/" title="1. Kotlin programming: Essentials" class="dd-item ">
+        <a href="../../lang/kotlin/">
+        1. Kotlin programming: Essentials
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/lang/kotlin-advanced/" title="2. Kotlin programming: Advanced" class="dd-item ">
+        <a href="../../lang/kotlin-advanced/">
+        2. Kotlin programming: Advanced
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/lang/kotlin-examples/" title="3. Kotlin Examples/Exercises" class="dd-item ">
+        <a href="../../lang/kotlin-examples/">
+        3. Kotlin Examples/Exercises
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/lang/tdd/" title="4. Test Driven Development" class="dd-item ">
+        <a href="../../lang/tdd/">
+        4. Test Driven Development
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/lang/multiplatform/" title="5. Multiplatform Mobile dev." class="dd-item ">
+        <a href="../../lang/multiplatform/">
+        5. Multiplatform Mobile dev.
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/extra/" title="3. Extra info" class="dd-item
+        
+        
+        
+        ">
+      <a href="../../extra/">
+          3. Extra info
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/extra/install/" title="1. Installation Guide" class="dd-item ">
+        <a href="../../extra/install/">
+        1. Installation Guide
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/extra/faq/" title="2. Common Errors FAQ" class="dd-item ">
+        <a href="../../extra/faq/">
+        2. Common Errors FAQ
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/extra/links/" title="3. Links and Tutorials" class="dd-item ">
+        <a href="../../extra/links/">
+        3. Links and Tutorials
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/extra/project/" title="4. Project Information" class="dd-item ">
+        <a href="../../extra/project/">
+        4. Project Information
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/extra/demo/" title="5. Demo Project" class="dd-item ">
+        <a href="../../extra/demo/">
+        5. Demo Project
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+        
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li>
+                  <a class="padding" href="https://uhintra03.uhasselt.be/studiegidswww/opleidingsonderdeel.aspx?a=2021&amp;i=3291&amp;n=4&amp;t=01"><i class='fa fa-university'></i> ECTS Sheet</a>
+              </li>
+          
+              <li>
+                  <a class="padding" href="https://toledo.kuleuven.be/portal/"><i class='fa fa-university'></i> Toledo</a>
+              </li>
+          
+              <li>
+                  <a class="padding" href="https://github.com/kuleuven-diepenbeek/appdev-course/"><i class='fab fa-github'></i> Course Git Repository</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='../../'>Course Contents</a> > <a href='../../android/'>1. Android Essentials</a> > 7. Security By Design
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#googles-safest-mobile-platform-in-the-world">Google&rsquo;s &ldquo;safest mobile platform in the world&rdquo;</a></li>
+    <li><a href="#encrypting-data">Encrypting Data</a>
+      <ul>
+        <li><a href="#do-not-expose-api-keys">Do not expose API keys!</a></li>
+      </ul>
+    </li>
+    <li><a href="#asking-for-permissions">Asking for Permissions</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              7. Security By Design
+            </h1>
+          
+
+        
+
+
+<h2 id="googles-safest-mobile-platform-in-the-world">Google&rsquo;s &ldquo;safest mobile platform in the world&rdquo;</h2>
+<p>As the <a href="https://developer.android.com/security">Android Developer guide on security</a> states:</p>
+<blockquote>
+<p>Our goal is to make Android the safest mobile platform in the world. That&rsquo;s why we consistently invest in technologies that bolster the security of the platform, its apps, and the global Android ecosystem.<br/>
+It&rsquo;s a responsibility we share with you, as developers, to keep users safe and secure.</p>
+</blockquote>
+<p>Sadly enough, Google itself doesn&rsquo;t quite adhere to its own philosophy, as the Android OS is full of trackers that push personal data into Google&rsquo;s greedy hands. <a href="https://www.bleepingcomputer.com/news/google/idle-android-phones-send-data-to-google-ten-times-more-often-than-ios-devices-to-apple/">Idle Android phones send data to Google ten times more often than iOS devices to Apple</a>, of which more than <code>30%</code> is location-related:</p>
+<p><figure>
+	<a href="../../img/datacollection.png" data-featherlight="image">
+		<img src="../../img/datacollection.png"   title="src: linked article.">
+	</a>
+	
+		<figcaption>src: linked article.</figcaption>
+	
+</figure>
+</p>
+<p>Alternatives such as <a href="https://lineageos.org/">the LineageOS Android Distribution</a> exist, which is a free and open-source operating system for various devices based on the Android mobile platform. That is, anything app you build using the knowledge of this course will run flawlessly on LineageOS.</p>
+<p>However, it&rsquo;s not because Google sells our private data that we must do the same. Google&rsquo;s recommended security best practices that make sense are:</p>
+<ul>
+<li><em>Encrypt your data</em></li>
+<li><em>Communicate securely</em>&mdash;always use HTTPS and SSL if fetching data from the internet</li>
+<li><em>Test, test, and test again</em>&mdash;not only applicable to <a href="../../lang/tdd">TDD</a>, but to manual testing on different physical devices.</li>
+<li><em>Audit third-party libraries</em>&mdash;before mindlessly adding in dependencies in your Gradle file, double-check that (1) you really need it and (2) the library is considered safe to use.</li>
+</ul>
+<p>The following are a bit more dubious:</p>
+<ul>
+<li>Detect insecure devices (SafetyNet Attestation)&mdash;This effectively prevents end users from choosing alternative Android-based OSes, such as the aforementioned Lineage.</li>
+<li>Authenticate users and keys with biometrics&mdash;Relying on biometrics can cause end users to distrust your app.</li>
+<li>Be the first to know (sent vulnerability disclosures through Google&rsquo;s servers to you)&mdash;Another excuse to outsource vulnerable data.</li>
+</ul>
+<h2 id="encrypting-data">Encrypting Data</h2>
+<p>See also: <a href="https://developer.android.com/topic/security/data">Android Developer Guide: security with data</a>.</p>
+<p>Use the <code>androidx.security:security-app-authenticator</code> package to encrypt and decrypt files that aren&rsquo;t private and contain sensitive information. Do NOT use <code>Ciper</code> and <code>SecretKeySpec</code> yourself, but use Android&rsquo;s keystore system instead. This is to prevent other apps or hackers from accessing your private key files.</p>
+<p>Do note that encrypting files is not always needed. Simply write files and shared preferences in <code>MODE_PRIVATE</code>: see the <a href="../../android/data-storage">data chapter</a>. This prevents other apps from accessing your data, and makes sure that the stored data gets removes along an uninstall procedure. Sure, the files can still be pried out of the system if you really want to. But preferences are&hellip; well&hellip; preferences. And caching/databases that store already readily-accessible information do not need to be encrypted at all.</p>
+<p>If you do require database encryption, use <a href="https://github.com/sqlcipher/android-database-sqlcipher">SQLCipher</a> in conjunction with Room (see <a href="../../android/data-storage">the data storage chapter</a>).</p>
+<p>Implementing Android encryption strategies is not part of this course.</p>
+<h3 id="do-not-expose-api-keys">Do not expose API keys!</h3>
+<p>If your app requires data access to a third party, say a Google API, you&rsquo;ll likely need to get your hands on an API key to be able to use that particular service. These keys are usually passed in the request, either as a <code>GET</code> query parameter (unsecure!) or as a <code>POST</code> header flag. It is very tempting to hard-code these keys, as they are simple strings after all. However, this is <strong>very bad practice</strong>, as malicious users will easily unzip and decompile your <code>.apk</code> file to pry out that key. There are <a href="https://support.google.com/googleapi/answer/6310037">best practices for securely using API keys</a>.</p>
+<p>For example, in the <a href="../../extra/demo">demo project</a>, the Google Vision API key is not checked in. It resides in a separate properties file that gets integrated into the build using Gradle:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#75715e">// Remember that any piece of Kotlin code can be injected into the build file. 
+</span><span style="color:#75715e"></span><span style="color:#00a8c8">val</span> <span style="color:#111">apiKeys</span> <span style="color:#111">=</span> <span style="color:#00a8c8">file</span><span style="color:#111">(</span><span style="color:#d88200">&#34;../apikeys.properties&#34;</span><span style="color:#111">).</span><span style="color:#111">readLines</span><span style="color:#111">().</span><span style="color:#111">map</span> <span style="color:#111">{</span>
+    <span style="color:#00a8c8">val</span> <span style="color:#111">keyvalues</span> <span style="color:#111">=</span> <span style="color:#00a8c8">it</span><span style="color:#111">.</span><span style="color:#111">split</span><span style="color:#111">(</span><span style="color:#d88200">&#34;=&#34;</span><span style="color:#111">)</span>
+    <span style="color:#111">keyvalues</span><span style="color:#111">[</span><span style="color:#ae81ff">0</span><span style="color:#111">]</span> <span style="color:#111">to</span> <span style="color:#111">keyvalues</span><span style="color:#111">[</span><span style="color:#ae81ff">1</span><span style="color:#111">]</span>
+<span style="color:#111">}.</span><span style="color:#111">toMap</span><span style="color:#111">()</span>
+
+<span style="color:#111">android</span> <span style="color:#111">{</span>
+    <span style="color:#75715e">// ... (definitions of build types)
+</span><span style="color:#75715e"></span>    <span style="color:#111">buildTypes</span><span style="color:#111">.</span><span style="color:#111">forEach</span> <span style="color:#111">{</span>
+        <span style="color:#00a8c8">it</span><span style="color:#111">.</span><span style="color:#111">buildConfigField</span><span style="color:#111">(</span><span style="color:#d88200">&#34;String&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;GOOGLE_VISION_API_KEY&#34;</span><span style="color:#111">,</span> <span style="color:#111">apiKeys</span><span style="color:#111">[</span><span style="color:#d88200">&#34;GoogleVisionApiKey&#34;</span><span style="color:#111">]</span><span style="color:#f92672">!!</span><span style="color:#111">)</span>
+    <span style="color:#111">}</span>
+<span style="color:#111">}</span>
+</code></pre></div><p>Next, in your code, these &ldquo;build config fields&rdquo; are accessible as static flags through the <code>BuildConfig</code> class, which is generated by Gradle as you build the project. See the <code>build.gradle.kts</code> file for more information. Note that this is but one possibility.</p>
+<h2 id="asking-for-permissions">Asking for Permissions</h2>
+<p>See also: <a href="https://developer.android.com/guide/topics/permissions/overview">Android Developer Guide: Permissions Overview</a>.</p>
+<p>Perhaps the most important app development principle is <em>permissions</em>, configured in the manifest file. We&rsquo;ve briefly touched upon that in the <a href="../../android/intents">intents chapter</a> to access the camera API. There exist numerous permission types, and it&rsquo;s always best to explicitly ask for <strong>as little</strong> permissions as possible. Instead, leverage <em>implicit intents</em> and let another app that already has explicit permissions handle the action for you. For example, instead of asking the user for access to their contacts to create a new contact, start an implicit intent that fires up the contacts app itself that does it for you:</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">val</span> <span style="color:#111">intent</span> <span style="color:#111">=</span> <span style="color:#111">Intent</span><span style="color:#111">(</span><span style="color:#111">Intent</span><span style="color:#111">.</span><span style="color:#111">ACTION_INSERT</span><span style="color:#111">).</span><span style="color:#111">apply</span> <span style="color:#111">{</span>
+    <span style="color:#111">type</span> <span style="color:#111">=</span> <span style="color:#111">ContactsContract</span><span style="color:#111">.</span><span style="color:#111">Contacts</span><span style="color:#111">.</span><span style="color:#111">CONTENT_TYPE</span>
+<span style="color:#111">}</span>
+<span style="color:#111">intent</span><span style="color:#111">.</span><span style="color:#111">resolveActivity</span><span style="color:#111">(</span><span style="color:#111">packageManager</span><span style="color:#111">)</span><span style="color:#f92672">?.</span><span style="color:#111">run</span> <span style="color:#111">{</span>
+    <span style="color:#111">startActivity</span><span style="color:#111">(</span><span style="color:#111">intent</span><span style="color:#111">)</span> <span style="color:#75715e">// this won&#39;t be run if the activity does not resolve. 
+</span><span style="color:#75715e"></span><span style="color:#111">}</span>
+</code></pre></div><p>Not all specific actions require user permissions at runtime: declaring them in your manifest might be enough. See this workflow:</p>
+<p><figure>
+	<a href="../../img/permissions.jpg" data-featherlight="image">
+		<img src="../../img/permissions.jpg"   title="src: Android docs.">
+	</a>
+	
+		<figcaption>src: Android docs.</figcaption>
+	
+</figure>
+</p>
+<p>The following major different permission types exist (for a full overview, see <a href="https://developer.android.com/guide/topics/permissions/overview">the permissions overview docs</a>):</p>
+<ul>
+<li><strong>install-time</strong> permissions. These are &ldquo;hard-coded&rdquo; into your app and make if easy for the developer to code: just assume everything has been granted, since the app is installed. However, this is VERY off-putting for end users. Avoid.</li>
+<li><strong>runtime</strong> permissions. In order to execute a certain action, the app might need access to a restricted portion of the device: access to photos, media, camera, etc. These make your life as an app developer harder, since it might be the case that the user <em>denies</em> the request, and the app still has to work. However, this is the better option in context of user experience.</li>
+</ul>
+<p>A few more best practices:</p>
+<ul>
+<li>Try to be transparent: make it explicit to the user why a permission is requested. This reminder helps users understand exactly when your app accesses restricted data or performs restricted actions.</li>
+<li>First try to work with loose permissions: <code>ACCESS_COARSE_LOCATION</code> gives the device&rsquo;s location within a 2 km radius. If that really really really (really) does not suffice, only then, you&rsquo;ll need <code>ACCESS_FINE_LOCATION</code>.</li>
+<li>Again, make sure you really really (&hellip;) need a permission in the first place. Delegate work to other apps using implicit intents. For example, don&rsquo;t declare a <code>CAMERA</code> permission. Instead, invoke the <code>ACTION_IMAGE_CAPTURE</code> intent. See the <code>examples/kotlin/intents</code> source code.</li>
+<li>Some Android OSes don&rsquo;t require permissions for opening media. Check the docs and only ask for it if you detect the <code>sdkVersion</code> to be lower than the threshold. See <a href="https://developer.android.com/training/permissions/evaluating">this example</a>: opening documents.</li>
+<li>Some actions have permissions coupled to them (<code>BLUETOOTH_ADMIN</code> and <code>ACCESS_FINE_LOCATION</code> for Bluetooth functionality), but alternatives exist in the API that don&rsquo;t require a permission, such as <a href="https://developer.android.com/guide/topics/connectivity/companion-device-pairing">device pairing</a>.</li>
+</ul>
+<p>Consult the <a href="https://github.com/android/permissions-samples">Android Permissions Sample Repository</a> for code samples on how to get started with writing/understanding Android Permissions, besides the already provided examples in this course.</p>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="../../android/signals/" title="6. Embedded Signals"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="../../lang/" title="2. Language &amp; Support Tools" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../../js/clipboard.min.js?1647618381"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1647618381"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1647618381"></script>
+    <script src="../../js/jquery.sticky.js?1647618381"></script>
+    <script src="../../js/featherlight.min.js?1647618381"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1647618381"></script>
+    <script src="../../js/learn.js?1647618381"></script>
+    <script src="../../js/hugo-learn.js?1647618381"></script>
+    
+        
+            <script src="../../mermaid/mermaid.js?1647618381"></script>
+        
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    
+    
+
+  </body>
+</html>
+

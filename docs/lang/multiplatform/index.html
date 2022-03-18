@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.81.0" />
+    <meta name="description" content="">
+
+
+    <link rel="icon" href="../../images/favicon.png" type="image/png">
+
+    <title>5. Multiplatform Mobile dev. :: App Development</title>
+
+    
+    <link href="../../css/nucleus.css?1647618381" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1647618381" rel="stylesheet">
+    <link href="../../css/hybrid.css?1647618381" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1647618381" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1647618381" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1647618381" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1647618381" rel="stylesheet">
+    <link href="../../css/theme.css?1647618381" rel="stylesheet">
+    <link href="../../css/devselector.css?1647618381" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1647618381" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1647618381" rel="stylesheet">
+    
+
+    <script src="../../js/jquery-3.3.1.min.js?1647618381"></script>
+    <script src="../../js/devselector.js?1647618381"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+        :not(pre) > code + span.copy-to-clipboard {
+            display: none;
+        }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="../../lang/multiplatform/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a href="https://www.kuleuven.be/kuleuven/" target="_blank">
+  <img src="../../images/kul.png" alt="KU Leuven" /><br/>
+</a>
+<a href="https://www.uhasselt.be/" target="_blank">
+  <img src="../../images/uhasselt.svg" alt="UHasselt" id="uhlogo" />
+</a>
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="../../js/lunr.min.js?1647618381"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1647618381"></script>
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
+    
+</script>
+<script type="text/javascript" src="../../js/search.js?1647618381"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+
+      <h3><a href="../../">Course Contents</a></h3>
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/android/" title="1. Android Essentials" class="dd-item
+        
+        
+        
+        ">
+      <a href="../../android/">
+          1. Android Essentials
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/activities/" title="1. Life Cycle - Activities" class="dd-item ">
+        <a href="../../android/activities/">
+        1. Life Cycle - Activities
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/intents/" title="2. Messaging - Intents" class="dd-item ">
+        <a href="../../android/intents/">
+        2. Messaging - Intents
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/fragments/" title="3. Complex layouts: Fragments" class="dd-item ">
+        <a href="../../android/fragments/">
+        3. Complex layouts: Fragments
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/views/" title="4. Complex layouts: Nested Views" class="dd-item ">
+        <a href="../../android/views/">
+        4. Complex layouts: Nested Views
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/data-storage/" title="5. Data Storage: File/Network" class="dd-item ">
+        <a href="../../android/data-storage/">
+        5. Data Storage: File/Network
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/signals/" title="6. Embedded Signals" class="dd-item ">
+        <a href="../../android/signals/">
+        6. Embedded Signals
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/android/security/" title="7. Security By Design" class="dd-item ">
+        <a href="../../android/security/">
+        7. Security By Design
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/lang/" title="2. Language &amp; Support Tools" class="dd-item
+        parent
+        
+        
+        ">
+      <a href="../../lang/">
+          2. Language &amp; Support Tools
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/lang/kotlin/" title="1. Kotlin programming: Essentials" class="dd-item ">
+        <a href="../../lang/kotlin/">
+        1. Kotlin programming: Essentials
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/lang/kotlin-advanced/" title="2. Kotlin programming: Advanced" class="dd-item ">
+        <a href="../../lang/kotlin-advanced/">
+        2. Kotlin programming: Advanced
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/lang/kotlin-examples/" title="3. Kotlin Examples/Exercises" class="dd-item ">
+        <a href="../../lang/kotlin-examples/">
+        3. Kotlin Examples/Exercises
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/lang/tdd/" title="4. Test Driven Development" class="dd-item ">
+        <a href="../../lang/tdd/">
+        4. Test Driven Development
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/lang/multiplatform/" title="5. Multiplatform Mobile dev." class="dd-item active">
+        <a href="../../lang/multiplatform/">
+        5. Multiplatform Mobile dev.
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/extra/" title="3. Extra info" class="dd-item
+        
+        
+        
+        ">
+      <a href="../../extra/">
+          3. Extra info
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/extra/install/" title="1. Installation Guide" class="dd-item ">
+        <a href="../../extra/install/">
+        1. Installation Guide
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/extra/faq/" title="2. Common Errors FAQ" class="dd-item ">
+        <a href="../../extra/faq/">
+        2. Common Errors FAQ
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/extra/links/" title="3. Links and Tutorials" class="dd-item ">
+        <a href="../../extra/links/">
+        3. Links and Tutorials
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/extra/project/" title="4. Project Information" class="dd-item ">
+        <a href="../../extra/project/">
+        4. Project Information
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/extra/demo/" title="5. Demo Project" class="dd-item ">
+        <a href="../../extra/demo/">
+        5. Demo Project
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+        
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li>
+                  <a class="padding" href="https://uhintra03.uhasselt.be/studiegidswww/opleidingsonderdeel.aspx?a=2021&amp;i=3291&amp;n=4&amp;t=01"><i class='fa fa-university'></i> ECTS Sheet</a>
+              </li>
+          
+              <li>
+                  <a class="padding" href="https://toledo.kuleuven.be/portal/"><i class='fa fa-university'></i> Toledo</a>
+              </li>
+          
+              <li>
+                  <a class="padding" href="https://github.com/kuleuven-diepenbeek/appdev-course/"><i class='fab fa-github'></i> Course Git Repository</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='../../'>Course Contents</a> > <a href='../../lang/'>2. Language & Support Tools</a> > 5. Multiplatform Mobile dev.
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-other-native-solutions">1. Other Native Solutions</a></li>
+    <li><a href="#2-multiplatform-mobile">2. Multiplatform Mobile</a>
+      <ul>
+        <li><a href="#21-the-kotlin-way-kmm">2.1 The Kotlin Way: KMM</a></li>
+        <li><a href="#22-the-microsoft-way-xamarin">2.2 The Microsoft way: Xamarin</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-mobile-web-tools">3. Mobile Web Tools</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              5. Multiplatform Mobile dev.
+            </h1>
+          
+
+        
+
+
+
+<div class="notices note" ><p>This small Section is <strong>completely optional</strong>, and not part of the core contents of this course. It showcases other possibilities for mobile app development, broken free from the solitary confinements of Android native code.</p>
+</div>
+
+<h2 id="1-other-native-solutions">1. Other Native Solutions</h2>
+<p>Not everyone buys Android-based phones. Apple&rsquo;s iPhone is arguably (much) more popular, and is based on iOS. Developing apps for iOS is a totally different development experience: it requires other tools, another language, and other deployment chains. This is a <em>bad thing</em>: it means you will have to learn to live in both worlds if you intend to release your software on both operating systems!</p>
+<p>Development of iOS apps is done through <a href="https://developer.apple.com/xcode/">the Xcode IDE</a>, a proprietary IDE that only runs on MacOS. That&rsquo;s right, you&rsquo;ll need a Mac machine to build and deploy native iOS apps.</p>
+<p>To program iOS apps in Xcode, you write code <a href="https://learnappmaking.com/learn-swift-programming/">in Swift</a>, a programming language created by Apple in 2014 built on top of the LLVM environment. Swift serves as a replacement for Apple&rsquo;s older Objective-C that originated in the eighties. One of its strengths is its flawless interoperability with Objective-C, like Kotlin has with Java. Swift is also statically typed and also uses smart inferred typing. They both are relatively modern languages. A few similarities and differences:</p>
+<div class="devselect">
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">val</span> <span style="color:#111">immutable</span> <span style="color:#111">=</span> <span style="color:#ae81ff">55</span>
+<span style="color:#00a8c8">var</span> <span style="color:#111">somevar</span><span style="color:#111">:</span> <span style="color:#111">Double</span> <span style="color:#111">=</span> <span style="color:#ae81ff">33.0</span>
+
+<span style="color:#00a8c8">fun</span> <span style="color:#75af00">greet</span><span style="color:#111">(</span><span style="color:#111">name</span><span style="color:#111">:</span> <span style="color:#111">String</span><span style="color:#111">,</span> <span style="color:#111">day</span><span style="color:#111">:</span> <span style="color:#111">String</span><span style="color:#111">):</span> <span style="color:#111">String</span> <span style="color:#111">{</span>
+    <span style="color:#00a8c8">return</span> <span style="color:#d88200">&#34;Hello </span><span style="color:#d88200">$name</span><span style="color:#d88200">, today is </span><span style="color:#d88200">$day</span><span style="color:#d88200">.&#34;</span>
+<span style="color:#111">}</span>
+</code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-swift" data-lang="swift"><span style="color:#00a8c8">let</span> <span style="color:#111">immutable</span> <span style="color:#111">=</span> <span style="color:#ae81ff">55</span>
+<span style="color:#00a8c8">var</span> <span style="color:#111">somevar</span><span style="color:#111">:</span> <span style="color:#111">Double</span> <span style="color:#111">=</span> <span style="color:#ae81ff">33</span>
+
+<span style="color:#00a8c8">func</span> <span style="color:#75af00">greet</span><span style="color:#111">(</span><span style="color:#00a8c8">_</span> <span style="color:#111">name</span><span style="color:#111">:</span> <span style="color:#111">String</span><span style="color:#111">,</span><span style="color:#00a8c8">_</span> <span style="color:#111">day</span><span style="color:#111">:</span> <span style="color:#111">String</span><span style="color:#111">)</span> <span style="color:#111">-&gt;</span> <span style="color:#111">String</span> <span style="color:#111">{</span>
+    <span style="color:#00a8c8">return</span> <span style="color:#d88200">&#34;Hello </span><span style="color:#d88200">\(</span><span style="color:#111">name</span><span style="color:#d88200">)</span><span style="color:#d88200">, today is </span><span style="color:#d88200">\(</span><span style="color:#111">day</span><span style="color:#d88200">)</span><span style="color:#d88200">.&#34;</span>
+<span style="color:#111">}</span>
+</code></pre></div></div>
+<p>And then there&rsquo;s <a href="https://learnappmaking.com/swiftui-getting-started-how-to-ios-swift/">SwiftUI</a>:</p>
+<blockquote>
+<p>SwiftUI is a framework to build User Interfaces (UI) for iOS apps. With SwiftUI, you create the UIs of your iOS apps entirely with Swift code, using a novel declarative approach.</p>
+</blockquote>
+<p>We would have loved to introduce you to the world of iOS development for a single class, but that would mean everyone must have access to Apple hardware.</p>
+<p>Still, if you&rsquo;re serious about app development, the question isn&rsquo;t &ldquo;which language will I learn&rdquo; but &ldquo;which will I learn first&rdquo;. You simply cannot ignore the iPhone market!</p>
+<h2 id="2-multiplatform-mobile">2. Multiplatform Mobile</h2>
+<h3 id="21-the-kotlin-way-kmm">2.1 The Kotlin Way: KMM</h3>
+<p>To ease the development pains that come from maintaining two different code bases in two different languages, using two different IDEs, Kotlin introduced the KMM, or the <em>Kotlin Multiplatform Mobile</em> system. <a href="https://kotlinlang.org/docs/mobile/getting-started.html">Get familiar with KMM here</a>.</p>
+<p>In essence, KMM enables you to write and maintain a shared code base for your domain logic, while it splits the UI logic to both OSes' unique capabilities, written either in Android&rsquo;s Activity/Fragment/Intent system, or using SwiftUI. Your code base will look like this:</p>
+<pre><code>src
+    | androidMain
+        | MyActivity.kt
+    | androidTest
+    | commonMain
+        | MyObject.kt
+    | commonTest
+    | iosMain
+        | MySwiftUIWindow.swift
+    | iosTest
+</code></pre><p><figure>
+	<a href="../../img/kmm.png" data-featherlight="image">
+		<img src="../../img/kmm.png"   title="The KMM platform: shared Kotlin business logic takes the center.">
+	</a>
+	
+		<figcaption>The KMM platform: shared Kotlin business logic takes the center.</figcaption>
+	
+</figure>
+</p>
+<p>KMM will <em>scaffold</em> certain Swift files for you: it will generate parts of the Swift code, making it easier for the developer to build a single interface for both OSes. See the <a href="https://kotlinlang.org/docs/mobile/integrate-in-existing-app.html#enjoy-the-results-update-the-logic-only-once">make your android application work on iOS tutorial</a> for more in-depth information. KMM&rsquo;s <a href="https://kotlinlang.org/lp/mobile/case-studies/">case studies</a>, and especially the <a href="https://netflixtechblog.com/netflix-android-and-ios-studio-apps-kotlin-multiplatform-d6d4d8d25d23">Netflix migration blog post</a> are interesting reads.</p>
+<p>You will still need access to both the Xcode and Android Studio toolchain. Therefore, we will again leave it up to the curious student with access to a Mac to discover KMM&rsquo;s capabilities.</p>
+<h3 id="22-the-microsoft-way-xamarin">2.2 The Microsoft way: Xamarin</h3>
+<p>Microsoft developed the <a href="https://dotnet.microsoft.com/apps/xamarin">freely available Xamarin framework</a>, which is:</p>
+<blockquote>
+<p>Free. Cross-platform. Open source.<br/>
+An app platform for building Android and iOS apps with .NET and C#</p>
+</blockquote>
+<p>Using Xamarin, you can develop your apps in C# but still deploy on iOS and Android. It is fully cross-platform, and still builds natively. As the site states, <em>Anything you can do in Objective-C or Java, you can do in C#</em>. Looking a bit further, you will still notice <a href="https://dotnet.microsoft.com/apps/xamarin/mobile-apps">two separate docs pages</a> for iOS and Android, as the namespaces and framework libs differ quite a bit. The language might be the same, but the underlying principles are not. This is in line with what KMM tries to do.</p>
+<h2 id="3-mobile-web-tools">3. Mobile Web Tools</h2>
+<p>Both leaning on Kotlin/Swift and KMM requires heavy investments. What if you could develop mobile apps in a language you&rsquo;re already familiar with? Many companies opt for a JavaScript-powered solution instead, as they employ web developers that not necessarily need to take the time to learn a new web-based framework. This is a <em>rapidly changing</em> environment, meaning many frameworks came and went:</p>
+<ul>
+<li><a href="https://reactnative.dev/">React Native</a> (hot and relatively new from Facebook)</li>
+<li><a href="http://cordova.apache.org/">Apache Cordova</a> (almost considered obsolete now)</li>
+<li><a href="https://ionicframework.com/">Ionic Mobile</a> (in case you&rsquo;re tired of React and want things in Vue.js instead)</li>
+<li><a href="https://jquerymobile.com/">jQuery Mobile</a> (<em>very</em> ancient now)</li>
+</ul>
+<p>Web development techniques will be explained in detail in the cloud computing course in the master year.</p>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="../../lang/tdd/" title="4. Test Driven Development"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="../../extra/" title="3. Extra info" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="../../js/clipboard.min.js?1647618381"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1647618381"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1647618381"></script>
+    <script src="../../js/jquery.sticky.js?1647618381"></script>
+    <script src="../../js/featherlight.min.js?1647618381"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1647618381"></script>
+    <script src="../../js/learn.js?1647618381"></script>
+    <script src="../../js/hugo-learn.js?1647618381"></script>
+    
+        
+            <script src="../../mermaid/mermaid.js?1647618381"></script>
+        
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    
+    
+
+  </body>
+</html>
+

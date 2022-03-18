@@ -1,0 +1,32 @@
+
+.devselect .highlight {
+	display: none
+}
+.devselect .highlight:nth-child(2) {
+	display: block
+}
+
+.devselect-btns {
+	border: 1px solid lightgrey;
+	border-radius: 4px;
+	margin-bottom: -26px;
+}
+
+.devselect-btns .btn {
+	border-bottom: 4px solid white !important;
+}
+
+.devselect-btns .btn:hover {
+	background-color: lightgrey;
+}
+
+.devselect-btns .btn.active {
+	font-weight: bold !important;
+	border-bottom: 4px solid grey !important;
+}
+
+@media print {
+	.devselect-btns {
+		display:  none;
+	}
+}

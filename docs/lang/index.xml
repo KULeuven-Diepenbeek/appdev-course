@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2. Language &amp; Support Tools on App Development</title>
+    <link>https://kuleuven-diepenbeek.github.io/appdev-course/lang/</link>
+    <description>Recent content in 2. Language &amp; Support Tools on App Development</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-uk</language>
+    <managingEditor>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</managingEditor>
+    <webMaster>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</webMaster><atom:link href="https://kuleuven-diepenbeek.github.io/appdev-course/lang/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>1. Kotlin programming: Essentials</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/lang/kotlin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/lang/kotlin/</guid>
+      <description>Why in Kotlin, Yet Another Language? Good question! The answer is multi-faceted:
+1. Because Google Says So Google says you should Develop Android apps with Kotlin. It&amp;rsquo;s their recommended way of doing so. They state:
+ Write better Android apps faster with Kotlin. Kotlin is a modern statically typed programming language used by over 60% of professional Android developers that helps boost productivity, developer satisfaction, and code safety.
+ Among a slew of listed advantages, they have also created an Android Basics in Kotlin course, where the basics of the Kotlin language is the first hurdle to take.</description>
+    </item>
+    
+    <item>
+      <title>2. Kotlin programming: Advanced</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/lang/kotlin-advanced/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/lang/kotlin-advanced/</guid>
+      <description>A closer look at Java/Kotlin interop As seen in the kotlin basics, both languages compile to .class files that the JVM can understand. And since class files can be decompiled by the likes of procyon (or just within the IntelliJ IDE: Tools&amp;ndash;Kotlin&amp;ndash;Show Kotlin Bytecode), let&amp;rsquo;s see what happens when we do that to a bit of Kotlin code, just to deepen our understanding of how Kotlin works in relation to Java.</description>
+    </item>
+    
+    <item>
+      <title>3. Kotlin Examples/Exercises</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/lang/kotlin-examples/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/lang/kotlin-examples/</guid>
+      <description>All examples can be found in the GitHub repository of this very course, at https://github.com/KULeuven-Diepenbeek/appdev-course/tree/main/examples
+We&amp;rsquo;ll be using IntelliJ to create simple Kotlin projects, so leave Android Studio closed for the moment. While creating a new project, choose
+ A Gradle style project, Enable the Kotlin DSL Build Script, and finally Check Kotlin/JVM (uncheck Java)    New Project settings for Kotlin  Wait for the initial Gradle download/build to finish.</description>
+    </item>
+    
+    <item>
+      <title>4. Test Driven Development</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/lang/tdd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/lang/tdd/</guid>
+      <description>Learn the whys and the hows of TDD in Software Engineering Skills: TDD.
+Kotlin and JUnit 5 When writing tests in Kotlin, pretty much all conventional Java rules apply. Just write the JUnit 5 test as if you were writing a Java test, except that the syntax is Kotlin-specific.
+An example:
+class PeriodTests { @Test fun `Given two overlapping periods When overlapsWith is called Then return true`() { val jandec19 = Periode( LocalDate.</description>
+    </item>
+    
+    <item>
+      <title>5. Multiplatform Mobile dev.</title>
+      <link>https://kuleuven-diepenbeek.github.io/appdev-course/lang/multiplatform/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
+      <guid>https://kuleuven-diepenbeek.github.io/appdev-course/lang/multiplatform/</guid>
+      <description>This small Section is completely optional, and not part of the core contents of this course. It showcases other possibilities for mobile app development, broken free from the solitary confinements of Android native code.
+ 1. Other Native Solutions Not everyone buys Android-based phones. Apple&amp;rsquo;s iPhone is arguably (much) more popular, and is based on iOS. Developing apps for iOS is a totally different development experience: it requires other tools, another language, and other deployment chains.</description>
+    </item>
+    
+  </channel>
+</rss>
