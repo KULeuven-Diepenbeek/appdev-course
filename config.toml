@@ -5,7 +5,7 @@ baseurl = "https://kuleuven-diepenbeek.github.io/appdev-course/"
 RelativeURLs=true
 CanonifyURLs=true
 
-theme = "hugo-theme-learn"
+theme = "hugo-theme-kul"
 publishDir = "docs"
 enableEmoji = true
 enableRobotsTXT = true
@@ -39,7 +39,6 @@ enableGitInfo = true
 
 [params]
     disableComments = true
-    themeVariant = "kul"
     disableInlineCopyToClipBoard = true
     ordersectionsby = "weight"
 

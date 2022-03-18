@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.81.0" />
+    <meta name="generator" content="Hugo 0.92.0" />
     <meta name="description" content="">
 
 
@@ -12,20 +12,21 @@
     <title>5. Data Storage: File/Network :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1646053512" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1646053512" rel="stylesheet">
-    <link href="../../css/hybrid.css?1646053512" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1646053512" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1646053512" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1646053512" rel="stylesheet">
-    <link href="../../css/theme.css?1646053512" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1646053512" rel="stylesheet">
-    
-    <link href="../../css/theme-kul.css?1646053512" rel="stylesheet">
-    
+    <link href="../../css/nucleus.css?1647618166" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1647618166" rel="stylesheet">
+    <link href="../../css/hybrid.css?1647618166" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1647618166" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1647618166" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1647618166" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1647618166" rel="stylesheet">
+    <link href="../../css/theme.css?1647618166" rel="stylesheet">
+    <link href="../../css/devselector.css?1647618166" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1647618166" rel="stylesheet">
+    <link href="../../css/theme-kul.css%25!%28EXTRA%20*hugolib.pageState=Page%28/android/data-storage.md%29%29?1647618166" rel="stylesheet">
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1646053512"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1647618166"></script>
+    <script src="../../js/devselector.js?1647618166"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -37,9 +38,7 @@
         }
       
     </style>
-    <script src=../../js/devselector.js></script>
-<link href="../../css/devselector.css" rel="stylesheet">
-
+    
   </head>
   <body class="" data-url="../../android/data-storage/">
     <nav id="sidebar" class="">
@@ -49,10 +48,10 @@
   <div id="header-wrapper">
     <div id="header">
       <a href="https://www.kuleuven.be/kuleuven/" target="_blank">
-	<img src="../../img/style/kul.png" alt="KU Leuven" /><br/>
+  <img src="../../images/kul.png" alt="KU Leuven" /><br/>
 </a>
 <a href="https://www.uhasselt.be/" target="_blank">
-	<img src="../../img/style/uhasselt.svg" alt="UHasselt" id="uhlogo" />
+  <img src="../../images/uhasselt.svg" alt="UHasselt" id="uhlogo" />
 </a>
     </div>
     
@@ -62,21 +61,23 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1646053512"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1646053512"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1647618166"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1647618166"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1646053512"></script>
+<script type="text/javascript" src="../../js/search.js?1647618166"></script>
 
     
   </div>
 
     <div class="highlightable">
-    <h3><a href="../../">Course Contents</a></h3>
+
+      <h3><a href="../../">Course Contents</a></h3>
     <ul class="topics">
+
         
           
           
@@ -87,7 +88,7 @@
  
   
     
-    <li data-nav-id="/android/" title="1. Android Essentials" class="dd-item 
+    <li data-nav-id="/android/" title="1. Android Essentials" class="dd-item
         parent
         
         
@@ -102,7 +103,7 @@
           
           
           
-          
+
         
           
             
@@ -254,7 +255,7 @@
           
         
         </ul>
-              
+      
     </li>
   
  
@@ -268,7 +269,7 @@
  
   
     
-    <li data-nav-id="/lang/" title="2. Language &amp; Support Tools" class="dd-item 
+    <li data-nav-id="/lang/" title="2. Language &amp; Support Tools" class="dd-item
         
         
         
@@ -283,7 +284,7 @@
           
           
           
-          
+
         
           
             
@@ -393,7 +394,7 @@
           
         
         </ul>
-              
+      
     </li>
   
  
@@ -407,7 +408,7 @@
  
   
     
-    <li data-nav-id="/extra/" title="3. Extra info" class="dd-item 
+    <li data-nav-id="/extra/" title="3. Extra info" class="dd-item
         
         
         
@@ -422,7 +423,7 @@
           
           
           
-          
+
         
           
             
@@ -532,13 +533,13 @@
           
         
         </ul>
-              
+      
     </li>
   
  
 
           
-         
+        
     </ul>
 
     
@@ -547,15 +548,15 @@
         <h3>More</h3>
         <ul>
           
-              <li> 
+              <li>
                   <a class="padding" href="https://uhintra03.uhasselt.be/studiegidswww/opleidingsonderdeel.aspx?a=2021&amp;i=3291&amp;n=4&amp;t=01"><i class='fa fa-university'></i> ECTS Sheet</a>
               </li>
           
-              <li> 
+              <li>
                   <a class="padding" href="https://toledo.kuleuven.be/portal/"><i class='fa fa-university'></i> Toledo</a>
               </li>
           
-              <li> 
+              <li>
                   <a class="padding" href="https://github.com/kuleuven-diepenbeek/appdev-course/"><i class='fab fa-github'></i> Course Git Repository</a>
               </li>
           
@@ -676,7 +677,7 @@
 </div>
 
 <p>Before being able to save the TODO items, we need to enable <strong>two-way data binding</strong>. Until now, the TODO items in the view were synced based on the values in the backend. Go to the Todo adapter, and add a click listener to <code>chkTodoDone</code>. When it is clicked, we want to re-sync the state with the current todo item (in <code>onBindViewHolder()</code>). It needs to go both ways, otherwise we don&rsquo;t have any data to save:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">val</span> <span style="color:#111">checkBoxTodo</span> <span style="color:#111">=</span> <span style="color:#111">findViewById</span><span style="color:#111">&lt;</span><span style="color:#111">CheckBox</span><span style="color:#111">&gt;(</span><span style="color:#111">R</span><span style="color:#111">.</span><span style="color:#111">id</span><span style="color:#111">.</span><span style="color:#111">chkTodoDone</span><span style="color:#111">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">val</span> <span style="color:#111">checkBoxTodo</span> <span style="color:#111">=</span> <span style="color:#111">findViewById</span><span style="color:#111">&lt;</span><span style="color:#111">CheckBox</span><span style="color:#111">&gt;(</span><span style="color:#111">R</span><span style="color:#111">.</span><span style="color:#111">id</span><span style="color:#111">.</span><span style="color:#111">chkTodoDone</span><span style="color:#111">)</span>
 <span style="color:#111">checkBoxTodo</span><span style="color:#111">.</span><span style="color:#111">isChecked</span> <span style="color:#111">=</span> <span style="color:#111">currentTodoItem</span><span style="color:#111">.</span><span style="color:#111">isDone</span>
 <span style="color:#111">checkBoxTodo</span><span style="color:#111">.</span><span style="color:#111">setOnClickListener</span> <span style="color:#111">{</span>
     <span style="color:#111">currentTodoItem</span><span style="color:#111">.</span><span style="color:#111">isDone</span> <span style="color:#111">=</span> <span style="color:#111">checkBoxTodo</span><span style="color:#111">.</span><span style="color:#111">isChecked</span>
@@ -689,7 +690,7 @@
 <li>The ones shared by your whole app, independent of the view/activity, accessible through <code>getSharedPreferences()</code>.</li>
 </ol>
 <p>The rest is simple enough:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#75715e">// reading
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#75715e">// reading
 </span><span style="color:#75715e"></span><span style="color:#00a8c8">val</span> <span style="color:#111">sharedPref</span> <span style="color:#111">=</span> <span style="color:#111">activity</span><span style="color:#f92672">?.</span><span style="color:#111">getSharedPreferences</span><span style="color:#111">(</span>
         <span style="color:#111">getString</span><span style="color:#111">(</span><span style="color:#d88200">&#34;key&#34;</span><span style="color:#111">),</span> <span style="color:#111">Context</span><span style="color:#111">.</span><span style="color:#111">MODE_PRIVATE</span><span style="color:#111">)</span>
 
@@ -705,7 +706,7 @@
 <p>Write to the output stream as you would in any other Java code: using <code>readObject()</code> and <code>writeObject()</code>. Examples are available in the demo project at <code>examples/kotlin/todosavestate</code>.</p>
 <h2 id="3-database-access">3. Database Access</h2>
 <p>Simple object serialization might do in simple cases, but more intricate apps gravitate towards the use of databases. SQLite, the in-memory or in-file SQL database solution, also works with a single (private) file behind-the-scenes, meaning no additional security measurements are required. The usage of SQLite on Android is simplified thanks to <strong>Room</strong>, an easy-to-use API part of <a href="https://developer.android.com/training/data-storage/room">Android Jetpack</a>. Again, be sure to import the necessary dependencies:</p>
-<pre><code>plugins {
+<pre tabindex="0"><code>plugins {
     id(&quot;kotlin-kapt&quot;)
 }
 dependencies {
@@ -722,14 +723,14 @@ dependencies {
 
 <h4 id="configuring-your-objectsdao">Configuring your objects/Dao</h4>
 <p>To use Room, it suffices to apply a few key annotations on both our Entity (the Model, the object we wish to persist) and on a newly created Dao interface.</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#75af00">@Entity</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#75af00">@Entity</span>
 <span style="color:#00a8c8">data</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">Todo</span><span style="color:#111">(</span>
     <span style="color:#75af00">@ColumnInfo</span><span style="color:#111">(</span><span style="color:#111">name</span> <span style="color:#111">=</span> <span style="color:#d88200">&#34;title&#34;</span><span style="color:#111">)</span> <span style="color:#00a8c8">val</span> <span style="color:#111">title</span><span style="color:#111">:</span> <span style="color:#111">String</span><span style="color:#111">,</span>
     <span style="color:#75af00">@ColumnInfo</span><span style="color:#111">(</span><span style="color:#111">name</span> <span style="color:#111">=</span> <span style="color:#d88200">&#34;is_done&#34;</span><span style="color:#111">)</span> <span style="color:#00a8c8">var</span> <span style="color:#111">isDone</span><span style="color:#111">:</span> <span style="color:#111">Boolean</span><span style="color:#111">,</span>
     <span style="color:#75af00">@PrimaryKey</span><span style="color:#111">(</span><span style="color:#111">autoGenerate</span> <span style="color:#111">=</span> <span style="color:#00a8c8">true</span><span style="color:#111">)</span> <span style="color:#00a8c8">var</span> <span style="color:#111">id</span><span style="color:#111">:</span> <span style="color:#111">Int</span> <span style="color:#111">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">)</span>
 </code></pre></div><p>This is indeed <em>very</em> reminiscent of JPA&rsquo;s <code>@Entity</code> annotations, but make no mistake, these are Android Room-specific. Take a look at the <a href="https://kuleuven-diepenbeek.github.io/db-course/apis/jpa/#222-hibernatejpa-peristencequerying">3rd year database course: JPA</a> chapter if you&rsquo;re curious about next year&rsquo;s course contents. If you&rsquo;re fluent with Android&rsquo;s Room and SQLite, you&rsquo;ll have no problem tackling that course.</p>
 <p>Next, create a new interface called <code>TodoDao</code>, where your SQL actions will live:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#75af00">@Dao</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#75af00">@Dao</span>
 <span style="color:#00a8c8">interface</span> <span style="color:#75af00">TodoDao</span> <span style="color:#111">{</span>
     <span style="color:#75af00">@Query</span><span style="color:#111">(</span><span style="color:#d88200">&#34;SELECT * FROM Todo&#34;</span><span style="color:#111">)</span>
     <span style="color:#00a8c8">fun</span> <span style="color:#75af00">query</span><span style="color:#111">():</span> <span style="color:#111">List</span><span style="color:#111">&lt;</span><span style="color:#111">Todo</span><span style="color:#111">&gt;</span>
@@ -738,7 +739,7 @@ dependencies {
     <span style="color:#00a8c8">fun</span> <span style="color:#75af00">insert</span><span style="color:#111">(</span><span style="color:#111">items</span><span style="color:#111">:</span> <span style="color:#111">List</span><span style="color:#111">&lt;</span><span style="color:#111">Todo</span><span style="color:#111">&gt;)</span>
 <span style="color:#111">}</span>
 </code></pre></div><p>An implementation will be generated for you, accessible through a third (abstract!) class we call <code>TodoDatabase</code>:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#75af00">@Database</span><span style="color:#111">(</span><span style="color:#111">entities</span> <span style="color:#111">=</span> <span style="color:#111">arrayOf</span><span style="color:#111">(</span><span style="color:#111">Todo</span><span style="color:#f92672">::</span><span style="color:#00a8c8">class</span><span style="color:#111">),</span> <span style="color:#111">version</span> <span style="color:#111">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#75af00">@Database</span><span style="color:#111">(</span><span style="color:#111">entities</span> <span style="color:#111">=</span> <span style="color:#111">arrayOf</span><span style="color:#111">(</span><span style="color:#111">Todo</span><span style="color:#f92672">::</span><span style="color:#00a8c8">class</span><span style="color:#111">),</span> <span style="color:#111">version</span> <span style="color:#111">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">)</span>
 <span style="color:#00a8c8">abstract</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">TodoDatabase</span> <span style="color:#111">:</span> <span style="color:#111">RoomDatabase</span><span style="color:#111">()</span> <span style="color:#111">{</span>
     <span style="color:#00a8c8">abstract</span> <span style="color:#00a8c8">fun</span> <span style="color:#75af00">todoDao</span><span style="color:#111">()</span> <span style="color:#111">:</span> <span style="color:#111">TodoDao</span>
 <span style="color:#111">}</span>
@@ -760,7 +761,7 @@ dependencies {
 </blockquote>
 <p>This means we can&rsquo;t simply call our <code>find()</code> or <code>insert()</code> queries straight form the activity/fragment. There are multiple solutions to this problem, and since the concept is fairly complex (it involves <a href="https://developer.android.com/topic/libraries/architecture/livedata">live data</a>), we went with the simplest one, adding <code>.allowMainThreadQueries()</code> to our database builder.</p>
 <p>The builder creates an instance of <code>TodoDatabase</code>, on which we can call <code>todoDao()</code> to access the DAO (Data Access Object) implementation to get and store our TODO items:</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#111">db</span> <span style="color:#111">=</span> <span style="color:#111">Room</span><span style="color:#111">.</span><span style="color:#111">databaseBuilder</span><span style="color:#111">(</span><span style="color:#111">appContext</span><span style="color:#111">,</span> <span style="color:#111">TodoDatabase</span><span style="color:#f92672">::</span><span style="color:#00a8c8">class</span><span style="color:#111">.</span><span style="color:#111">java</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;todo-db&#34;</span><span style="color:#111">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#111">db</span> <span style="color:#111">=</span> <span style="color:#111">Room</span><span style="color:#111">.</span><span style="color:#111">databaseBuilder</span><span style="color:#111">(</span><span style="color:#111">appContext</span><span style="color:#111">,</span> <span style="color:#111">TodoDatabase</span><span style="color:#f92672">::</span><span style="color:#00a8c8">class</span><span style="color:#111">.</span><span style="color:#111">java</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;todo-db&#34;</span><span style="color:#111">)</span>
     <span style="color:#111">.</span><span style="color:#111">allowMainThreadQueries</span><span style="color:#111">()</span>
     <span style="color:#111">.</span><span style="color:#111">build</span><span style="color:#111">()</span>
 <span style="color:#111">dao</span> <span style="color:#111">=</span> <span style="color:#111">db</span><span style="color:#111">.</span><span style="color:#111">todoDao</span><span style="color:#111">()</span>
@@ -770,7 +771,7 @@ dependencies {
 <h2 id="4-http-network-access">4. HTTP Network Access</h2>
 <p>Volley is Android&rsquo;s Go-To HTTP client that comes with advanced caching mechanisms built-in: see the <a href="https://developer.android.com/training/volley/simple">android dev guide on volley</a>. Be prepared to add yet another dependency. To access the internet in our app, we&rsquo;ll have to add the <code>android.permission.INTERNET</code> permission in the app&rsquo;s manifest file.</p>
 <p>Let&rsquo;s try to create a simple <code>GET</code> request and print out the results. In Volley, all requests are put in <strong>a queue</strong>: HTTP calls are <strong>asynchronous</strong>! This means we can&rsquo;t simply <code>return results</code>: it needs to be handled in a callback. Welcome to async hell&mdash;those who&rsquo;ve struggled with it in JavaScript will know what to expect.</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">val</span> <span style="color:#111">queue</span> <span style="color:#111">=</span> <span style="color:#111">Volley</span><span style="color:#111">.</span><span style="color:#111">newRequestQueue</span><span style="color:#111">(</span><span style="color:#111">context</span><span style="color:#111">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">val</span> <span style="color:#111">queue</span> <span style="color:#111">=</span> <span style="color:#111">Volley</span><span style="color:#111">.</span><span style="color:#111">newRequestQueue</span><span style="color:#111">(</span><span style="color:#111">context</span><span style="color:#111">)</span>
 
 <span style="color:#00a8c8">val</span> <span style="color:#111">req</span> <span style="color:#111">=</span> <span style="color:#111">StringRequest</span><span style="color:#111">(</span><span style="color:#111">Request</span><span style="color:#111">.</span><span style="color:#111">Method</span><span style="color:#111">.</span><span style="color:#111">GET</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;https://www.google.com&#34;</span><span style="color:#111">,</span> <span style="color:#111">Response</span><span style="color:#111">.</span><span style="color:#111">Listener</span><span style="color:#111">&lt;</span><span style="color:#111">String</span><span style="color:#111">&gt;</span> <span style="color:#111">{</span>
     <span style="color:#111">println</span><span style="color:#111">(</span><span style="color:#d88200">&#34;cool, we&#39;ve got a result: </span><span style="color:#d88200">$it</span><span style="color:#d88200">&#34;</span><span style="color:#111">)</span>
@@ -1173,17 +1174,17 @@ dependencies {
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1646053512"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1646053512"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1646053512"></script>
-    <script src="../../js/jquery.sticky.js?1646053512"></script>
-    <script src="../../js/featherlight.min.js?1646053512"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1646053512"></script>
-    <script src="../../js/learn.js?1646053512"></script>
-    <script src="../../js/hugo-learn.js?1646053512"></script>
+    <script src="../../js/clipboard.min.js?1647618166"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1647618166"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1647618166"></script>
+    <script src="../../js/jquery.sticky.js?1647618166"></script>
+    <script src="../../js/featherlight.min.js?1647618166"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1647618166"></script>
+    <script src="../../js/learn.js?1647618166"></script>
+    <script src="../../js/hugo-learn.js?1647618166"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1646053512"></script>
+            <script src="../../mermaid/mermaid.js?1647618166"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
