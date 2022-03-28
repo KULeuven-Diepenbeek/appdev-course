@@ -40,6 +40,11 @@ In your activity XML file, we will add three objects: a `RecyclerView`, which wi
 
 Besides the `activity_main.xml` file, we'll need a second XML file to design the layout of a **single item** in the list. This will get repeated and/or recycled by the `RecyclerView` class. All we need to do is to add a `TextView` and a `Checkbox`---just like in the screenshot above. The root layout can be a `ConstraintLayout`, just like any other activity. Give the root a `android:layout_height` value of only `100dp`, otherwise every item will be the size of the entire screen. 
 
+{{% notice note %}}
+Do not forget to add the Gradle dependency `implementation("androidx.recyclerview:recyclerview:1.2.1")` (this is `.ktx`-specific syntax!)!
+{{% /notice %}}
+
+
 ### 2. Create your model and adapter
 
 Next, we'll create a class that extends from `RecyclerView.Adapter`, and an inner class that represents the view holder. These classes drive our recycler view: they (1) couple the layout XML onto the view, and (2) manage the creation of new holders and binding. 
@@ -81,7 +86,7 @@ data class Todo(val title: String, val isDone: Boolean)
 
 Note that this means the list the RecyclerView shows is a `List<Todo>`: it's not list of primitives, it can be _anything_! The official [Android RecyclerView example on GitHub](https://github.com/android/views-widgets-samples/tree/main/RecyclerViewKotlin) is a "flower finder" app and shows a list of thumbnails and descriptions. 
 
-### 3. Initialize your adapter in the main activity 
+### 3. Initialize your adapter in the main activity
 
 For demonstrative purposes, create a `sampleTodoItems` array list with a few sample Todo item values. Then, we can create an instance of `TodoAdapter` in `onCreate()`:
 
