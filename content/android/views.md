@@ -62,7 +62,6 @@ class TodoAdapter(val items: List<Todo>) : RecyclerView.Adapter<TodoAdapter.Todo
     }
 
     override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
-state accordingly
         val currentTodoItem = items[position]
         holder.itemView.apply {
             findViewById<TextView>(R.id.txtTodoTitle).text = currentTodoItem.title
