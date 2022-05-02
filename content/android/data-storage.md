@@ -30,6 +30,8 @@ checkBoxTodo.setOnClickListener {
 }
 ```
 
+Why use `findViewById<>()` instead of `binding.chkTodoDone`? Because the latter does not exist in the binding of the activity but in the binding of the recyclerview. 
+
 Also, think about at what point exactly to save and load. Should it be `onDestroy()`? Somewhere else? Consult the activity/fragment licecycle diagram to determine the best suited event. Remember that some events do NOT get triggered on force closes/crashes/etc. Treat loading as if things were never saved if things go awry: always have backup plan.  
 
 ## 1. Preferences Access
@@ -54,11 +56,16 @@ with (sharedPref.edit()) {
 }
 ```
 
-The value you save can simply be a GSON-ified JSON String representation of an object. Remember the statement `gson.toJson(object)` that outputs a string? That one. 
+The value you save can simply be a GSON-ified JSON String representation of an object. Remember the statement `gson.toJson(object)` that outputs a string? That one. Another possibility is a `forEach {}` loop for every key to put away.
+
+YOu do _not_ need special permissions to store private shared preferences: see the [Context MODE_PRIVATE Android dev docs](https://developer.android.com/reference/android/content/Context#MODE_PRIVATE).
+
 
 ## 2. File Access
 
-Private file access is also trivial: grab hold of a `FileOutputStream` through the `context.openFileOutput(fileName, Context.MODE_PRIVATE)` context API. These files are not shared between apps, and therefore, no special permissions are needed. Be sure to check for possible exceptions: for instance, `FileNotFoundException` might occur, or what to do when the file is corrupt? These situations are best handled in a separate class, such as a _repository_, as also done in the SES course. 
+Private file access is also trivial: grab hold of a `FileOutputStream` through the `context.openFileOutput(fileName, Context.MODE_PRIVATE)` context API. Again, as long as you stay within `MODE_PRIVATE` (see above), these files are not shared between apps, and therefore, no special permissions are needed. 
+
+Be sure to check for possible exceptions: for instance, `FileNotFoundException` might occur, or what to do when the file is corrupt? These situations are best handled in a separate class, such as a _repository_, as also done in the SES course. 
 
 Write to the output stream as you would in any other Java code: using `readObject()` and `writeObject()`. Examples are available in the demo project at `examples/kotlin/todosavestate`.
 
@@ -79,6 +86,8 @@ dependencies {
     // only for Mac M1 users: kapt("org.xerial:sqlite-jdbc:3.34.0")
 }
 ```
+
+Note that `room_version` is subject to change---consult the above Jetpack URL to grab the latest version!
 
 {{% notice warning %}}
 Mac M1 users might be greeted with weird build-time exceptions, with underlying caused by `No native library is found for os.name=Mac and os.arch=aarch64.` In that case, add another kapt dependency: `kapt("org.xerial:sqlite-jdbc:3.34.0")`.
@@ -132,7 +141,7 @@ Note that the [accessing data using Room DAOs](https://developer.android.com/tra
 
 > Note: Room doesn't support database access on the main thread unless you've called allowMainThreadQueries() on the builder because it might lock the UI for a long period of time. Asynchronous queries—queries that return instances of LiveData or Flowable—are exempt from this rule because they asynchronously run the query on a background thread when needed.
 
-This means we can't simply call our `find()` or `insert()` queries straight form the activity/fragment. There are multiple solutions to this problem, and since the concept is fairly complex (it involves [live data](https://developer.android.com/topic/libraries/architecture/livedata)), we went with the simplest one, adding `.allowMainThreadQueries()` to our database builder. 
+This means we can't simply call our `find()` or `insert()` queries straight form the activity/fragment. There are multiple solutions to this problem, and since the concept is fairly complex (it involves [live data](https://developer.android.com/topic/libraries/architecture/livedata)), we went with the simplest one, adding `.allowMainThreadQueries()` to our database builder. Remember that this isn't without possible consequences! However, for the purpose of this course, making use of this shortcut is sufficient. 
 
 The builder creates an instance of `TodoDatabase`, on which we can call `todoDao()` to access the DAO (Data Access Object) implementation to get and store our TODO items:
 
@@ -180,5 +189,5 @@ The `todosavestate` code contains an example of such a custom request object.
 Be warned (again): Volley is **asynchronous**, meaning "return bla" on response just won't work. To make things work, you'll have to (1) show a loading widget, (2) fire off the HTTP call by adding it to the queue and (3) do your thing on response, also not forgetting to update the UI. In case of a RecyclerView, that's `notifyDataSetChanged()`. Watch out with multithreading and changing UI logic!<br/>The example shows how you can still pass along a custom response handler object by making use of Kotlin's [SAM interfaces](https://kotlinlang.org/docs/fun-interfaces.html).<br/>In case of network exceptions, be sure to check the error message. IO procedures are prohibited on the Android Main thread. The [demo project](/extra/demo) shows how to deal with it using Kotlin's coroutines in case you execute synchronous network-related code (optional).
 {{% /notice %}}
 
-Volley can be confusing and difficult to use. It's a complimentary library, meaning it can be swapped out at any time in favor for alternatives such as [Retrofit](https://square.github.io/retrofit/). Feel free to do so. The [demo project](/extra/demo) also utilizes Volley. 
+Volley can be confusing and difficult to use. It's a complimentary library, meaning it can be swapped out at any time in favor for alternatives such as [Retrofit](https://square.github.io/retrofit/). Feel free to do so. The [How Long To Beat demo project](/extra/demo) also utilizes Volley---feel free to rummage through its source code. 
 
