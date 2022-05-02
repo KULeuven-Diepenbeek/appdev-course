@@ -12,21 +12,21 @@
     <title>5. Data Storage: File/Network :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1651477654" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1651477654" rel="stylesheet">
-    <link href="../../css/hybrid.css?1651477654" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1651477654" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1651477654" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1651477654" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1651477654" rel="stylesheet">
-    <link href="../../css/theme.css?1651477654" rel="stylesheet">
-    <link href="../../css/devselector.css?1651477654" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1651477654" rel="stylesheet">
-    <link href="../../css/theme-kul.css?1651477654" rel="stylesheet">
+    <link href="../../css/nucleus.css?1651502522" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1651502522" rel="stylesheet">
+    <link href="../../css/hybrid.css?1651502522" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1651502522" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1651502522" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1651502522" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1651502522" rel="stylesheet">
+    <link href="../../css/theme.css?1651502522" rel="stylesheet">
+    <link href="../../css/devselector.css?1651502522" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1651502522" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1651502522" rel="stylesheet">
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1651477654"></script>
-    <script src="../../js/devselector.js?1651477654"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1651502522"></script>
+    <script src="../../js/devselector.js?1651502522"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -61,14 +61,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1651477654"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1651477654"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1651502522"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1651502522"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1651477654"></script>
+<script type="text/javascript" src="../../js/search.js?1651502522"></script>
 
     
   </div>
@@ -772,6 +772,11 @@ dependencies {
 </code></pre></div><p>That&rsquo;s it, now we can call <code>query()</code> and <code>insert()</code> from our activity/fragment! The above <code>appContext</code> which is needed to build the database object is the Application Context of an activity.</p>
 <p>To correctly unit test and debug your database, please refer to the <a href="https://developer.android.com/training/data-storage/room/testing-db">android developer guide</a>. Since the database requires an application context, it&rsquo;s best to create <strong>instrumented tests</strong>. See the <a href="../../lang/tdd">TDD chapter</a> for more information. Samples are, again, to be found in <code>examples/kotlin/todosavestate</code> in the repository.</p>
 <p>In case you store sensitive information in your database, consider using <a href="https://github.com/sqlcipher/android-database-sqlcipher">SQLCipher</a> to encrypt the database. A Room plugin is available that injects the correct configuration through the database builder objects. See the <a href="../../android/security">security by design chapter</a>. This is out of scope for this course.</p>
+<p>A few more pointers for the database savvy students:</p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/46337519/how-insert-image-in-room-persistence-library">It is possible to store Bitmaps in Room</a> with a <code>ColumnInfo.BLOG</code> type and a <code>byte[]</code> property type.</li>
+<li><a href="https://normanaspx.medium.com/android-room-how-works-one-to-many-relationship-example-e8a17531a3bb">Saving relations to other is also possible</a> using <code>@Relation</code>.</li>
+</ul>
 <h2 id="4-http-network-access">4. HTTP Network Access</h2>
 <p>Volley is Android&rsquo;s Go-To HTTP client that comes with advanced caching mechanisms built-in: see the <a href="https://developer.android.com/training/volley/simple">android dev guide on volley</a>. Be prepared to add yet another dependency. To access the internet in our app, we&rsquo;ll have to add the <code>android.permission.INTERNET</code> permission in the app&rsquo;s manifest file.</p>
 <p>Let&rsquo;s try to create a simple <code>GET</code> request and print out the results. In Volley, all requests are put in <strong>a queue</strong>: HTTP calls are <strong>asynchronous</strong>! This means we can&rsquo;t simply <code>return results</code>: it needs to be handled in a callback. Welcome to async hell&mdash;those who&rsquo;ve struggled with it in JavaScript will know what to expect.</p>
@@ -1178,17 +1183,17 @@ dependencies {
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1651477655"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1651477655"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1651477655"></script>
-    <script src="../../js/jquery.sticky.js?1651477655"></script>
-    <script src="../../js/featherlight.min.js?1651477655"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1651477655"></script>
-    <script src="../../js/learn.js?1651477655"></script>
-    <script src="../../js/hugo-learn.js?1651477655"></script>
+    <script src="../../js/clipboard.min.js?1651502523"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1651502523"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1651502523"></script>
+    <script src="../../js/jquery.sticky.js?1651502523"></script>
+    <script src="../../js/featherlight.min.js?1651502523"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1651502523"></script>
+    <script src="../../js/learn.js?1651502523"></script>
+    <script src="../../js/hugo-learn.js?1651502523"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1651477655"></script>
+            <script src="../../mermaid/mermaid.js?1651502523"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
