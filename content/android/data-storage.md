@@ -158,6 +158,11 @@ To correctly unit test and debug your database, please refer to the [android dev
 
 In case you store sensitive information in your database, consider using [SQLCipher](https://github.com/sqlcipher/android-database-sqlcipher) to encrypt the database. A Room plugin is available that injects the correct configuration through the database builder objects. See the [security by design chapter](/android/security). This is out of scope for this course. 
 
+A few more pointers for the database savvy students:
+
+- [It is possible to store Bitmaps in Room](https://stackoverflow.com/questions/46337519/how-insert-image-in-room-persistence-library) with a `ColumnInfo.BLOG` type and a `byte[]` property type.
+- [Saving relations to other is also possible](https://normanaspx.medium.com/android-room-how-works-one-to-many-relationship-example-e8a17531a3bb) using `@Relation`. 
+
 ## 4. HTTP Network Access
 
 Volley is Android's Go-To HTTP client that comes with advanced caching mechanisms built-in: see the [android dev guide on volley](https://developer.android.com/training/volley/simple). Be prepared to add yet another dependency. To access the internet in our app, we'll have to add the `android.permission.INTERNET` permission in the app's manifest file. 
