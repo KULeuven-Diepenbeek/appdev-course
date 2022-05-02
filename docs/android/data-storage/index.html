@@ -12,21 +12,21 @@
     <title>5. Data Storage: File/Network :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1650874531" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1650874531" rel="stylesheet">
-    <link href="../../css/hybrid.css?1650874531" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1650874531" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1650874531" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1650874531" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1650874531" rel="stylesheet">
-    <link href="../../css/theme.css?1650874531" rel="stylesheet">
-    <link href="../../css/devselector.css?1650874531" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1650874531" rel="stylesheet">
-    <link href="../../css/theme-kul.css?1650874531" rel="stylesheet">
+    <link href="../../css/nucleus.css?1651477654" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1651477654" rel="stylesheet">
+    <link href="../../css/hybrid.css?1651477654" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1651477654" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1651477654" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1651477654" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1651477654" rel="stylesheet">
+    <link href="../../css/theme.css?1651477654" rel="stylesheet">
+    <link href="../../css/devselector.css?1651477654" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1651477654" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1651477654" rel="stylesheet">
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1650874531"></script>
-    <script src="../../js/devselector.js?1650874531"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1651477654"></script>
+    <script src="../../js/devselector.js?1651477654"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -61,14 +61,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1650874531"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1650874531"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1651477654"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1651477654"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1650874531"></script>
+<script type="text/javascript" src="../../js/search.js?1651477654"></script>
 
     
   </div>
@@ -682,7 +682,8 @@
 <span style="color:#111">checkBoxTodo</span><span style="color:#111">.</span><span style="color:#111">setOnClickListener</span> <span style="color:#111">{</span>
     <span style="color:#111">currentTodoItem</span><span style="color:#111">.</span><span style="color:#111">isDone</span> <span style="color:#111">=</span> <span style="color:#111">checkBoxTodo</span><span style="color:#111">.</span><span style="color:#111">isChecked</span>
 <span style="color:#111">}</span>
-</code></pre></div><p>Also, think about at what point exactly to save and load. Should it be <code>onDestroy()</code>? Somewhere else? Consult the activity/fragment licecycle diagram to determine the best suited event. Remember that some events do NOT get triggered on force closes/crashes/etc. Treat loading as if things were never saved if things go awry: always have backup plan.</p>
+</code></pre></div><p>Why use <code>findViewById&lt;&gt;()</code> instead of <code>binding.chkTodoDone</code>? Because the latter does not exist in the binding of the activity but in the binding of the recyclerview.</p>
+<p>Also, think about at what point exactly to save and load. Should it be <code>onDestroy()</code>? Somewhere else? Consult the activity/fragment licecycle diagram to determine the best suited event. Remember that some events do NOT get triggered on force closes/crashes/etc. Treat loading as if things were never saved if things go awry: always have backup plan.</p>
 <h2 id="1-preferences-access">1. Preferences Access</h2>
 <p>There are two kinds of preferences:</p>
 <ol>
@@ -700,9 +701,11 @@
     <span style="color:#111">putString</span><span style="color:#111">(</span><span style="color:#d88200">&#34;key&#34;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;Hi, I&#39;m a value!&#34;</span><span style="color:#111">)</span>
     <span style="color:#111">apply</span><span style="color:#111">()</span>
 <span style="color:#111">}</span>
-</code></pre></div><p>The value you save can simply be a GSON-ified JSON String representation of an object. Remember the statement <code>gson.toJson(object)</code> that outputs a string? That one.</p>
+</code></pre></div><p>The value you save can simply be a GSON-ified JSON String representation of an object. Remember the statement <code>gson.toJson(object)</code> that outputs a string? That one. Another possibility is a <code>forEach {}</code> loop for every key to put away.</p>
+<p>YOu do <em>not</em> need special permissions to store private shared preferences: see the <a href="https://developer.android.com/reference/android/content/Context#MODE_PRIVATE">Context MODE_PRIVATE Android dev docs</a>.</p>
 <h2 id="2-file-access">2. File Access</h2>
-<p>Private file access is also trivial: grab hold of a <code>FileOutputStream</code> through the <code>context.openFileOutput(fileName, Context.MODE_PRIVATE)</code> context API. These files are not shared between apps, and therefore, no special permissions are needed. Be sure to check for possible exceptions: for instance, <code>FileNotFoundException</code> might occur, or what to do when the file is corrupt? These situations are best handled in a separate class, such as a <em>repository</em>, as also done in the SES course.</p>
+<p>Private file access is also trivial: grab hold of a <code>FileOutputStream</code> through the <code>context.openFileOutput(fileName, Context.MODE_PRIVATE)</code> context API. Again, as long as you stay within <code>MODE_PRIVATE</code> (see above), these files are not shared between apps, and therefore, no special permissions are needed.</p>
+<p>Be sure to check for possible exceptions: for instance, <code>FileNotFoundException</code> might occur, or what to do when the file is corrupt? These situations are best handled in a separate class, such as a <em>repository</em>, as also done in the SES course.</p>
 <p>Write to the output stream as you would in any other Java code: using <code>readObject()</code> and <code>writeObject()</code>. Examples are available in the demo project at <code>examples/kotlin/todosavestate</code>.</p>
 <h2 id="3-database-access">3. Database Access</h2>
 <p>Simple object serialization might do in simple cases, but more intricate apps gravitate towards the use of databases. SQLite, the in-memory or in-file SQL database solution, also works with a single (private) file behind-the-scenes, meaning no additional security measurements are required. The usage of SQLite on Android is simplified thanks to <strong>Room</strong>, an easy-to-use API part of <a href="https://developer.android.com/training/data-storage/room">Android Jetpack</a>. Again, be sure to import the necessary dependencies:</p>
@@ -717,7 +720,8 @@ dependencies {
     kapt(&quot;androidx.room:room-compiler:$room_version&quot;)
     // only for Mac M1 users: kapt(&quot;org.xerial:sqlite-jdbc:3.34.0&quot;)
 }
-</code></pre>
+</code></pre><p>Note that <code>room_version</code> is subject to change&mdash;consult the above Jetpack URL to grab the latest version!</p>
+
 <div class="notices warning" ><p>Mac M1 users might be greeted with weird build-time exceptions, with underlying caused by <code>No native library is found for os.name=Mac and os.arch=aarch64.</code> In that case, add another kapt dependency: <code>kapt(&quot;org.xerial:sqlite-jdbc:3.34.0&quot;)</code>.</p>
 </div>
 
@@ -759,7 +763,7 @@ dependencies {
 <blockquote>
 <p>Note: Room doesn&rsquo;t support database access on the main thread unless you&rsquo;ve called allowMainThreadQueries() on the builder because it might lock the UI for a long period of time. Asynchronous queries—queries that return instances of LiveData or Flowable—are exempt from this rule because they asynchronously run the query on a background thread when needed.</p>
 </blockquote>
-<p>This means we can&rsquo;t simply call our <code>find()</code> or <code>insert()</code> queries straight form the activity/fragment. There are multiple solutions to this problem, and since the concept is fairly complex (it involves <a href="https://developer.android.com/topic/libraries/architecture/livedata">live data</a>), we went with the simplest one, adding <code>.allowMainThreadQueries()</code> to our database builder.</p>
+<p>This means we can&rsquo;t simply call our <code>find()</code> or <code>insert()</code> queries straight form the activity/fragment. There are multiple solutions to this problem, and since the concept is fairly complex (it involves <a href="https://developer.android.com/topic/libraries/architecture/livedata">live data</a>), we went with the simplest one, adding <code>.allowMainThreadQueries()</code> to our database builder. Remember that this isn&rsquo;t without possible consequences! However, for the purpose of this course, making use of this shortcut is sufficient.</p>
 <p>The builder creates an instance of <code>TodoDatabase</code>, on which we can call <code>todoDao()</code> to access the DAO (Data Access Object) implementation to get and store our TODO items:</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#111">db</span> <span style="color:#111">=</span> <span style="color:#111">Room</span><span style="color:#111">.</span><span style="color:#111">databaseBuilder</span><span style="color:#111">(</span><span style="color:#111">appContext</span><span style="color:#111">,</span> <span style="color:#111">TodoDatabase</span><span style="color:#f92672">::</span><span style="color:#00a8c8">class</span><span style="color:#111">.</span><span style="color:#111">java</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;todo-db&#34;</span><span style="color:#111">)</span>
     <span style="color:#111">.</span><span style="color:#111">allowMainThreadQueries</span><span style="color:#111">()</span>
@@ -791,7 +795,7 @@ dependencies {
 <div class="notices warning" ><p>Be warned (again): Volley is <strong>asynchronous</strong>, meaning &ldquo;return bla&rdquo; on response just won&rsquo;t work. To make things work, you&rsquo;ll have to (1) show a loading widget, (2) fire off the HTTP call by adding it to the queue and (3) do your thing on response, also not forgetting to update the UI. In case of a RecyclerView, that&rsquo;s <code>notifyDataSetChanged()</code>. Watch out with multithreading and changing UI logic!<br/>The example shows how you can still pass along a custom response handler object by making use of Kotlin&rsquo;s <a href="https://kotlinlang.org/docs/fun-interfaces.html">SAM interfaces</a>.<br/>In case of network exceptions, be sure to check the error message. IO procedures are prohibited on the Android Main thread. The <a href="../../extra/demo">demo project</a> shows how to deal with it using Kotlin&rsquo;s coroutines in case you execute synchronous network-related code (optional).</p>
 </div>
 
-<p>Volley can be confusing and difficult to use. It&rsquo;s a complimentary library, meaning it can be swapped out at any time in favor for alternatives such as <a href="https://square.github.io/retrofit/">Retrofit</a>. Feel free to do so. The <a href="../../extra/demo">demo project</a> also utilizes Volley.</p>
+<p>Volley can be confusing and difficult to use. It&rsquo;s a complimentary library, meaning it can be swapped out at any time in favor for alternatives such as <a href="https://square.github.io/retrofit/">Retrofit</a>. Feel free to do so. The <a href="../../extra/demo">How Long To Beat demo project</a> also utilizes Volley&mdash;feel free to rummage through its source code.</p>
 
 
 <footer class="footline">
@@ -1174,17 +1178,17 @@ dependencies {
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1650874531"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1650874531"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1650874531"></script>
-    <script src="../../js/jquery.sticky.js?1650874531"></script>
-    <script src="../../js/featherlight.min.js?1650874531"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1650874531"></script>
-    <script src="../../js/learn.js?1650874531"></script>
-    <script src="../../js/hugo-learn.js?1650874531"></script>
+    <script src="../../js/clipboard.min.js?1651477655"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1651477655"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1651477655"></script>
+    <script src="../../js/jquery.sticky.js?1651477655"></script>
+    <script src="../../js/featherlight.min.js?1651477655"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1651477655"></script>
+    <script src="../../js/learn.js?1651477655"></script>
+    <script src="../../js/hugo-learn.js?1651477655"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1650874531"></script>
+            <script src="../../mermaid/mermaid.js?1651477655"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
