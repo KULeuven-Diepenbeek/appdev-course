@@ -12,21 +12,21 @@
     <title>6. Embedded Signals :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1651502523" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1651502523" rel="stylesheet">
-    <link href="../../css/hybrid.css?1651502523" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1651502523" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1651502523" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1651502523" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1651502523" rel="stylesheet">
-    <link href="../../css/theme.css?1651502523" rel="stylesheet">
-    <link href="../../css/devselector.css?1651502523" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1651502523" rel="stylesheet">
-    <link href="../../css/theme-kul.css?1651502523" rel="stylesheet">
+    <link href="../../css/nucleus.css?1652083187" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1652083187" rel="stylesheet">
+    <link href="../../css/hybrid.css?1652083187" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1652083187" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1652083187" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1652083187" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1652083187" rel="stylesheet">
+    <link href="../../css/theme.css?1652083187" rel="stylesheet">
+    <link href="../../css/devselector.css?1652083187" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1652083187" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1652083187" rel="stylesheet">
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1651502523"></script>
-    <script src="../../js/devselector.js?1651502523"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1652083187"></script>
+    <script src="../../js/devselector.js?1652083187"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -61,14 +61,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1651502523"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1651502523"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1652083187"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1652083187"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1651502523"></script>
+<script type="text/javascript" src="../../js/search.js?1652083187"></script>
 
     
   </div>
@@ -710,7 +710,7 @@
 </ol>
 <p>the <code>SensorEvent</code> object contains raw data (via the <code>values</code> property), sometimes up to three: one for each axis.</p>
 
-<div class="notices note" ><p>Remember to register and unregister the event listener on the right moment. For activities, that would be in the <code>onResume</code> and <code>onPause</code> methods. Take the lifecycles of activities and fragments into account!</p>
+<div class="notices note" ><p>Remember to register and unregister the event listener on the right moment. For activities, that would be in the <code>onResume</code> and <code>onPause</code> methods. Take the lifecycles of activities and fragments into account! By not unregistering, you are needlessly <strong>draining the battery</strong> of your end user!</p>
 </div>
 
 <p>When registering, you need to specify a delay: the <em>sampling rate</em> that, depending on the sensor and your needs, could differ from the default <code>SENSOR_DELAY_NORMAL</code>, which is about <code>200.000</code> microseconds:</p>
@@ -754,8 +754,12 @@
 </ol>
 <p>The exact values of the <code>SensorEvent.values</code> vector can be consulted <a href="https://developer.android.com/guide/topics/sensors/sensors_motion">in the Anrdoid docs</a>. Details of usage, such as dimensions, mathematical representations, the calculation of angular speeds, and so forth are also available in the docs. A code sample called <a href="https://github.com/android/sensors-samples/tree/main/BatchStepSensor/">the batch step sensor</a> is available on GitHub.</p>
 <p>Not all sensors return three-dimensional raw data. For instance, the light sensor only contains one value: illuminance, expressed in <code>lx</code>.</p>
+
+<div class="notices note" ><p>Accessing the above sensors does <em>not</em> require special permissions. There are, however, restrictions. First, background processes (services like a WhatsApp push without having the app open) do not receive sensor change information. Next, some sensors are rate limited in some Android SDK versions. If you need refresh rates above <code>50 Hz</code>, you need the <code>HIGH_SAMPLING_RATE_SENSORS</code> permission. See the <a href="https://developer.android.com/guide/topics/sensors/sensors_overview">sensors overview Android docs</a> for more information.</p>
+</div>
+
 <h3 id="gps-location-services">GPS: Location Services</h3>
-<p>Getting hold of the location of the user requires special permissions, obviously. Since the GPS system is more heavily used than other sensors, it uses a more high-level, different API.</p>
+<p>Contrary to the above sensors, getting hold of the location of the user requires <strong>special permissions</strong> for obvious reasons. Since the GPS system is more heavily used than other sensors, it uses a more high-level, different API.</p>
 <p>Read about <a href="https://developer.android.com/training/location">using locations on Android here</a>.</p>
 <p>There are two kinds of &ldquo;location access categories&rdquo;:</p>
 <ul>
@@ -1158,17 +1162,17 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1651502523"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1651502523"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1651502523"></script>
-    <script src="../../js/jquery.sticky.js?1651502523"></script>
-    <script src="../../js/featherlight.min.js?1651502523"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1651502523"></script>
-    <script src="../../js/learn.js?1651502523"></script>
-    <script src="../../js/hugo-learn.js?1651502523"></script>
+    <script src="../../js/clipboard.min.js?1652083187"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1652083187"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1652083187"></script>
+    <script src="../../js/jquery.sticky.js?1652083187"></script>
+    <script src="../../js/featherlight.min.js?1652083187"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1652083187"></script>
+    <script src="../../js/learn.js?1652083187"></script>
+    <script src="../../js/hugo-learn.js?1652083187"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1651502523"></script>
+            <script src="../../mermaid/mermaid.js?1652083187"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
