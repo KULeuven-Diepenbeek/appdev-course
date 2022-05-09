@@ -62,7 +62,7 @@ Once all is good to go, you can register a listener to the sensor, which require
 the `SensorEvent` object contains raw data (via the `values` property), sometimes up to three: one for each axis. 
 
 {{% notice note %}}
-Remember to register and unregister the event listener on the right moment. For activities, that would be in the `onResume` and `onPause` methods. Take the lifecycles of activities and fragments into account! 
+Remember to register and unregister the event listener on the right moment. For activities, that would be in the `onResume` and `onPause` methods. Take the lifecycles of activities and fragments into account! By not unregistering, you are needlessly **draining the battery** of your end user!
 {{% /notice %}}
 
 When registering, you need to specify a delay: the _sampling rate_ that, depending on the sensor and your needs, could differ from the default `SENSOR_DELAY_NORMAL`, which is about `200.000` microseconds: 
@@ -101,9 +101,13 @@ The exact values of the `SensorEvent.values` vector can be consulted [in the Anr
 
 Not all sensors return three-dimensional raw data. For instance, the light sensor only contains one value: illuminance, expressed in `lx`.
 
+{{% notice note %}}
+Accessing the above sensors does _not_ require special permissions. There are, however, restrictions. First, background processes (services like a WhatsApp push without having the app open) do not receive sensor change information. Next, some sensors are rate limited in some Android SDK versions. If you need refresh rates above `50 Hz`, you need the `HIGH_SAMPLING_RATE_SENSORS` permission. See the [sensors overview Android docs](https://developer.android.com/guide/topics/sensors/sensors_overview) for more information.
+{{% /notice %}}
+
 ### GPS: Location Services
 
-Getting hold of the location of the user requires special permissions, obviously. Since the GPS system is more heavily used than other sensors, it uses a more high-level, different API. 
+Contrary to the above sensors, getting hold of the location of the user requires **special permissions** for obvious reasons. Since the GPS system is more heavily used than other sensors, it uses a more high-level, different API. 
 
 Read about [using locations on Android here](https://developer.android.com/training/location). 
 
