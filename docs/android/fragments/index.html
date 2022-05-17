@@ -12,21 +12,21 @@
     <title>3. Complex layouts: Fragments :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1652083187" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1652083187" rel="stylesheet">
-    <link href="../../css/hybrid.css?1652083187" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1652083187" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1652083187" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1652083187" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1652083187" rel="stylesheet">
-    <link href="../../css/theme.css?1652083187" rel="stylesheet">
-    <link href="../../css/devselector.css?1652083187" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1652083187" rel="stylesheet">
-    <link href="../../css/theme-kul.css?1652083187" rel="stylesheet">
+    <link href="../../css/nucleus.css?1652770368" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1652770368" rel="stylesheet">
+    <link href="../../css/hybrid.css?1652770368" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1652770368" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1652770368" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1652770368" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1652770368" rel="stylesheet">
+    <link href="../../css/theme.css?1652770368" rel="stylesheet">
+    <link href="../../css/devselector.css?1652770368" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1652770368" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1652770368" rel="stylesheet">
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1652083187"></script>
-    <script src="../../js/devselector.js?1652083187"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1652770368"></script>
+    <script src="../../js/devselector.js?1652770368"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -61,14 +61,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1652083187"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1652083187"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1652770368"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1652770368"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1652083187"></script>
+<script type="text/javascript" src="../../js/search.js?1652770368"></script>
 
     
   </div>
@@ -808,7 +808,11 @@
     <span style="color:#00a8c8">val</span> <span style="color:#111">bundle</span> <span style="color:#111">=</span> <span style="color:#111">bundleOf</span><span style="color:#111">(</span><span style="color:#d88200">&#34;mydata&#34;</span> <span style="color:#111">to</span> <span style="color:#00a8c8">data</span><span style="color:#111">)</span>
     <span style="color:#111">findNavController</span><span style="color:#111">().</span><span style="color:#111">navigate</span><span style="color:#111">(</span><span style="color:#111">R</span><span style="color:#111">.</span><span style="color:#111">id</span><span style="color:#111">.</span><span style="color:#111">action_firstFragment_to_secondFragment</span><span style="color:#111">,</span> <span style="color:#111">bundle</span><span style="color:#111">)</span>
 <span style="color:#111">}</span>
-</code></pre></div><p>Remember to enable the necessary serialization plugins if you want to pass objects through bundles&mdash;otherwise, stick with primitive values. See the <a href="../../android/intents">intents chapter</a>.</p>
+</code></pre></div>
+<div class="notices note" ><p>If you&rsquo;re in an activity, <code>findNavController()</code> won&rsquo;t work, you&rsquo;ll have to explicitly pass in the navigation host fragment ID using for example <code>findNavController(R.id.nav_host_fragment)</code>.</p>
+</div>
+
+<p>Remember to enable the necessary serialization plugins if you want to pass objects through bundles&mdash;otherwise, stick with primitive values. See the <a href="../../android/intents">intents chapter</a>.</p>
 <p>On the receiving side, you can pluck out the arguments fairly easily:</p>
 <div class="devselect">
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">data</span> <span style="color:#111">=</span> <span style="color:#111">(</span><span style="color:#111">arguments</span><span style="color:#f92672">?.</span><span style="color:#111">getSerializable</span><span style="color:#111">(</span><span style="color:#d88200">&#34;mydata&#34;</span><span style="color:#111">)</span> <span style="color:#00a8c8">as</span> <span style="color:#111">MySharedData</span><span style="color:#111">?)</span> <span style="color:#f92672">?:</span> <span style="color:#111">MySharedData</span><span style="color:#111">()</span>
@@ -1209,17 +1213,17 @@ And that&rsquo;s it, now we&rsquo;ve connected all the separate pieces together 
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1652083187"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1652083187"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1652083187"></script>
-    <script src="../../js/jquery.sticky.js?1652083187"></script>
-    <script src="../../js/featherlight.min.js?1652083187"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1652083187"></script>
-    <script src="../../js/learn.js?1652083187"></script>
-    <script src="../../js/hugo-learn.js?1652083187"></script>
+    <script src="../../js/clipboard.min.js?1652770368"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1652770368"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1652770368"></script>
+    <script src="../../js/jquery.sticky.js?1652770368"></script>
+    <script src="../../js/featherlight.min.js?1652770368"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1652770368"></script>
+    <script src="../../js/learn.js?1652770368"></script>
+    <script src="../../js/hugo-learn.js?1652770368"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1652083187"></script>
+            <script src="../../mermaid/mermaid.js?1652770368"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
