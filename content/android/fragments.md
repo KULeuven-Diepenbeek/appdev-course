@@ -4,7 +4,7 @@ title: "3. Complex layouts: Fragments"
 
 See also: [Android developer guide: fragments](https://developer.android.com/guide/fragments).
 
-## What's a fragment? 
+## What's a fragment?
 
 A fragment is, simply put, a _reusable_ UI portion of an activity. For example, the welcome message from the [activities chapter](/android/activities/) can be a separate fragment, and the image containing the avatar of the user can be a separate fragment. Fragments are programmatically created by extending from `Fragment` from package `androidx.fragment.app`.
 
@@ -187,6 +187,10 @@ binding.btnGoToNext.setOnClickListener {
     findNavController().navigate(R.id.action_firstFragment_to_secondFragment, bundle)
 }
 ```
+
+{{% notice note %}}
+If you're in an activity, `findNavController()` won't work, you'll have to explicitly pass in the navigation host fragment ID using for example `findNavController(R.id.nav_host_fragment)`.
+{{% /notice %}}
 
 Remember to enable the necessary serialization plugins if you want to pass objects through bundles---otherwise, stick with primitive values. See the [intents chapter](/android/intents). 
 
