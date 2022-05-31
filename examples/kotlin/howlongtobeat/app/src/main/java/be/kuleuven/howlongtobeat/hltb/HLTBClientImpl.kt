@@ -39,7 +39,10 @@ class HLTBClientImpl(val context: Context) : HLTBClient {
         }
 
         override fun getHeaders(): MutableMap<String, String> {
-            return hashMapOf("User-Agent" to "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:90.0) Gecko/20100101 Firefox/90.0")
+            return hashMapOf(
+                "User-Agent" to "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:90.0) Gecko/20100101 Firefox/90.0",
+                "Referer" to "https://howlongtobeat.com/"
+            )
         }
     }
 
