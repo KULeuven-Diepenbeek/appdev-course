@@ -4,7 +4,7 @@ title: "5. Demo Project"
 
 ## _How Long To Beat_
 
-The demo project, residing in the [examples/kkotlin/howlongtobeat](https://github.com/KULeuven-Diepenbeek/appdev-course/tree/main/examples/kotlin/howlongtobeat) directory in the source repository, incorporates everything this course has to offer, to give you a taste of what is possible to create within a limited time frame using your newly acquired knowledge. It contains:
+The demo project, residing in a separate Git repository at https://git.brainbaking.com/wgroeneveld/howlongtobeat-android under the MIT license, incorporates everything this course has to offer, to give you a taste of what is possible to create within a limited time frame using your newly acquired knowledge. It contains:
 
 - One main activity, `MainActivity`, controlling the navigation drawer
 - Many segments controlled by a navigation system, including two `RecyclerView` lists.
@@ -12,7 +12,7 @@ The demo project, residing in the [examples/kkotlin/howlongtobeat](https://githu
 - Data storage through SQLite and Room, plus private file storage for images. 
 - Multiple HTTPS API calls to demonstrate the retrieval and processing of data.
 
-### What does it do? 
+### What does it do?
 
 A (moving) picture says more than a thousand words:
 
@@ -25,7 +25,7 @@ In case that still wasn't clear, it:
 3. ... saves this information in your personal game database if selected.
 4. ... shows some basic statistics on your game completion progress.
 
-### How does it work? 
+### How does it work?
 
 The cartridge recognition system (logic in `GameFinder.kt`) is programmed to adhere to the following logic flow:
 
