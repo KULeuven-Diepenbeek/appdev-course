@@ -59,7 +59,7 @@ Solution: just keep these the same. The error disappeared here after selecting f
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>&lt;i&gt;fname&lt;/i&gt;.&lt;i&gt;lname&lt;/i&gt;A T&lt;i&gt;kuleuven.be&lt;/i&gt; (Wouter Groeneveld, Kris Aerts)</author>
       <guid>https://kuleuven-diepenbeek.github.io/appdev-course/extra/demo/</guid>
-      <description>How Long To Beat The demo project, residing in the examples/kkotlin/howlongtobeat directory in the source repository, incorporates everything this course has to offer, to give you a taste of what is possible to create within a limited time frame using your newly acquired knowledge. It contains:
+      <description>How Long To Beat The demo project, residing in a separate Git repository at https://git.brainbaking.com/wgroeneveld/howlongtobeat-android under the MIT license, incorporates everything this course has to offer, to give you a taste of what is possible to create within a limited time frame using your newly acquired knowledge. It contains:
  One main activity, MainActivity, controlling the navigation drawer Many segments controlled by a navigation system, including two RecyclerView lists. Permissions for internet and the camera, and an intent system to share information.</description>
     </item>
     
