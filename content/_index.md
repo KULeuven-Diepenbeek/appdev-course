@@ -11,7 +11,7 @@ title: Course Contents
 
 See [UHasselt ECTS Sheet](https://uhintra03.uhasselt.be/studiegidswww/opleidingsonderdeel.aspx?a=2021&i=3291&n=4&t=01)
 
-Last changes for academic year _2020 - 2021_.
+Last changes for academic year _2022---2023_.
 
 ## Course notes
 
@@ -74,18 +74,18 @@ Below is a rough overview of the planned lab sessions:
 
 | date       | contents |
 |------------|----------|
-| 14-02-2022 | Introduction, Kotlin Programming essentials/advanced |
-| 21-02-2022 | Setup of Android Studio, Project overview, Life Cycle: Activities |
-| 28-02-2022 | Activities cont., Messaging & Intents |
-| 07-03-2022 | Messaging & Intents cont. |
-| 14-03-2022 | Complex layouting: Fragments |
-| 21-03-2022 | Fragments: cont. |
-| 28-03-2022 | Complex layouting: Nested Views |
-| 25-04-2022 | Nested views cont., Test Driven Development with Android |
-| 02-05-2022 | Data Storage on Android |
-| 09-05-2022 | Data Storage cont., embedded signals |
-| 16-05-2022 | Security by design |
-| 23-05-2022 | Summary, free project work |
+| 14-02 | Introduction, Kotlin Programming essentials/advanced |
+| 21-02 | Setup of Android Studio, Project overview, Life Cycle: Activities |
+| 28-02 | Activities cont., Messaging & Intents |
+| 07-03 | Messaging & Intents cont. |
+| 14-03 | Complex layouting: Fragments |
+| 21-03 | Fragments: cont. |
+| 28-03 | Complex layouting: Nested Views |
+| 25-04 | Nested views cont., Test Driven Development with Android |
+| 02-05 | Data Storage on Android |
+| 09-05 | Data Storage cont., embedded signals |
+| 16-05 | Security by design |
+| 23-05 | Summary, free project work |
 
 ### Evaluation
 
