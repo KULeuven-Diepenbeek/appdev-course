@@ -45,6 +45,8 @@ Cause 1: Are you on a Mac M1 and did you install the latest release instead of t
 
 Cause 2: Are you on a 64-bit system but did you install 32-bit emulators or components? Pay careful attention to the processor architecture of the installation and your machine---these should match!
 
+Cause 3: Your HAXM version is not up to date. Try installing a more recent version of HAXM (7.8.0 is the latest) or another Win-specific hypervisor. See https://developer.android.com/studio/run/emulator-acceleration for Win10/11 specific troubleshooting.
+
 ### 4. Invalid Entry CRC while deploying
 
 Error:
@@ -105,3 +107,31 @@ Cause: You've enabled `kotlin-kapt`---probably for Room database tooling. That m
 Build radle with `./gradle build --stacktrace` to get more output and see the underlying exception. 
 
 Solution: fix the Room-specific mistakes (annotation-related). Another possible cuse is your M1 Mac chipset: see [data storage](/android/data-storage), add the `kapt "org.xerial:sqlite-jdbc:3.34.0"` dependency yourself. 
+
+
+### 8. androix.annotation Gradle version incompatibilities
+
+Error:
+
+> Inconsistencies in the existing project dependencies found.
+
+```
+This operation requires the libraries
+androix.navigation:navigation-fragment-ktx:+,
+androix.navigation:navigation-ui-ktx:+.
+
+Problem: Inconsistencies in the existing project dependencies found.
+Version incompatiblity between:
+- com.google.androidmaterial:material:1.8.0@aar and:
+- androidx.appcompat:appcompat:1.6.1@aar
+
+With the dependency:
+- androidx.annotation:*:1.1.0
+```
+
+Cause: you added a navigation graph in `/res` for the first time so extra dependencies are added (automatically), but `androidx.annotation` is referenced twice with different versions as a **transient dependency**. This is an internal Google issue. 
+
+Solution: update `material` and/or `appcompat` to their respective latest versions, search for them in the Maven repo at https://mvnrepository.com/artifact/androidx.appcompat/appcompat 
+
+If that still doesn't work, add a reference to the transient dependency yourself by adding `api 'androidx.annotation:annotation:1.1.0'` as a dependency in `build.gradle`. See [this related GitHub issue](https://github.com/wix/Detox/issues/1631).
+

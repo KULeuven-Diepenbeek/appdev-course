@@ -48,7 +48,7 @@ Just treat them as UI components. That is, they are also defined in the layout `
     android:layout_height="0dp" />
 ```
 
-As with activities, they need their own Java/Kotlin class, so make sure to add the needed classes. (Rightclick, new -> Fragment -> Blank, this automatically creates the layout file. If your fragment is called `FirstFragment`, the layout file will be `fragement_first`). The gray `<fragment/>` box indicates just _a ssection_ of the activity that will be **replaced** as fragments get swapped in and out! That means we don't need to (re)create an entire activity, and the fragment can be re-used. 
+As with activities, they need their own Java/Kotlin class, so make sure to add the needed classes. (Rightclick, new -> Fragment -> Blank, this automatically creates the layout file. If your fragment is called `FirstFragment`, the layout file will be `fragement_first`). The gray `<fragment/>` box indicates just _a section_ of the activity that will be **replaced** as fragments get swapped in and out! That means we don't need to (re)create an entire activity, and the fragment can be re-used. 
 
 In the simplest possible form, the fragment companion class looks like this:
 
@@ -63,9 +63,9 @@ public class FirstFragment extends Fragment(R.layout.fragment_first) { }
 ```
 </div>
 
-Instead of returning `inflater.inflate(R.layout.fragment_first, container, false)` in an override of `onCreateView()`, simply pass your fragment ID to the super constructor. `onCreateView()` is the function where your view properties should be set, and not in `onCreate()`, where you'd likely put it if you're used to working with activities. 
+Instead of returning `inflater.inflate(R.layout.fragment_first, container, false)` in an override of `onCreate()`, as you're used to do when creating Activity classes, simply pass your fragment ID to the super constructor. `onCreateView()` is the function where your view properties should be set, and not in `onCreate()`, where you'd likely put it if you're used to working with activities. 
 
-The `android:name` property in the XML refers to the class name of the fragment you initially want the fragment container to hold. Boot up the application, and you'll see your first fragment layout in the activity. However, if you want to change dynamically, change the fragment to a `<FrameLayout/>` (remove the name), and let's add some code in the MainActivity `onCreate()`:
+The `android:name` property in the XML refers to the class name of the fragment you initially want the fragment container to hold. Boot up the application, and you'll see your first fragment layout in the activity. However, if you want to change dynamically, change the fragment to a `<FrameLayout/>`, remove the name, and let's add some code in the MainActivity `onCreate()`:
 
 <div class="devselect">
 
@@ -85,6 +85,11 @@ transaction.commit();
 ```
 
 </div>
+
+{{% notice note %}}
+You can only replace container elements with fragments. That is, elements that extend from `android.view.ViewGroup`---otherwhise, you'll get a beautiful `ClassCastException`. Be sure to thoroughly inspect any stacktrace you encounter!
+{{% /notice %}}
+
 
 See also: [android dev guide: fragment transactions](https://developer.android.com/guide/fragments/transactions). Reboot the application and you'll still see the first fragment. Use the same code in button click listeners to dynamically change when your application is running. 
 

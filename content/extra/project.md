@@ -27,4 +27,4 @@ Also remember to adhere to the _Android dev best practices_ mentioned througout 
 
 ### Deadlines
 
-TODO team formation/checkins/git/...
+See Toledo.

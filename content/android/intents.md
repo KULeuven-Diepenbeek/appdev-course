@@ -77,25 +77,25 @@ Let's settle with the first option. In order to add `@Serializable` to your data
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    kotlin("plugin.serialization") version "1.5.21" // add this
+    kotlin("plugin.serialization") version "1.8.0" // add this
 }
 ...
 dependencies {
     ...
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2") // add this
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0") // add this
     ...
 }
 ```
 
 ```Groovy
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.6.10'
-    id 'org.jetbrains.kotlin.plugin.serialization' version '1.6.10' // add this
+    id 'org.jetbrains.kotlin.jvm'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.8.0' // add this
 }
 ...
 dependencies {
     ...
-        implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2' // add this
+        implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0' // add this
     ...
 }
 ```
@@ -106,7 +106,7 @@ dependencies {
 Keep the `plugin.serialization` **version** the same as your Kotlin version! See the [official kotlinx.serialization github repo](https://github.com/Kotlin/kotlinx.serialization) and the [official kotlin serialization docs](https://kotlinlang.org/docs/serialization.html) on how to install and use the plugin. Again, be mindful if you have a `.kts` Gradle build file or not (switch to Groovy above if appropriate).
 {{% /notice %}}
 
-Then, add an implementation dependency `    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")`. Lastly, update your `User` data class to add the `@Serializable` annotation that should get imported from the package `kotlinx.serialization`, and the Java `Serializable` interface to tell Android-specific methods it's a serializable object:
+Then, add an implementation dependency `    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")`. Lastly, update your `User` data class to add the `@Serializable` annotation that should get imported from the package `kotlinx.serialization`, and the Java `java.io.Serializable` interface to tell Android-specific methods it's a serializable object:
 
 ```kt
 @Serializable
@@ -114,7 +114,7 @@ data class User(val name: String) : java.io.Serializable {
 }
 ```
 
-Now create a function that returns a new `User` object based on the viewbinding's values. Then pass the single `User` instance through the intent using `putExtra()`. Pull it back out using `getSerializableExtra()`. 
+Now create a function that returns a new `User` object based on the viewbinding's values. Then pass the single `User` instance through the intent using `putExtra()`. Pull it back out using `getSerializableExtra()`. If you forget inheriting from the Java interface, you'll get a compile error since `putExtra` only allows objects that identify with the interface. The annotation does the JSON-specific dirty work for us.
 
 {{% notice note %}}
 Android also supports [(two-way) **data binding**](https://developer.android.com/topic/libraries/data-binding/two-way), next to the **view binding** system introduced in [chapter 1.1](/android/activities). This allows designers to directly map properties of models into the layouts, thus avoiding having to access every single property to carry over into an intent or another object. Data binding is not part of this course but feel free to use it instead of view binding, should you wish to do so. 
