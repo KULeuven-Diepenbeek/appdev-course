@@ -12,21 +12,21 @@
     <title>3. Complex layouts: Fragments :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1677775120" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1677775120" rel="stylesheet">
-    <link href="../../css/hybrid.css?1677775120" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1677775120" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1677775120" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1677775120" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1677775120" rel="stylesheet">
-    <link href="../../css/theme.css?1677775120" rel="stylesheet">
-    <link href="../../css/devselector.css?1677775120" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1677775120" rel="stylesheet">
-    <link href="../../css/theme-kul.css?1677775120" rel="stylesheet">
+    <link href="../../css/nucleus.css?1678883625" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1678883625" rel="stylesheet">
+    <link href="../../css/hybrid.css?1678883625" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1678883625" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1678883625" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1678883625" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1678883625" rel="stylesheet">
+    <link href="../../css/theme.css?1678883625" rel="stylesheet">
+    <link href="../../css/devselector.css?1678883625" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1678883625" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1678883625" rel="stylesheet">
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1677775120"></script>
-    <script src="../../js/devselector.js?1677775120"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1678883625"></script>
+    <script src="../../js/devselector.js?1678883625"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -61,14 +61,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1677775120"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1677775120"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1678883625"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1678883625"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1677775120"></script>
+<script type="text/javascript" src="../../js/search.js?1678883625"></script>
 
     
   </div>
@@ -703,14 +703,14 @@
     <span style="color:#75af00">android:id=</span><span style="color:#d88200">&#34;@+id/myfragment&#34;</span>
     <span style="color:#75af00">android:layout_width=</span><span style="color:#d88200">&#34;match_parent&#34;</span>
     <span style="color:#75af00">android:layout_height=</span><span style="color:#d88200">&#34;0dp&#34;</span> <span style="color:#f92672">/&gt;</span>
-</code></pre></div><p>As with activities, they need their own Java/Kotlin class, so make sure to add the needed classes. (Rightclick, new -&gt; Fragment -&gt; Blank, this automatically creates the layout file. If your fragment is called <code>FirstFragment</code>, the layout file will be <code>fragement_first</code>). The gray <code>&lt;fragment/&gt;</code> box indicates just <em>a ssection</em> of the activity that will be <strong>replaced</strong> as fragments get swapped in and out! That means we don&rsquo;t need to (re)create an entire activity, and the fragment can be re-used.</p>
+</code></pre></div><p>As with activities, they need their own Java/Kotlin class, so make sure to add the needed classes. (Rightclick, new -&gt; Fragment -&gt; Blank, this automatically creates the layout file. If your fragment is called <code>FirstFragment</code>, the layout file will be <code>fragement_first</code>). The gray <code>&lt;fragment/&gt;</code> box indicates just <em>a section</em> of the activity that will be <strong>replaced</strong> as fragments get swapped in and out! That means we don&rsquo;t need to (re)create an entire activity, and the fragment can be re-used.</p>
 <p>In the simplest possible form, the fragment companion class looks like this:</p>
 <div class="devselect">
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">class</span> <span style="color:#75af00">FirstFragment</span> <span style="color:#111">:</span> <span style="color:#111">Fragment</span><span style="color:#111">(</span><span style="color:#111">R</span><span style="color:#111">.</span><span style="color:#111">layout</span><span style="color:#111">.</span><span style="color:#111">fragment_first</span><span style="color:#111">)</span>
 </code></pre></div><div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#00a8c8">public</span> <span style="color:#00a8c8">class</span> <span style="color:#75af00">FirstFragment</span> <span style="color:#00a8c8">extends</span> <span style="color:#75af00">Fragment</span><span style="color:#f92672">(</span><span style="color:#111">R</span><span style="color:#f92672">.</span><span style="color:#75af00">layout</span><span style="color:#f92672">.</span><span style="color:#75af00">fragment_first</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span> <span style="color:#f92672">}</span>
 </code></pre></div></div>
-<p>Instead of returning <code>inflater.inflate(R.layout.fragment_first, container, false)</code> in an override of <code>onCreateView()</code>, simply pass your fragment ID to the super constructor. <code>onCreateView()</code> is the function where your view properties should be set, and not in <code>onCreate()</code>, where you&rsquo;d likely put it if you&rsquo;re used to working with activities.</p>
-<p>The <code>android:name</code> property in the XML refers to the class name of the fragment you initially want the fragment container to hold. Boot up the application, and you&rsquo;ll see your first fragment layout in the activity. However, if you want to change dynamically, change the fragment to a <code>&lt;FrameLayout/&gt;</code> (remove the name), and let&rsquo;s add some code in the MainActivity <code>onCreate()</code>:</p>
+<p>Instead of returning <code>inflater.inflate(R.layout.fragment_first, container, false)</code> in an override of <code>onCreate()</code>, as you&rsquo;re used to do when creating Activity classes, simply pass your fragment ID to the super constructor. <code>onCreateView()</code> is the function where your view properties should be set, and not in <code>onCreate()</code>, where you&rsquo;d likely put it if you&rsquo;re used to working with activities.</p>
+<p>The <code>android:name</code> property in the XML refers to the class name of the fragment you initially want the fragment container to hold. Boot up the application, and you&rsquo;ll see your first fragment layout in the activity. However, if you want to change dynamically, change the fragment to a <code>&lt;FrameLayout/&gt;</code>, remove the name, and let&rsquo;s add some code in the MainActivity <code>onCreate()</code>:</p>
 <div class="devselect">
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kt" data-lang="kt"><span style="color:#00a8c8">val</span> <span style="color:#111">firstFragment</span> <span style="color:#111">=</span> <span style="color:#111">FirstFragment</span><span style="color:#111">()</span>
 <span style="color:#111">supportFragmentManager</span><span style="color:#111">.</span><span style="color:#111">beginTransaction</span><span style="color:#111">().</span><span style="color:#111">apply</span> <span style="color:#111">{</span> 
@@ -722,6 +722,10 @@
 <span style="color:#111">transaction</span><span style="color:#f92672">.</span><span style="color:#75af00">replace</span><span style="color:#f92672">(</span><span style="color:#111">R</span><span style="color:#f92672">.</span><span style="color:#75af00">id</span><span style="color:#f92672">.</span><span style="color:#75af00">fragmentContainer</span><span style="color:#f92672">,</span> <span style="color:#111">firstFragment</span><span style="color:#f92672">);</span>
 <span style="color:#111">transaction</span><span style="color:#f92672">.</span><span style="color:#75af00">commit</span><span style="color:#f92672">();</span>
 </code></pre></div></div>
+
+<div class="notices note" ><p>You can only replace container elements with fragments. That is, elements that extend from <code>android.view.ViewGroup</code>&mdash;otherwhise, you&rsquo;ll get a beautiful <code>ClassCastException</code>. Be sure to thoroughly inspect any stacktrace you encounter!</p>
+</div>
+
 <p>See also: <a href="https://developer.android.com/guide/fragments/transactions">android dev guide: fragment transactions</a>. Reboot the application and you&rsquo;ll still see the first fragment. Use the same code in button click listeners to dynamically change when your application is running.</p>
 <h4 id="fixing-the-back-button">Fixing the back button</h4>
 <p>While interacting with fragment-based applications, your users will likely expect the <em>back button</em> to work properly. That is, when they press &ldquo;back&rdquo;, they expect the previous &ldquo;screen&rdquo; to be shown. Whether that is an activity or a fragment is an implementation detail, not something an end user should be bothered with! However, <code>replace()</code> does not suffice. Add a call to <code>addToBackStack()</code> before the <code>commit()</code> and that problem is fixed.</p>
@@ -1213,17 +1217,17 @@ And that&rsquo;s it, now we&rsquo;ve connected all the separate pieces together 
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1677775120"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1677775120"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1677775120"></script>
-    <script src="../../js/jquery.sticky.js?1677775120"></script>
-    <script src="../../js/featherlight.min.js?1677775120"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1677775120"></script>
-    <script src="../../js/learn.js?1677775120"></script>
-    <script src="../../js/hugo-learn.js?1677775120"></script>
+    <script src="../../js/clipboard.min.js?1678883625"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1678883625"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1678883625"></script>
+    <script src="../../js/jquery.sticky.js?1678883625"></script>
+    <script src="../../js/featherlight.min.js?1678883625"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1678883625"></script>
+    <script src="../../js/learn.js?1678883625"></script>
+    <script src="../../js/hugo-learn.js?1678883625"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1677775120"></script>
+            <script src="../../mermaid/mermaid.js?1678883625"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });

@@ -12,21 +12,21 @@
     <title>2. Common Errors FAQ :: App Development</title>
 
     
-    <link href="../../css/nucleus.css?1677775120" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1677775120" rel="stylesheet">
-    <link href="../../css/hybrid.css?1677775120" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1677775120" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1677775120" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1677775120" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1677775120" rel="stylesheet">
-    <link href="../../css/theme.css?1677775120" rel="stylesheet">
-    <link href="../../css/devselector.css?1677775120" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1677775120" rel="stylesheet">
-    <link href="../../css/theme-kul.css?1677775120" rel="stylesheet">
+    <link href="../../css/nucleus.css?1678883625" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1678883625" rel="stylesheet">
+    <link href="../../css/hybrid.css?1678883625" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1678883625" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1678883625" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1678883625" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1678883625" rel="stylesheet">
+    <link href="../../css/theme.css?1678883625" rel="stylesheet">
+    <link href="../../css/devselector.css?1678883625" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1678883625" rel="stylesheet">
+    <link href="../../css/theme-kul.css?1678883625" rel="stylesheet">
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1677775120"></script>
-    <script src="../../js/devselector.js?1677775120"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1678883625"></script>
+    <script src="../../js/devselector.js?1678883625"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -61,14 +61,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1677775120"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1677775120"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1678883625"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1678883625"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/kuleuven-diepenbeek.github.io\/appdev-course\/";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1677775120"></script>
+<script type="text/javascript" src="../../js/search.js?1678883625"></script>
 
     
   </div>
@@ -630,6 +630,7 @@
         <li><a href="#5-lifecycleowners-must-call-register-before-they-are-started">5. LifecycleOwners must call register before they are STARTED.</a></li>
         <li><a href="#6-noactivityresumedexception-when-running-instrumented-tests">6. NoActivityResumedException when running instrumented tests</a></li>
         <li><a href="#7--build-failures-kaptwithoutkotlinctask">7.  Build failures: KaptWithoutKotlincTask$&hellip;</a></li>
+        <li><a href="#8-androixannotation-gradle-version-incompatibilities">8. androix.annotation Gradle version incompatibilities</a></li>
       </ul>
     </li>
   </ul>
@@ -691,6 +692,7 @@
 </blockquote>
 <p>Cause 1: Are you on a Mac M1 and did you install the latest release instead of the preview release? You need to download an Android Virtual Device based on an ARM systems image. This is done automatically in the latest preview edition of Android Studio. See <a href="../../extra/install">installation guide</a>.</p>
 <p>Cause 2: Are you on a 64-bit system but did you install 32-bit emulators or components? Pay careful attention to the processor architecture of the installation and your machine&mdash;these should match!</p>
+<p>Cause 3: Your HAXM version is not up to date. Try installing a more recent version of HAXM (7.8.0 is the latest) or another Win-specific hypervisor. See <a href="https://developer.android.com/studio/run/emulator-acceleration">https://developer.android.com/studio/run/emulator-acceleration</a> for Win10/11 specific troubleshooting.</p>
 <h3 id="4-invalid-entry-crc-while-deploying">4. Invalid Entry CRC while deploying</h3>
 <p>Error:</p>
 <blockquote>
@@ -730,6 +732,25 @@ Execution failed for task ':app:kaptDebugKotlin'.
 </code></pre><p>Cause: You&rsquo;ve enabled <code>kotlin-kapt</code>&mdash;probably for Room database tooling. That means you&rsquo;ve done something wrong in your Dao or object-to-save. For instance, made the primary key an immutable <code>val</code> instead of a <code>var</code>. Re-check your database objects and make sure everything is as it should be!</p>
 <p>Build radle with <code>./gradle build --stacktrace</code> to get more output and see the underlying exception.</p>
 <p>Solution: fix the Room-specific mistakes (annotation-related). Another possible cuse is your M1 Mac chipset: see <a href="../../android/data-storage">data storage</a>, add the <code>kapt &quot;org.xerial:sqlite-jdbc:3.34.0&quot;</code> dependency yourself.</p>
+<h3 id="8-androixannotation-gradle-version-incompatibilities">8. androix.annotation Gradle version incompatibilities</h3>
+<p>Error:</p>
+<blockquote>
+<p>Inconsistencies in the existing project dependencies found.</p>
+</blockquote>
+<pre><code>This operation requires the libraries
+androix.navigation:navigation-fragment-ktx:+,
+androix.navigation:navigation-ui-ktx:+.
+
+Problem: Inconsistencies in the existing project dependencies found.
+Version incompatiblity between:
+- com.google.androidmaterial:material:1.8.0@aar and:
+- androidx.appcompat:appcompat:1.6.1@aar
+
+With the dependency:
+- androidx.annotation:*:1.1.0
+</code></pre><p>Cause: you added a navigation graph in <code>/res</code> for the first time so extra dependencies are added (automatically), but <code>androidx.annotation</code> is referenced twice with different versions as a <strong>transient dependency</strong>. This is an internal Google issue.</p>
+<p>Solution: update <code>material</code> and/or <code>appcompat</code> to their respective latest versions, search for them in the Maven repo at <a href="https://mvnrepository.com/artifact/androidx.appcompat/appcompat">https://mvnrepository.com/artifact/androidx.appcompat/appcompat</a></p>
+<p>If that still doesn&rsquo;t work, add a reference to the transient dependency yourself by adding <code>api 'androidx.annotation:annotation:1.1.0'</code> as a dependency in <code>build.gradle</code>. See <a href="https://github.com/wix/Detox/issues/1631">this related GitHub issue</a>.</p>
 
 
 <footer class="footline">
@@ -1115,17 +1136,17 @@ Execution failed for task ':app:kaptDebugKotlin'.
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1677775120"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1677775120"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1677775120"></script>
-    <script src="../../js/jquery.sticky.js?1677775120"></script>
-    <script src="../../js/featherlight.min.js?1677775120"></script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1677775120"></script>
-    <script src="../../js/learn.js?1677775120"></script>
-    <script src="../../js/hugo-learn.js?1677775120"></script>
+    <script src="../../js/clipboard.min.js?1678883625"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1678883625"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1678883625"></script>
+    <script src="../../js/jquery.sticky.js?1678883625"></script>
+    <script src="../../js/featherlight.min.js?1678883625"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1678883625"></script>
+    <script src="../../js/learn.js?1678883625"></script>
+    <script src="../../js/hugo-learn.js?1678883625"></script>
     
         
-            <script src="../../mermaid/mermaid.js?1677775120"></script>
+            <script src="../../mermaid/mermaid.js?1678883625"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
