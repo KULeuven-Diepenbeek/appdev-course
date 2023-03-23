@@ -135,3 +135,17 @@ Solution: update `material` and/or `appcompat` to their respective latest versio
 
 If that still doesn't work, add a reference to the transient dependency yourself by adding `api 'androidx.annotation:annotation:1.1.0'` as a dependency in `build.gradle`. See [this related GitHub issue](https://github.com/wix/Detox/issues/1631).
 
+
+### 9. Help, my layout disappears in design/run mode!
+
+Error: in XML layout design mode or when running the app, none of your UI elements appear, even though they are present and correct in the XML file itself. 
+
+Cause: you likely have made a layout sizing/constraint error. Double check the following properties:
+
+- Is everything constrained correctly when using a `ConstraintLayout`, relative to each other?
+- Are the `width` and `height` properties set correctly?
+   + If designing a single item for a recyclerview, have you incorrectly set the height to `match_parent`, leaving no room for other elements? 
+   + Try setting either property to `0dp` or `wrap_content` and see if that helps. 
+
+Solution: fix your layout XML accordingly! If still unsure what to do, see the examples folder in the course GitHub repository. 
+

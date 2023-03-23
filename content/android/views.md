@@ -38,10 +38,12 @@ In your activity XML file, we will add three objects: a `RecyclerView`, which wi
     android:layout_height="0dp" />
 ```
 
-Besides the `activity_main.xml` file, we'll need a second XML file to design the layout of a **single item** in the list. This will get repeated and/or recycled by the `RecyclerView` class. All we need to do is to add a `TextView` and a `Checkbox`---just like in the screenshot above. The root layout can be a `ConstraintLayout`, just like any other activity. Give the root a `android:layout_height` value of only `100dp`, otherwise every item will be the size of the entire screen. 
+Besides the `activity_main.xml` file, we'll need a second XML file to design the layout of a **single item** in the list. This will get repeated and/or recycled by the `RecyclerView` class. All we need to do is to add a `TextView` and a `Checkbox`---just like in the screenshot above. The root layout can be a `ConstraintLayout`, just like any other activity. 
+
+Give the root a `android:layout_height` value of only `100dp`, otherwise every item will be the size of the entire screen. If only a single item appears in your recyclerview, you likely have made a layout mistake---double-check your width, height, and constrained properties in the XML files. 
 
 {{% notice note %}}
-Do not forget to add the Gradle dependency `implementation("androidx.recyclerview:recyclerview:1.2.1")` (this is `.ktx`-specific syntax!)!
+For recent versions of `androidx.core`, it is _not_ necessary to add a separate dependency for the recyler view components. However, for version 1.6 and older, you will need to add the Gradle dependency `androidx.recyclerview:recyclerview:1.2.1`.
 {{% /notice %}}
 
 
@@ -83,7 +85,7 @@ The model, the `Todo` class, is very simple, holding only a string and a boolean
 data class Todo(val title: String, val isDone: Boolean)
 ```
 
-Note that this means the list the RecyclerView shows is a `List<Todo>`: it's not list of primitives, it can be _anything_! The official [Android RecyclerView example on GitHub](https://github.com/android/views-widgets-samples/tree/main/RecyclerViewKotlin) is a "flower finder" app and shows a list of thumbnails and descriptions. 
+Note that this means the list the RecyclerView shows is a `List<Todo>`: it's not list of primitives---although it can be: it can be _anything_! The official [Android RecyclerView example on GitHub](https://github.com/android/views-widgets-samples/tree/main/RecyclerViewKotlin) is a "flower finder" app and shows a list of thumbnails and descriptions. 
 
 ### 3. Initialize your adapter in the main activity
 
@@ -119,7 +121,7 @@ Many Android apps contain some form of menu system. In practice, these are, perh
 
 Key mechanics involved:
 
-1. Use a `DrawerLayout` in the activity where you want the menu to slide in, instead of a regular `ConstraintLayout`. It should only contain 2 items: an activity/fragment layout and a `NavigationView` element. 
+1. Use a `DrawerLayout` in the activity where you want the menu to slide in, instead of a regular `ConstraintLayout`. It should only contain 2 items: an activity/fragment layout and a `NavigationView` element. That is, if you require complex layouting, use a `NavigationView` in combination with a single `FrameLayout` container and inject it with whatever `ConstraintLayout` in your Kotlin code. See the example in the GitHub repository.
 2. Create a separate layout XML file where the drawer header layout resides. For example, as in the above screenshot, it could contain a logo and some text ("Android Studio", `android.studio@android.com`)
 3. Create a separate menu XML file where all menu items, icons, and titles reside. 
 4. Update the activity code to glue it all together.
@@ -152,7 +154,19 @@ While the menu, created in directory `app/res/menu`, is quite simple:
 </menu>
 ```
 
-Don't forget to create a separate layout file for the navigation header (in the XML above referenced as `@layout/nav_header`). Thus, in total, we have altered and/or created three resource files. 
+Don't forget to create a separate layout file for the navigation header (in the XML above referenced as `@layout/nav_header`). You can give its background another color by setting `android:background` to have the menu header stand out. In our example, the `layout_height` is set to `150dp`:
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:background="@color/design_default_color_primary">
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+```
+
+Thus, in total, we have altered and/or created three resource files. 
 
 #### Binding
 
@@ -164,6 +178,8 @@ Lastly, and perhaps most importantly: drawer menu item click listeners, bound th
 menuBarToggle = ActionBarDrawerToggle(this, binding.drawerLayout, R.string.menu_open, R.string.menu_close)
 binding.drawerLayout.addDrawerListener(menuBarToggle)
 menuBarToggle.syncState()
+
+// when the menu drawer opens, the toggle button moves to a "back" button and it will close again.
 supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
 binding.navView.setNavigationItemSelectedListener {
